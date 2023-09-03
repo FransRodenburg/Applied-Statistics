@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applied Statistics - 1&nbsp; Simple Linear Regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./GLM.html" rel="next">
+<link href="./regressionanalysis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regressionanalysis.html"><font color="steelblue">{{&lt; fa chart-line title="" size=xl &gt;}}</font> Regression Analysis</a></li><li class="breadcrumb-item"><a href="./simplelinearregression.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./probabilitydistributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="steelblue"></font> Probability Distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normaldistribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="steelblue"><i class="fa-solid fa-dice-one fa-xl" title="A six-sided die" aria-label="dice-one"></i></font> Normal Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poissondistribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="steelblue"><i class="fa-solid fa-dice-two fa-xl" title="A six-sided die" aria-label="dice-two"></i></font> Poisson Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./binomialdistribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="steelblue"><i class="fa-solid fa-dice-three fa-xl" title="A six-sided die" aria-label="dice-three"></i></font> Binomial Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./regressionanalysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="steelblue"></font> Regression Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GLM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./datamanagement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><font color="purple"></font> Data Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tidy Format</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./missingdata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Missing Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./univariatetests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"> Univariate Tests</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="fa-solid fa-scale-balanced fa-xl" title="“”" aria-label="scale-balanced"></i> T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chisq-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="fa-solid fa-scale-balanced fa-xl" title="“”" aria-label="scale-balanced"></i> Chi-squared test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./f-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><i class="fa-solid fa-scale-balanced fa-xl" title="“”" aria-label="scale-balanced"></i> F-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#slm-lecture" id="toc-slm-lecture" class="nav-link active" data-scroll-target="#slm-lecture"><span class="header-section-number">1.1</span> Lecture</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.2</span> Summary</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz"><span class="header-section-number">1.3</span> Quiz</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><small><i>Linear regression with a single explanatory variable.</i></small></p>
+<section id="slm-lecture" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="slm-lecture"><span class="header-section-number">1.1</span> Lecture</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">1. Introduction</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">2. Assumptions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">3. Regression Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">4. Diagnostics</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/LGm_dO8w7Fc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/2DmnEQwwwNQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/f2ajESgqtcU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/_B6VDSa9N60" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</div>
+</div>
+</div>
+<p><small><a href="https://youtube.com/playlist?list=PLl4b1XM725OfDg-0FeWlcF2sBTAveFBwY&amp;si=4xU6sb3WVkTNb_AZ" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> Open playlist in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+</section>
+<section id="summary" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.2</span> Summary</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-slm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="simplelinearregression_files/figure-html/fig-slm-1.png" class="img-fluid figure-img" width="2100"></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Example of a simple linear model. <small>(Height and weight of 50 individuals.)</small></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematical formula:</p>
+<span class="math display">\[\begin{align}
+  y &amp;= \beta_0 + \beta_1 \cdot x + \epsilon \\ \tag{1}\label{slm}\\
+  \epsilon &amp;\sim \mathcal{N}(0, \, \sigma^2)
+\end{align}\]</span>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, x).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><small>Note: You have to include an intercept manually using <code>x = sm.add_constant(x)</code>.</small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt>response variable</dt>
+<dd>
+<p>The outcome, denoted by <span class="math inline">\(y\)</span>.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\hat{y}\)</span> is the predicted outcome by the model, also called the ‘fitted value.’</p>
+</dd>
+<dt>explanatory variable</dt>
+<dd>
+<p>The variable the outcome is regressed on, denoted by <span class="math inline">\(x\)</span>.</p>
+</dd>
+<dt>intercept</dt>
+<dd>
+<p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\beta_0\)</span> is the theoretical value.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\hat{\beta}_0\)</span> is its estimate.</p>
+</dd>
+<dt>slope</dt>
+<dd>
+<p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\beta_1\)</span> is the theoretical value.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\hat{\beta}_1\)</span> is its estimate.</p>
+</dd>
+<dt>error</dt>
+<dd>
+<p>Difference between the true population values of the outcome and those predicted by the true model.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\epsilon\)</span> is the true error.</p>
+</dd>
+<dt>residual</dt>
+<dd>
+<p>Difference between the sample values of the outcome and those predicted by the estimated model.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\hat{\epsilon}\)</span> is sometimes used to denote the residual, an ‘estimate’ of the error.</p>
+</dd>
+<dt>normal distribution</dt>
+<dd>
+<p>See <a href="normaldistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></font> Normal Distribution</a>.</p>
+</dd>
+<dd>
+<p><span class="math inline">\(\epsilon \sim \mathcal{N}(0, \, \sigma^2)\)</span> means: The error follows a normal distribution with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (some unknown variance).</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Simple linear regression models the relationship between two continuous<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> variables, using an <font color="FF7F50"><b>intercept</b></font> and a <font color="4682B4"><b>slope</b></font>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">The intercept is the value of <span class="math inline">\(y\)</span>, when <span class="math inline">\(x=0\)</span>. The slope is the change in <span class="math inline">\(y\)</span>, when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span>.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>As you can see in figure <a href="#fig-slm">Figure&nbsp;<span>1.1</span></a>, a model is only an approximation and there will always be individual differences from the ‘average’ trend that has been estimated. These differences are called the <font color="FC3131"><b>residuals</b></font>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-slmresid" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="simplelinearregression_files/figure-html/fig-slmresid-1.png" class="img-fluid figure-img" width="2100"></p>
+<figcaption class="figure-caption">Figure&nbsp;1.2: Residual of a simple linear model.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>The intercept and slope are estimated by minimizing the sum of squared residuals, a technique called <strong>ordinary least squares</strong>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-slmOLS" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="simplelinearregression_files/figure-html/fig-slmOLS-1.png" class="img-fluid figure-img" width="2100"></p>
+<figcaption class="figure-caption">Figure&nbsp;1.3: Squared residuals give porportionally more weight to farther observations.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>The results of a linear regression are summarized in a <strong>regression table</strong>, which provides insight into the parameter estimates, their uncertainty, and some basic measures of how well the model fits the data:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> height, <span class="at">data =</span> DF)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ height, data = DF)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-21.486 -11.962  -2.670   6.326  39.192 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -57.4496    32.1694  -1.786 0.084960 .  
+height        0.8025     0.1859   4.318 0.000178 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 14.82 on 28 degrees of freedom
+Multiple R-squared:  0.3997,    Adjusted R-squared:  0.3783 
+F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DF <span class="op">=</span> pd.read_csv(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>LM <span class="op">=</span> sm.OLS(DF[<span class="st">'height'</span>], sm.add_constant(DF[<span class="st">'weight'</span>])).fit()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LM.summary2())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Results: Ordinary least squares
+=================================================================
+Model:              OLS              Adj. R-squared:     0.378   
+Dependent Variable: height           AIC:                234.5127
+Date:               2023-09-03 17:57 BIC:                237.3151
+No. Observations:   30               Log-Likelihood:     -115.26 
+Df Model:           1                F-statistic:        18.64   
+Df Residuals:       28               Prob (F-statistic): 0.000178
+R-squared:          0.400            Scale:              136.30  
+------------------------------------------------------------------
+            Coef.    Std.Err.     t     P&gt;|t|    [0.025    0.975] 
+------------------------------------------------------------------
+const      132.1493    9.5791  13.7955  0.0000  112.5273  151.7712
+weight       0.4981    0.1154   4.3178  0.0002    0.2618    0.7344
+-----------------------------------------------------------------
+Omnibus:              0.339        Durbin-Watson:           2.521
+Prob(Omnibus):        0.844        Jarque-Bera (JB):        0.508
+Skew:                 0.156        Prob(JB):                0.776
+Kurtosis:             2.444        Condition No.:           373  
+=================================================================
+Notes:
+[1] Standard Errors assume that the covariance matrix of the
+errors is correctly specified.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<p>A simple linear model makes several key <strong>assumptions</strong> which are required for valid inference:</p>
+<ul>
+<li>The observations are <strong>independent</strong>.</li>
+<li>The relationship between the outcome and the explanatory variable is <strong>linear</strong>.</li>
+<li>The error follows a <strong>normal distribution</strong>.</li>
+<li>The error has a <strong>constant variance</strong> along the regression line.</li>
+</ul>
+<p>And while not really an assumption, also important:</p>
+<ul>
+<li>There are <strong>no influential outliers</strong> with unreasonably large influence on the estimates.</li>
+</ul>
+<p>Independent measurements must be apparent from the study design. The rest can be checked through <strong>visual diagnostics</strong>. A quick visual summary of what each plot is used for:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="2100"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><small><em>This is example uses the <code>iris</code> data set. To use your own data, have a look <a href="https://fransrodenburg.github.io/Tutorials/reading-storing-data.html#csv">here</a></em> <a href="https://fransrodenburg.github.io/Tutorials/reading-storing-data.html#csv"></a><em>).</em></small></p>
+<p>Suppose we want to estimate the relationship between the length of a flower sepals and the width of its petals. We’ll consider sepal length to be the outcome in this example.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<ol type="1">
+<li>Plot the data</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Petal.Width, iris, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">"n"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">las =</span> <span class="dv">1</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Petal width (mm)"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Sepal length (mm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><small><em>(To change the aesthetics, search for options online, or in the help files of <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/plot"><code>plot</code></a> and <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/par"><code>par</code></a>.)</em></small></p>
+<p>There appears to be a positive correlation between the two variables: Flowers with wider petals have longer sepals, on average.</p>
+<hr>
+<ol start="2" type="1">
+<li>Fit the model (this does not print any output)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Width, iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<ol start="3" type="1">
+<li>What are the estimated intercept and slope?</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) Petal.Width 
+  4.7776294   0.8885803 </code></pre>
+</div>
+</div>
+<p>In this case, <span class="math inline">\(\hat{\beta}_0 = 4.8\)</span> and <span class="math inline">\(\hat{\beta}_1 = 0.9\)</span>. So a flower with 1 mm wider petals, has on average 0.9 mm longer sepals.</p>
+<hr>
+<ol start="4" type="1">
+<li>Perform visual diagnostics</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"car"</span>)         <span class="co"># Install if missing</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))   <span class="co"># Plot in a 2x2 grid</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LM, <span class="at">which =</span> <span class="dv">1</span>)    <span class="co"># Residuals vs fitted</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(LM, <span class="at">reps =</span> <span class="fl">1e4</span>) <span class="co"># QQ-plot</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LM, <span class="at">which =</span> <span class="dv">3</span>)    <span class="co"># Scale-location</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(LM, <span class="at">which =</span> <span class="dv">5</span>)    <span class="co"># Residuals vs leverage</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))   <span class="co"># Restore the default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>Residuals vs fitted: There is no non-linear pattern at all. The red smoothing line is as good as flat.</li>
+<li>QQ-plot: The residuals quite closely follow the line representing a true normal distribution. There is a wiggle near the top right, but I would not find this cause for concern.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li>Scale-location: The variance increases along the regression line, indicated by the clear upward trend. However, from the <span class="math inline">\(y\)</span>-axis, we can see that this increase is small (<span class="math inline">\(&lt;0.5\)</span>) and no cause for concern.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li>Residuals vs leverage: The boundaries for the Cook’s distance are not even visible in the plot, so there are no outliers.</li>
+</ul>
+<p>In conclusion, no serious problems are revealed.</p>
+<hr>
+<ol start="5" type="1">
+<li>Print a regression table</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Sepal.Length ~ Petal.Width, data = iris)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.38822 -0.29358 -0.04393  0.26429  1.34521 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  4.77763    0.07293   65.51   &lt;2e-16 ***
+Petal.Width  0.88858    0.05137   17.30   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.478 on 148 degrees of freedom
+Multiple R-squared:  0.669, Adjusted R-squared:  0.6668 
+F-statistic: 299.2 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>There is a significant relationship between petal width and sepal length (<span class="math inline">\(\hat{\beta} = 0.889\)</span>, <span class="math inline">\(p &lt; 2 \cdot 10^{-16}\)</span>). This model explains 66.9% of the variance in sepal length.</p>
+<p>The model can be plotted as explained in the video.</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>…</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quiz" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="quiz"><span class="header-section-number">1.3</span> Quiz</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>Which of the following is implicitly assumed in simple linear regression? <em>(choose one)</em></p>
+<p><strong>A.</strong> The data are normally distributed<br>
+<strong>B.</strong> The outcome is normally distributed<br>
+<strong>C.</strong> The residuals are normally distributed<br>
+<strong>D.</strong> The response variable is normally distributed</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>See equation <span class="math inline">\(\eqref{slm}\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>Which of the following is implicitly assumed in simple linear regression? <em>(choose one)</em></p>
+<p><strong>A.</strong> The data are normally distributed<br>
+<strong>B.</strong> The outcome is normally distributed<br>
+<strong>C. The residuals are normally distributed</strong><br>
+<strong>D.</strong> The response variable is normally distributed</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The normality assumption is about the <em>error</em>, the vertical distances along the regression line. Our ‘estimate’ of the error is called the residual.</p>
+<p>Simple linear regression makes no assumptions about your entire data set, nor your outcome variable. Response variable is just a synonym for outcome.</p>
+<hr>
+<p>Another correct way to phrase the assumption is that the outcome is <em>conditionally</em> normally distributed. The condition here is the value of the explanatory variable. Namely, we can rewrite equation <span class="math inline">\(\eqref{slm}\)</span> as follows:</p>
+<span class="math display">\[\begin{align}
+  y \sim \mathcal{N}(\beta_0 + \beta_1 \cdot x, \, \sigma^2)
+\end{align}\]</span>
+<p>This says: “The outcome follows a normal distribution with a mean that depends on the value of <span class="math inline">\(x\)</span>.”</p>
+<p>Don’t worry if you do not fully understand this yet, as it will be covered at length in the next chapter.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>In the context of simple linear regression, a confidence interval shows:</p>
+<p><strong>A.</strong> Where to expect current observations<br>
+<strong>B.</strong> Where to expect future observations<br>
+<strong>C.</strong> A plausible range of values for the intercept and slope<br>
+<strong>D.</strong> A 95% confidence interval has a 95% chance to contain the true value for the intercept and slope</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is mentioned in the <a href="https://youtu.be/LGm_dO8w7Fc" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> first video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, and more thoroughly explained in a separate video:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p>In the context of simple linear regression, a confidence interval shows:</p>
+<p><strong>A.</strong> Where to expect current observations<br>
+<strong>B.</strong> Where to expect future observations<br>
+<strong>C. A plausible range of values for the intercept and slope</strong><br>
+<strong>D.</strong> A 95% confidence interval has a 95% chance to contain the true intercept/slope</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> You don’t need an interval for this, just look at the observations.<br>
+<strong>B.</strong> This is the interpretation of a prediction interval.<br>
+<strong>C.</strong> This is a loose interpretation of a confidence interval, I recommend using.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><br>
+<strong>D.</strong> This is the interpretation of a Bayesian credible interval.</p>
+<p>For a more in depth explanation, please refer to the video:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>Below is the output of a simple linear model:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)  4.817080  0.3375541 14.270542 5.668035e-07
+x           -2.016138  0.4487337 -4.492949 2.020849e-03</code></pre>
+</div>
+</div>
+<p>Which of the following best represents the model?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="2100"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Look at the <code>Estimate</code> column.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>Below is the output of a simple linear model:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)  4.817080  0.3375541 14.270542 5.668035e-07
+x           -2.016138  0.4487337 -4.492949 2.020849e-03</code></pre>
+</div>
+</div>
+<p>Option <b>C</b> best represents the model:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="2100"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Filling in the estimates, the fitted model is:</p>
+<span class="math display">\[\begin{align}
+  \hat{y} = \texttt{4.817} + \texttt{-2.016} \cdot x
+\end{align}\]</span>
+<p>The estimated slope is about <code>-2</code>, so the line should go down by 2 for every unit increase in <span class="math inline">\(x\)</span>.</p>
+<hr>
+<p>The intercept is the value of the outcome, if we set the explanatory variable to zero. You may have learned before that the intercept is where you ‘cross the <span class="math inline">\(y\)</span>-axis,’ but the figures are (intentionally) misleading to teach you an important nuance: The <span class="math inline">\(y\)</span>-axis <em>does not have to start at</em> <span class="math inline">\(0\)</span>.</p>
+<p>Below is the same figure, with a vertical line drawn at <span class="math inline">\(x=0\)</span>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="2100"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Question 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>Continuing on question 3, below is another part of the output of this model:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Residual standard error: 1.051 on 8 degrees of freedom
+Multiple R-squared:  0.7162,    Adjusted R-squared:  0.6807 
+F-statistic: 20.19 on 1 and 8 DF,  p-value: 0.002021</code></pre>
+</div>
+</div>
+<p>Answer the following questions:</p>
+<ul>
+<li>This model explains a significant/non-significant part of the variance in the outcome.</li>
+<li>This model explains …% of the variance in the outcome.</li>
+<li>The original sample size was … and the model uses … degrees of freedom.</li>
+<li>The residuals have a standard deviation of ….</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is explained in the <a href="https://youtu.be/f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> third video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Continuing on question 3, below is another part of the output of the model:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Residual standard error: 1.051 on 8 degrees of freedom
+Multiple R-squared:  0.7162,    Adjusted R-squared:  0.6807 
+F-statistic: 20.19 on 1 and 8 DF,  p-value: 0.002021</code></pre>
+</div>
+</div>
+<p>Answer the following questions:</p>
+<ul>
+<li>This model explains a <strong>significant</strong>/non-significant part of the variance in the outcome.</li>
+<li>This model explains <strong>71.6</strong>% of the variance in the outcome.</li>
+<li>The original sample size was <strong>10</strong> and the model uses <strong>2</strong> degrees of freedom.</li>
+<li>The residuals have a standard deviation of <strong>1.05</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The <span class="math inline">\(F\)</span>-test at the bottom compares the original spread in the outcome to the spread that remains around the regression line after fitting the model (i.e.&nbsp;the residual variance). Its <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.002\)</span>, which would be considered significant at most commonly used levels of significance, like <span class="math inline">\(\alpha = 0.05\)</span>, or <span class="math inline">\(\alpha = 0.01\)</span>.</li>
+<li>Variance explained is the interpretation of <span class="math inline">\(R^2\)</span>.</li>
+<li>The residual degrees of freedom are <code>8</code> according to the output. A simple linear model consists of an intercept and a slope, so the model uses 2 degrees of freedom. That means the original sample size was <span class="math inline">\(8 + 2 = 10\)</span>.</li>
+<li>The spread around the regression line is printed with the incorrect wording <code>residual standard error: 1.051</code>, as mentioned in the video. It should actually say <code>residual standard deviation: 1.051</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Question 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p>Below are some diagnostic plots for the model fitted above. Explain what each plot is for and comment on the results:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>The residuals vs fitted plot is used to assess the assumption of …. In this case it shows ….</li>
+<li>The QQ-plot is used to assess the assumptions of …. In this case it shows ….</li>
+<li>The scale-location plot is used to assess the assumption of …. In this case it shows ….</li>
+<li>The residuals vs leverage plot is used to assess …. In this case it shows ….</li>
+</ul>
+<p>Based on these diagnostic plots, I conclude ….</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is covered in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>Below are some diagnostic plots for the model fitted above. Explain what each plot is for and comment on the results:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>The residuals vs fitted plot is used to assess the assumption of <strong>linearity</strong>. In this case it shows <strong>a non-linear pattern, although that can be attributed to a single observation (4)</strong>.</li>
+<li>The QQ-plot is used to assess the assumptions of <strong>normality</strong>. In this case it shows <strong>left skew, indicated by the convex shape. However, the deviation from normality is within what is acceptable, according to the confidence band</strong>.</li>
+<li>The scale-location plot is used to assess the assumption of <strong>constant variance</strong>. In this case it shows <strong>no consistent upward or downward trend in the variance along the regression line</strong>.</li>
+<li>The residuals vs leverage plot is used to assess <strong>the presence and influence of outliers</strong>. In this case it shows <strong>a single outlying observation with high leverage (4)</strong>.</li>
+</ul>
+<p>Based on these diagnostic plots, I conclude <strong>observation 4 has a large influence on the parameter estimates and must be checked for validity</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>…</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><strong>Continuous</strong> can take on any value within a range, like <span class="math inline">\(1,\, 1.01,\, 1.001,\, \dots\)</span><br>
+<strong>Discrete</strong> can only take on certain values, like <span class="math inline">\(1,\, 2,\, 3,\, \dots\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>It is called <em>ordinary</em> in contrast to the many adaptation that exist, like weighted least squares, partial least squares, etc.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>If you are in doubt, you can use a test for deviation from normality:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(LM)) <span class="co"># Shapiro-Wilks test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  resid(LM)
+W = 0.98653, p-value = 0.1543</code></pre>
+</div>
+</div>
+<p>With <span class="math inline">\(p = 0.154\)</span>, no significant deviation from normality was detected.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>If you are in doubt, you can use a test for deviation from constant variance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"lmtest"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(LM) <span class="co"># Breusch-Pagan test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  LM
+BP = 12.357, df = 1, p-value = 0.0004393</code></pre>
+</div>
+</div>
+<p>With <span class="math inline">\(p = 0.00044\)</span>, significant non-constant variance was detected. However, from the scale-location plot we saw that the magnitude of the non-constant variance was too small to be of concern.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Purists may object to this definition, but as shown in the end of the video on confidence intervals, this interpretation is often very reasonable for the types of models you will learn about in this course.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./regressionanalysis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><font color="steelblue"><i class="fa-solid fa-chart-line fa-xl" title="“”" aria-label="chart-line"></i></font> Regression Analysis</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./GLM.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
