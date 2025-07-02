@@ -2183,7 +2183,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p><small><em>A discrete, probability distribution that can be left or right skewed.</em></small></p>
 <hr>
-<p>The binomial distribution is used to model <strong>ratios</strong>, <strong>fractions</strong> and <strong>binary data</strong>. If events happen with a fixed probability of success <span class="math inline">\(p\)</span>, then the binomial distribution is not an approximation, but <em>the</em> probability distribution of ratios.</p>
+<p>The binomial distribution is the number of successes out of the number of trials. It is used to model <strong>ratios</strong>, <strong>fractions</strong> and <strong>binary data</strong>. If trials are independent and have a fixed probability of success <span class="math inline">\(p\)</span>, then the binomial distribution is not an approximation, but <em>the</em> probability distribution of ratios.</p>
 <p>In reality, the probability of success may depend on unknown, unmeasured, or otherwise unaccounted for external factors: If we consider the effect of smoking on the probability of developing lung cancer, then such external factors might include familial history, exposure to other carcinogens, etc. For this reason, analyses based on a binomial distribution should include some assessment of whether the chosen distribution is realistic.</p>
 <section id="properties" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="properties">Properties</h2>
@@ -2191,7 +2191,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" aria-current="page">Probability mass function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Cumulative distribution function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Quantile function</a></li></ul>
 <div class="tab-content" data-group="distributionfunctions">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<p><small><em>What is the probability of a given count</em> <span class="math inline">\(k\)</span>?</small></p>
+<p><small><em>What is the probability of a given number of successes</em> <span class="math inline">\(k\)</span>?</small></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dbinom" class="quarto-float quarto-figure quarto-figure-center anchored">

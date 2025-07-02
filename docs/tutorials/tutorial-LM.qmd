@@ -1,27 +1,30 @@
 ---
-title: "Example - Simple Linear Regression"
+title: "Tutorial - Simple Linear Regression"
 author: "Dr. F.J. Rodenburg"
-format: pdf
+format: html
 editor: visual
 ---
-
-```{r}
-# Dependencies
-library("car")     # QQ-plots with confidence intervals
-library("lmtest")  # Breusch-Pagan test
-library("sfsmisc") # Better plot axes
-```
 
 ## Description
 
 Suppose $n=100$ plants were collected. For each plant, we have a measurement in millimeters of stem size and average leaf size. The goal is to see to whether taller plants also have longer leaves.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("car")     # QQ-plots with confidence intervals
+library("lmtest")  # Breusch-Pagan test
+library("sfsmisc") # Better plot axes
+```
 
 ## Reading the data
 
 First we read the data and perform some simple checks of data quality.
 
 ```{r}
-DF <- read.csv("example-LM.csv")
+DF <- read.csv("plant-dimensions.csv")
 
 dim(DF)      # Dimensions (rows, columns)
 colnames(DF) # Variable names
@@ -101,3 +104,14 @@ summary(LM)
 -   This increase is significantly non-zero ($p < 2 \cdot 10^{-16}$).
 
 -   This linear relationship explains $71.3\%$ of the variance in average leaf size.
+
+## Visualize the estimated relationship
+
+This is a nice addition for any report/presentation, and not much effort thanks to the `sjPlot` package:
+
+```{r}
+plot_model(LM, type = "pred", terms = "stem") +
+  ggtitle("Estimated relationship") + 
+  xlab("Stem size (mm)") +
+  ylab("Average leaf size (mm)")
+```

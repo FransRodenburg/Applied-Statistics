@@ -2203,7 +2203,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p><small><em>A discrete, non-negative probability distribution that can be right skewed.</em></small></p>
 <hr>
-<p>The Poisson distribution is used to model <strong>counts</strong>. If events counted within a fixed time are truly independent, then the Poisson distribution is not an approximation, but <em>the</em> probability distribution of counts.</p>
+<p>The Poisson distribution is the number of events happening in a fixed amount of time. It used to model <strong>counts</strong>. If events are truly independent, then the Poisson distribution is not an approximation, but <em>the</em> probability distribution of counts.</p>
 <p>In reality, counts are often not completely independent: Birds do not arrive randomly, independently in a park, but actually tend to group together. For this reason, analyses based on a Poisson distribution should include some assessment of whether the chosen distribution is realistic. These assessments will be introduced once we get to the topic of <a href="GLM.html">GLM</a>.</p>
 <section id="properties" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="properties">Properties</h2>
@@ -2793,8 +2793,8 @@ Figure&nbsp;4: Increasing <span class="math inline">\(\lambda\)</span> results i
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
-<p>Perhaps the most commonly used laboratory animal is the mouse species C56BL/6. A study from 2015 estimated its litter size<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to be approximately 7.5.<span class="citation" data-cites="finlay2015"><a href="references.html#ref-finlay2015" role="doc-biblioref">[1]</a></span></p>
-<p>Assuming litter size can be reasonably approximated with a Poisson distribution, what would be the chance of a litter size of at least 3?</p>
+<p>Perhaps the most commonly used laboratory animal is the mouse species <a href="https://en.wikipedia.org/wiki/C57BL/6">C56BL/6</a>. A study from 2015 estimated its litter size<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to be approximately 7.5.<span class="citation" data-cites="finlay2015"><a href="references.html#ref-finlay2015" role="doc-biblioref">[1]</a></span></p>
+<p>Assuming litter size can be reasonably approximated with a Poisson distribution, what would be the chance of a litter size of 3 or more?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
