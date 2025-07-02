@@ -1,0 +1,170 @@
+---
+title: "Tutorial - Poisson GLM"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+Seagulls are a common sight in many coastal cities in The Netherlands, including Leiden and The Hague. Is this purely due to our proximity to the sea, or do they stick around the city for easy meals? In this fictional dataset, counts of seagulls are performed at the same time of day, with similar weather conditions at $n=27$ locations. Each location is at the same distance from the shore, but the distances to the nearest city varies from $0$ to $10$ km.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("DHARMa")  # GLM diagnostics
+library("ggplot2") # Adjusting the plot produced by plot_model
+library("MASS")    # Adds glm.nb to fit overdispersed counts
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("seagulls.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   The dimensions of the data set are $27 \times 2$ as expected.
+
+-   `distance` is correctly recognized as numeric and `seagulls` as integer.
+
+-   Nothing stands out from the summary the range of distance matches the description and the counts do not take on strange values either.
+
+## Visualizing the data
+
+A simple visualization often goes a long way towards understanding the data. Create a figure with:
+
+-   Stem size on the $x$-axis and the number of insects on the $y$-axis.
+
+-   Informative axes.
+
+```{r}
+plot(seagulls ~ distance, data = DF, axes = FALSE,
+     xlab = "Distance from the nearest city (km)", 
+     ylab = "Nr. of seagulls",
+     pch = 16, xlim = c(0, max(DF$distance)))
+eaxis(1)
+eaxis(2)
+```
+
+-   There is a clear negative association between distance from the city and the observed number of seagulls.
+
+-   The relationship is clearly non-linear (but remember that a GLM does not by default estimate a line).
+
+-   There do not appear to be any outliers.
+
+## Fitting the model
+
+This part does not produce any output. However, any warnings or errors that occur may reveal issues with model specification.
+
+```{r}
+GLM <- glm(seagulls ~ distance, family = "poisson", data = DF)
+```
+
+## Model diagnostics
+
+Here we'll use randomized quantile residuals generated with the `DHARMa` package.
+
+```{r}
+RQR <- simulateResiduals(GLM)
+plot(RQR)
+```
+
+What do we see here?
+
+-   **On the left**: There appears so be a slight S-shape in the randomized quantile residuals, which would indicate overdispersion, however:
+
+    -   The Kolmogorov–Smirnov test finds no significant difference from a uniform distribution on this scale ($p = 0.927$), so on the original scale, the Poisson assumption holds reasonably.
+
+    -   The dispersion test finds no significance evidence of over- or underdispersion ($p = 0.160$).
+
+    -   The outlier test did not identify any significantly outlying observations ($p=1.000$).
+
+-   **On the right**: There is hardly any curvature in the quantile lines (which would be a clear sign of non-linearity), nor do the lines converge/diverge (which would indicate a break from the mean-variance relationship in Poisson). However, even if we would see some wiggliness in the quantile curves, remember that diagnostics with small sample sizes are tricky.
+
+    -   None of the quantile lines significantly deviates from flatness (otherwise, `DHARMa` colors them red).
+
+    -   The combined test is not significant, so apparently there is insufficient evidence to suggest non-linearity or other problems.
+
+-   **Overdispersion**: As an extra, you can use this function:
+
+```{r}
+testDispersion(RQR)
+```
+
+-   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, our sample falls in the top 16% of what you would expect if the model were correct.
+
+-   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{46.765}{25} \approx 1.87$. This suggests slight overdispersion, but from the previous diagnostics we can conclude it is not problematic.
+
+### How would you proceed if you concluded overdispersion?
+
+In this case, we could use a probability distribution with a separate dispersion parameter:
+
+```{r}
+GLM2 <- glm.nb(seagulls ~ distance, data = DF)
+```
+
+If you repeat the diagnostics on this new model, you can see there is still (non-significant) non-linearity, but the slight overdispersion is now addressed. However, since the original model did not have significant overdispersion, there is no need to use this more complex model in this case.
+
+If you plot this new model, you can see what the extra dispersion parameter accomplishes: The fit is identical to the simpler model, but the confidence interval is now wider, because we take the excess variance into account.
+
+```{r}
+# 1. Estimated relationship of the original model
+plot_model(GLM, type = "pred", terms = "distance") + 
+  geom_point(data = DF, aes(x = distance, y = seagulls)) + 
+  xlim(0, 10) + ylim(0, 30) + xlab("distance (km)")
+
+# 2. Estimated relationship of the negative-binomial model
+plot_model(GLM2, type = "pred", terms = "distance") + 
+  geom_point(data = DF, aes(x = distance, y = seagulls)) + 
+  xlim(0, 10) + ylim(0, 30) + xlab("distance (km)")
+```
+
+## Interpreting the model output
+
+This works the same for the Poisson and negative binomial models. I will show it here for the Poisson model, because there was no significant overdispersion.
+
+```{r}
+summary(GLM)
+```
+
+**Important**: The regression table is on the scale of the linear predictor ($\eta$). I will include two examples of how to transform to the original scale.
+
+-   At a distance of $0$ km from the city, the estimated number of seagulls is $e^{3.01212}\approx 21$ on average.
+
+-   On the linear scale, every 1 km increase in distance changes $\eta$ by $-0.3$, and this is significant ($p < 2 \cdot 10^{-16}$). We can conclude (regardless of scale) that the number of seagulls is a significantly lower, the farther we are away from a city.
+
+-   As an **example of interpreting this model on the original scale**:
+
+    -   At a distance of $1$ km, the model predicts $e^{3.01212 + 1 \times -0.32043}\approx 15$ seagulls on average.
+
+    -   At a distance of $3$ km, the model predicts $e^{3.01212 + 3 \times -0.32043}\approx 8$ seagulls on average.
+
+    -   If you need numbers like this, you can quickly obtain them with `predict(GLM, list(distance = 3), type = "response")`.
+
+-   The model is slightly overdispersed, because $\frac{40.04}{25} \approx 1.6$.
+
+-   This relationship explains $1 - \frac{40.04}{148.74} \approx 73.1\%$ of the deviance in seagull counts, so the relationship is quite strong.
+
+-   The Akaike information criterion (AIC) has no meaning on its own, but it can be compared to other models (lower is better). For example, you could compare it to the negative binomial model.

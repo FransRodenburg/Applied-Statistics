@@ -1,0 +1,103 @@
+---
+title: "Example - Simple Linear Regression"
+author: "Dr. F.J. Rodenburg"
+format: pdf
+editor: visual
+---
+
+```{r}
+# Dependencies
+library("car")     # QQ-plots with confidence intervals
+library("lmtest")  # Breusch-Pagan test
+library("sfsmisc") # Better plot axes
+```
+
+## Description
+
+Suppose $n=100$ plants were collected. For each plant, we have a measurement in millimeters of stem size and average leaf size. The goal is to see to whether taller plants also have longer leaves.
+
+## Reading the data
+
+First we read the data and perform some simple checks of data quality.
+
+```{r}
+DF <- read.csv("example-LM.csv")
+
+dim(DF)      # Dimensions (rows, columns)
+colnames(DF) # Variable names
+str(DF)      # Structure
+head(DF)     # First couple of rows
+summary(DF)  # Numeric summary of each variable
+```
+
+If we note anything interesting, we should write it down, e.g.:
+
+-   There don't appear to be any issues with the data (2 columns, both recognized as numeric).
+
+-   There don't appear to be any outliers, although this is better assessed through model diagnostics.
+
+## Visualizing the data
+
+Here is a quick example of how you could visualize the data:
+
+```{r}
+plot(leaf ~ stem, data = DF, axes = FALSE,
+     xlab = "Stem size (mm)", ylab = "Average leaf size (mm)",
+     pch = 16)
+eaxis(1)
+eaxis(2)
+```
+
+If the visualization reveals anything important, write that down as well. For example, here we can clearly see how there is a positive relationship between the two variables.
+
+## Fitting the model
+
+This part does not produce any output. However, any warnings or errors that occur may reveal issues with model specification.
+
+```{r}
+LM <- lm(leaf ~ stem, data = DF)
+```
+
+## Model diagnostics
+
+Always perform visual diagnostics on models used for inference. Optionally, when in doubt about any patterns observed, a significance test can sometimes help judge the severity.
+
+```{r}
+par(mfrow = c(2, 2))
+plot(LM, 1, pch = 16)
+qqPlot(residuals(LM), pch = 16)
+mtext("QQ-Plot", 3, 0.25)
+plot(LM, 3, pch = 16)
+plot(LM, 5, pch = 16)
+par(mfrow = c(1, 1))
+```
+
+After running the diagnostic plots, comment on what you observe. Even if nothing stands out, explain how you decided that there are no issues. Not sure what to look for? Check out the [video](https://youtu.be/_B6VDSa9N60).
+
+-   **Residuals vs Fitted**: From left to right, no obvious pattern is observed (e.g., parabolic). Hence, there is no evidence to suggest a non-linear pattern.
+
+-   **QQ-plot**: The residuals quite closely follow the line, suggesting there is little deviation from normality. All residuals fall within the confidence band.
+
+-   **Scale-Location**: From left to right, there appears to be a downward trend (i.e., variance is lower for larger leaves). However, looking at the $y$-axis, we see that this decrease is less then $0.5$. If you were in doubt about this, you could run `bptest` from the `lmtest` package. As you can see below, the test does not reveal any issues either ($p = 0.214$).
+
+```{r}
+bptest(LM)
+```
+
+-   **Residuals vs Leverage**: The boundary for the Cook's distance is not even visible in the plot, so there are no outliers.
+
+Since no problematic deviations from the model assumptions were observed, we can proceed to interpret the regression table.
+
+## Interpreting the model output
+
+```{r}
+summary(LM)
+```
+
+-   At a theoretical value of $0$ mm stem size, the average leaf size is estimated to be -5.1 mm.
+
+-   For every 1 mm increase in stem size, the average leaf size is estimated to increase by 0.34 mm.
+
+-   This increase is significantly non-zero ($p < 2 \cdot 10^{-16}$).
+
+-   This linear relationship explains $71.3\%$ of the variance in average leaf size.

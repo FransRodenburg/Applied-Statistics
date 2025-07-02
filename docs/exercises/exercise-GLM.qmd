@@ -1,0 +1,86 @@
+---
+title: "Exercise - GLM"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+In this fictional study, $n=50$ plants were measured in terms of stem size (mm). Then, the number of herbivore insects on each plant were counted. Investigate whether there are more insects on longer plants.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+
+```
+
+If you note anything interesting, write this down over here, not in the code chunk.
+
+## Visualizing the data
+
+A simple visualization often goes a long way towards understanding the data. Create a figure with:
+
+-   Stem size on the $x$-axis and the number of insects on the $y$-axis.
+
+-   Informative axes.
+
+```{r}
+
+```
+
+If the visualization reveals anything important, write that down as well:
+
+## Fitting the model
+
+This part does not produce any output. However, any warnings or errors that occur may reveal issues with model specification.
+
+```{r}
+
+```
+
+## Model diagnostics
+
+Always perform visual diagnostics on models used for inference. In case of GLMs, pay particular attention to overdispersion. And see what relevant information you can get with:
+
+-   The `DHARMa` package;
+
+-   The regression table (next section).
+
+```{r}
+
+```
+
+## Interpreting the model output
+
+```{r}
+
+```
+
+Write down what you see in the regression table, and what to make of it.
+
+## Visualize the estimated relationship
+
+This is a nice addition for any report/presentation. Try using the `plot_model` function from `sjPlot` to visualize the fit.
+
+```{r}
+
+```

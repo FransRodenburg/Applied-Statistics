@@ -1,0 +1,74 @@
+---
+title: "Solution - Simple Linear Regression"
+author: "Dr. F.J. Rodenburg"
+format: pdf
+editor: visual
+---
+
+## Description
+
+In a study, immunoglobulin levels were measured in $n=30$ patients. The purpose was to see to what extent IgA can be predicted, based on IgG levels.
+
+## Dependencies
+
+If you want to use any packages, include them **here**, not where they are first used. This makes it far easier to debug. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+
+```
+
+If you note anything interesting, write this down over here, not in the code chunk.
+
+## Visualizing the data
+
+A simple visualization often goes a long way towards understanding the data. Create a figure with:
+
+-   IgA on the $x$-axis and IgG on the $y$-axis.
+
+-   Informative axes with unit of measurement.
+
+```{r}
+
+```
+
+If the visualization reveals anything important, write that down as well:
+
+## Fitting the model
+
+This part does not produce any output. However, any warnings or errors that occur may reveal issues with model specification.
+
+```{r}
+
+```
+
+## Model diagnostics
+
+Always perform visual diagnostics on models used for inference. Optionally, when in doubt about any patterns observed, a significance test can sometimes help judge the severity.
+
+```{r}
+
+```
+
+After running the diagnostic plots, comment on what you observe. Even if nothing stands out, explain how you decided that there are no issues. Not sure what to look for? Check out the video: <https://youtu.be/_B6VDSa9N60>
+
+## Interpreting the model output
+
+```{r}
+
+```

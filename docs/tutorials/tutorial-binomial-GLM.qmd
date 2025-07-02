@@ -1,0 +1,150 @@
+---
+title: "Tutorial - Binomial GLM"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+In this fictional study, 10 tomato seeds are placed on petri dishes with different concentrations of NaCl, ranging from $0$ to $100$ g/L. After 7 days, the number of germinated seeds are counted. How does salt concentration affect the germination rate?
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("DHARMa")  # Model diagnostics for GLMs
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("germination.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   Both `conc` and `germ` are integers.
+
+-   A column is missing specifying the total, but it was provided in the description, so we can add it:
+
+```{r}
+DF$total <- 10 # This will add a column equal to 10 everywhere
+```
+
+-   Nothing stands out from the summary. The concentration range matches the description.
+
+## Visualizing the data
+
+A simple visualization often goes a long way towards understanding the data:
+
+```{r}
+plot(germ ~ conc, data = DF, axes = FALSE,
+     xlab = "NaCl concentration (g/L)", ylab = "Germinated seeds (out of 10)",
+     pch = 16, ylim = c(0, 10))
+eaxis(1)
+axis(2, las = 1)
+```
+
+-   There is a clear negative association between concentration and the germination rate.
+
+-   Past a certain concentration, nothing seems to germinate anymore at all, but keep in mind that these are only $10$ trials each, so the probability may still be $>0$.
+
+-   There do not appear to be any outliers, in fact, the relationship is very clear, with little deviation.
+
+## Fitting the model
+
+This part does not produce any output. However, any warnings or errors that occur may reveal issues with model specification. Here, we use a binomial distribution, because this is a ratio $\textrm{germinated}:\textrm{non-germinated}$. Another way to see that this can't be Poisson is that there is a hard upper bound of $10$ seeds per petri dish.
+
+```{r}
+GLM <- glm(cbind(germ, 10 - germ) ~ conc, family = "binomial", data = DF)
+```
+
+## Model diagnostics
+
+Here we'll use randomized quantile residuals generated with the `DHARMa` package.
+
+```{r}
+RQR <- simulateResiduals(GLM)
+plot(RQR)
+```
+
+What do we see here?
+
+-   **On the left**: The randomized quantile residuals reasonably follow the red line, so there does not appear to be a large deviation from uniformity (which means our assumption of a binomial distribution looks reasonable).
+
+    -   The Kolmogorov–Smirnov test finds no significant difference from a uniform distribution ($p = 0.862$).
+
+    -   The dispersion test finds no significance evidence of over- or underdispersion ($p = 0.792$).
+
+    -   The outlier test did not identify any significantly outlying observations ($p=1.000$).
+
+-   **On the right**: There is a slight curvature in the lower line, and the upper quantile line appears to go down. However, no significant problems are concluded overall:
+
+    -   The top line deviates significantly (colored red by `DHARMa`) when assessed in isolation.
+
+    -   However, the combined test is not significant ("n.s.").
+
+-   **Overdispersion**: As an extra, you can use this function:
+
+```{r}
+testDispersion(RQR)
+```
+
+-   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, 79% of simulations had more extreme dispersion, so this model's dispersion is well within what is expected in a conditional Poisson distribution.
+
+-   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{13.991}{19} \approx 0.74$. This suggests slight underdispersion, but from the previous diagnostics we can conclude it is not problematic.
+
+## Interpreting the model output
+
+```{r}
+summary(GLM)
+```
+
+**Important**: The regression table is on the scale of the linear predictor ($\eta$). I will include two examples of how to transform back to the original scale.
+
+-   At a concentration of $0$ g/L, the estimated germination rate is $\frac{1}{1 + e^{-2.73730}}\approx 93.9\%$.
+
+-   On the linear scale, every $1$ g/L increase in distance changes $\eta$ by $-0.1$, and this is significant ($p = 7.66 \cdot 10^{-13}$). We can conclude (regardless of scale) that the germination rate is a significantly lower, the higher the NaCl concentration.
+
+-   As an **example of interpreting this model on the original scale**:
+
+    -   At a concentration of $25$ g/L, the model predicts a germination rate of $\frac{1}{1 + e^{-(2.73730 + 25 \times -0.09134)}}\approx 61.2\%$.
+
+    -   At a concentration of $50$ g/L, the model predicts a germination rate of $\frac{1}{1 + e^{-(2.73730 + 50 \times -0.09134)}}\approx 13.8\%$.
+
+    -   If you need numbers like this, you can quickly obtain them with `predict(GLM, list(conc = 50), type = "response")`.
+
+-   The model is not overdispersed (explained on Monday), because the residual deviance is not even larger than the residual degrees of freedom. It is also not underdispersed, because $\frac{13.991}{19} \approx 0.7$, which is still fairly close to $1$.
+
+-   This relationship explains $1 - \frac{13.991}{142.788} \approx 90.2\%$ of the deviance in germination, so the relationship is quite strong.
+
+## Visualizing the estimated relationship
+
+This is a nice addition for any report/presentation, and not much effort thanks to the `sjPlot` package:
+
+```{r}
+plot_model(GLM, type = "pred", terms = "conc") +
+  ggtitle("Predicted germination rate") + 
+  xlab("NaCl concentration (g/L)") +
+  ylab("Probability of germination")
+```
