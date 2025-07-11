@@ -414,25 +414,25 @@ Figure&nbsp;1.1: Example of a simple linear model. <small>(Height and weight of 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Definitions
+Symbols &amp; definitions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <dl>
-<dt>response variable</dt>
+<dt><span class="math inline">\(y\)</span> — response variable</dt>
 <dd>
-<p>The outcome, denoted by <span class="math inline">\(y\)</span>.</p>
+<p>The outcome.</p>
 </dd>
 <dd>
 <p><span class="math inline">\(\hat{y}\)</span> is the predicted outcome by the model, also called the ‘fitted value.’</p>
 </dd>
-<dt>explanatory variable</dt>
+<dt><span class="math inline">\(x\)</span> — explanatory variable</dt>
 <dd>
-<p>The variable the outcome is regressed on, denoted by <span class="math inline">\(x\)</span>.</p>
+<p>The variable the outcome is regressed on.</p>
 </dd>
-<dt>intercept</dt>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
 <p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero.</p>
 </dd>
@@ -442,7 +442,7 @@ Definitions
 <dd>
 <p><span class="math inline">\(\hat{\beta}_0\)</span> is its estimate.</p>
 </dd>
-<dt>slope</dt>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
 <p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one.</p>
 </dd>
@@ -452,26 +452,22 @@ Definitions
 <dd>
 <p><span class="math inline">\(\hat{\beta}_1\)</span> is its estimate.</p>
 </dd>
-<dt>error</dt>
+<dt><span class="math inline">\(\epsilon\)</span> — error</dt>
 <dd>
 <p>Difference between the true population values of the outcome and those predicted by the true model.</p>
 </dd>
 <dd>
 <p><span class="math inline">\(\epsilon\)</span> is the true error.</p>
 </dd>
-<dt>residual</dt>
-<dd>
-<p>Difference between the sample values of the outcome and those predicted by the estimated model.</p>
-</dd>
 <dd>
 <p><span class="math inline">\(\hat{\epsilon}\)</span> is sometimes used to denote the residual, an ‘estimate’ of the error.</p>
 </dd>
-<dt>normal distribution</dt>
+<dt><span class="math inline">\(\mathcal{N}\)</span> — normal distribution</dt>
 <dd>
 <p>See <a href="normaldistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></font> Normal Distribution</a>.</p>
 </dd>
 <dd>
-<p><span class="math inline">\(\epsilon \sim \mathcal{N}(0, \, \sigma^2)\)</span> means: The error follows a normal distribution with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (some unknown variance).</p>
+<p><span class="math inline">\(\epsilon \sim \mathcal{N}(0, \, \sigma^2)\)</span> means: The error follows a normal distribution with mean <span class="math inline">\(\mu = 0\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (some unknown variance).</p>
 </dd>
 </dl>
 </div>
@@ -579,7 +575,7 @@ F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 =================================================================
 Model:              OLS              Adj. R-squared:     0.378   
 Dependent Variable: height           AIC:                234.5127
-Date:               2025-07-02 08:52 BIC:                237.3151
+Date:               2025-07-11 13:43 BIC:                237.3151
 No. Observations:   30               Log-Likelihood:     -115.26 
 Df Model:           1                F-statistic:        18.64   
 Df Residuals:       28               Prob (F-statistic): 0.000178
@@ -1002,7 +998,28 @@ Learn why
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Please refer to the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on how to interpret the diagnostic plots.</p>
+<p>While the diagnostic plots may suggest multiple issues, they are often symptoms of a single underlying problem. As explained in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></font> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, focus on identifying the main culprit, rather than attempting to address problems individually.</p>
+<hr>
+<p>When you identify an influential outlier, I recommend these steps in order:</p>
+<ol type="1">
+<li>Look up the observation in the dataset.
+<ul>
+<li>Is the value plausible? <small><font color="grey">(e.g., a negative height is not possible)</font></small></li>
+<li>Does stand out in other ways? <small><font color="grey">(e.g., also unusual in terms of location, time, etc.)</font></small></li>
+<li>Check any field notes, logs, or metadata. <small><font color="grey">(e.g., a sample accidentally left out overnight)</font></small></li>
+</ul></li>
+<li>If the value is valid, but outlying:
+<ul>
+<li>Consider modifying the model. <small><font color="grey">(e.g., add a non-linear term or spline)</font></small></li>
+<li>If changing the model is not appropriate—perhaps because there is strong theoretical foundation to assume a linear relationship—consider using robust standard errors. <small><font color="grey">(e.g., the <code>sandwich</code> package in R)</font></small></li>
+</ul></li>
+<li>Only remove the observation if:
+<ul>
+<li>It is clearly invalid. <small><font color="grey">(e.g., misplaced decimal separator)</font></small></li>
+<li>There is strong contextual evidence that it is not representative of the rest of the data. <small><font color="grey">(e.g., a single patient of advanced age)</font></small></li>
+</ul></li>
+</ol>
+<p>Inexperienced analysts are often quick to filter and discard observations, impute missing values, etc., but these are dangerous actions that can severely bias statistical inference. Instead, approach these decisions with caution, or consult with an expert.</p>
 </div>
 </div>
 </div>

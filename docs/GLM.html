@@ -2248,7 +2248,7 @@ Figure&nbsp;2.1: Example of a simple linear model. <small>(Height and weight of 
 </div>
 <p>Mathematical formula:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Classical notation</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Consistent with the rest</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">As ordinary LM</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">As GLM</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p><span class="math display">\[\begin{align}
@@ -2264,9 +2264,9 @@ Figure&nbsp;2.1: Example of a simple linear model. <small>(Height and weight of 
   \mu &amp;= \eta\tag{1b}\\ \\
   \eta &amp;= \beta_0 + \beta_1 \cdot x
 \end{align}\]</span></p>
-<p>Ordinary linear regression can also be written as a generalized linear model (GLM). This may help you understand how this method relates to other GLMs.</p>
-<p>Try comparing this formula to that of Poisson and binomial regression: Essentially, we are estimating the location parameter of a distribution, and that parameter changes based on the value of the explanatory variable (<span class="math inline">\(x\)</span>). The only difference with the other GLMs is which distribution we assume.</p>
-<p>The middle equation for each of the three GLMs is the link function; how the location parameter of chosen distribution translates to the linear equation (<span class="math inline">\(\eta\)</span>). For a normal distribution, this is called the ‘identity’, which just multiplies everything by <span class="math inline">\(1\)</span>, such that the linear equation <em>is</em> the mean of the normal distribution.</p>
+<p>An ordinary linear model can also be written as a generalized linear model (GLM). This helps to see how ordinary linear models fit into the broader GLM framework.</p>
+<p>Compare this to Poisson or binomial regression: In each case, we are estimating the mean of a distribution (here: <span class="math inline">\(\mu\)</span>), and that parameter changes depending on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
+<p>The middle equation is the link function—how the mean relates to the linear equation (<span class="math inline">\(\eta\)</span>). For a normal distribution, this is called the <em>identity</em>, which leaves the linear predictor unchanged, such that the linear equation <em>is</em> the mean of the resulting normal distribution.</p>
 </div>
 </div>
 </div>
@@ -2353,17 +2353,17 @@ Explanation
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Ordinary linear models are a special case of generalized linear models (GLMs). Whereas ordinary linear models only support normally distributed errors, GLMs can handle any probability distribution in the <a href="https://en.wikipedia.org/wiki/Exponential_dispersion_model">exponential dispersion family</a>.</p>
-<p>To understand GLMs, try to let go of the idea that a linear model is <span class="math inline">\(\text{linear function} + \text{error}\)</span>, and instead take on a different perspective: <strong>A GLM is a probability distribution with a mean that depends on the explanatory variable (<span class="math inline">\(x\)</span>)</strong>. The technical term for this is <em>conditional</em> normality: If we know the value of the <span class="math inline">\(x\)</span>, then at that point, the outcome follows a normal distribution with a certain mean. Move to a different value of <span class="math inline">\(x\)</span> and the mean of the distribution changes as well. This concept is visualized in the <a href="https://youtu.be/6Nfv0Xr44y8&amp;t=155" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> first video <i class="fas fa-external-link"></i></a>.</p>
-<p>Once we take on the perspective of a conditional probability distribution for the outcome, we can easily swap that distribution with another one, like Poisson or binomial. The only missing piece to do this is called the <strong>link function</strong>. Its purpose is to ensure the linear function will always output valid values (e.g., counts cannot be negative). If the link function also happens to coincide with the mean of the chosen probability distribution, it is called the canonical link function.</p>
-<p>In the case of a normal distribution <span class="math inline">\(\mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span>, the mean <span class="math inline">\(\mu\)</span> can already take on any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, so no such translation is needed and we use what is called the <strong>identity</strong> function (it simply outputs the same value as the input). Since the identity link function coincides with the mean of the normal distribution, it is <strong>canonical</strong>.</p>
+<p>Ordinary linear models are a special case of generalized linear models (GLMs). Whereas the former only support normally distributed errors, GLMs can handle any probability distribution in the <a href="https://en.wikipedia.org/wiki/Exponential_dispersion_model">exponential dispersion family</a>.</p>
+<p>To understand GLMs, try to let go of the idea that a linear model is <span class="math inline">\(\text{linear function} + \text{error}\)</span>, and instead take on a different perspective: <strong>A GLM is a probability distribution with a mean that depends on the explanatory variable (<span class="math inline">\(x\)</span>)</strong>. The technical term for this is <em>conditional</em> normality: If we know the value of the <span class="math inline">\(x\)</span>, then at that point, the outcome follows a normal distribution. Move to a different value of <span class="math inline">\(x\)</span> and the mean of the distribution changes. This concept is visualized in the <a href="https://youtu.be/6Nfv0Xr44y8&amp;t=155" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> first video <i class="fas fa-external-link"></i></a> on GLM.</p>
+<p>Once we take on the perspective of a conditional probability distribution for the outcome, we can easily swap that distribution with another one, like Poisson or binomial. The only missing piece to do this is called the <strong>link function</strong>. Its purpose is to ensure the linear function will always output valid values (e.g., counts cannot be negative). If the link function also happens to coincide with the mean of the chosen probability distribution, it is called the <strong>canonical</strong> link function.</p>
+<p>In the case of a normal distribution <span class="math inline">\(\mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span>, the mean <span class="math inline">\(\mu\)</span> can already take on any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, so no such translation is needed and we use what is called the <strong>identity</strong> function (it simply outputs the same value as the input). Since the identity link function coincides with the mean of the normal distribution, it is canonical.</p>
 <details>
 <summary>
 When would you use a normal GLM with non-canonical link?
 </summary>
-<p>It is possible to use different link functions for a normal GLM (e.g., the logarithm <code>log</code> is also supported in R). Below is an overview contrasting both methods.</p>
+<p>It is possible to use different link functions for a normal GLM (e.g., the logarithm). This is not the same as simply taking the logarithm of the outcome. Below is an overview contrasting both methods.</p>
 <table class="caption-top table">
-<caption>Difference between transforming the outcome and using a link function (logarithm as an example).</caption>
+<caption>Difference between log-transforming the outcome and using a log-link function.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 37%">
@@ -2372,7 +2372,7 @@ When would you use a normal GLM with non-canonical link?
 <thead>
 <tr class="header">
 <th></th>
-<th>Log-transforming <span class="math inline">\(y\)</span></th>
+<th>LM with <span class="math inline">\(\log(y)\)</span> as outcome</th>
 <th>Normal GLM with log-link</th>
 </tr>
 </thead>
@@ -2482,7 +2482,7 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(\mathsf{Pois}\)</span> — Poisson distribution</dt>
 <dd>
-<p>See <a href="#poisson"><font color="steelblue"><i class="fa-solid fa-dice-two" title="A six-sided die" aria-label="dice-two"></i></font> Poisson Distribution</a>. <span class="math inline">\(y \sim \mathsf{Pois}(\lambda)\)</span> means: The outcome follows a conditional Poisson distribution with rate <span class="math inline">\(\lambda\)</span>. It is called conditional, because <span class="math inline">\(\lambda\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
+<p>See <a href="#poisson"><font color="steelblue"><i class="fa-solid fa-dice-two" title="A six-sided die" aria-label="dice-two"></i></font> Poisson Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Pois}(\lambda)\)</span> means: The outcome follows a conditional Poisson distribution with rate <span class="math inline">\(\lambda\)</span>. It is called conditional, because <span class="math inline">\(\lambda\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
 </dd>
 <dt>link function</dt>
 <dd>
@@ -2524,8 +2524,9 @@ Explanation
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A Poisson GLM is used to model <strong>count data</strong>. It is the model of choice when counts can be considered truly independent and occurring at a fixed rate (e.g., radioactive particles from a single source randomly hitting a detector from a fixed distance).</p>
-<p>Often, counts are correlated, zero-inflated, or otherwise not truly independent and occurring at a fixed rate. Refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> fourth video <i class="fas fa-external-link"></i></a> on GLM (overdispersion) for an explanation of causes and common alternatives to Poisson GLMs.</p>
+<p>A Poisson GLM is used to model <strong>count data</strong>. It is the model of choice when counts are truly independent and occur at a fixed rate—that is, when the rate depends <em>only</em> on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
+<p>In a Poisson GLM, we estimate the rate of occurrence (<span class="math inline">\(\lambda\)</span>). Since events cannot occur at a negative rate, a suitable link function must ensure <span class="math inline">\(\lambda \geq 0\)</span>. A common choice is the natural logarithm <span class="math inline">\(\log(\lambda) = \eta\)</span>, because it implies <span class="math inline">\(\lambda = e^{\eta}\)</span> (always positive). This is also the canonical link function of a Poisson GLM. An example of a non-canonical link function is the square root <span class="math inline">\(\sqrt{\lambda} = \eta\)</span>.</p>
+<p>In practice, counts are often correlated, zero-inflated, or otherwise not truly independent and occurring at a fixed rate. For an explanation of this topic, as well as alternatives to Poisson regression, refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> fourth video <i class="fas fa-external-link"></i></a> on GLM.</p>
 </div>
 </div>
 </div>
@@ -2659,13 +2660,13 @@ Symbols &amp; definitions
 <dd>
 <p>The outcome at a given value of <span class="math inline">\(x\)</span>.</p>
 </dd>
-<dt><span class="math inline">\(\mathsf{binom}\)</span> — binomial distribution</dt>
+<dt><span class="math inline">\(\mathsf{Binom}\)</span> — binomial distribution</dt>
 <dd>
-<p>See <a href="binomialdistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-three" title="A six-sided die" aria-label="dice-three"></i></font> Binomial Distribution</a>. <span class="math inline">\(y \sim \mathsf{Binom}(n, \, p)\)</span> means: The outcome follows a conditional[^glm-4] binomial distribution with <span class="math inline">\(n\)</span> trials and probability of success <span class="math inline">\(p\)</span>.</p>
+<p>See <a href="binomialdistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-three" title="A six-sided die" aria-label="dice-three"></i></font> Binomial Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Binom}(n, \, p)\)</span> means: The outcome follows a conditional binomial distribution with <span class="math inline">\(n\)</span> trials and probability of success <span class="math inline">\(p\)</span>. It is called conditional, because <span class="math inline">\(p\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Bernoulli}\)</span> — Bernoulli distribution</dt>
 <dd>
-<p>In case <span class="math inline">\(n = 1\)</span>, the binomial distribution simplifies to what is called the Bernoulli distribution.</p>
+<p>A binomial distribution with one trial simplifies to what is called the Bernoulli distribution.</p>
 </dd>
 <dt>link function</dt>
 <dd>
@@ -2707,9 +2708,10 @@ Explanation
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A binomial GLM is used to model <strong>ratios</strong> and <strong>binary data</strong>. It is the model of choice when the trials can be considered truly independent and the probability of success fixed (e.g., flipping a coin).</p>
-<p>Often, trials are correlated or otherwise not truly independent and occurring with a fixed probability of success. Refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> fourth video <i class="fas fa-external-link"></i></a> on GLM (overdispersion) for an explanation of causes and common alternatives to binomial GLMs.</p>
-<p>If you have the choice, always use the original number of successes and failures, not a proportion, or percentage. Computing a percentage discards valuable information (i.e., the number of trials).</p>
+<p>A binomial GLM is used to model <strong>ratios</strong> and <strong>binary outcomes</strong>. It is the model of choice when the trials are truly independent and the probability of success fixed—that is, when the probability of success depends <em>only</em> on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
+<p>In a binomial GLM, we estimate the probability of success (<span class="math inline">\(p\)</span>). Since probabilities must be within <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, a suitable link function must ensure <span class="math inline">\(0 \leq p \leq 1\)</span>. A common choice is the logit <span class="math display">\[\log\left(\frac{p}{1 - p}\right) = \eta \quad \implies \quad p = \frac{1}{1 + e^{-\eta}}\]</span> which is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> for any value of <span class="math inline">\(\eta\)</span>. This is also the canonical link function of a binomial GLM. Examples of non-canonical link functions include the <a href="https://en.wikipedia.org/wiki/Probit">probit</a> <span class="math inline">\(\Phi^{-1}(p) = \eta\)</span> and the complementary log-log <span class="math inline">\(\log(-\log(1 - p)) = \eta\)</span>.</p>
+<p>Often, trials are correlated or otherwise not truly independent and occurring with a fixed probability of success. For an explanation of this topic, as well as alternatives to binomial regression, refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> fourth video <i class="fas fa-external-link"></i></a> on GLM.</p>
+<p>Finally, if you have the choice—such as during the study design phase—always use the original number of successes and failures, not a percentage or proportion. Computing a percentage discards valuable information (i.e., the number of trials).</p>
 </div>
 </div>
 </div>
@@ -2846,7 +2848,7 @@ Learn why
 <ol type="1">
 <li>The number of bees per minute is a <strong>count</strong> over a fixed time window, so a starting point would be a Poisson distribution.</li>
 <li>The number of germinated seeds <em>sounds</em> like a count, but beware: there is a hard upper limit (<span class="math inline">\(20\)</span> seeds planted). Hence, it is better to consider this the number of successes out of <span class="math inline">\(20\)</span> trials (a <strong>ratio</strong>), which can be modeled with a binomial distribution.</li>
-<li>Concentration is a <strong>continuous</strong> outcome, so a starting point could be an ordinary linear model (normal distribution). If cortisol concentrations turn out to be highly skewed, we could try transformation (e.g., modeling <span class="math inline">\(\log_{10}(\mathrm{concentration})\)</span> instead), or using a different distribution, like the <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>.</li>
+<li>Concentration is a <strong>continuous</strong> outcome, so a starting point could be an ordinary linear model (normal distribution). If cortisol concentrations turn out to be highly skewed, we could try transformation (e.g., modeling <span class="math inline">\(\log_{10}(\mathrm{concentration})\)</span> instead), or using a distribution that can be right-skewed, like the <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>.</li>
 <li>If we don’t count sharks, but simply note their presence/absence, this is a <strong>binary</strong> outcome. This can be modeled with a binomial distribution with a single trial. This is also called a Bernoulli distribution.</li>
 </ol>
 </div>
@@ -2946,7 +2948,7 @@ Learn why
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
-<li>Correlation between measurements can cause both over- and underdispersion.</li>
+<li>Correlation among observations can cause both over- and underdispersion.</li>
 <li>Overdispersion can be resolved by changing link functions.</li>
 <li>Counts are always (conditionally) Poisson distributed.</li>
 <li>A negative binomial distribution can be used to model count data.</li>
@@ -2973,7 +2975,7 @@ Hint
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
-<li><strong>Correlation between measurements can cause both over- and underdispersion.</strong></li>
+<li><strong>Correlation among observations can cause both over- and underdispersion.</strong></li>
 <li>Overdispersion can be resolved by changing link functions.</li>
 <li>Counts are always (conditionally) Poisson distributed.</li>
 <li><strong>A negative binomial distribution can be used to model count data.</strong></li>
