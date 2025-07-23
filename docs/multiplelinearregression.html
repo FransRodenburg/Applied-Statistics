@@ -20,42 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -344,40 +329,196 @@ window.Quarto = {
 <summary>
 Why not just several one-on-one analyses?
 </summary>
-<p>A single model with all explanatory effects is usually preferable over fitting several simple linear regressions, because of <strong>omitted-variable bias</strong>, <strong>confounding</strong>, and <strong>Simpson’s paradox</strong>, among others:</p>
+<p>One-on-one measures of association, like a <a href="https://en.wikipedia.org/wiki/Correlation">correlation coefficient</a>, are easy to compute and hence often used to explore relationships. However, these fail to reflect the complexity of real-life phenomena. Cancer is not caused by a single mutation; speciation not triggered by a single trait change.</p>
+<p>Correlation analysis has been criticized in many biological fields, including clinical science <span class="citation" data-cites="Aggarwal2016 hung2017 wang2020"><a href="references.html#ref-Aggarwal2016" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wang2020" role="doc-biblioref">[3]</a></span>, ecology <span class="citation" data-cites="Carr2019"><a href="references.html#ref-Carr2019" role="doc-biblioref">[4]</a></span> and evolutionary biology <span class="citation" data-cites="dunn2018"><a href="references.html#ref-dunn2018" role="doc-biblioref">[5]</a></span>. Key phenomena invalidating one-on-one analyses are explained below.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Omitted Variable Bias</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Confounding</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Simpson’s Paradox</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-
-</div>
-</div>
-</div>
-<p>Simple one-on-one analyses (also called correlation analysis) is prone to <a href="https://www.tylervigen.com/spurious-correlations">spurious</a> findings. Multiple regression on the other hand, allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables.</p>
-<p>The simple fact is that almost everything correlates to some extent with everything else. Don’t believe me? Here is a correlogram of purely randomly drawn numbers:</p>
+<p><small><em>Estimating the effect of one variable without accounting for the effect of others can lead to a biased result.</em></small></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"corrplot"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">20</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(X))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="multiplelinearregression_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<div id="fig-ovb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="multiplelinearregression_files/figure-html/fig-ovb-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: True causal relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the analysis.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Dark blue means a correlation close to <span class="math inline">\(1\)</span> and dark red close to <span class="math inline">\(-1\)</span>. Note how many ‘strong’ correlations were found among independently drawn values.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In a study on asbestos exposure, smoking may be more common among individuals exposed to asbestos. This would lead to an overestimated effect of asbestos, if smoking behavior is not adjusted for. Large systematic reviews on asbestos exposure therefore almost always adjust for smoking <span class="citation" data-cites="ngamwong2015 olsson2017 klebe2019"><a href="references.html#ref-ngamwong2015" role="doc-biblioref">[6]</a>–<a href="references.html#ref-klebe2019" role="doc-biblioref">[8]</a></span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><small><em>Two causally unrelated variables can appear to be correlated when a third, unobserved variable affects both.</em></small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-confounding" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="multiplelinearregression_files/figure-html/fig-confounding-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: True causal relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the analysis.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Coffee consumption is often linked to lung cancer, but this is caused by the confounding variable smoking: On average, smokers drink more coffee <em>and</em> are much more likely to develop lung cancer. Large overarching meta-analyses adjusting for smoking typically show that coffee consumption is not a risk factor for lung cancer <span class="citation" data-cites="Guertin2016 galarraga2016 jin2024"><a href="references.html#ref-Guertin2016" role="doc-biblioref">[9]</a>–<a href="references.html#ref-jin2024" role="doc-biblioref">[11]</a></span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><small><em>Trends can completely change direction when including another variable in the model.</em></small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="multiplelinearregression_files/figure-html/fig-simpson-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Observed trend excluding (left) and including (right) a grouping variable (<span class="math inline">\(x_2\)</span>).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A study on kidney stones compared two methods for removal: open surgery and percutaneous nephrolithotomy (PN) <span class="citation" data-cites="charig1986"><a href="references.html#ref-charig1986" role="doc-biblioref">[12]</a></span>. Surprisingly, the less invasive PN method displayed a higher success rate than open surgery.</p>
+<p>As shown in <a href="#tbl-simpson" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, this was an example of Simpson’s paradox: Separating the success rate by kidney stone size reveals that open surgery outperforms PN for both situations.</p>
+<div id="tbl-simpson" class="cell plain quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[10,20,20]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
+</figcaption>
+<div aria-describedby="tbl-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="cell plain caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Size</th>
+<th style="text-align: left;">Open Surgery</th>
+<th style="text-align: left;">Percutaneous<br>Nephrolithotomy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(&lt; 2\)</span> cm</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{81}{87}\)</span> (93.1%)</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{234}{270}\)</span> (86.7%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\geq 2\)</span> cm</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{192}{263}\)</span> (73.0%)</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{55}{80}\)</span> (68.8%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">total</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{273}{350}\)</span> (78.0%)</td>
+<td style="text-align: left;"><span class="math inline">\(\frac{289}{350}\)</span> (82.6%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>How is this possible? Open surgery is used in more often in severe cases (larger stones), which have a lower success rate. This lowers the total success rate below that of PN.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Contrary to one-on-one analyses, multiple regression can simultaneously take into account the effect of multiple contributing factors. This allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables, which avoids the phenomena described above.</p>
 </details>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Aggarwal2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">P. Ranganathan and R. Aggarwal, <span>“Common pitfalls in statistical analysis: The use of correlation techniques,”</span> <em>Perspectives in Clinical Research</em>, vol. 7, no. 4, p. 187, 2016, doi: <a href="https://doi.org/10.4103/2229-3485.192046">10.4103/2229-3485.192046</a>.</div>
+</div>
+<div id="ref-hung2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Hung, J. Bounsanga, and M. W. Voss, <span>“Interpretation of correlations in clinical research,”</span> <em>Postgraduate Medicine</em>, vol. 129, no. 8, pp. 902–906, Sep. 2017, doi: <a href="https://doi.org/10.1080/00325481.2017.1383820">10.1080/00325481.2017.1383820</a>.</div>
+</div>
+<div id="ref-wang2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">R. Wang, S. Dutta, and V. Roy, <span>“A note on marginal correlation based screening,”</span> <em>Statistical Analysis and Data Mining: The ASA Data Science Journal</em>, vol. 14, no. 1, pp. 88–92, Dec. 2020, doi: <a href="https://doi.org/10.1002/sam.11491">10.1002/sam.11491</a>.</div>
+</div>
+<div id="ref-Carr2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. Carr, C. Diener, N. S. Baliga, and S. M. Gibbons, <span>“Use and abuse of correlation analyses in microbial ecology,”</span> <em>The ISME Journal</em>, vol. 13, no. 11, pp. 2647–2655, Jun. 2019, doi: <a href="https://doi.org/10.1038/s41396-019-0459-z">10.1038/s41396-019-0459-z</a>.</div>
+</div>
+<div id="ref-dunn2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C. W. Dunn, F. Zapata, C. Munro, S. Siebert, and A. Hejnol, <span>“Pairwise comparisons across species are problematic when analyzing functional genomic data,”</span> <em>Proceedings of the National Academy of Sciences</em>, vol. 115, no. 3, Jan. 2018, doi: <a href="https://doi.org/10.1073/pnas.1707515115">10.1073/pnas.1707515115</a>.</div>
+</div>
+<div id="ref-ngamwong2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Y. Ngamwong <em>et al.</em>, <span>“Additive Synergism between Asbestos and Smoking in Lung Cancer Risk: A Systematic Review and Meta-Analysis,”</span> <em>PLOS ONE</em>, vol. 10, no. 8, p. e0135798, Aug. 2015, doi: <a href="https://doi.org/10.1371/journal.pone.0135798">10.1371/journal.pone.0135798</a>.</div>
+</div>
+<div id="ref-olsson2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. C. Olsson <em>et al.</em>, <span>“Exposure<span></span>Response Analyses of Asbestos and Lung Cancer Subtypes in a Pooled Analysis of Case<span></span>Control Studies,”</span> <em>Epidemiology</em>, vol. 28, no. 2, pp. 288–299, Mar. 2017, doi: <a href="https://doi.org/10.1097/ede.0000000000000604">10.1097/ede.0000000000000604</a>.</div>
+</div>
+<div id="ref-klebe2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. Klebe, J. Leigh, D. W. Henderson, and M. Nurminen, <span>“Asbestos, Smoking and Lung Cancer: An Update,”</span> <em>International Journal of Environmental Research and Public Health</em>, vol. 17, no. 1, p. 258, Dec. 2019, doi: <a href="https://doi.org/10.3390/ijerph17010258">10.3390/ijerph17010258</a>.</div>
+</div>
+<div id="ref-Guertin2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">K. A. Guertin, N. D. Freedman, E. Loftfield, B. I. Graubard, N. E. Caporaso, and R. Sinha, <span>“Coffee consumption and incidence of lung cancer in the NIH-AARP Diet and Health Study,”</span> <em>International Journal of Epidemiology</em>, vol. 45, no. 3, pp. 929–939, Jun. 2015, doi: <a href="https://doi.org/10.1093/ije/dyv104">10.1093/ije/dyv104</a>.</div>
+</div>
+<div id="ref-galarraga2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">V. Galarraga and P. Boffetta, <span>“Coffee Drinking and Risk of Lung Cancer<span></span>A Meta-Analysis,”</span> <em>Cancer Epidemiology, Biomarkers &amp; Prevention</em>, vol. 25, no. 6, pp. 951–957, May 2016, doi: <a href="https://doi.org/10.1158/1055-9965.epi-15-0727">10.1158/1055-9965.epi-15-0727</a>.</div>
+</div>
+<div id="ref-jin2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">S. Jin and Y. Je, <span>“Coffee Consumption and Risk of Lung Cancer: A Meta-Analysis of Prospective Cohort Studies,”</span> <em>Nutrition and Cancer</em>, vol. 76, no. 7, pp. 552–562, May 2024, doi: <a href="https://doi.org/10.1080/01635581.2024.2348219">10.1080/01635581.2024.2348219</a>.</div>
+</div>
+<div id="ref-charig1986" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">C. R. Charig, D. R. Webb, S. R. Payne, and J. E. Wickham, <span>“Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy.”</span> <em>BMJ</em>, vol. 292, no. 6524, pp. 879–882, Mar. 1986, doi: <a href="https://doi.org/10.1136/bmj.292.6524.879">10.1136/bmj.292.6524.879</a>.</div>
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
