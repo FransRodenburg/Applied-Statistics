@@ -2265,7 +2265,7 @@ Figure&nbsp;2.1: Example of a simple linear model. <small>(Height and weight of 
   \eta &amp;= \beta_0 + \beta_1 \cdot x
 \end{align}\]</span></p>
 <p>An ordinary linear model can also be written as a generalized linear model (GLM). This helps to see how ordinary linear models fit into the broader GLM framework.</p>
-<p>Compare this to Poisson or binomial regression: In each case, we are estimating the mean of a distribution (here: <span class="math inline">\(\mu\)</span>), and that parameter changes depending on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
+<p>Compare this to Poisson or binomial regression: In each case, we are estimating the mean of a distribution (here: <span class="math inline">\(\mu\)</span>), and that mean changes depending on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
 <p>The middle equation is the link function—how the mean relates to the linear equation (<span class="math inline">\(\eta\)</span>). For a normal distribution, this is called the <em>identity</em>, which leaves the linear predictor unchanged, such that the linear equation <em>is</em> the mean of the resulting normal distribution.</p>
 </div>
 </div>
@@ -2361,7 +2361,7 @@ Explanation
 <summary>
 When would you use a normal GLM with non-canonical link?
 </summary>
-<p>It is possible to use different link functions for a normal GLM (e.g., the logarithm). This is not the same as simply taking the logarithm of the outcome. Below is an overview contrasting both methods.</p>
+<p>It is possible to use different link functions for a normal GLM (e.g., the logarithm). This is not the same as simply transforming the outcome. Below is an overview contrasting both methods.</p>
 <table class="caption-top table">
 <caption>Difference between log-transforming the outcome and using a log-link function.</caption>
 <colgroup>
