@@ -320,7 +320,11 @@ window.Quarto = {
   <li><a href="#slm-lecture" id="toc-slm-lecture" class="nav-link active" data-scroll-target="#slm-lecture"><span class="header-section-number">1.1</span> Lecture</a></li>
   <li><a href="#summary-lm" id="toc-summary-lm" class="nav-link" data-scroll-target="#summary-lm"><span class="header-section-number">1.2</span> Summary</a></li>
   <li><a href="#quiz-lm" id="toc-quiz-lm" class="nav-link" data-scroll-target="#quiz-lm"><span class="header-section-number">1.3</span> Quiz</a></li>
-  <li><a href="#apply-lm" id="toc-apply-lm" class="nav-link" data-scroll-target="#apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</a></li>
+  <li><a href="#apply-lm" id="toc-apply-lm" class="nav-link" data-scroll-target="#apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</a>
+  <ul class="collapse">
+  <li><a href="#practice-reading-diagnostic-plots" id="toc-practice-reading-diagnostic-plots" class="nav-link" data-scroll-target="#practice-reading-diagnostic-plots"><span class="header-section-number">1.4.1</span> Practice reading diagnostic plots</a></li>
+  <li><a href="#perform-a-full-analysis" id="toc-perform-a-full-analysis" class="nav-link" data-scroll-target="#perform-a-full-analysis"><span class="header-section-number">1.4.2</span> Perform a full analysis</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -575,7 +579,7 @@ F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 =================================================================
 Model:              OLS              Adj. R-squared:     0.378   
 Dependent Variable: height           AIC:                234.5127
-Date:               2026-01-22 08:41 BIC:                237.3151
+Date:               2026-10-22 14:52 BIC:                237.3151
 No. Observations:   30               Log-Likelihood:     -115.26 
 Df Model:           1                F-statistic:        18.64   
 Df Residuals:       28               Prob (F-statistic): 0.000178
@@ -1029,9 +1033,16 @@ Learn why
 </section>
 <section id="apply-lm" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</h2>
+<section id="practice-reading-diagnostic-plots" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="practice-reading-diagnostic-plots"><span class="header-section-number">1.4.1</span> Practice reading diagnostic plots</h3>
+<p>Before analyzing a data set yourself, practice recognizing problems in diagnostic plots using simulated examples:</p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/model-diagnostics/" class="btn btn-outline-primary" role="button" target="_blank" rel="noreferrer noopener">Open the diagnostics app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+</section>
+<section id="perform-a-full-analysis" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="perform-a-full-analysis"><span class="header-section-number">1.4.2</span> Perform a full analysis</h3>
 <p>Below you can find a worked out example (tutorial) and a dataset for you to analyze yourself (exercise):</p>
 <ul>
-<li>Tutorial (<a href="tutorials/tutorial-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/example-LM.csv">data <i class="fas fa-download"></i></a>)</li>
+<li>Tutorial (<a href="tutorials/tutorial-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/plant-dimensions.csv">data <i class="fas fa-download"></i></a>)</li>
 <li>Exercise (<a href="exercises/exercise-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="immunuoglobulin.csv">data <i class="fas fa-download"></i></a>)</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1057,6 +1068,7 @@ How to read data in R
 </div>
 
 
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
