@@ -371,7 +371,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><small><font color="red"><i class="fa-brands fa-youtube"></i></font><a href="https://youtube.com/playlist?list=PLl4b1XM725OfDg-0FeWlcF2sBTAveFBwY&amp;si=4xU6sb3WVkTNb_AZ" target="_blank" rel="noreferrer noopener">Open playlist in a new tab <i class="fas fa-external-link"></i></a></small></p>
+<p><small><a href="https://youtube.com/playlist?list=PLl4b1XM725OfDg-0FeWlcF2sBTAveFBwY&amp;si=4xU6sb3WVkTNb_AZ" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> Open playlist in a new tab <i class="fas fa-external-link"></i></a></small></p>
 </section>
 <section id="summary-lm" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="summary-lm"><span class="header-section-number">1.2</span> Summary</h2>
@@ -536,32 +536,32 @@ Figure&nbsp;1.4: Squared residuals give porportionally more weight to farther ob
 </div>
 </div>
 <hr>
-<p>The results of a linear regression are summarized in a <strong>regression table</strong>, which provides insight into the parameter estimates, their uncertainty, and some basic measures of how well the model fits the data:</p>
+<p>The results of a linear regression are summarized in a <a href="https://www.youtube.com/watch?v=f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><font color="red"><i class="fa-brands fa-youtube"></i></font> regression table <i class="fas fa-external-link"></i></a>, which provides insight into the parameter estimates, their uncertainty, and some basic measures of how well the model fits the data:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> height, <span class="at">data =</span> DF)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> weight, <span class="at">data =</span> DF)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = weight ~ height, data = DF)
+lm(formula = height ~ weight, data = DF)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--21.486 -11.962  -2.670   6.326  39.192 
+-20.076  -7.447   1.529   6.893  26.205 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -57.4496    32.1694  -1.786 0.084960 .  
-height        0.8025     0.1859   4.318 0.000178 ***
+(Intercept) 132.1493     9.5791  13.796 5.19e-14 ***
+weight        0.4981     0.1154   4.318 0.000178 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 14.82 on 28 degrees of freedom
+Residual standard error: 11.67 on 28 degrees of freedom
 Multiple R-squared:  0.3997,    Adjusted R-squared:  0.3783 
 F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 </div>
@@ -579,7 +579,7 @@ F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 =================================================================
 Model:              OLS              Adj. R-squared:     0.378   
 Dependent Variable: height           AIC:                234.5127
-Date:               2026-10-24 09:17 BIC:                237.3151
+Date:               2026-10-24 19:10 BIC:                237.3151
 No. Observations:   30               Log-Likelihood:     -115.26 
 Df Model:           1                F-statistic:        18.64   
 Df Residuals:       28               Prob (F-statistic): 0.000178
@@ -1043,7 +1043,7 @@ Learn why
 <p>Below you can find a worked out example (tutorial) and a dataset for you to analyze yourself (exercise):</p>
 <ul>
 <li>Tutorial (<a href="tutorials/tutorial-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/plant-dimensions.csv">data <i class="fas fa-download"></i></a>)</li>
-<li>Exercise (<a href="exercises/exercise-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="immunuoglobulin.csv">data <i class="fas fa-download"></i></a>)</li>
+<li>Exercise (<a href="exercises/exercise-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/immunoglobulin.csv">data <i class="fas fa-download"></i></a>)</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
