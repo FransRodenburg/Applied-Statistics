@@ -19,11 +19,20 @@
     <link rel="stylesheet" href="./../shinylive/style-resets.css" />
     <link rel="stylesheet" href="./../shinylive/shinylive.css" />
     <style>
+#load-note { display: none; position: fixed; z-index: 1; left: 50%; top: calc(50vh - 4rem); transform: translate(-50%, -100%);
+  width: max-content; max-width: min(40rem, 90vw); margin: 0; text-align: center; color: #9a9a9a;
+  font: 0.6rem/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+body:has(.loading-status) #load-note { display: block; animation: loading-animation-fade-in 1s; }
 html.dm-dark { color-scheme: dark; }
 html.dm-dark body { background-color: #222; color: #fff; }
 html.dm-dark .shinylive-viewer .loading-wrapper,
 html.dm-dark .shinylive-viewer iframe { background-color: #222; }
 html.dm-dark .loading-animation { --animation-start-color: #252525; --animation-end-color: #434343; }
+html.dm-dark .loading-status .loading-stage,
+html.dm-dark #load-note { color: #8c8c8c; }
+html.dm-dark .shinylive-viewer .loading-wrapper .error-alert .error-recovery { background-color: #58342e; color: #fff; }
+html.dm-dark .shinylive-viewer .loading-wrapper .error-alert .error-recovery-lead { color: #fff; }
+html.dm-dark .shinylive-viewer .loading-wrapper .error-alert .error-recovery kbd { background-color: #222; color: #fff; }
 </style>
 <script>
 // Dark mode (darkmode/darkmode.md, Phase 4): shinylive's loading page, shown while webR
@@ -38,7 +47,38 @@ html.dm-dark .loading-animation { --animation-start-color: #252525; --animation-
 </script>
   </head>
   <body>
-    
+    <p id="load-note">The first time you open this app, your browser downloads R and the packages it needs (~50 MB).<br>This can take <b>a minute or more</b> on a slow connection. Later visits start faster.</p>
+<script>
+// Prefetching of the apps' files (apps-src/README.md, "Prefetching").
+(function () {
+  function go(u, pr) {
+    fetch(u).then(function (r) { return r.json(); }).then(function (f) {
+      var i = 0;
+      function next() {
+        if (i >= f.length) return;
+        fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
+          var d = r.body.getReader();
+          return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
+        }).catch(function () {}).then(next);
+      }
+      next(); next(); next();
+    }).catch(function () {});
+  }
+  try {
+    if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
+      if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
+      return;
+    }
+    var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
+      return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
+    });
+    if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
+    var u = new URL("../prefetch.json", a.href);
+    var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
+    if (document.readyState === "complete") t(); else addEventListener("load", t);
+  } catch (e) {}
+})();
+</script>
     <div style="height: 100vh; width: 100vw" id="root"></div>
     
   </body>

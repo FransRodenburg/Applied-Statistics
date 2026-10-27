@@ -601,175 +601,90 @@ Explanation
 
 </main> <!-- /main -->
 <style>
-
 .dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
-
 .dm-scheme .dropdown-item.active { font-weight: 700; }
-
 </style>
-
 <script>
-
 // Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
-
 // Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
-
 (function () {
-
   // webR editors are created light and switch only when the body class changes, so on a
-
   // page that loads in dark mode they would stay light. Set the dark editor theme after
-
   // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
-
   // script and cannot be called from here; Monaco's theme applies to all editors.)
-
   if (document.getElementById("qwebr-monaco-editor-init")) {
-
     var t = 0;
-
     var id = setInterval(function () {
-
       var me = window.monaco && window.monaco.editor;
-
       if (!me && ++t < 480) return;
-
       clearInterval(id);
-
       if (!me) return;
-
       var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
-
       me.onDidCreateEditor(function () { setTimeout(fix, 0); });
-
       fix();
-
     }, 250);
-
   }
-
-
 
   // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
-
   // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
-
   // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
-
   var K = "quarto-color-scheme";
-
   var ok = false;
-
   try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
-
   var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
-
   if (!ok || !toggles.length) return;
-
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
-
   var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
-
   var name = { light: "Light", dark: "Dark", system: "System" };
-
   function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
-
   function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
-
   function show() {
-
     var c = choice();
-
     document.querySelectorAll(".dm-scheme").forEach(function (m) {
-
       var b = m.querySelector(".dm-btn");
-
       b.querySelector("i").className = "bi " + icon[c];
-
-      b.setAttribute("aria-label", "Colour scheme: " + name[c]);
-
+      b.setAttribute("aria-label", "Color scheme: " + name[c]);
       m.querySelectorAll(".dropdown-item").forEach(function (it) {
-
         var on = it.dataset.choice === c;
-
         it.classList.toggle("active", on);
-
         it.setAttribute("aria-checked", on ? "true" : "false");
-
       });
-
     });
-
   }
-
   function apply(dark) {
-
     localAlternateSentinel = dark ? "alternate" : "default";
-
     toggleColorMode(dark);
-
     show();
-
     window.dispatchEvent(new Event("resize"));
-
   }
-
   function set(c) {
-
     var dark = c === "dark" || (c === "system" && mq.matches);
-
     try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
-
     apply(dark);
-
   }
-
   toggles.forEach(function (t) {
-
     var m = document.createElement("div");
-
     m.className = "dropdown dm-scheme d-inline-block";
-
-    m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Colour scheme"><i class="bi"></i></button>' +
-
+    m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
       '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
-
       ["light", "dark", "system"].map(function (c) {
-
         return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
-
       }).join("") + "</ul>";
-
     m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
-
     t.insertAdjacentElement("afterend", m);
-
     t.style.display = "none";
-
   });
-
   // Under System, Quarto's own listener switches the page when the system setting changes.
-
   mq.addEventListener("change", show);
-
   // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
-
   window.addEventListener("storage", function (e) {
-
     if (e.key !== K && e.key !== null) return;
-
     var s = stored();
-
     apply(s === "alternate" || (s === null && mq.matches));
-
   });
-
   show();
-
 })();
-
 </script>
-
 <script>
 
 // Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
@@ -814,6 +729,37 @@ Explanation
 
 </script>
 
+<script>
+// Prefetching of the apps' files (apps-src/README.md, "Prefetching").
+(function () {
+  function go(u, pr) {
+    fetch(u).then(function (r) { return r.json(); }).then(function (f) {
+      var i = 0;
+      function next() {
+        if (i >= f.length) return;
+        fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
+          var d = r.body.getReader();
+          return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
+        }).catch(function () {}).then(next);
+      }
+      next(); next(); next();
+    }).catch(function () {});
+  }
+  try {
+    if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
+      if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
+      return;
+    }
+    var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
+      return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
+    });
+    if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
+    var u = new URL("../prefetch.json", a.href);
+    var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
+    if (document.readyState === "complete") t(); else addEventListener("load", t);
+  } catch (e) {}
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
