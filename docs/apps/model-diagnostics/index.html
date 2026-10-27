@@ -18,7 +18,24 @@
     </script>
     <link rel="stylesheet" href="./../shinylive/style-resets.css" />
     <link rel="stylesheet" href="./../shinylive/shinylive.css" />
-    
+    <style>
+html.dm-dark { color-scheme: dark; }
+html.dm-dark body { background-color: #222; color: #fff; }
+html.dm-dark .shinylive-viewer .loading-wrapper,
+html.dm-dark .shinylive-viewer iframe { background-color: #222; }
+html.dm-dark .loading-animation { --animation-start-color: #252525; --animation-end-color: #434343; }
+</style>
+<script>
+// Dark mode (darkmode/darkmode.md, Phase 4): shinylive's loading page, shown while webR
+// starts, follows the book's choice (same key and values as the book and the apps).
+// Added by export-apps.R through shinylive::export(template_params = ).
+(function () {
+  var s = null;
+  try { s = localStorage.getItem("quarto-color-scheme"); } catch (e) {}
+  if (s === "alternate" || (s === null && window.matchMedia("(prefers-color-scheme: dark)").matches))
+    document.documentElement.classList.add("dm-dark");
+})();
+</script>
   </head>
   <body>
     
