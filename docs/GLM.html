@@ -2500,19 +2500,31 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>.</p>
+<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <font color="grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></font></p>
 </dd>
 <dt><span class="math inline">\(\mathcal{N}\)</span> — normal distribution</dt>
 <dd>
 <p>See <a href="normaldistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></font> Normal Distribution</a>. <span class="math inline">\(y|x \sim \mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span> means: The outcome follows a conditional normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. It is called conditional, because <span class="math inline">\(\mu\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
 </dd>
+<dt><span class="math inline">\(\theta\)</span> — natural parameter</dt>
+<dd>
+<p>The parameter in which the formula of the distribution is written in a GLM.</p>
+</dd>
+</dl>
+<details>
+<summary>
+More
+</summary>
+A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">this answer on Cross Validated</a>.
+</details>
+<dl>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of values of mean of the outcome to <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, which is convenient for estimating the model parameters, as it allows us to use a modified version of least squares (iteratively reweighted least squares).</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values.</p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function that translates the linear predictor to the mean of the outcome. For the normal distribution, this is the <a href="https://en.wikipedia.org/wiki/Identity_function">identity function</a>, which amounts to not doing any kind of transformation.</p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the normal distribution, the natural parameter is the mean itself, so the canonical link is the [identity function] (https://en.wikipedia.org/wiki/Identity_function), which amounts to doing nothing. No transformation is needed anyway, because the mean of a normal distribution can already take on any value.</p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
@@ -2520,11 +2532,11 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
+<p>Mean of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
+<p>Change in the mean of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
 </dd>
 </dl>
 </div>
@@ -2667,35 +2679,43 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>.</p>
+<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <font color="grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></font></p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Pois}\)</span> — Poisson distribution</dt>
 <dd>
 <p>See <a href="poissondistribution.html"><font color="steelblue"><i class="fa-solid fa-dice-two" title="A six-sided die" aria-label="dice-two"></i></font> Poisson Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Pois}(\lambda)\)</span> means: The outcome follows a conditional Poisson distribution with rate <span class="math inline">\(\lambda\)</span>. It is called conditional, because <span class="math inline">\(\lambda\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
 </dd>
+<dt><span class="math inline">\(\theta\)</span> — natural parameter</dt>
+<dd>
+<p>The parameter in which the formula of the distribution is written in a GLM.</p>
+</dd>
+</dl>
+<details>
+<summary>
+More
+</summary>
+A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">this answer on Cross Validated</a>.
+</details>
+<dl>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of values of mean of the outcome to <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, which is convenient for estimating the model parameters, as it allows us to use a modified version of least squares (iteratively reweighted least squares).</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values. For a Poisson GLM, that means non-negative counts.</p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function that translates the linear predictor to the mean of the outcome. For the Poisson distribution, this is the natural logarithm: <span class="math inline">\(\log(\lambda)\)</span></p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the Poisson distribution, this is the natural logarithm: <span class="math inline">\(\log(\lambda)\)</span>.</p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
 <p>The function that describes the relationship between the explanatory variable and the (transformed) mean of the outcome.</p>
 </dd>
-<dt><span class="math inline">\(x\)</span> — explanatory variable</dt>
-<dd>
-<p>The variable the outcome is regressed on.</p>
-</dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
+<p>Mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the mean count at <span class="math inline">\(x=0\)</span>.</p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
+<p>Change in the mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in mean count when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <font color="red"><i class="fa-brands fa-youtube"></i></font> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM?t=43" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fas fa-external-link"></i></a>).</p>
 </dd>
 </dl>
 </div>
@@ -2847,7 +2867,7 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>.</p>
+<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <font color="grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></font></p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Binom}\)</span> — binomial distribution</dt>
 <dd>
@@ -2857,29 +2877,37 @@ Symbols &amp; definitions
 <dd>
 <p>A binomial distribution with one trial simplifies to what is called the Bernoulli distribution.</p>
 </dd>
+<dt><span class="math inline">\(\theta\)</span> — natural parameter</dt>
+<dd>
+<p>The parameter in which the formula of the distribution is written in a GLM.</p>
+</dd>
+</dl>
+<details>
+<summary>
+More
+</summary>
+A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">this answer on Cross Validated</a>.
+</details>
+<dl>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of values of mean of the outcome to <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, which is convenient for estimating the model parameters, as it allows us to use a modified version of least squares (iteratively reweighted least squares).</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values. For a binomial GLM, that means probabilities between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.</p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function that translates the linear predictor to the mean of the outcome. For the binomial distribution, this is the logarithm of the odds, or logit: <span class="math inline">\(\log \left( \frac{p}{1-p} \right)\)</span></p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the binomial distribution, this is the logarithm of the odds, or logit: <span class="math inline">\(\log \left( \frac{p}{1-p} \right)\)</span>.</p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
 <p>The function that describes the relationship between the explanatory variable and the (transformed) mean of the outcome.</p>
 </dd>
-<dt><span class="math inline">\(x\)</span> — explanatory variable</dt>
-<dd>
-<p>The variable the outcome is regressed on.</p>
-</dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
+<p>Mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a binmial GLM with logit-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the mean odds at <span class="math inline">\(x=0\)</span>. No direct interpretation in terms of probability is possible.</p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
+<p>Change in the mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a binomial GLM with logit-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in mean odds when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <font color="red"><i class="fa-brands fa-youtube"></i></font> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM?t=101" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fas fa-external-link"></i></a>). No direct interpretation in terms of probability is possible.</p>
 </dd>
 </dl>
 </div>
@@ -3306,7 +3334,7 @@ Petal.Length 0.4089223 0.01889134 21.64602  1.038667e-47</code></pre>
 <p>Differences between <code>lm</code> and <code>glm</code> include:</p>
 <ul>
 <li><code>lm</code> shows a simple summary of the residuals, <code>glm</code> does not. This is because GLMs are not limited to normally distributed errors, so it does not necessarily help to inspect the residuals. <small>(For distributions other than normal, there is no possible decomposition in to <span class="math inline">\(\text{linear function} + \text{error}\)</span>.)</small></li>
-<li><code>lm</code> shows a <span class="math inline">\(t\)</span>-value, but <code>glm</code> a <span class="math inline">\(z\)</span>-value for the estimates. The reasons for this is a bit technical, but it boils down to the lack of an error term in a GLM. A longer explanation is included at the end.</li>
+<li><code>lm</code> always shows a <span class="math inline">\(t\)</span>-value. <code>glm</code> shows a <span class="math inline">\(t\)</span>-value for some distributions and a <span class="math inline">\(z\)</span>-value for others (particularly Poisson and binomial). The reasons for this is a bit technical, but it boils down to whether the spread of the outcome had to be estimated from the data. For the normal distribution it does (<span class="math inline">\(\sigma^2\)</span>), so <code>glm</code> shows <span class="math inline">\(t\)</span>-values here too. For Poisson and binomial GLMs, the spread follows from the mean, nothing extra is estimated, and <code>glm</code> shows <span class="math inline">\(z\)</span>-values. A longer explanation is included at the end.</li>
 <li><code>lm</code> shows <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{\mathrm{adjusted}}\)</span>, a GLM does not. This is because GLMs do not explain variance (<span class="math inline">\(\sigma^2\)</span>), but a more broad definition of spread, called <em>deviance</em>.</li>
 <li><code>glm</code> does not show the residual standard deviation for the same reason.</li>
 <li><code>lm</code> includes an omnibus <span class="math inline">\(F\)</span>-test. This test is not suitable for GLMs, so it is not included in the output of <code>glm</code>.</li>
@@ -3322,10 +3350,13 @@ Petal.Length 0.4089223 0.01889134 21.64602  1.038667e-47</code></pre>
 <summary>
 Technical explanation: <span class="math inline">\(t\)</span>-values vs <span class="math inline">\(z\)</span>-values
 </summary>
-<p>A <span class="math inline">\(t\)</span>-value follows a <span class="math inline">\(t\)</span>-distribution, a <span class="math inline">\(z\)</span>-value a normal distribution.</p>
-<p>In an ordinary linear model, we make assumptions about the <em>error</em> (<span class="math inline">\(\epsilon\)</span>). If the error is truly normally distributed, then the <em>residual</em> (the ‘estimate’ of the error) follows an exact, known distribution, namely, a <span class="math inline">\(t\)</span>-distribution with degrees of freedom equal to the residual degrees of freedom.</p>
-<p>By contrast, a GLM <em>cannot</em> be decomposed into <span class="math inline">\(\text{linear function} + \text{error}\)</span>. Instead, the assumptions are made about the conditional distribution of the outcome (<span class="math inline">\(y\)</span>). Hence, the <span class="math inline">\(p\)</span>-values shown in the regression table of a GLM are based on something else entirely: Asymptotically (if <span class="math inline">\(n \to \infty\)</span>), the distribution of the <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">maximum likelihood estimator</a> of <span class="math inline">\(\beta\)</span> tends to a normal distribution, irrespective of the type of GLM distribution family, and so a <span class="math inline">\(z\)</span>-value is asymptotically justified, as long as the model assumptions hold.</p>
-<p>In practice, model assumptions rarely hold exactly. Hence, this technical difference is not so important, and there also exist better, more general methods of obtaining <span class="math inline">\(p\)</span>-values and confidence intervals, like <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>.</p>
+<p>The test statistic (<span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span>) of a regression table is an estimate divided by its standard error. This standard error depends on the spread of the outcome:</p>
+<ul>
+<li>If the spread is presumed <strong>known</strong>, the statistic is compared to a normal distribution (a <span class="math inline">\(z\)</span>-value). This is the case for Poisson (<span class="math inline">\(\text{mean}=\text{variance}=\lambda\)</span>) and binomial (<span class="math inline">\(\text{variance}= np(1-p)\)</span>).</li>
+<li>If the spread is <strong>estimated</strong>, this adds uncertainty. The statistic is then compared to a <span class="math inline">\(t\)</span>-distribution with the residual degrees of freedom, whose heavier tails account for that extra uncertainty. This is the case for normal, but also gamma, quasi-Poisson and quasi-binomial GLMs.</li>
+</ul>
+<p>Try for example, fittig one of the Poisson GLM examples with <code>family = "quasipoisson"</code>. The <span class="math inline">\(z\)</span>-values become <span class="math inline">\(t\)</span>-values, because the dispersion is now estimated separately.</p>
+<p>The <span class="math inline">\(t\)</span>-distribution is exact only for the normal distribution. For all other GLMs, both <span class="math inline">\(t\)</span> and <span class="math inline">\(z\)</span> are large-sample approximations. In practice, model assumptions rarely hold exactly. Hence, this technical difference is not so important, and there also exist better, more general methods of obtaining <span class="math inline">\(p\)</span>-values and confidence intervals, like <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>.</p>
 </details>
 </div>
 </div>
