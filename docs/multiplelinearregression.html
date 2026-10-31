@@ -66,6 +66,8 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-ccb84b75c776df475906fca1b484ed91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -433,8 +435,17 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#apply-mlr" id="toc-apply-mlr" class="nav-link active" data-scroll-target="#apply-mlr"><span class="header-section-number">3.1</span> Apply your knowledge</a>
+  <ul class="collapse">
+  <li><a href="#practice-reading-regression-tables" id="toc-practice-reading-regression-tables" class="nav-link" data-scroll-target="#practice-reading-regression-tables"><span class="header-section-number">3.1.1</span> Practice reading regression tables</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -616,6 +627,13 @@ Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
 </div>
 <p>Contrary to one-on-one analyses, multiple regression can simultaneously take into account the effect of multiple contributing factors. This allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables, which avoids the phenomena described above.</p>
 </details>
+<section id="apply-mlr" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="apply-mlr"><span class="header-section-number">3.1</span> Apply your knowledge</h2>
+<section id="practice-reading-regression-tables" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="practice-reading-regression-tables"><span class="header-section-number">3.1.1</span> Practice reading regression tables</h3>
+<p>Before analyzing a data set yourself, practice reading regression tables using simulated examples:</p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/" class="btn btn-outline-primary" role="button" target="_blank" rel="noreferrer noopener">Open the regression tables app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+<p><small><span class="text-red"><strong>Note</strong></span>: This app runs entirely in your browser. The first time you open it, your browser downloads R and the packages the app needs (about 50 MB), which can take a minute or more on a slow connection. Later visits start faster, because your browser keeps most of these files.</small></p>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -656,6 +674,8 @@ Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline">C. R. Charig, D. R. Webb, S. R. Payne, and J. E. Wickham, <span>“Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy.”</span> <em>BMJ</em>, vol. 292, no. 6524, pp. 879–882, Mar. 1986, doi: <a href="https://doi.org/10.1136/bmj.292.6524.879">10.1136/bmj.292.6524.879</a>.</div>
 </div>
 </div>
+</section>
+</section>
 
 </main> <!-- /main -->
 <style>
