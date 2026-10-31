@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Multiple Linear Regression – Applied Statistics</title>
+<title> Multiple Linear Regression – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./datamanagement.html" rel="next">
+<link href="./multipleexplanatoryvariables.html" rel="next">
 <link href="./GLM.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -63,11 +63,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ccb84b75c776df475906fca1b484ed91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-865ba35b223e3b33f5831c2865d743f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-90f1cbddf09b1d9fb4e522fa3df09eab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-865ba35b223e3b33f5831c2865d743f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -309,7 +307,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regressionanalysis.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</a></li><li class="breadcrumb-item"><a href="./multiplelinearregression.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiplelinearregression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -374,8 +372,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./regressionanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</span></a>
+            <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -383,8 +381,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  <a href="./LM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -393,10 +391,21 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  <a href="./multipleexplanatoryvariables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Explanatory Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,11 +414,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./datamanagement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-grey"><i class="fas fa-database"></i></span> Data Management</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tidy.html" class="sidebar-item-text sidebar-link">
@@ -435,25 +444,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#apply-mlr" id="toc-apply-mlr" class="nav-link active" data-scroll-target="#apply-mlr"><span class="header-section-number">3.1</span> Apply your knowledge</a>
-  <ul class="collapse">
-  <li><a href="#practice-reading-regression-tables" id="toc-practice-reading-regression-tables" class="nav-link" data-scroll-target="#practice-reading-regression-tables"><span class="header-section-number">3.1.1</span> Practice reading regression tables</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regressionanalysis.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</a></li><li class="breadcrumb-item"><a href="./multiplelinearregression.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></h1>
+<h1 class="title"><span id="mlr" class="quarto-section-identifier"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></h1>
 </div>
 
 
@@ -492,7 +492,7 @@ Why not just several one-on-one analyses?
 <img src="multiplelinearregression_files/figure-html/fig-ovb-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the model.
+Figure&nbsp;1: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the model.
 </figcaption>
 </figure>
 </div>
@@ -525,7 +525,7 @@ Example
 <img src="multiplelinearregression_files/figure-html/fig-confounding-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the model.
+Figure&nbsp;2: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the model.
 </figcaption>
 </figure>
 </div>
@@ -558,7 +558,7 @@ Example
 <img src="multiplelinearregression_files/figure-html/fig-simpson-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: Observed trend excluding (left) and including (right) a grouping variable (<span class="math inline">\(x_2\)</span>).
+Figure&nbsp;3: Observed trend excluding (left) and including (right) a grouping variable (<span class="math inline">\(x_2\)</span>).
 </figcaption>
 </figure>
 </div>
@@ -577,11 +577,11 @@ Example
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A study on kidney stones compared two methods for removal: open surgery and percutaneous nephrolithotomy (PN) <span class="citation" data-cites="charig1986"><a href="references.html#ref-charig1986" role="doc-biblioref">[12]</a></span>. Surprisingly, the less invasive PN method displayed a higher success rate than open surgery.</p>
-<p>As shown in <a href="#tbl-simpson" class="quarto-xref">Table&nbsp;<span>3.1</span></a>, this is an example of Simpson’s paradox: Separating by kidney stone size reveals that open surgery outperforms PN for both situations individually, but not when comparing the totals.</p>
+<p>As shown in <a href="#tbl-simpson" class="quarto-xref">Table&nbsp;<span>1</span></a>, this is an example of Simpson’s paradox: Separating by kidney stone size reveals that open surgery outperforms PN for both situations individually, but not when comparing the totals.</p>
 <div id="tbl-simpson" class="cell plain quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[10,20,20]">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
+Table&nbsp;1: Success rates of kidney stone removal methods by size.
 </figcaption>
 <div aria-describedby="tbl-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="cell plain caption-top table">
@@ -627,13 +627,6 @@ Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
 </div>
 <p>Contrary to one-on-one analyses, multiple regression can simultaneously take into account the effect of multiple contributing factors. This allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables, which avoids the phenomena described above.</p>
 </details>
-<section id="apply-mlr" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="apply-mlr"><span class="header-section-number">3.1</span> Apply your knowledge</h2>
-<section id="practice-reading-regression-tables" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="practice-reading-regression-tables"><span class="header-section-number">3.1.1</span> Practice reading regression tables</h3>
-<p>Before analyzing a data set yourself, practice reading regression tables using simulated examples:</p>
-<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/" class="btn btn-outline-primary" role="button" target="_blank" rel="noreferrer noopener">Open the regression tables app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
-<p><small><span class="text-red"><strong>Note</strong></span>: This app runs entirely in your browser. The first time you open it, your browser downloads R and the packages the app needs (about 50 MB), which can take a minute or more on a slow connection. Later visits start faster, because your browser keeps most of these files.</small></p>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -674,8 +667,6 @@ Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline">C. R. Charig, D. R. Webb, S. R. Payne, and J. E. Wickham, <span>“Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy.”</span> <em>BMJ</em>, vol. 292, no. 6524, pp. 879–882, Mar. 1986, doi: <a href="https://doi.org/10.1136/bmj.292.6524.879">10.1136/bmj.292.6524.879</a>.</div>
 </div>
 </div>
-</section>
-</section>
 
 </main> <!-- /main -->
 <style>
@@ -1257,8 +1248,8 @@ Table&nbsp;3.1: Success rates of kidney stone removal methods by size.
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./datamanagement.html" class="pagination-link" aria-label="<span class=&quot;text-grey&quot;><i class=&quot;fas fa-database&quot;></i></span> Data Management">
-        <span class="nav-page-text"><span class="text-grey"><i class="fas fa-database"></i></span> Data Management</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./multipleexplanatoryvariables.html" class="pagination-link" aria-label="Multiple Explanatory Variables">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Explanatory Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

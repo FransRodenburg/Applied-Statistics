@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Simple Linear Regression – Applied Statistics</title>
+<title> Simple Linear Regression – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./GLM.html" rel="next">
-<link href="./regressionanalysis.html" rel="prev">
+<link href="./LM.html" rel="next">
+<link href="./binomialdistribution.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -78,11 +43,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-ccb84b75c776df475906fca1b484ed91.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-0e95fbe06eed3513762bdd90fad6ec96.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-865ba35b223e3b33f5831c2865d743f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-90f1cbddf09b1d9fb4e522fa3df09eab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-865ba35b223e3b33f5831c2865d743f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -112,35 +75,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -324,7 +258,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regressionanalysis.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</a></li><li class="breadcrumb-item"><a href="./simplelinearregression.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simplelinearregression.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -389,8 +323,8 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./regressionanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</span></a>
+            <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -398,8 +332,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  <a href="./LM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -408,10 +342,21 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  <a href="./multipleexplanatoryvariables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Explanatory Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -420,11 +365,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./datamanagement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-grey"><i class="fas fa-database"></i></span> Data Management</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tidy.html" class="sidebar-item-text sidebar-link">
@@ -450,29 +395,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#slm-lecture" id="toc-slm-lecture" class="nav-link active" data-scroll-target="#slm-lecture"><span class="header-section-number">1.1</span> Lecture</a></li>
-  <li><a href="#summary-lm" id="toc-summary-lm" class="nav-link" data-scroll-target="#summary-lm"><span class="header-section-number">1.2</span> Summary</a></li>
-  <li><a href="#quiz-lm" id="toc-quiz-lm" class="nav-link" data-scroll-target="#quiz-lm"><span class="header-section-number">1.3</span> Quiz</a></li>
-  <li><a href="#apply-lm" id="toc-apply-lm" class="nav-link" data-scroll-target="#apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</a>
-  <ul class="collapse">
-  <li><a href="#practice-reading-diagnostic-plots" id="toc-practice-reading-diagnostic-plots" class="nav-link" data-scroll-target="#practice-reading-diagnostic-plots"><span class="header-section-number">1.4.1</span> Practice reading diagnostic plots</a></li>
-  <li><a href="#perform-a-full-analysis" id="toc-perform-a-full-analysis" class="nav-link" data-scroll-target="#perform-a-full-analysis"><span class="header-section-number">1.4.2</span> Perform a full analysis</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regressionanalysis.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</a></li><li class="breadcrumb-item"><a href="./simplelinearregression.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="slm" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></h1>
+<h1 class="title"><span id="slr" class="quarto-section-identifier"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></h1>
 </div>
 
 
@@ -489,736 +421,9 @@ window.Quarto = {
 </header>
 
 
-<p><small><i>Linear regression with a single explanatory variable.</i></small></p>
-<section id="slm-lecture" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="slm-lecture"><span class="header-section-number">1.1</span> Lecture</h2>
-<p>Watch the videos on linear regression and test your knowledge through the <a href="#quiz-lm">quiz</a> questions. Then, <a href="#apply-lm">apply your knowledge</a>, by performing a complete analysis. The <a href="#summary-lm">summary</a> is meant as reference material to answer the quiz questions, should you get stuck.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">1. Introduction</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">2. Assumptions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">3. Regression Table</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">4. Diagnostics</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/LGm_dO8w7Fc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/2DmnEQwwwNQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/f2ajESgqtcU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/_B6VDSa9N60" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</div>
-</div>
-</div>
-<p><small><a href="https://youtube.com/playlist?list=PLl4b1XM725OfDg-0FeWlcF2sBTAveFBwY&amp;si=4xU6sb3WVkTNb_AZ" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open playlist in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
-</section>
-<section id="summary-lm" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="summary-lm"><span class="header-section-number">1.2</span> Summary</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-slm" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-slm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="simplelinearregression_files/figure-html/fig-slm-1.png" class="img-fluid figure-img" width="2100">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.1: Example of a simple linear model. <small>(Height and weight of 50 individuals.)</small>
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Mathematical formula:</p>
-<p><span class="math display">\[\begin{align}
-  y &amp;= \beta_0 + \beta_1 \cdot x + \epsilon \\ \tag{1}\label{slm}\\
-  \epsilon &amp;\sim \mathcal{N}(0, \, \sigma^2)
-\end{align}\]</span></p>
-<p>Code:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, x).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><small>Note: You have to include an intercept manually using <code>x = sm.add_constant(x)</code>.</small></p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Symbols &amp; definitions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<dl>
-<dt><span class="math inline">\(y\)</span> — response variable</dt>
-<dd>
-<p>The outcome.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\hat{y}\)</span> is the predicted outcome by the model, also called the ‘fitted value.’</p>
-</dd>
-<dt><span class="math inline">\(x\)</span> — explanatory variable</dt>
-<dd>
-<p>The variable the outcome is regressed on.</p>
-</dd>
-<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
-<dd>
-<p>Value of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\beta_0\)</span> is the theoretical value.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\hat{\beta}_0\)</span> is its estimate.</p>
-</dd>
-<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
-<dd>
-<p>Change in the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\beta_1\)</span> is the theoretical value.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\hat{\beta}_1\)</span> is its estimate.</p>
-</dd>
-<dt><span class="math inline">\(\epsilon\)</span> — error</dt>
-<dd>
-<p>Difference between the true population values of the outcome and those predicted by the true model.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\epsilon\)</span> is the true error.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\hat{\epsilon}\)</span> is sometimes used to denote the residual, an ‘estimate’ of the error.</p>
-</dd>
-<dt><span class="math inline">\(\mathcal{N}\)</span> — normal distribution</dt>
-<dd>
-<p>See <a href="normaldistribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></span> Normal Distribution</a>.</p>
-</dd>
-<dd>
-<p><span class="math inline">\(\epsilon \sim \mathcal{N}(0, \, \sigma^2)\)</span> means: The error follows a normal distribution with mean <span class="math inline">\(\mu = 0\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (some unknown variance).</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Explanation
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Simple linear regression models the relationship between two continuous<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> variables, using an <span class="text-coral"><b>intercept</b></span> and a <span class="text-steelblue"><b>slope</b></span>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-intercept-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-intercept-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="simplelinearregression_files/figure-html/fig-intercept-slope-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intercept-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.2: The intercept is the value of <span class="math inline">\(y\)</span>, when <span class="math inline">\(x=0\)</span>. The slope is the average change in <span class="math inline">\(y\)</span>, when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span>.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>A model is only an approximation and there will always be individual differences from the ‘average’ trend that has been estimated. These differences are called the <span class="text-fc3131"><b>residuals</b></span>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-slmresid" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-slmresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="simplelinearregression_files/figure-html/fig-slmresid-1.png" class="img-fluid figure-img" width="2100">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slmresid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.3: Residual of a simple linear model.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<p>The intercept and slope are estimated by minimizing the sum of squared residuals, a technique called <strong>ordinary least squares</strong>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-slmOLS" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-slmOLS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="simplelinearregression_files/figure-html/fig-slmOLS-1.png" class="img-fluid figure-img" width="2100">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-slmOLS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.4: Squared residuals give porportionally more weight to farther observations.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<p>The results of a linear regression are summarized in a <a href="https://www.youtube.com/watch?v=f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> regression table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, which provides insight into the parameter estimates, their uncertainty, and some basic measures of how well the model fits the data:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> weight, <span class="at">data =</span> DF)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = height ~ weight, data = DF)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--20.076  -7.447   1.529   6.893  26.205 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 132.1493     9.5791  13.796 5.19e-14 ***
-weight        0.4981     0.1154   4.318 0.000178 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.67 on 28 degrees of freedom
-Multiple R-squared:  0.3997,    Adjusted R-squared:  0.3783 
-F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DF <span class="op">=</span> pd.read_csv(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>LM <span class="op">=</span> sm.OLS(DF[<span class="st">'height'</span>], sm.add_constant(DF[<span class="st">'weight'</span>])).fit()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LM.summary2())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                 Results: Ordinary least squares
-=================================================================
-Model:              OLS              Adj. R-squared:     0.378   
-Dependent Variable: height           AIC:                234.5127
-Date:               2026-10-31 14:43 BIC:                237.3151
-No. Observations:   30               Log-Likelihood:     -115.26 
-Df Model:           1                F-statistic:        18.64   
-Df Residuals:       28               Prob (F-statistic): 0.000178
-R-squared:          0.400            Scale:              136.30  
-------------------------------------------------------------------
-            Coef.    Std.Err.     t     P&gt;|t|    [0.025    0.975] 
-------------------------------------------------------------------
-const      132.1493    9.5791  13.7955  0.0000  112.5273  151.7712
-weight       0.4981    0.1154   4.3178  0.0002    0.2618    0.7344
------------------------------------------------------------------
-Omnibus:              0.339        Durbin-Watson:           2.521
-Prob(Omnibus):        0.844        Jarque-Bera (JB):        0.508
-Skew:                 0.156        Prob(JB):                0.776
-Kurtosis:             2.444        Condition No.:           373  
-=================================================================
-Notes:
-[1] Standard Errors assume that the covariance matrix of the
-errors is correctly specified.</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr>
-<p>A simple linear model makes several key <strong>assumptions</strong> which are required for valid inference:</p>
-<ul>
-<li>The observations are <strong>independent</strong>.</li>
-<li>The relationship between the outcome and the explanatory variable is <strong>linear</strong>.</li>
-<li>The error follows a <strong>normal distribution</strong>.</li>
-<li>The error has a <strong>constant variance</strong> along the regression line.</li>
-</ul>
-<p>And while not really an assumption, also important:</p>
-<ul>
-<li>There are <strong>no influential outliers</strong> with unreasonably large influence on the estimates.</li>
-</ul>
-<p>Independent measurements must be apparent from the study design. The rest can be checked through <strong>visual diagnostics</strong>. A quick visual summary of what each plot is used for:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Refer to the <a href="#apply-lm">tutorial</a> at the end of the chapter.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="quiz-lm" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="quiz-lm"><span class="header-section-number">1.3</span> Quiz</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p>Which of the following is implicitly assumed in simple linear regression? <em>(choose one)</em></p>
-<p><strong>A.</strong> The data are normally distributed<br>
-<strong>B.</strong> The outcome is normally distributed<br>
-<strong>C.</strong> The residuals are normally distributed<br>
-<strong>D.</strong> The response variable is normally distributed</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>See equation <span class="math inline">\(\eqref{slm}\)</span>.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>Which of the following is implicitly assumed in simple linear regression? <em>(choose one)</em></p>
-<p><strong>A.</strong> The data are normally distributed<br>
-<strong>B.</strong> The outcome is normally distributed<br>
-<strong>C. The residuals are normally distributed</strong><br>
-<strong>D.</strong> The response variable is normally distributed</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The normality assumption is about the <em>error</em>, the vertical distances along the regression line. Our ‘estimate’ of the error is called the residual.</p>
-<p>Simple linear regression makes no assumptions about your entire data set, nor your outcome variable. Response variable is just a synonym for outcome.</p>
-<hr>
-<p>Another correct way to phrase the assumption is that the outcome is <em>conditionally</em> normally distributed. The condition here is the value of the explanatory variable. Namely, we can rewrite equation <span class="math inline">\(\eqref{slm}\)</span> as follows:</p>
-<p><span class="math display">\[\begin{align}
-  y \sim \mathcal{N}(\beta_0 + \beta_1 \cdot x, \, \sigma^2)
-\end{align}\]</span></p>
-<p>This says: “The outcome follows a normal distribution with a mean that depends on the value of <span class="math inline">\(x\)</span>.”</p>
-<p>Don’t worry if you do not fully understand this yet, as it will be covered at length in the next chapter.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<p>In the context of simple linear regression, a confidence interval shows:</p>
-<p><strong>A.</strong> Where to expect current observations<br>
-<strong>B.</strong> Where to expect future observations<br>
-<strong>C.</strong> A plausible range of values for the intercept and slope<br>
-<strong>D.</strong> A 95% confidence interval has a 95% chance to contain the true value for the intercept/slope</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is mentioned in the <a href="https://youtu.be/LGm_dO8w7Fc" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> first video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, and more thoroughly explained in a separate video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p>In the context of simple linear regression, a confidence interval shows:</p>
-<p><strong>A.</strong> Where to expect current observations<br>
-<strong>B.</strong> Where to expect future observations<br>
-<strong>C. A plausible range of values for the intercept and slope</strong><br>
-<strong>D.</strong> A 95% confidence interval has a 95% chance to contain the true intercept/slope</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>A.</strong> You don’t need an interval for this, just look at the observations.<br>
-<strong>B.</strong> This is the interpretation of a prediction interval.<br>
-<strong>C.</strong> This is a loose interpretation of a confidence interval, I recommend using.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><br>
-<strong>D.</strong> This is the interpretation of a Bayesian credible interval.</p>
-<p>For a more in depth explanation, please refer to the video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<p>Below is the output of a simple linear model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept)  4.817080  0.3375541 14.270542 5.668035e-07
-x           -2.016138  0.4487337 -4.492949 2.020849e-03</code></pre>
-</div>
-</div>
-<p>Which of the following best represents the model?</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Look at the <code>Estimate</code> column.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<p>Below is the output of a simple linear model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept)  4.817080  0.3375541 14.270542 5.668035e-07
-x           -2.016138  0.4487337 -4.492949 2.020849e-03</code></pre>
-</div>
-</div>
-<p>Option <b>C</b> best represents the model:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Filling in the estimates, the fitted model is:</p>
-<p><span class="math display">\[\begin{align}
-  \hat{y} = \texttt{4.817} - \texttt{2.016} \cdot x
-\end{align}\]</span></p>
-<p>The estimated slope is about <code>-2</code>, so the line should go down by 2 for every unit increase in <span class="math inline">\(x\)</span>.</p>
-<hr>
-<p>The intercept is the value of the outcome, if we set the explanatory variable to zero. You may have learned before that the intercept is where you ‘cross the <span class="math inline">\(y\)</span>-axis,’ but the figures are (intentionally) misleading to teach you an important nuance: The <span class="math inline">\(y\)</span>-axis <em>does not have to start at</em> <span class="math inline">\(0\)</span>.</p>
-<p>Below is the same figure, with a vertical line drawn at <span class="math inline">\(x=0\)</span>:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Question 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<p>Continuing on question 3, below is another part of the output of this model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Residual standard error: 1.051 on 8 degrees of freedom
-Multiple R-squared:  0.7162,    Adjusted R-squared:  0.6807 
-F-statistic: 20.19 on 1 and 8 DF,  p-value: 0.002021</code></pre>
-</div>
-</div>
-<p>Answer the following questions:</p>
-<ul>
-<li>This model explains a significant/non-significant part of the variance in the outcome.</li>
-<li>This model explains …% of the variance in the outcome.</li>
-<li>The original sample size was … and the model uses … degrees of freedom.</li>
-<li>The residuals have a standard deviation of ….</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is explained in the <a href="https://youtu.be/f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> third video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p>Continuing on question 3, below is another part of the output of the model:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Residual standard error: 1.051 on 8 degrees of freedom
-Multiple R-squared:  0.7162,    Adjusted R-squared:  0.6807 
-F-statistic: 20.19 on 1 and 8 DF,  p-value: 0.002021</code></pre>
-</div>
-</div>
-<p>Answer the following questions:</p>
-<ul>
-<li>This model explains a <strong>significant</strong>/non-significant part of the variance in the outcome.</li>
-<li>This model explains <strong>71.6</strong>% of the variance in the outcome.</li>
-<li>The original sample size was <strong>10</strong> and the model uses <strong>2</strong> degrees of freedom.</li>
-<li>The residuals have a standard deviation of <strong>1.05</strong>.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>The <span class="math inline">\(F\)</span>-test at the bottom compares the original spread in the outcome to the spread that remains around the regression line after fitting the model (i.e.&nbsp;the residual variance). Its <span class="math inline">\(p\)</span>-value is <span class="math inline">\(0.002\)</span>, which would be considered significant at most commonly used levels of significance, like <span class="math inline">\(\alpha = 0.05\)</span>, or <span class="math inline">\(\alpha = 0.01\)</span>.</li>
-<li>Variance explained is the interpretation of <span class="math inline">\(R^2\)</span>.</li>
-<li>The residual degrees of freedom are <code>8</code> according to the output. A simple linear model consists of an intercept and a slope, so the model uses 2 degrees of freedom. That means the original sample size was <span class="math inline">\(8 + 2 = 10\)</span>.</li>
-<li>The spread around the regression line is printed with the incorrect wording <code>residual standard error: 1.051</code>, as mentioned in the video. It should actually say <code>residual standard deviation: 1.051</code>.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Question 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
-<p>Below are some diagnostic plots for the model fitted above. Explain what each plot is for and comment on the results:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>The residuals vs fitted plot is used to assess the assumption of …. In this case it shows ….</li>
-<li>The QQ-plot is used to assess the assumptions of …. In this case it shows ….</li>
-<li>The scale-location plot is used to assess the assumption of …. In this case it shows ….</li>
-<li>The residuals vs leverage plot is used to assess …. In this case it shows ….</li>
-</ul>
-<p>Based on these diagnostic plots, I conclude ….</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is covered in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
-<p>Below are some diagnostic plots for the model fitted above. Explain what each plot is for and comment on the results:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="simplelinearregression_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>The residuals vs fitted plot is used to assess the assumption of <strong>linearity</strong>. In this case it shows <strong>a non-linear pattern, although that can be attributed to a single observation (4)</strong>.</li>
-<li>The QQ-plot is used to assess the assumptions of <strong>normality</strong>. In this case it shows <strong>left skew, indicated by the concave shape. However, the deviation from normality is within what is acceptable, according to the confidence band</strong>.</li>
-<li>The scale-location plot is used to assess the assumption of <strong>constant variance</strong>. In this case it shows <strong>no consistent upward or downward trend in the variance along the regression line</strong>.</li>
-<li>The residuals vs leverage plot is used to assess <strong>the presence and influence of outliers</strong>. In this case it shows <strong>a single outlying observation with high leverage (4)</strong>.</li>
-</ul>
-<p>Based on these diagnostic plots, I conclude <strong>observation 4 has a large influence on the parameter estimates and must be checked for validity</strong>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>While the diagnostic plots may suggest multiple issues, they are often symptoms of a single underlying problem. As explained in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, focus on identifying the main culprit, rather than attempting to address problems individually.</p>
-<hr>
-<p>When you identify an influential outlier, I recommend these steps in order:</p>
-<ol type="1">
-<li>Look up the observation in the dataset.
-<ul>
-<li>Is the value plausible? <small><span class="text-grey">(e.g., a negative height is not possible)</span></small></li>
-<li>Does stand out in other ways? <small><span class="text-grey">(e.g., also unusual in terms of location, time, etc.)</span></small></li>
-<li>Check any field notes, logs, or metadata. <small><span class="text-grey">(e.g., a sample accidentally left out overnight)</span></small></li>
-</ul></li>
-<li>If the value is valid, but outlying:
-<ul>
-<li>Consider modifying the model. <small><span class="text-grey">(e.g., add a non-linear term or spline)</span></small></li>
-<li>If changing the model is not appropriate—perhaps because there is strong theoretical foundation to assume a linear relationship—consider using robust standard errors. <small><span class="text-grey">(e.g., the <code>sandwich</code> package in R)</span></small></li>
-</ul></li>
-<li>Only remove the observation if:
-<ul>
-<li>It is clearly invalid. <small><span class="text-grey">(e.g., misplaced decimal separator)</span></small></li>
-<li>There is strong contextual evidence that it is not representative of the rest of the data. <small><span class="text-grey">(e.g., a single patient of advanced age)</span></small></li>
-</ul></li>
-</ol>
-<p>Inexperienced analysts are often quick to filter and discard observations, impute missing values, etc., but these are dangerous actions that can severely bias statistical inference. Instead, approach these decisions with caution, or consult with an expert.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="apply-lm" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</h2>
-<section id="practice-reading-diagnostic-plots" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="practice-reading-diagnostic-plots"><span class="header-section-number">1.4.1</span> Practice reading diagnostic plots</h3>
-<p>Before analyzing a data set yourself, practice recognizing problems in diagnostic plots using simulated examples:</p>
-<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/model-diagnostics/" class="btn btn-outline-primary" role="button" target="_blank" rel="noreferrer noopener">Open the diagnostics app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
-<p><small><span class="text-red"><strong>Note</strong></span>: This app runs entirely in your browser. The first time you open it, your browser downloads R and the packages the app needs (about 50 MB), which can take a minute or more on a slow connection. Later visits start faster, because your browser keeps most of these files.</small></p>
-</section>
-<section id="perform-a-full-analysis" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="perform-a-full-analysis"><span class="header-section-number">1.4.2</span> Perform a full analysis</h3>
-<p>Below you can find a worked out example (tutorial) and a dataset for you to analyze yourself (exercise):</p>
-<ul>
-<li>Tutorial (<a href="tutorials/tutorial-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/plant-dimensions.csv">data <i class="fas fa-download"></i></a>)</li>
-<li>Exercise (<a href="exercises/exercise-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/immunoglobulin.csv">data <i class="fas fa-download"></i></a>)</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-How to read data in R
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Save the data and qmd file <strong>in the same location</strong> on your computer.</li>
-<li>Open the qmd file in RStudio.</li>
-<li>Set working directory to source file location.<br><small>(<strong>Session</strong> &gt; <strong>Set Working Directory</strong> &gt; <strong>To Source File Location</strong>)</small></li>
-<li>R will now read from the folder the qmd file is located, so you can just use <code>read.csv("name-of-data.csv")</code>.</li>
-</ol>
-</div>
-</div>
-</div>
+<p>This chapter introduces the basics of regression analysis, which we will then use for estimation, comparisons, and prediction.</p>
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p><strong>Continuous</strong> can take on any value within a range, like <span class="math inline">\(1,\, 1.01,\, 1.001,\, \dots\)</span><br>
-<strong>Discrete</strong> can only take on certain values, like <span class="math inline">\(1,\, 2,\, 3,\, \dots\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>It is called <em>ordinary</em> in contrast to the many adaptation that exist, like weighted least squares, partial least squares, etc.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Purists may object to this definition, but as shown in the end of the video on confidence intervals, this interpretation is often very reasonable for the types of models you will learn about in this course.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
 
 </main> <!-- /main -->
 <style>
@@ -1795,13 +1000,13 @@ How to read data in R
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./regressionanalysis.html" class="pagination-link" aria-label="<span class=&quot;text-33a02c&quot;><i class=&quot;fas fa-chart-line&quot;></i></span> Regression Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Regression Analysis</span>
+      <a href="./binomialdistribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-three&quot;></i></span> Binomial Distribution">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./GLM.html" class="pagination-link" aria-label="Generalized Linear Models">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./LM.html" class="pagination-link" aria-label="Ordinary Linear Models">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
