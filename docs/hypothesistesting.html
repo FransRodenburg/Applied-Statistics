@@ -525,7 +525,7 @@ Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is
 <li>Collect the data.</li>
 <li>Calculate a test statistic.</li>
 <li>Calculate the <span class="math inline">\(p\)</span>-value.</li>
-<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \leq \alpha\)</span>. <span class="text-gray">Otherwise, do not reject <span class="math inline">\(H_0\)</span>.</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \leq \alpha\)</span>. <span class="text-grey">Otherwise, do not reject <span class="math inline">\(H_0\)</span>.</span></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -560,7 +560,7 @@ Example: the blood pressure trial
   \label{trueSEM}
   \tag{1}\mathrm{SE}_{\bar{y}} = \frac{\sigma}{\sqrt{n}}
 \end{align}\]</span></p>
-<p>In practice, we do not know <span class="math inline">\(\sigma\)</span>, so we can <em>estimate</em> the standard error, by plugging in an estimate of it:</p>
+<p>In practice, we do not know <span class="math inline">\(\sigma\)</span>, so we can <em>estimate</em> the standard error, by plugging in an estimate <span class="math inline">\(s\)</span>:</p>
 <p><span class="math display">\[\begin{align}
   \label{SEM}
   \tag{2}\hat{\mathrm{SE}}_{\bar{y}} = \frac{s}{\sqrt{n}}
@@ -603,9 +603,26 @@ Figure&nbsp;2: Distribution of the <span class="math inline">\(t\)</span>-value 
 <section id="CI" class="level3">
 <h3 class="anchored" data-anchor-id="CI">Confidence interval</h3>
 <p><small><em>Which values are plausible?</em></small></p>
-<p>A <span class="math inline">\(p\)</span>-value only tells us whether one particular value, <span class="math inline">\(\mu_0 = 0\)</span>, can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="math inline">\(\mu\)</span>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> It is good practice to report not only the <span class="math inline">\(p\)</span>-value, but also the effect size and a confidence interval.</p>
+<p>A <span class="math inline">\(p\)</span>-value only tells us whether one particular value (<span class="math inline">\(\mu_0 = 0\)</span>) can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="math inline">\(\mu\)</span>. It is good practice to report not only the <span class="math inline">\(p\)</span>-value, but also the effect size and a confidence interval.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why 95% confidence intervals?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you set a significance level of <span class="math inline">\(\alpha\)</span>, that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <strong>95%</strong> confidence intervals.</p>
+<p>The 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+</div>
+</div>
+</div>
 <p>For our clinical trial, the 95% confidence interval runs from -8.4 to -1.2 mmHg. Zero lies outside it, which here corresponds to <span class="math inline">\(p \leq 0.05\)</span>. Unlike the <span class="math inline">\(p\)</span>-value, however, the interval also shows how large the effect could plausibly be.</p>
-<p>Whether an effect matters in practice is a subject-matter judgment, not a statistical one. Once that is decided, the interval can distinguish situations that a <span class="math inline">\(p\)</span>-value cannot:</p>
+<p>Whether an effect matters in practice is a subject-matter judgment, not a statistical one (e.g., a drop of less than 5 mmHg may not be worth taking a medicine). Once that is decided, the interval can distinguish situations that a <span class="math inline">\(p\)</span>-value cannot:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ci" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -614,7 +631,7 @@ Figure&nbsp;2: Distribution of the <span class="math inline">\(t\)</span>-value 
 <img src="hypothesistesting_files/figure-html/fig-ci-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% confidence intervals. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice. The <span class="math inline">\(p\)</span>-values alone cannot distinguish the top two studies from each other, nor the bottom two. The value <span class="math inline">\(\delta\)</span> is context-dependent (e.g., if a drop of less than 10 mmHg is not worth taking a medicine, then <span class="math inline">\(\delta = 10\)</span>).
+Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% confidence intervals. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.
 </figcaption>
 </figure>
 </div>
@@ -641,13 +658,13 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(p \leq \alpha\)</span></td>
-<td>True positive (<span class="math inline">\(1 - \beta\)</span>)</td>
-<td>False positive (<span class="math inline">\(\alpha\)</span>)</td>
+<td>True positive <span class="text-nowrap">(<span class="math inline">\(1 - \beta\)</span>)</span></td>
+<td>False positive <span class="text-nowrap">(<span class="math inline">\(\alpha\)</span>)</span></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(p &gt; \alpha\)</span></td>
-<td>False negative (<span class="math inline">\(\beta\)</span>)</td>
-<td>True negative (<span class="math inline">\(1 - \alpha\)</span>)</td>
+<td>False negative <span class="text-nowrap">(<span class="math inline">\(\beta\)</span>)</span></td>
+<td>True negative <span class="text-nowrap">(<span class="math inline">\(1 - \alpha\)</span>)</span></td>
 </tr>
 </tbody>
 </table>
@@ -657,13 +674,13 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 <h2 class="anchored" data-anchor-id="limitations-of-hypothesis-testing">Limitations of hypothesis testing</h2>
 <p>Hypothesis testing is ubiquitous in science, which is why it is important that you understand statistical significance, power, and false positives/negatives. It is also a highly criticized practice, because it is very susceptible to misuse.</p>
 <ul>
-<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="math inline">\(\alpha\)</span>, and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven. <span class="text-gray">(See <a href="#error-rates">Error rates</a>.)</span></li>
-<li>A test relies on assumptions (e.g., independent observations). If these do not hold, the <span class="math inline">\(p\)</span>-value loses its meaning. <span class="text-gray">(These will be covered in the following chapters.)</span></li>
+<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="math inline">\(\alpha\)</span>, and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven. <span class="text-grey">(See <a href="#error-rates">Error rates</a>.)</span></li>
+<li>A test relies on assumptions (e.g., independent observations). If these do not hold, the <span class="math inline">\(p\)</span>-value loses its meaning. <span class="text-grey">(These will be covered in the following chapters.)</span></li>
 <li>A test relies on a fixed plan. The hypotheses, <span class="math inline">\(\alpha\)</span> and the analysis must be chosen before looking at the data. Otherwise, <span class="math inline">\(p\)</span>-values and <span class="math inline">\(\alpha\)</span> lose their meaning.</li>
 </ul>
-<p>In addition, a lot of misuse stems from misunderstanding <span class="math inline">\(p\)</span>-values. Before interpreting one yourself, read through the list below.</p>
+<p>In addition, a lot of misuse stems from misunderstanding <span class="math inline">\(p\)</span>-values and confidence intervals. Hence, the list below contains some of the most common misconceptions.</p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -672,7 +689,7 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Misinterpretations of <span class="math inline">\(p\)</span>-values are widespread.<span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span> Below are some of the most frequent, based on published research and surveys of researchers.<span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span></p>
 <dl>
@@ -712,11 +729,50 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Common misconceptions about confidence intervals
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt>“95% of the observations lie in the confidence interval.”</dt>
+<dd>
+<p>A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="math inline">\(\bar{y}\)</span>, not the spread of the observations. As the sample size grows, the interval narrows, but the observations remain as spread out as before.</p>
+</dd>
+<dt>“There is a 95% probability that the true value lies in this interval.”</dt>
+<dd>
+<p>The 95% describes the method, not a single interval: If the study were repeated many times, 95% of the intervals would contain the true value. A single interval either contains it or not, and we cannot tell which.</p>
+</dd>
+<dt>“Values inside the interval are plausible, values outside it are ruled out.”</dt>
+<dd>
+<p>The boundaries are no sharper than the significance level they come from. Values just outside the interval are hardly less compatible with the data than values just inside it.</p>
+</dd>
+<dt>“If two confidence intervals overlap, the difference between them is not significant.”</dt>
+<dd>
+<p>Two 95% confidence intervals can overlap while the difference between the estimates is significant. To compare two estimates, look at the confidence interval of their difference.</p>
+</dd>
+<dt>“A narrow interval means the estimate is accurate.”</dt>
+<dd>
+<p>The interval only reflects sampling variation, and only if the model assumptions hold. It says nothing about bias, for example from a flawed study design.</p>
+</dd>
+</dl>
+<p>For the precise meaning of a confidence interval, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="quiz" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
-<p>Work in progress. Check back later.</p>
-<!-- Quiz in a panel-tabset with Question, Hint, Try it in browser and Answer tabs, as in the distribution chapters. -->
+<p>Practice reasoning about error rates using simulated trials:</p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/error-rates/" class="btn btn-outline-primary" role="button" target="_blank" rel="noreferrer noopener">Open the error rates app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+<p><small><span class="text-red"><strong>Note</strong></span>: This app runs entirely in your browser. The first time you open it, your browser downloads R and the packages the app needs (about 50 MB), which can take a minute or more on a slow connection. Later visits start faster, because your browser keeps most of these files.</small></p>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -767,96 +823,180 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 <li id="fn4"><p>We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>The <span class="math inline">\(t\)</span>-distribution resembles the <a href="./normaldistribution.html">normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="math inline">\(s\)</span>. With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="math inline">\(t\)</span>-distribution approaches the normal distribution.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>“Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
 </main> <!-- /main -->
 <style>
+
 .dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
+
 .dm-scheme .dropdown-item.active { font-weight: 700; }
+
 </style>
+
 <script>
+
 // Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
+
 // Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
+
 (function () {
+
   // webR editors are created light and switch only when the body class changes, so on a
+
   // page that loads in dark mode they would stay light. Set the dark editor theme after
+
   // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
+
   // script and cannot be called from here; Monaco's theme applies to all editors.)
+
   if (document.getElementById("qwebr-monaco-editor-init")) {
+
     var t = 0;
+
     var id = setInterval(function () {
+
       var me = window.monaco && window.monaco.editor;
+
       if (!me && ++t < 480) return;
+
       clearInterval(id);
+
       if (!me) return;
+
       var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
+
       me.onDidCreateEditor(function () { setTimeout(fix, 0); });
+
       fix();
+
     }, 250);
+
   }
 
+
+
   // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
+
   // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
+
   // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
+
   var K = "quarto-color-scheme";
+
   var ok = false;
+
   try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
+
   var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
+
   if (!ok || !toggles.length) return;
+
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
+
   var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
+
   var name = { light: "Light", dark: "Dark", system: "System" };
+
   function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
+
   function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
+
   function show() {
+
     var c = choice();
+
     document.querySelectorAll(".dm-scheme").forEach(function (m) {
+
       var b = m.querySelector(".dm-btn");
+
       b.querySelector("i").className = "bi " + icon[c];
+
       b.setAttribute("aria-label", "Color scheme: " + name[c]);
+
       m.querySelectorAll(".dropdown-item").forEach(function (it) {
+
         var on = it.dataset.choice === c;
+
         it.classList.toggle("active", on);
+
         it.setAttribute("aria-checked", on ? "true" : "false");
+
       });
+
     });
+
   }
+
   function apply(dark) {
+
     localAlternateSentinel = dark ? "alternate" : "default";
+
     toggleColorMode(dark);
+
     show();
+
     window.dispatchEvent(new Event("resize"));
+
   }
+
   function set(c) {
+
     var dark = c === "dark" || (c === "system" && mq.matches);
+
     try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
+
     apply(dark);
+
   }
+
   toggles.forEach(function (t) {
+
     var m = document.createElement("div");
+
     m.className = "dropdown dm-scheme d-inline-block";
+
     m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
+
       '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
+
       ["light", "dark", "system"].map(function (c) {
+
         return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
+
       }).join("") + "</ul>";
+
     m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
+
     t.insertAdjacentElement("afterend", m);
+
     t.style.display = "none";
+
   });
+
   // Under System, Quarto's own listener switches the page when the system setting changes.
+
   mq.addEventListener("change", show);
+
   // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
+
   window.addEventListener("storage", function (e) {
+
     if (e.key !== K && e.key !== null) return;
+
     var s = stored();
+
     apply(s === "alternate" || (s === null && mq.matches));
+
   });
+
   show();
+
 })();
+
 </script>
+
 <script>
 
 // Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
@@ -902,36 +1042,67 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 </script>
 
 <script>
+
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
+
 (function () {
+
   function go(u, pr) {
+
     fetch(u).then(function (r) { return r.json(); }).then(function (f) {
+
       var i = 0;
+
       function next() {
+
         if (i >= f.length) return;
+
         fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
+
           var d = r.body.getReader();
+
           return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
+
         }).catch(function () {}).then(next);
+
       }
+
       next(); next(); next();
+
     }).catch(function () {});
+
   }
+
   try {
+
     if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
+
       if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
+
       return;
+
     }
+
     var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
+
       return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
+
     });
+
     if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
+
     var u = new URL("../prefetch.json", a.href);
+
     var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
+
     if (document.readyState === "complete") t(); else addEventListener("load", t);
+
   } catch (e) {}
+
 })();
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
