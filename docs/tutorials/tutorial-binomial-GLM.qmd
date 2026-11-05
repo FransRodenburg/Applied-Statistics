@@ -15,6 +15,7 @@ If you use any packages, include them here, not where they are (first) used. Thi
 
 ```{r}
 library("DHARMa")  # Model diagnostics for GLMs
+library("ggplot2") # Adjusting the plot produced by plot_model
 library("sfsmisc") # Better plot axes
 library("sjPlot")  # Marginal effects plots
 ```
@@ -110,7 +111,7 @@ What do we see here?
 testDispersion(RQR)
 ```
 
--   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, 79% of simulations had more extreme dispersion, so this model's dispersion is well within what is expected in a conditional Poisson distribution.
+-   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, 79% of simulations had more extreme dispersion, so this model's dispersion is well within what is expected in a conditional binomial distribution.
 
 -   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{13.991}{19} \approx 0.74$. This suggests slight underdispersion, but from the previous diagnostics we can conclude it is not problematic.
 

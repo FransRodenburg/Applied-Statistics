@@ -15,8 +15,10 @@ If you use any packages, include them here, not where they are (first) used. Thi
 
 ```{r}
 library("car")     # QQ-plots with confidence intervals
+library("ggplot2") # Adjusting the plot produced by plot_model
 library("lmtest")  # Breusch-Pagan test
 library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
 ```
 
 ## Reading the data
