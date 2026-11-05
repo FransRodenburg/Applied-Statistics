@@ -773,7 +773,140 @@ Common misconceptions about confidence intervals
 </section>
 <section id="quiz" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
-<p>Under construction. Check back later, or try the app below.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="math inline">\(p = 0.19\)</span>. Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesistesting_files/figure-html/quizci-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>A.</strong> Significant, relevant<br>
+<strong>B.</strong> Significant, not relevant<br>
+<strong>C.</strong> Not significant, inconclusive<br>
+<strong>D.</strong> Not significant, not relevant<br>
+<strong>E.</strong> The compound does nothing</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Is zero inside the interval? And does the interval stay inside the gray area, outside it, or neither? Compare <a href="#fig-ci" class="quarto-xref">Figure&nbsp;<span>3</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="math inline">\(p = 0.19\)</span>. Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hypothesistesting_files/figure-html/quizci-answer-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>A.</strong> Significant, relevant<br>
+<strong>B.</strong> Significant, not relevant<br>
+<strong>C. Not significant, inconclusive</strong><br>
+<strong>D.</strong> Not significant, not relevant<br>
+<strong>E.</strong> The compound does nothing</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
+<strong>B.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
+<strong>C.</strong> The result is not significant, but the interval also includes drops of more than 5 mmHg, which would matter in practice. The study is inconclusive.<br>
+<strong>D.</strong> Only if the interval excludes all effects that would matter can we conclude that any effect is negligible. This interval reaches <span class="math inline">\(-8.1\)</span> mmHg.<br>
+<strong>E.</strong> Absence of evidence is not proof of absence. The effect may be too small to detect with this sample size.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>A trial finds a mean change of <span class="math inline">\(-5.3\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-9.2\)</span> to <span class="math inline">\(-1.4\)</span> mmHg. Which statement is correct?</p>
+<p><strong>A.</strong> 95% of the patients had a change between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
+<strong>B.</strong> There is a 95% probability that the true mean change lies between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
+<strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
+<strong>D.</strong> If the trial were repeated many times, 95% of the intervals would contain the true mean change.</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Unfold the common misconceptions about confidence intervals above.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>A trial finds a mean change of <span class="math inline">\(-5.3\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-9.2\)</span> to <span class="math inline">\(-1.4\)</span> mmHg. Which statement is correct?</p>
+<p><strong>A.</strong> 95% of the patients had a change between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
+<strong>B.</strong> There is a 95% probability that the true mean change lies between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
+<strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
+<strong>D. If the trial were repeated many times, 95% of the intervals would contain the true mean change.</strong></p>
+<p>For a more in depth explanation, please refer to the video:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="math inline">\(\bar{y}\)</span>, not the spread of the observations.<br>
+<strong>B.</strong> The 95% describes the method, not a single interval. A single interval either contains the true mean change or not, and we cannot tell which.<br>
+<strong>C.</strong> The boundaries are no sharper than the significance level they come from. Values just outside the interval are hardly less compatible with the data than values just inside it.<br>
+<strong>D.</strong> The 95% describes the method: It is the share of intervals that would contain the true mean change if the trial were repeated many times.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <section id="interactive-app" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="interactive-app">Interactive app</h3>
 <p>Practice the concepts covered in this chapter:</p>

@@ -560,10 +560,9 @@ Figure&nbsp;1.1: Example of a simple linear model. <small>(Height and weight of 
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, x).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><small>Note: You have to include an intercept manually using <code>x = sm.add_constant(x)</code>.</small></p>
 </div>
 </div>
 </div>
@@ -691,7 +690,7 @@ Figure&nbsp;1.4: Squared residuals give porportionally more weight to farther ob
 </div>
 </div>
 <hr>
-<p>The results of a linear regression are summarized in a <a href="https://www.youtube.com/watch?v=f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> regression table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, which provides insight into the parameter estimates, their uncertainty, and some basic measures of how well the model fits the data:</p>
+<p>The results of a linear regression are summarized in a <a href="https://www.youtube.com/watch?v=f2ajESgqtcU" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> regression table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>, which provides insight into the parameter estimates, their <a href="./hypothesistesting.html#SE">uncertainty</a>, and some basic measures of how well the model fits the data:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
@@ -725,16 +724,16 @@ F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DF <span class="op">=</span> pd.read_csv(<span class="st">"data/example_data_simple_linear_regression.csv"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>LM <span class="op">=</span> sm.OLS(DF[<span class="st">'height'</span>], sm.add_constant(DF[<span class="st">'weight'</span>])).fit()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>LM <span class="op">=</span> smf.ols(<span class="st">"height ~ weight"</span>, DF).fit()</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LM.summary2())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Results: Ordinary least squares
 =================================================================
 Model:              OLS              Adj. R-squared:     0.378   
 Dependent Variable: height           AIC:                234.5127
-Date:               2026-11-05 17:19 BIC:                237.3151
+Date:               2026-11-05 17:57 BIC:                237.3151
 No. Observations:   30               Log-Likelihood:     -115.26 
 Df Model:           1                F-statistic:        18.64   
 Df Residuals:       28               Prob (F-statistic): 0.000178
@@ -742,7 +741,7 @@ R-squared:          0.400            Scale:              136.30
 ------------------------------------------------------------------
             Coef.    Std.Err.     t     P&gt;|t|    [0.025    0.975] 
 ------------------------------------------------------------------
-const      132.1493    9.5791  13.7955  0.0000  112.5273  151.7712
+Intercept  132.1493    9.5791  13.7955  0.0000  112.5273  151.7712
 weight       0.4981    0.1154   4.3178  0.0002    0.2618    0.7344
 -----------------------------------------------------------------
 Omnibus:              0.339        Durbin-Watson:           2.521
@@ -944,7 +943,7 @@ Learn why
 <div class="callout-body-container callout-body">
 <p><strong>A.</strong> You don’t need an interval for this, just look at the observations.<br>
 <strong>B.</strong> This is the interpretation of a prediction interval.<br>
-<strong>C.</strong> This is a loose interpretation of a confidence interval, I recommend using.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><br>
+<strong>C.</strong> This is a loose interpretation of a <a href="./hypothesistesting.html#CI">confidence interval</a>, I recommend using.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><br>
 <strong>D.</strong> This is the interpretation of a Bayesian credible interval.</p>
 <p>For a more in depth explanation, please refer to the video:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
