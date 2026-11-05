@@ -55,21 +55,25 @@ html.dm-dark .shinylive-viewer .loading-wrapper .error-alert .error-recovery kbd
   88% { opacity: 1; }
   100% { opacity: 0; transform: translate(calc(var(--x) * 1.4), var(--h)) rotate3d(1, 0.6, 0, var(--r)); }
 }
+#yay.m i { animation: yay var(--t) var(--w) 1 both, sh var(--f) var(--g) infinite alternate ease-in-out; will-change: transform, filter; }
+@keyframes sh { from { filter: brightness(0.62); } to { filter: brightness(var(--b)); } }
 </style>
 <script>
-function yay() {
+function yay(x) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.getElementById('yay')) return;
   var w = innerWidth, h = innerHeight, y = 0.7 * h, s = '', d = document.createElement('div');
+  var m = {silver: ['#474e55', '#98a1a9', '#eef1f4', 1.25], gold: ['#8f6400', '#e5b000', '#fff0a3', 1.75]}[x];
   var c = ['#4393c3', '#d6604d', '#009670', '#e0a030'];
   var r = function(a, b) { return a + Math.random() * (b - a); };
   for (var i = 0; i < 130; i++) {
     var a = r(-0.92, -0.08) * Math.PI, v = r(0.22, 0.825) * Math.min(w, h);
     s += '<i style="left:' + (w / 2).toFixed(0) + 'px;top:' + y.toFixed(0) + 'px;width:' + r(6, 9).toFixed(1) + 'px;height:' + r(9, 14).toFixed(1) +
-      'px;background:' + c[i % 4] + ';' + (i % 5 ? '' : 'border-radius:50%;') +
+      'px;--b:' + (m ? m[3] : 1) + ';background:' + (m ? 'linear-gradient(' + r(0, 180).toFixed(0) + 'deg,' + m[0] + ',' + m[1] + ' 35%,' + m[2] + ' 50%,' + m[1] + ' 65%,' + m[0] + ')' : c[i % 4]) + ';' + (i % 5 ? '' : 'border-radius:50%;') +
       '--x:' + (Math.cos(a) * v * 1.4).toFixed(0) + 'px;--y:' + (Math.sin(a) * v).toFixed(0) + 'px;--h:' + (h - y + 30).toFixed(0) + 'px;' +
-      '--r:' + r(360, 1080).toFixed(0) + 'deg;--t:' + r(2.2, 3.6).toFixed(2) + 's;--w:' + r(0, 0.12).toFixed(2) + 's"></i>';
+      '--r:' + r(360, 1080).toFixed(0) + 'deg;--t:' + r(2.2, 3.6).toFixed(2) + 's;--w:' + r(0, 0.12).toFixed(2) + 's;--f:' + r(0.14, 0.42).toFixed(2) + 's;--g:-' + r(0, 0.4).toFixed(2) + 's"></i>';
   }
   d.id = 'yay';
+  if (m) d.className = 'm';
   d.setAttribute('aria-hidden', 'true');
   d.innerHTML = s;
   document.body.appendChild(d);
