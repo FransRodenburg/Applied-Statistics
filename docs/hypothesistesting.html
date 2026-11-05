@@ -466,7 +466,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#error-rates" id="toc-error-rates" class="nav-link" data-scroll-target="#error-rates">Error rates</a></li>
   <li><a href="#limitations-of-hypothesis-testing" id="toc-limitations-of-hypothesis-testing" class="nav-link" data-scroll-target="#limitations-of-hypothesis-testing">Limitations of hypothesis testing</a></li>
-  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a>
+  <ul class="collapse">
+  <li><a href="#interactive-app" id="toc-interactive-app" class="nav-link" data-scroll-target="#interactive-app">Interactive app</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -617,7 +620,7 @@ Why 95% confidence intervals?
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you set a significance level of <span class="math inline">\(\alpha\)</span>, that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <strong>95%</strong> confidence intervals.</p>
-<p>The 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>The 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><span class="text-red"><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-youtube" aria-label="youtube"></i></a></span><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener">video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
 </div>
 </div>
 </div>
@@ -763,14 +766,17 @@ Common misconceptions about confidence intervals
 <p>The interval only reflects sampling variation, and only if the model assumptions hold. It says nothing about bias, for example from a flawed study design.</p>
 </dd>
 </dl>
-<p>For the precise meaning of a confidence interval, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>For the precise meaning of a confidence interval, please refer to the <small><span class="text-red"><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-youtube" aria-label="youtube"></i></a></span><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener">video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="quiz" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
-<p>Practice reasoning about error rates using simulated trials:</p>
+<p>Under construction. Check back later, or try the app below.</p>
+<section id="interactive-app" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interactive-app">Interactive app</h3>
+<p>Practice the concepts covered in this chapter:</p>
 <p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/error-rates/" class="btn btn-outline-concept" role="button" target="_blank" rel="noreferrer noopener">Error rates app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
 <p><small><span class="text-grey">This app runs in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>
 
@@ -813,6 +819,7 @@ Common misconceptions about confidence intervals
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline">A. Gelman and J. Carlin, <span>“Beyond Power Calculations,”</span> <em>Perspectives on Psychological Science</em>, vol. 9, no. 6, pp. 641–651, Nov. 2014, doi: <a href="https://doi.org/10.1177/1745691614551642">10.1177/1745691614551642</a>.</div>
 </div>
 </div>
+</section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
