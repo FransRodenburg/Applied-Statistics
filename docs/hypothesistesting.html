@@ -513,7 +513,7 @@ Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is
 </div>
 </div>
 </div>
-<p>Is that enough evidence that the compound reduces blood pressure? Blood pressure varies from patient to patient, and from day to day. Even if the medicine did nothing, the average change in 30 patients would not be exactly zero.</p>
+<p>Is that enough evidence that the compound affects blood pressure? Blood pressure varies from patient to patient, and from day to day. Even if the medicine did nothing, the average change in 30 patients would not be exactly zero.</p>
 <p>The question is therefore not whether the average differs from zero, but whether it differs more than we would expect if it did nothing. This is <strong>the fundamental idea behind a hypothesis test</strong>:</p>
 <blockquote class="blockquote">
 <p><em>If the compound had no effect, how often would we see a result at least as extreme as ours?</em></p>
@@ -602,25 +602,41 @@ Figure&nbsp;2: Distribution of the <span class="math inline">\(t\)</span>-value 
 </div>
 </div>
 <p>For our clinical trial, <span class="math inline">\(p = 0.011\)</span> (the shaded area in <a href="#fig-tdist" class="quarto-xref">Figure&nbsp;<span>2</span></a>). At <span class="math inline">\(\alpha = 0.05\)</span>, we would reject <span class="math inline">\(H_0\)</span> and conclude there is a significant decrease. Had <span class="math inline">\(p\)</span> been larger than <span class="math inline">\(\alpha\)</span>, we would not have rejected <span class="math inline">\(H_0\)</span>, and concluded the decrease was not significant.</p>
-</section>
-<section id="CI" class="level3">
-<h3 class="anchored" data-anchor-id="CI">Confidence interval</h3>
-<p><small><em>Which values are plausible?</em></small></p>
-<p>A <span class="math inline">\(p\)</span>-value only tells us whether one particular value (<span class="math inline">\(\mu_0 = 0\)</span>) can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="math inline">\(\mu\)</span>. It is good practice to report not only the <span class="math inline">\(p\)</span>-value, but also the effect size and a confidence interval.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why 95% confidence intervals?
+Why <em>both</em> directions?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If you set a significance level of <span class="math inline">\(\alpha\)</span>, that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <strong>95%</strong> confidence intervals.</p>
-<p>The 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>In the example provided here, the question was what the <em>effect</em> of the compound is. A fair test should therefore consider both the potential to raise, or lower blood pressure. A <em>one-sided</em> test, which checks only one direction, can be justified if an effect in the other direction would lead to the same decision as no effect. For example, if we measure a contaminant in drinking water to see whether it exceeds the legal limit, then water at the limit and water far below it call for the same decision: no action. Be careful though, like other analysis decisions, the direction must be chosen <strong>before</strong> looking at the data. Choosing it afterward would double the false positive rate.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="CI" class="level3">
+<h3 class="anchored" data-anchor-id="CI">Confidence interval</h3>
+<p><small><em>Which values are plausible?</em></small></p>
+<p>A <span class="math inline">\(p\)</span>-value only tells us whether one particular value (<span class="math inline">\(\mu_0 = 0\)</span>) can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="math inline">\(\mu\)</span>. It is good practice to report not only the <span class="math inline">\(p\)</span>-value, but also the effect size and a 95% confidence interval.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why <em>95%</em> confidence intervals?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you set a significance level of <span class="math inline">\(\alpha\)</span>, that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <em>95%</em> confidence intervals.</p>
+<p>Note that this 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
 </div>
 </div>
 </div>
@@ -683,7 +699,7 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 </ul>
 <p>In addition, a lot of misuse stems from misunderstanding <span class="math inline">\(p\)</span>-values and confidence intervals. Hence, the list below contains some of the most common misconceptions.</p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -692,13 +708,13 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Misinterpretations of <span class="math inline">\(p\)</span>-values are widespread.<span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span> Below are some of the most frequent, based on published research and surveys of researchers.<span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span></p>
 <dl>
 <dt>“If <span class="math inline">\(p &gt; 0.05\)</span>, there is no effect.”</dt>
 <dd>
-<p>Absence of evidence is not proof of absence. The effect may be too small to detect with this sample size. If the confidence interval includes effects that would matter in practice, the study is inconclusive. Only if the interval excludes all effects that would matter can we conclude that any effect is negligible.</p>
+<p>Absence of evidence is not proof of absence. The effect may be too small to detect with this sample size. If the confidence interval includes effects that would matter in practice, the study is inconclusive. Only if the interval excludes all effects that would matter can we conclude that any effect is negligible, which is the idea behind <a href="https://en.wikipedia.org/wiki/Equivalence_test">equivalence testing</a>.</p>
 </dd>
 <dt>“The <span class="math inline">\(p\)</span>-value is the probability that <span class="math inline">\(H_0\)</span> is true.”</dt>
 <dd>
@@ -733,7 +749,7 @@ Common misconceptions about <span class="math inline">\(p\)</span>-values
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -742,7 +758,7 @@ Common misconceptions about confidence intervals
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <dl>
 <dt>“95% of the observations lie in the confidence interval.”</dt>
@@ -794,7 +810,7 @@ Common misconceptions about confidence intervals
 <strong>D.</strong> Not significant, not relevant<br>
 <strong>E.</strong> The compound does nothing</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -803,7 +819,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Is zero inside the interval? And does the interval stay inside the gray area, outside it, or neither? Compare <a href="#fig-ci" class="quarto-xref">Figure&nbsp;<span>3</span></a>.</p>
 </div>
@@ -828,7 +844,7 @@ Hint
 <strong>D.</strong> Not significant, not relevant<br>
 <strong>E.</strong> The compound does nothing</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -837,7 +853,7 @@ Learn why
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>A.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
 <strong>B.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
@@ -860,7 +876,7 @@ Learn why
 <strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
 <strong>D.</strong> If the trial were repeated many times, 95% of the intervals would contain the true mean change.</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -869,7 +885,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Unfold the common misconceptions about confidence intervals above.</p>
 </div>
@@ -886,7 +902,7 @@ Hint
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -895,7 +911,7 @@ Learn why
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>A.</strong> A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="math inline">\(\bar{y}\)</span>, not the spread of the observations.<br>
 <strong>B.</strong> The 95% describes the method, not a single interval. A single interval either contains the true mean change or not, and we cannot tell which.<br>
