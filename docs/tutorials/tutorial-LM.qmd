@@ -7,7 +7,7 @@ editor: visual
 
 ## Description
 
-Suppose $n=100$ plants were collected. For each plant, we have a measurement in millimeters of stem size and average leaf size. The goal is to see to whether taller plants also have longer leaves.
+Suppose $n=100$ plants were collected. For each plant, we have a measurement in millimeters of stem size and average leaf size. The goal is to see whether taller plants also have longer leaves.
 
 ## Dependencies
 
@@ -83,13 +83,13 @@ After running the diagnostic plots, comment on what you observe. Even if nothing
 
 -   **QQ-plot**: The residuals quite closely follow the line, suggesting there is little deviation from normality. All residuals fall within the confidence band.
 
--   **Scale-Location**: From left to right, there appears to be a downward trend (i.e., variance is lower for larger leaves). However, looking at the $y$-axis, we see that this decrease is less then $0.5$. If you were in doubt about this, you could run `bptest` from the `lmtest` package. As you can see below, the test does not reveal any issues either ($p = 0.214$).
+-   **Scale-Location**: From left to right, there appears to be a downward trend (i.e., variance is lower for larger leaves). However, looking at the $y$-axis, we see that this decrease is less than $0.5$. If you were in doubt about this, you could run `bptest` from the `lmtest` package. As you can see below, the test does not reveal any issues either ($p = 0.214$).
 
 ```{r}
 bptest(LM)
 ```
 
--   **Residuals vs Leverage**: The boundary for the Cook's distance is not even visible in the plot, so there are no outliers.
+-   **Residuals vs Leverage**: The boundary for the Cook's distance only just enters the bottom-right corner of the plot, and no point comes near it, so there are no outliers.
 
 Since no problematic deviations from the model assumptions were observed, we can proceed to interpret the regression table.
 

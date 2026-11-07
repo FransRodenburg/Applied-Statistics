@@ -7,7 +7,7 @@ editor: visual
 
 ## Description
 
-In this fictional study, $n=50$ plants were measured in terms of stem size (mm). Then, the number of herbivore insects on each plant were counted. Investigate whether there are more insects on longer plants.
+In this fictional study, $n=50$ plants were measured in terms of stem size (mm). Then, the number of herbivore insects on each plant was counted. Investigate whether there are more insects on longer plants.
 
 ## Dependencies
 

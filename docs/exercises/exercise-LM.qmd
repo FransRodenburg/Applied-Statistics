@@ -1,7 +1,7 @@
 ---
-title: "Solution - Simple Linear Regression"
+title: "Exercise - Simple Linear Regression"
 author: "Dr. F.J. Rodenburg"
-format: pdf
+format: html
 editor: visual
 ---
 
@@ -39,7 +39,7 @@ If you note anything interesting, write this down over here, not in the code chu
 
 A simple visualization often goes a long way towards understanding the data. Create a figure with:
 
--   IgA on the $x$-axis and IgG on the $y$-axis.
+-   IgG on the $x$-axis and IgA on the $y$-axis.
 
 -   Informative axes with unit of measurement.
 

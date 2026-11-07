@@ -7,7 +7,7 @@ editor: visual
 
 ## Description
 
-Seagulls are a common sight in many coastal cities in The Netherlands, including Leiden and The Hague. Is this purely due to our proximity to the sea, or do they stick around the city for easy meals? In this fictional dataset, counts of seagulls are performed at the same time of day, with similar weather conditions at $n=27$ locations. Each location is at the same distance from the shore, but the distances to the nearest city varies from $0$ to $10$ km.
+Seagulls are a common sight in many coastal cities in The Netherlands, including Leiden and The Hague. Is this purely due to our proximity to the sea, or do they stick around the city for easy meals? In this fictional dataset, counts of seagulls are performed at the same time of day, with similar weather conditions at $n=27$ locations. Each location is at the same distance from the shore, but the distance to the nearest city varies from $0$ to $10$ km.
 
 ## Dependencies
 
@@ -49,13 +49,13 @@ If you note anything interesting, write this down:
 
 -   `distance` is correctly recognized as numeric and `seagulls` as integer.
 
--   Nothing stands out from the summary the range of distance matches the description and the counts do not take on strange values either.
+-   Nothing stands out from the summary: The range of distance matches the description and the counts do not take on strange values either.
 
 ## Visualizing the data
 
 A simple visualization often goes a long way towards understanding the data. Create a figure with:
 
--   Stem size on the $x$-axis and the number of insects on the $y$-axis.
+-   Distance from the nearest city on the $x$-axis and the number of seagulls on the $y$-axis.
 
 -   Informative axes.
 
@@ -93,11 +93,11 @@ plot(RQR)
 
 What do we see here?
 
--   **On the left**: There appears so be a slight S-shape in the randomized quantile residuals, which would indicate overdispersion, however:
+-   **On the left**: There appears to be a slight S-shape in the randomized quantile residuals, which would indicate overdispersion, however:
 
     -   The Kolmogorov–Smirnov test finds no significant difference from a uniform distribution on this scale ($p = 0.927$), so on the original scale, the Poisson assumption holds reasonably.
 
-    -   The dispersion test finds no significance evidence of over- or underdispersion ($p = 0.160$).
+    -   The dispersion test finds no significant evidence of over- or underdispersion ($p = 0.160$).
 
     -   The outlier test did not identify any significantly outlying observations ($p=1.000$).
 
@@ -113,9 +113,9 @@ What do we see here?
 testDispersion(RQR)
 ```
 
--   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, our sample falls in the top 16% of what you would expect if the model were correct.
+-   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, our sample falls in the top 8% of what you would expect if the model were correct. The test is two-sided, so $p$ is twice that.
 
--   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{46.765}{25} \approx 1.87$. This suggests slight overdispersion, but from the previous diagnostics we can conclude it is not problematic.
+-   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{40.04}{25} \approx 1.60$. This suggests slight overdispersion, but from the previous diagnostics we can conclude it is not problematic.
 
 ### How would you proceed if you concluded overdispersion?
 
@@ -127,7 +127,7 @@ GLM2 <- glm.nb(seagulls ~ distance, data = DF)
 
 If you repeat the diagnostics on this new model, you can see there is still (non-significant) non-linearity, but the slight overdispersion is now addressed. However, since the original model did not have significant overdispersion, there is no need to use this more complex model in this case.
 
-If you plot this new model, you can see what the extra dispersion parameter accomplishes: The fit is identical to the simpler model, but the confidence interval is now wider, because we take the excess variance into account.
+If you plot this new model, you can see what the extra dispersion parameter accomplishes: The fit is almost identical to the simpler model, but the confidence interval is now wider, because we take the excess variance into account.
 
 ```{r}
 # 1. Estimated relationship of the original model
@@ -151,9 +151,9 @@ summary(GLM)
 
 **Important**: The regression table is on the scale of the linear predictor ($\eta$). I will include two examples of how to transform to the original scale.
 
--   At a distance of $0$ km from the city, the estimated number of seagulls is $e^{3.01212}\approx 21$ on average.
+-   At a distance of $0$ km from the city, the estimated number of seagulls is $e^{3.01212}\approx 20$ on average.
 
--   On the linear scale, every 1 km increase in distance changes $\eta$ by $-0.3$, and this is significant ($p < 2 \cdot 10^{-16}$). We can conclude (regardless of scale) that the number of seagulls is a significantly lower, the farther we are away from a city.
+-   On the linear scale, every 1 km increase in distance changes $\eta$ by $-0.3$, and this is significant ($p < 2 \cdot 10^{-16}$). We can conclude (regardless of scale) that the number of seagulls is significantly lower, the farther we are away from a city.
 
 -   As an **example of interpreting this model on the original scale**:
 

@@ -7,7 +7,7 @@ editor: visual
 
 ## Description
 
-In this fictional study, 10 tomato seeds are placed on petri dishes with different concentrations of NaCl, ranging from $0$ to $100$ g/L. After 7 days, the number of germinated seeds are counted. How does salt concentration affect the germination rate?
+In this fictional study, 10 tomato seeds are placed on petri dishes with different concentrations of NaCl, ranging from $0$ to $100$ g/L. After 7 days, the number of germinated seeds is counted. How does salt concentration affect the germination rate?
 
 ## Dependencies
 
@@ -95,7 +95,7 @@ What do we see here?
 
     -   The Kolmogorov–Smirnov test finds no significant difference from a uniform distribution ($p = 0.862$).
 
-    -   The dispersion test finds no significance evidence of over- or underdispersion ($p = 0.792$).
+    -   The dispersion test finds no significant evidence of over- or underdispersion ($p = 0.792$).
 
     -   The outlier test did not identify any significantly outlying observations ($p=1.000$).
 
@@ -125,7 +125,7 @@ summary(GLM)
 
 -   At a concentration of $0$ g/L, the estimated germination rate is $\frac{1}{1 + e^{-2.73730}}\approx 93.9\%$.
 
--   On the linear scale, every $1$ g/L increase in distance changes $\eta$ by $-0.1$, and this is significant ($p = 7.66 \cdot 10^{-13}$). We can conclude (regardless of scale) that the germination rate is a significantly lower, the higher the NaCl concentration.
+-   On the linear scale, every $1$ g/L increase in concentration changes $\eta$ by $-0.1$, and this is significant ($p = 7.66 \cdot 10^{-13}$). We can conclude (regardless of scale) that the germination rate is significantly lower, the higher the NaCl concentration.
 
 -   As an **example of interpreting this model on the original scale**:
 
@@ -135,7 +135,7 @@ summary(GLM)
 
     -   If you need numbers like this, you can quickly obtain them with `predict(GLM, list(conc = 50), type = "response")`.
 
--   The model is not overdispersed (explained on Monday), because the residual deviance is not even larger than the residual degrees of freedom. It is also not underdispersed, because $\frac{13.991}{19} \approx 0.7$, which is still fairly close to $1$.
+-   The model is not overdispersed, because the residual deviance is not even larger than the residual degrees of freedom. It is also not underdispersed, because $\frac{13.991}{19} \approx 0.7$, which is still fairly close to $1$.
 
 -   This relationship explains $1 - \frac{13.991}{142.788} \approx 90.2\%$ of the deviance in germination, so the relationship is quite strong.
 
