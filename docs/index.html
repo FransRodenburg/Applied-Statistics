@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5098851f39d1026c802adcfd9d50be9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-eaca313d17c4073b631e191d8d7cff67.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-5098851f39d1026c802adcfd9d50be9d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-91eb30178993cac9375f1cf299b674ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -509,7 +509,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#how-to-cite" id="toc-how-to-cite" class="nav-link" data-scroll-target="#how-to-cite">How to cite</a></li>
+  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">Feedback</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -543,7 +547,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Last updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 7, 2026</p>
+      <p class="date-modified">November 8, 2026</p>
     </div>
   </div>
     
@@ -567,15 +571,14 @@ window.Quarto = {
 <summary>
 Motivation
 </summary>
-<p>Classical statistics textbooks typically start with some introductory math, then go from basic probability theory to the normal distribution and the central limit theorem, before moving on to univariate tests (<span class="math inline">\(t\)</span>-test, <span class="math inline">\(\chi^2\)</span>-test, <span class="math inline">\(F\)</span>-test, non-parametric alternatives), and perhaps ending somewhere around ANOVA.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This makes sense if you’re reading the book as an aspiring statistician—you need to understand each method at its core, and that requires some logical buildup of methodology. I did not make this book as a critique of this style of teaching. In fact, this is how I got into the field of statistics myself.</p>
+<p>Classical statistics textbooks typically start with some introductory math, then go from basic probability theory to the normal distribution and the central limit theorem, before moving on to univariate tests (<span class="math inline">\(t\)</span>-test, <span class="math inline">\(\chi^2\)</span>-test, <span class="math inline">\(F\)</span>-test, non-parametric alternatives), and perhaps ending somewhere around ANOVA (e.g., OpenStax free <a href="https://openstax.org/details/books/introductory-statistics"><em>Introductory Statistics</em></a>). This makes sense if you’re reading the book as an aspiring statistician—you need to understand each method at its core, and that requires some logical buildup of methodology. I did not make this book as a critique of this style of teaching. In fact, this is how I got into the field of statistics myself.</p>
 <p>However, while teaching statistics to life scientists, it has always bothered me that we do not get to work with interesting, actually useful models till near the end of the course. That is what I want to do differently. You need to spend most of the time during your course working with flexible models. From the get go, we will start thinking in terms of probability distributions and try to decide which might be suitable for our problem. You may not understand what a generalized linear model really <em>is</em> in the beginning, but you will already be able to <em>use</em> it. As you gain more experience working with these models, you can always delve into the fundamentals at a later stage.</p>
 </details>
+<section id="how-to-cite" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="how-to-cite">How to cite</h2>
 <p>This book is a living document. To cite it, include the date you retrieved it:</p>
-<p>Rodenburg, F.J. (2026). <em>Applied Statistics</em>. Retrieved YYYY-MM-DD from <a href="https://fransrodenburg.github.io/Applied-Statistics/" class="uri">https://fransrodenburg.github.io/Applied-Statistics/</a></p>
-<details>
-<summary>
-BibTeX
-</summary>
+<p><small>Rodenburg, F.J. (2026). <em>Applied Statistics</em>. Retrieved YYYY-MM-DD from <a href="https://fransrodenburg.github.io/Applied-Statistics/" class="uri">https://fransrodenburg.github.io/Applied-Statistics/</a></small></p>
+<p>For BibTeX users:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@book</span>{<span class="ot">rodenburg2026</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Rodenburg, F.J.},</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>  = {Applied Statistics},</span>
@@ -583,16 +586,24 @@ BibTeX
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>    = {https://fransrodenburg.github.io/Applied-Statistics/},</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span>   = {Retrieved YYYY-MM-DD}</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<p><small><span class="text-grey">Text, figures and data sets © Dr.&nbsp;F.J. Rodenburg, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer noopener">CC BY-NC-SA 4.0</a>. Code examples are licensed under the <a href="https://opensource.org/license/mit" target="_blank" rel="noreferrer noopener">MIT License</a>. Interactive apps are not covered by these licenses (all rights reserved).</span></small></p>
+</section>
+<section id="feedback" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="feedback">Feedback</h2>
+<p>If you have feedback, you can use this <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqly8gE2bErMDKqprcBP7C6Jw0ESVyPkIT4laBf7VxaLyyyA/viewform" target="_blank" rel="noreferrer noopener">anonymous form</a>.</p>
+<p><small><span class="text-grey">This book and its videos are a hobby project, not funded or sponsored by anyone. Text, figures and data sets © Dr.&nbsp;F.J. Rodenburg, licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer noopener">CC BY-NC-SA 4.0</a>. Code examples are licensed under the <a href="https://opensource.org/license/mit" target="_blank" rel="noreferrer noopener">MIT License</a>. Interactive apps are not covered by these licenses (all rights reserved).</span></small></p>
+<script>
+(function () {
+  try {
+    var d = new Date(), p = function (x) { return String(x).padStart(2, "0"); };
+    var s = d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+    var w = document.createTreeWalker(document.querySelector("main") || document.body, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) if (w.currentNode.nodeValue.indexOf("YYYY-MM-DD") > -1) w.currentNode.nodeValue = w.currentNode.nodeValue.replace(/YYYY-MM-DD/g, s);
+  } catch (e) {}
+})();
+</script>
 
 
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>For example, OpenStax free <a href="https://openstax.org/details/books/introductory-statistics"><em>Introductory Statistics</em></a><em>.</em><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->

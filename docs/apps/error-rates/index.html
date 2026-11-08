@@ -22,6 +22,7 @@
 #load-note { display: none; position: fixed; z-index: 1; left: 50%; top: calc(50vh - 4rem); transform: translate(-50%, -100%);
   width: max-content; max-width: min(40rem, 90vw); margin: 0; text-align: center; color: #9a9a9a;
   font: 0.6rem/1.4 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+#load-note span { display: inline-block; }
 body:has(.loading-status) #load-note { display: block; animation: loading-animation-fade-in 1s; }
 html.dm-dark { color-scheme: dark; }
 html.dm-dark body { background-color: #222; color: #fff; }
@@ -82,7 +83,7 @@ function yay(x) {
 </script>
   </head>
   <body>
-    <p id="load-note">The first time you open this app, your browser downloads R and the packages it needs (~50 MB).<br>This can take <b>a minute or more</b> on a slow connection. Later visits start faster.</p>
+    <p id="load-note"><span>The first time you open this app, your browser</span> <span>downloads R and the packages it needs (~50 MB).</span><br>This can take <b>a minute or more</b> on a slow connection. Later visits start faster.</p>
 <script>
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
 (function () {
