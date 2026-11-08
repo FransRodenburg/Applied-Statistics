@@ -1,0 +1,175 @@
+---
+title: "Tutorial - Dummy Variables (Poisson GLM)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+A study on shark conservation catches and tags sharks and then compares how many there are in different areas.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("car")     # Omnibus test for GLMs
+library("DHARMa")  # GLM diagnostics
+library("emmeans") # Post hoc comparisons
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("sharks.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   `area` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$area <- factor(DF$area)
+table(DF$area)
+```
+
+-   `sharks` is an integer, ranging from $1$ to $16$.
+
+-   The study is balanced, every group has exactly three counts. This is not a requirement, but it is more powerful than an unbalanced design.
+
+-   There don't appear to be any issues.
+
+## Visualizing the data
+
+You *could* use grouped boxplots here, but they would be based on only 3 observations each. With only three observations, it is better to just plot the observations. You can force a scatterplot by using `as.numeric`. To avoid overplotting (in case of identical counts) you can add some jitter:
+
+```{r}
+set.seed(2024)
+plot(sharks ~ jitter(as.numeric(area)), data = DF,
+     axes = FALSE, pch = 16,
+     xlim = c(0.5, 7.5), ylim = c(0, 16),
+     xaxs = "i", yaxs = "i", xpd = TRUE,
+     xlab = "Area", ylab = "Nr. of sharks")
+axis(1, 1:7, levels(DF$area), tick = FALSE)
+eaxis(2)
+
+# Add some vertical bars to easily distinguish between area:
+for(i in 1:4){
+  polygon(x = c(-0.5, 0.5, 0.5, -0.5) + 2 * i - 1,
+          y = c(0, 0, 16.5, 16.5),
+          col = rgb(0, 0, 0, 0.05), border = NA, xpd = TRUE)
+}
+```
+
+Now we can see that areas A and C appear to have the highest rate of observing sharks, and D the lowest.
+
+## Fitting the model
+
+This is a count. We can use a Poisson GLM for that:
+
+```{r}
+GLM <- glm(sharks ~ area, family = "poisson", data = DF)
+```
+
+## Model diagnostics
+
+Here we'll use randomized quantile residuals generated with the `DHARMa` package.
+
+```{r}
+RQR <- simulateResiduals(GLM)
+plot(RQR)
+```
+
+None of the tests reveal issues:
+
+-   **QQ-plot**: `DHARMa` plots the simulated quantile residuals against a uniform distribution. If the quantile residuals deviate from uniformity, the conditional Poisson assumption of the model does not hold. We see some deviation from the red line, but none of the tests indicate problems.
+
+    -   **KS-test**: Kolmogorov--Smirnov test is a test of deviation from a known distribution. Here, $p=0.695$, so no issues detected.
+
+    -   **Dispersion test**: A test for over- or underdispersion. Here, $p=0.296$, so no issues detected.
+
+    -   **Outlier test**: Name speaks for itself. Here, $p=1.000$, so no issues detected.
+
+-   **Residuals vs fitted**: If there are only categorical explanatory variables in the model, `DHARMa` will plot boxplots of the randomized quantile residuals of each group and compare their variances. However, with only three observations per group, there is no point in a boxplot and it omits them. Instead it shows the usual quantile lines.
+
+    -   **Quantile lines**: Is there evidence of non-linearity (not possible with purely categorical explanatory variable), or a significant deviation from the assumed mean-variance relationship? In this case, none of the lines indicate problems
+
+    -   **Top part**: This is the combined test for all three lines. No problems were detected.
+
+Overall, no problems with the model assumptions were detected.
+
+You can also run the dispersion test separately:
+
+```{r}
+testDispersion(RQR)
+```
+
+Our actual observations (red) result in a dispersion parameter slightly lower than the average simulation, but this is a fairly common result under the null-hypothesis of no under- or overdispersion ($p = 0.296$).
+
+## Interpreting the model output
+
+```{r}
+summary(GLM)
+```
+
+-   Area A is not shown in the regression table. This means A is reference group in the intercept: Area A has an estimated rate of $e^{2.4277}\approx 11$ sharks on average.
+
+-   The second coefficient shows the difference for area B: This area has an estimated rate of $e^{2.4277 -1.0415} \approx 4$ sharks on average. This difference is significant ($p = 0.00193$).
+
+-   We could continue interpreting the differences with area A in the same fashion, but there are two issues, because of which it is better to do comparisons with `emmeans`:
+
+    -   These $p$-values are not corrected for multiple testing.
+
+    -   This table only shows comparisons with area A. We cannot use it to compare B with C for example.
+
+-   The model appears slightly underdispersed: $\frac{10.745}{14} \approx 0.77$, but the visual diagnostics did not indicate significant problems.
+
+-   This model explains $1 - \frac{10.745}{57.110} \approx 81.2\%$ of the deviance, so a large proportion of the spread in the outcome is accounted for.
+
+## Omnibus test
+
+Before using `emmeans`, let's see if there is an overall difference among areas:
+
+```{r}
+Anova(GLM)
+```
+
+The number of sharks differs significantly between areas ($p = 2.5 \cdot 10^{-8}$).
+
+## Post hoc comparison
+
+With `type = "response"`, `emmeans` shows the comparisons on the scale of the outcome. For a Poisson GLM, these are ratios: For example, area A has an estimated $2.8$ times as many sharks as area B.
+
+```{r}
+EMM <- emmeans(GLM, specs = pairwise ~ area, type = "response")
+EMM$contrasts
+```
+
+After multiple testing correction, areas A and C both have significantly more sharks than areas D, E and F, and area A also has significantly more sharks than area B. None of the other differences are significant.
+
+## Visualize the estimated relationship
+
+Again, for GLMs, `plot_model` is very useful, because it automatically translates everything back to the scale of the outcome (counts of sharks).
+
+```{r}
+plot_model(GLM, type = "pred", terms = "area")
+```

@@ -1,0 +1,152 @@
+---
+title: "Tutorial - Interaction (Linear Model)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+Guinea pigs, like humans, cannot produce their own vitamin C. In this study, the length of odontoblasts (the cells responsible for tooth growth) was measured in $n = 60$ guinea pigs. Each animal received one of three doses of vitamin C ($0.5$, $1$ or $2$ mg/day), either as orange juice (`OJ`) or as ascorbic acid (`VC`). Does the effect of the dose depend on how vitamin C is given?
+
+*(These are the `ToothGrowth` data from R's `datasets` package, from Crampton (1947), The Journal of Nutrition, 33(5), 491--504.)*
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("car")     # QQ-plots with confidence intervals
+library("ggplot2") # Adjusting the plot produced by plot_model
+library("lmtest")  # Breusch-Pagan test
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("tooth-growth.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   The dimensions of the data set are $60 \times 3$ as expected.
+
+-   `supp` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$supp <- factor(DF$supp)
+table(DF$supp, DF$dose)
+```
+
+-   The study is completely balanced: every combination of supplement and dose was given to $10$ guinea pigs.
+
+-   `len` and `dose` are numeric, and nothing stands out from the summary. There are no apparent issues.
+
+## Visualizing the data
+
+The dose doubles from one group to the next. A logarithmic axis shows the three doses at equal distance. To avoid overplotting, we add some jitter to the dose:
+
+```{r}
+cols <- c("darkorange", "steelblue")
+set.seed(2024)
+plot(len ~ jitter(dose, 0.3), data = DF, log = "x",
+     axes = FALSE, pch = 16, col = cols[supp],
+     xlab = "Dose of vitamin C (mg/day)", ylab = "Odontoblast length")
+axis(1, c(0.5, 1, 2))
+eaxis(2)
+legend("topleft", legend = levels(DF$supp), col = cols, pch = 16, bty = "n")
+```
+
+-   Odontoblasts are longer at higher doses, for both supplements.
+
+-   At low doses, orange juice results in longer odontoblasts than ascorbic acid, but at $2$ mg/day, the two supplements look about the same. If that is true, the effect of the dose differs between supplements, and we would have interaction.
+
+-   On this logarithmic axis, the increase looks roughly linear, at least for ascorbic acid. For orange juice, the increase from $1$ to $2$ mg/day appears smaller than from $0.5$ to $1$ mg/day.
+
+## Fitting the model
+
+Odontoblast length is continuous with a more or less central tendency, so we can try a conditional normal approximation.
+
+As shown in the plot, we will use a logarithmic effect of dose. Since the dose increases in steps of $2\times$, the logarithm with base 2 is easiest to interpret: The slope is then the effect of doubling the dose. As a bonus, $\log_2(1) = 0$, so the intercept is the estimated mean at a dose of $1$ mg/day, which lies within the range of the data.
+
+The research question is whether the effect of the dose depends on the supplement, so we include an interaction between dose and supplement:
+
+```{r}
+LM <- lm(len ~ log2(dose) * supp, data = DF)
+```
+
+## Model diagnostics
+
+```{r}
+par(mfrow = c(2, 2))      # Plot in a 2x2 grid
+plot(LM, which = 1)       # Residuals vs fitted
+qqPlot(residuals(LM))     # QQ-plot
+mtext("QQ-plot", 3, 0.25) # Title for the QQ-plot
+plot(LM, which = 3)       # Scale-location
+plot(LM, which = 5)       # Residuals vs leverage
+par(mfrow = c(1, 1))      # Restore the default
+```
+
+-   **Residuals vs Fitted**: The red line wiggles a bit. This is the leveling off of orange juice noted in the visualization: for orange juice, the model slightly overestimates the mean at $0.5$ and $2$ mg/day, and underestimates it at $1$ mg/day. Compared to the spread of the residuals, these deviations are small. If this bothered you, you could treat dose as categorical instead (`factor(dose)`), but then you lose the simple interpretation of a slope.
+
+-   **QQ-plot**: The residuals closely follow the line, and all of them fall within the confidence band, so there is little deviation from normality.
+
+-   **Scale-Location**: The red line is fairly flat. A Breusch--Pagan test is borderline significant ($p = 0.049$, see below). However, the largest standard deviation of any group is less than twice the smallest, so the difference in variance is modest.
+
+```{r}
+bptest(LM)
+tapply(DF$len, list(DF$dose, DF$supp), sd)
+```
+
+-   **Residuals vs Leverage**: The boundary for the Cook's distance does not even enter the plot, so there are no outliers.
+
+Altogether, no serious deviations from the model assumptions were observed, so we can proceed to interpret the regression table.
+
+## Interpreting the model output
+
+```{r}
+summary(LM)
+```
+
+-   Orange juice is not shown in the regression table, so it is the reference group (in the intercept): At a dose of $1$ mg/day ($\log_2(1) = 0$), the estimated mean odontoblast length with orange juice is $20.7$.
+
+-   The second coefficient is the effect of dose **for orange juice**: Every doubling of the dose increases the mean odontoblast length by $6.4$ ($p = 2.3 \cdot 10^{-10}$).
+
+-   The third coefficient is the difference between ascorbic acid and orange juice **at a dose of** $1$ mg/day: With ascorbic acid, the mean is $3.7$ lower ($p = 0.000303$).
+
+-   The interaction is the difference in the effect of dose between the two supplements: For ascorbic acid, every doubling of the dose increases the mean odontoblast length by $6.4 + 2.7 = 9.1$. This difference in slopes is significant ($p = 0.0274$), so the effect of the dose depends on the supplement.
+
+-   Because the slopes differ, so does the difference between the supplements: At $0.5$ mg/day ($\log_2(0.5) = -1$), ascorbic acid is estimated to be $3.7 + 2.7 = 6.4$ lower than orange juice, but at $2$ mg/day ($\log_2(2) = 1$), only $3.7 - 2.7 = 1.0$ lower.
+
+-   This model explains $77.6\%$ of the variance in odontoblast length.
+
+## Visualize the estimated relationship
+
+This is a nice addition for any report/presentation, and not much effort thanks to the `sjPlot` package. By default, `plot_model` connects the predictions at the observed doses with straight lines. Here, we ask for predictions in small steps of $0.05$ mg/day instead, to show the curve:
+
+```{r}
+plot_model(LM, type = "pred", terms = c("dose [0.5:2 by=0.05]", "supp")) +
+  ggtitle("Estimated relationship") +
+  xlab("Dose of vitamin C (mg/day)") +
+  ylab("Odontoblast length")
+```
+
+The lines converge: Orange juice works better at low doses, but at $2$ mg/day, the supplements hardly differ.

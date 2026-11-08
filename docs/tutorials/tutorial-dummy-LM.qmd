@@ -1,0 +1,150 @@
+---
+title: "Tutorial - Dummy Variables (Linear Model)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+Crop yield (kg) is compared for three types of insect sprays.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("car")      # QQ-plots with confidence intervals
+library("emmeans")  # Post hoc comparisons
+library("sandwich") # Robust standard errors
+library("sfsmisc")  # Better plot axes
+library("sjPlot")   # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("insect-sprays.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   `spray` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$spray <- factor(DF$spray)
+levels(DF$spray)
+```
+
+-   `spray` now is a factor with three levels. `yield` is numeric, ranging from 86.4--108.1 kilograms. There are no apparent issues.
+
+## Visualizing the data
+
+Since we have a continuous outcome and a single, categorical explanatory variable, let's use a boxplot for this:
+
+```{r}
+boxplot(yield ~ spray, data = DF,
+        xlab = "Spray type", ylab = "Yield (kg)",
+        axes = FALSE, boxwex = 0.5, staplewex = 0, lty = 1, pch = 16)
+axis(1, 1:3, levels(DF$spray), tick = FALSE)
+eaxis(2)
+```
+
+Yield appears slightly skewed, but not consistently for each group. Also, these boxplots are based on only $n = 4$ observations each, so take them with a grain of salt.
+
+## Fitting the model
+
+Yield is continuous with a more or less central tendency, so we can try a conditional normal approximation. This is a classical ANOVA setup, but using `lm` has the advantage that we can use all the functions we already know from linear regression.
+
+```{r}
+LM <- lm(yield ~ spray, data = DF)
+```
+
+## Model diagnostics
+
+```{r}
+par(mfrow = c(2, 2))      # Plot in a 2x2 grid
+plot(LM, which = 1)       # Residuals vs fitted
+qqPlot(residuals(LM))     # QQ-plot
+mtext("QQ-plot", 3, 0.25) # Title for the QQ-plot
+plot(LM, which = 3)       # Scale-location
+plot(LM, which = 4)       # Cook's distance
+par(mfrow = c(1, 1))      # Restore the default
+```
+
+The variance appears to be larger for the group with the lowest yield, but note how this is almost certainly caused by a single observation (10). This observation is also marked as anomalous in the Cook's distance plot ($d \approx 0.65$). Since this is less than $1.0$, we could opt to just ignore it, as we have no further information on what might cause this observation to be outlying. I explain below in the `emmeans` part how you could use robust standard errors, for future reference.
+
+## Interpreting the model output
+
+While you could immediately jump to the ANOVA-style comparisons, let's see what information we can gather from the regression table as well, for completion's sake.
+
+```{r}
+summary(LM)
+```
+
+Spray A resulted in 97 kg yield on average. On average, spray B resulted in 7 kg more yield than spray A ($p = 0.0406$) and spray C in 7 kg less yield than spray A ($p = 0.0377$). These differences explain 72.1% of the total variance in yield. To compare B with C, you would have to either use `relevel`, or use an ANOVA-style comparison with `emmeans` as shown below.
+
+## Omnibus test
+
+Before using `emmeans`, let's see if there is an overall difference among spray means:
+
+```{r}
+summary.aov(LM)
+```
+
+Different sprays yield significantly different yields on average ($p = 0.0032$).
+
+## Post hoc comparison
+
+```{r}
+EMM <- emmeans(LM, specs = pairwise ~ spray)
+EMM$contrasts
+```
+
+After multiple testing correction, only spray B and C differ significantly ($p = 0.0024$), with B resulting in 14 kg more yield than C.
+
+### Extra: Robust standard errors
+
+You could use robust standard errors in case you want to account for the near-outlier found in the diagnostics. In small samples like this one, use `type = "HC3"`:
+
+```{r}
+vcov <- vcovHC(LM, type = "HC3") # robust variance-covariance matrix
+EMM <- emmeans(LM, specs = pairwise ~ spray, vcov = vcov)
+EMM$contrasts
+```
+
+All the estimates are the same as before, but we now have robust standard errors, and hence, different $p$-values. Interestingly, we now find that the difference between A and B is significant as well ($p = 0.040$). Keep in mind that with only $4$ observations per group, robust standard errors are not very reliable either.
+
+### Extra: Sensitivity check
+
+Another way to find out how much a single observation affects the conclusions is to fit the model again without it:
+
+```{r}
+LM_without10 <- lm(yield ~ spray, data = DF[-10, ])
+EMM <- emmeans(LM_without10, specs = pairwise ~ spray)
+EMM$contrasts
+```
+
+Without observation 10, all three sprays differ significantly. So the near-outlier does not create the differences we found; if anything, it makes them harder to detect. Only leave out an observation from your final analysis if you have reason to believe it is an error (e.g., a measurement or data entry error).
+
+## Visualize the estimated relationship
+
+```{r}
+plot_model(LM, type = "pred", terms = "spray")
+```

@@ -1,0 +1,84 @@
+---
+title: "Exercise - Dummy Variables"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+The height of trees (m) of the same species is compared on two types of soil.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+
+```
+
+If you note anything interesting, write this down over here, not in the code chunk.
+
+## Visualizing the data
+
+A simple visualization often goes a long way towards understanding the data. Create a figure with:
+
+-   Soil type on the $x$-axis and tree height on the $y$-axis.
+
+-   Informative axes with unit of measurement.
+
+```{r}
+
+```
+
+If the visualization reveals anything important, write that down as well:
+
+## Fitting the model
+
+Choose the right model. Explain your choice below the code chunk.
+
+```{r}
+
+```
+
+## Model diagnostics
+
+Always perform visual diagnostics on models used for inference. In case of GLMs, pay particular attention to overdispersion.
+
+```{r}
+
+```
+
+After running the diagnostic plots, comment on what you observe. Even if nothing stands out, explain how you decided that there are no issues.
+
+## Interpreting the model output
+
+```{r}
+
+```
+
+Write down what you see in the regression table, and write a conclusion in words.
+
+## Visualize the estimated relationship
+
+This is a nice addition for any report/presentation. Try using the `plot_model` function from `sjPlot` to visualize the fit.
+
+```{r}
+
+```

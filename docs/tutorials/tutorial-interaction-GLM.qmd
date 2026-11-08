@@ -1,0 +1,126 @@
+---
+title: "Tutorial - Interaction (Binomial GLM)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+A company wants to know whether smoking is more common among its male or female workers.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("DHARMa")  # GLM diagnostics
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("smoking.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+sum(DF$smoking)
+```
+
+If you note anything interesting, write this down:
+
+-   `sex` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$sex <- factor(DF$sex)
+table(DF$sex)
+```
+
+-   Note how we have a categorical (`sex`) and continuous (`age`) explanatory variable.
+
+-   Out of $n = 9837$ employees, $912$ are smokers.
+
+## Visualizing the data
+
+Another tricky example! How can we visualize this? There are different ways to go about it, but one solution here is to use **jitter**. This slightly perturbs all values, to avoid overplotting:
+
+```{r}
+cols <- c("steelblue", "coral")
+layout(matrix(c(1, 2), nrow = 1), widths = c(3, 1))
+plot(jitter(smoking) ~ age, data = DF,
+     axes = FALSE, pch = 16, col = cols[sex],
+     xlab = "Age (years)", ylab = "Smoking")
+eaxis(1)
+axis(2, 0:1, c("no", "yes"), las = 1)
+
+# My janky legend
+plot(NA, xlim = c(0, 1), ylim = c(0, 1), axes = FALSE, ann = FALSE)
+legend("center", legend = levels(DF$sex), col = cols, pch = 16, bty = "n")
+par(mfrow = c(1, 1))
+```
+
+Still not easy to interpret, but you can clearly see something interesting: There appear to be more female smokers at advanced age, and more male smokers at younger ages. If that is true, the age-smoking relationship is different for men and women, and we would have interaction.
+
+## Fitting the model
+
+This is a binary outcome. We can use a binomial GLM for that:
+
+```{r}
+GLM <- glm(smoking ~ age * sex, family = "binomial", data = DF)
+```
+
+## Model diagnostics
+
+```{r}
+RQR <- simulateResiduals(GLM)
+plot(RQR)
+```
+
+-   Diagnostics for binary data are tricky. These plots cannot really reveal problems unless we start splitting them by groups.
+
+## Interpreting the model output
+
+This is essentially an ANCOVA, but since we only have two categories for the categorical variable, we can get all the answers from the regression table:
+
+```{r}
+summary(GLM)
+```
+
+-   Women are not shown in the regression table. This means this is reference group in the intercept: At a theoretical age of $0$, women smoke with an estimated probability of $\frac{1}{1 + e^{4.009476}} \approx 1.8\%$.
+
+-   The second coefficient shows the effect of age: For example, at an age of $20$, women have an estimated probability of $\frac{1}{1 + e^{-(-4.009476 + 20 \times 0.044102)}} \approx 4.2\%$. This effect is significant ($p < 2 \cdot 10^{-16}$).
+
+-   The third coefficient shows the difference for men: At a theoretical age of $0$, men smoke with an estimated probability of $\frac{1}{1 + e^{-(-4.009476 + 3.132006)}} \approx 29.4\%$... those poor babies. Unless of course, we remember that you cannot just extrapolate beyond the range of your data!
+
+-   What if you are male and older than $0$ years? In that case, you also have to add the effect of the interaction. For example, at an age of $20$, males are estimated to smoke with probability $\frac{1}{1 + e^{-(-4.009476 + 3.132006 + 20 \times (0.044102 - 0.089392))}} \approx 14.4\%$. Finally, the interaction is also significant ($p < 2 \cdot 10^{-16}$), so the effect of age on the probability of smoking differs significantly between men and women.
+
+-   The model appears slightly underdispersed: $\frac{5724.4}{9833} \approx 0.58$, but the visual diagnostics did not indicate significant problems (note again, diagnostics for binary GLMs are tricky).
+
+-   This model explains $1 - \frac{5724.4}{6074.7} \approx 5.8\%$ of the deviance, so very little.
+
+## Visualize the estimated relationship
+
+For GLMs, this `plot_model` function is a great help, because it automatically translates everything back to the scale of the outcome (probability of smoking).
+
+```{r}
+plot_model(GLM, type = "pred", terms = c("age", "sex"))
+```
+
+Cool! Now we can clearly see the interaction! Men go down in probability with age, whereas women go up.
+
+*(Note that these are observational data, so you cannot make conclusions about what men and women **will** do when they get older.)*
