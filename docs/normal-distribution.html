@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title> Poisson Distribution – Applied Statistics</title>
+<title> Normal Distribution – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +65,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./binomialdistribution.html" rel="next">
-<link href="./normaldistribution.html" rel="prev">
+<link href="./poisson-distribution.html" rel="next">
+<link href="./probability-distributions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -1897,7 +1877,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probabilitydistributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./poissondistribution.html"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./normal-distribution.html"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1933,7 +1913,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./probabilitydistributions.html" class="sidebar-item-text sidebar-link">
+            <a href="./probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -1942,25 +1922,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./normaldistribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./normal-distribution.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poissondistribution.html" class="sidebar-item-text sidebar-link active">
+  <a href="./poisson-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./binomialdistribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./binomial-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypothesistesting.html" class="sidebar-item-text sidebar-link">
+  <a href="./hypothesis-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span></a>
   </div>
 </li>
@@ -1968,7 +1948,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link">
+            <a href="./simple-linear-regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -1991,7 +1971,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link">
+            <a href="./multiple-linear-regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -2000,7 +1980,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./multipleexplanatoryvariables.html" class="sidebar-item-text sidebar-link">
+  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Explanatory Variables</span></span></a>
   </div>
 </li>
@@ -2318,9 +2298,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probabilitydistributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./poissondistribution.html"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./normal-distribution.html"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="Poisson" class="quarto-section-identifier"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span></h1>
+<h1 class="title"><span id="normal" class="quarto-section-identifier"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span></h1>
 </div>
 
 
@@ -2337,26 +2317,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p><small><em>A discrete, non-negative probability distribution that can be right skewed.</em></small></p>
+<p><small><em>A continuous, symmetric probability distribution that is bell-shaped.</em></small></p>
 <hr>
-<p>The Poisson distribution is the number of events happening in a fixed amount of time. It used to model <strong>counts</strong>. If events are truly independent, then the Poisson distribution is not an approximation, but <em>the</em> probability distribution of counts.</p>
-<p>In reality, counts are often not completely independent: Birds do not arrive randomly, independently in a park, but actually tend to group together. For this reason, analyses based on a Poisson distribution should include some assessment of whether the chosen distribution is realistic. These assessments will be introduced once we get to the topic of <a href="GLM.html">GLM</a>.</p>
-<section id="properties" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="properties">Properties</h2>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="distributionfunctions">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" aria-current="page">Probability mass function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Cumulative distribution function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Quantile function</a></li></ul>
-<div class="tab-content" data-group="distributionfunctions">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<p><small><em>What is the probability of a given count</em> <span class="math inline">\(k\)</span>?</small></p>
+<p>The normal distribution (also: Gaussian distribution) is used to model continuous processes where most values are close to the mean, deviations in either direction are equally likely, and further deviations are increasingly less likely. It is extremely common in statistics, not because it is particularly realistic, but because it is convenient to work with mathematically and often a reasonable approximation.</p>
+<section id="properties" class="level2 unnumbered" data-group="distributionfunctions">
+<h2 class="unnumbered anchored" data-group="distributionfunctions" data-anchor-id="properties">Properties</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" aria-current="page">Probability density function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Cumulative distribution function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">Quantile function</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p><small><em>What is the height of the curve at a given point?</em></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dpois" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dnorm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-dpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poissondistribution_files/figure-html/fig-dpois-1.png" class="img-fluid figure-img" width="2100">
+<div aria-describedby="fig-dnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal-distribution_files/figure-html/fig-dnorm-1.png" class="img-fluid figure-img" width="2100">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Probability mass function of a Poisson distribution with <span class="math inline">\(\lambda  = 3\)</span>.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Probability density of a standard normal distribution (<span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma^2 = 1\)</span>).
 </figcaption>
 </figure>
 </div>
@@ -2364,8 +2343,8 @@ Figure&nbsp;1: Probability mass function of a Poisson distribution with <span cl
 </div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
-  \tag{1}\label{dpois}
-  \frac{\lambda^k e^{-\lambda}}{k!}
+  \tag{1}\label{dnorm}
+  \mathcal{N}(\mu, \, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e ^ {- \frac{(x - \mu)^2}{2\sigma^2}}
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
@@ -2373,15 +2352,15 @@ Figure&nbsp;1: Probability mass function of a Poisson distribution with <span cl
 <div class="tab-content" data-group="language">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(k, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(x, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>poisson.pmf(k, mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>norm.pdf(x, loc, scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><small>Note: <code>mu</code> refers to the mean (<span class="math inline">\(\lambda\)</span>).</small></p>
+<p><small>Note: <code>loc</code> refers to the mean, <code>scale</code> to the standard deviation.</small></p>
 </div>
 </div>
 </div>
@@ -2398,10 +2377,12 @@ Symbols
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\(\lambda\)</span>: The rate parameter, representing both mean and variance</li>
-<li><span class="math inline">\(e\)</span>: The constant 2.718282… (<a href="https://math.stackexchange.com/q/4364394/490552">why?</a>)</li>
-<li><span class="math inline">\(k\)</span>: The value of a given count</li>
-<li><span class="math inline">\(!\)</span>: Factorial (e.g., <span class="math inline">\(3! = 3 \times 2 \times 1\)</span>)</li>
+<li><span class="math inline">\(\mathcal{N}\)</span>: A normal distribution</li>
+<li><span class="math inline">\(\mu\)</span>: The mean of the distribution</li>
+<li><span class="math inline">\(\sigma^2\)</span>: The variance of the distribution</li>
+<li><span class="math inline">\(\pi\)</span>: The constant 3.141593… (<a href="https://math.stackexchange.com/q/28558/490552">why?</a>)</li>
+<li><span class="math inline">\(e\)</span>: The constant 2.718282… (<a href="https://math.stackexchange.com/q/28558/490552">why?</a>)</li>
+<li><span class="math inline">\(x\)</span>: The value of a given observation</li>
 </ul>
 </div>
 </div>
@@ -2418,24 +2399,25 @@ Explanation
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The Poisson distribution is a discrete probability distribution. There are only certain possible values for the outcome, like <span class="math inline">\(0, 1, 2, \dots\)</span>, but not <span class="math inline">\(1.5\)</span> or <span class="math inline">\(2.01\)</span>. Hence, you can directly read probabilities off the <span class="math inline">\(y\)</span>-axis in <a href="#fig-dpois" class="quarto-xref">Figure&nbsp;<span>1</span></a>.</p>
-<p>The correct term for a probability function of a discrete distribution is a probability <em>mass</em> function, though it is common in literature to see people call both discrete and continuous versions a probability density function.</p>
-<p>Note that while it looks like the probability goes to zero after <span class="math inline">\(k = 10\)</span> in <a href="#fig-dpois" class="quarto-xref">Figure&nbsp;<span>1</span></a>, it never exactly reaches zero. The probability is just too small to be visible in the figure.</p>
-<p>Counts cannot be negative. If lambda is close to zero, the probability on the left side of the distribution gets pressed up into the side. If you increase lambda, you move further away from zero, so this skew becomes less apparent:</p>
+<p>The normal distribution is a continuous probability distribution. This has an important implication: The <span class="math inline">\(y\)</span>-axis in <a href="#fig-dnorm" class="quarto-xref">Figure&nbsp;<span>1</span></a> shows probability <em>density</em>, not probability.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> If you actually want to calculate probabilities, you have to calculate the surface area under the curve, which can be done with the <a href="#pnorm">cumulative distribution function</a>.</p>
+<p>The total area under the curve of a probability distribution always equals <span class="math inline">\(1\)</span>.</p>
+<p>Imagine a rectangular probability distribution (also called a uniform distribution):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-lambdaskew" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-ex1norm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lambdaskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poissondistribution_files/figure-html/fig-lambdaskew-1.png" class="img-fluid figure-img" width="2100">
+<div aria-describedby="fig-ex1norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal-distribution_files/figure-html/fig-ex1norm-1.png" class="img-fluid figure-img" width="2100">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lambdaskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Increasing <span class="math inline">\(\lambda\)</span> results in a more symmetric distribution.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ex1norm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Uniform distribution on <span class="math inline">\(a = 0.5\)</span>, <span class="math inline">\(b = 1\)</span>.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The probability density goes all the way to <span class="math inline">\(2\)</span>, but since there is only a non-zero probability density between <span class="math inline">\(0.5\)</span> and <span class="math inline">\(1\)</span>, the surface area under the curve still sums up to a total probability of <span class="math inline">\(2 \times 0.5 = 1\)</span>.</p>
+<p>The <em>standard</em> normal distribution refers to a normal distribution with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma^2 = 1\)</span>.</p>
 </div>
 </div>
 </div>
@@ -2445,7 +2427,7 @@ Figure&nbsp;2: Increasing <span class="math inline">\(\lambda\)</span> results i
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example
+Examples
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2455,51 +2437,70 @@ Example
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>The probability of <span class="math inline">\(k = 4\)</span> in <a href="#fig-dpois" class="quarto-xref">Figure&nbsp;<span>1</span></a> is:</p>
+<p>The top of the curve (<span class="math inline">\(x = 0\)</span>) in <a href="#fig-dnorm" class="quarto-xref">Figure&nbsp;<span>1</span></a> has a height of:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">4</span>, <span class="at">lambda =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1680314</code></pre>
+<pre><code>[1] 0.3989423</code></pre>
 </div>
 </div>
-<p>Using the following code, you can plot the probability mass function of Poisson distribution with <span class="math inline">\(\lambda = 2\)</span>:</p>
+<p>At <span class="math inline">\(x = 2\)</span>, the curve has a height of:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dpois</span>(x, <span class="dv">2</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"h"</span>, <span class="at">lwd =</span> <span class="dv">4</span>, <span class="at">lend =</span> <span class="dv">1</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05399097</code></pre>
+</div>
+</div>
+<p>Using the following code, you can plot a normal distribution with <span class="math inline">\(\mu = 1\)</span> and <span class="math inline">\(\sigma^2 = 0.09\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.3</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poissondistribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>The probability of <span class="math inline">\(k = 4\)</span> in <a href="#fig-dpois" class="quarto-xref">Figure&nbsp;<span>1</span></a> is:</p>
+<p>The top of the curve (<span class="math inline">\(x = 0\)</span>) in <a href="#fig-dnorm" class="quarto-xref">Figure&nbsp;<span>1</span></a> has a height of:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.pmf(<span class="dv">4</span>, mu <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.pdf(x <span class="op">=</span> <span class="dv">0</span>, loc <span class="op">=</span> <span class="dv">0</span>, scale <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.16803135574154085</code></pre>
+<pre><code>0.3989422804014327</code></pre>
 </div>
 </div>
-<p>Using the following code, you can plot the probability mass function of Poisson distribution with <span class="math inline">\(\lambda = 2\)</span>:</p>
+<p>At <span class="math inline">\(x = 2\)</span>, the curve has a height of:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">21</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.pmf(x, <span class="dv">2</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.bar(x, y)<span class="op">;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.pdf(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.05399096651318806</code></pre>
+</div>
+</div>
+<p>Using the following code, you can plot a normal distribution with <span class="math inline">\(\mu = 1\)</span> and <span class="math inline">\(\sigma^2 = 0.09\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>matplotlib.use(<span class="st">"Agg"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.pdf(x, loc <span class="op">=</span> <span class="dv">1</span>, scale <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poissondistribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2511,17 +2512,17 @@ Example
 </div>
 </div>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p><small><em>What is the probability up till a given point</em> <span class="math inline">\(k\)</span>?</small></p>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p><small><em>What is the probability (surface area) up till a given point</em> <span class="math inline">\(z\)</span>?</small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ppois" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pnorm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ppois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poissondistribution_files/figure-html/fig-ppois-3.png" class="img-fluid figure-img" width="2100">
+<div aria-describedby="fig-pnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal-distribution_files/figure-html/fig-pnorm-3.png" class="img-fluid figure-img" width="2100">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ppois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Cumulative distribution function of a Poisson distribution with <span class="math inline">\(\lambda = 3\)</span>.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Cumulative distribution function of a standard normal (<span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma^2 = 1\)</span>).
 </figcaption>
 </figure>
 </div>
@@ -2529,8 +2530,8 @@ Figure&nbsp;3: Cumulative distribution function of a Poisson distribution with <
 </div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
-  \tag{2}\label{ppois}
-  \sum_{i = 0}^k \frac{\lambda^i e^{-\lambda}}{i!}
+  \tag{2}\label{pnorm}
+  \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^z e^{- \frac{(x - \mu)^2}{2 \sigma^2}} \mathrm{d}x
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
@@ -2538,15 +2539,15 @@ Figure&nbsp;3: Cumulative distribution function of a Poisson distribution with <
 <div class="tab-content" data-group="language">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(k, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>poisson.cdf(k, mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>norm.cdf(z, loc, scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><small>Note: <code>mu</code> refers to the rate <span class="math inline">\(\lambda\)</span>.</small></p>
+<p><small>Note: <code>loc</code> refers to the mean, <code>scale</code> to the standard deviation.</small></p>
 </div>
 </div>
 </div>
@@ -2563,11 +2564,12 @@ Symbols
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\(\lambda\)</span>: The rate parameter, representing both mean and variance</li>
-<li><span class="math inline">\(e\)</span>: The constant 2.718282… (<a href="https://math.stackexchange.com/q/4364394/490552">why?</a>)</li>
-<li><span class="math inline">\(k\)</span>: The value of a given count</li>
-<li><span class="math inline">\(!\)</span>: Factorial (e.g., <span class="math inline">\(3! = 3 \times 2 \times 1\)</span>)</li>
-<li><span class="math inline">\(\sum\)</span>: Summation (compute for <span class="math inline">\(0, 1, \dots, k\)</span> and add all results)</li>
+<li><span class="math inline">\(\pi\)</span>: The constant 3.141593… (<a href="https://math.stackexchange.com/q/28558/490552">why?</a>)</li>
+<li><span class="math inline">\(\sigma^2\)</span>: The variance of the distribution</li>
+<li><span class="math inline">\(\int_{-\infty}^z \dots \mathrm{d}z\)</span>: The integral (surface area) from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(z\)</span></li>
+<li><span class="math inline">\(e\)</span>: The constant 2.718282… (<a href="https://math.stackexchange.com/q/28558/490552">why?</a>)</li>
+<li><span class="math inline">\(\mu\)</span>: The mean of the distribution</li>
+<li><span class="math inline">\(x\)</span>: The value of a given observation</li>
 </ul>
 </div>
 </div>
@@ -2584,7 +2586,31 @@ Explanation
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The cumulative distribution function (CDF) is the sum of the probability mass function up till a given point <span class="math inline">\(k\)</span>. It can be used to calculate the probability of a count being no greater than a certain value. To obtain the opposite—the chance of an observation <em>greater</em> than a certain value, simply use <span class="math inline">\(1\)</span> minus the CDF. Finally, to compute the chance of being within a certain range, you can subtract the CDF of the larger value, from the CDF of the smaller value (see the examples below).</p>
+<p>The cumulative distribution function (CDF) is the integral of the probability density function up till a given point <span class="math inline">\(z\)</span>. It can be used to calculate the probability of an observation being less than a certain value. To obtain the opposite—the chance of an observation being equal to or <em>greater</em> than a certain value, simply use <span class="math inline">\(1\)</span> minus the CDF. Finally, to compute the chance of being within a certain range, you can subtract the CDF of the larger value, from the CDF of the smaller value (see the examples below).</p>
+<p>Around 95% of observations fall within two standard deviations of the mean. This holds for any normal distribution, so you can check it with the standard normal, which is what the function uses if you leave out the mean and standard deviation:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9544997</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.cdf(<span class="dv">2</span>) <span class="op">-</span> norm.cdf(<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9544997361036416</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2601,96 +2627,105 @@ Examples
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p>If there are on average 5 falling stars in the sky every night, the chance of observing no more than 3 on a given night is equal to:</p>
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>If adult males in The Netherlands are <span class="math inline">\(1.838\)</span> m on average, with a standard deviation of <span class="math inline">\(7\)</span> cm, the chance of being 2 meters or taller is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">3</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">2</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2650259</code></pre>
+<pre><code>[1] 0.01032603</code></pre>
 </div>
 </div>
-<p>And the chance of observing at least 3 is equal to:</p>
+<p>To compute the probability of a range, just subtract the smaller value from the greater:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">2</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of being within 5 cm from the mean</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.888</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.788</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.875348</code></pre>
+<pre><code>[1] 0.5249495</code></pre>
 </div>
 </div>
-<p><small><em>(This works because you start with 1 (100%) exclude all options resulting in less than 3.)</em></small></p>
-<p>To compute the probability of a certain range, just subtract the smaller value from the greater:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 2 to 4 falling stars:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">4</span>, <span class="at">lambda =</span> <span class="dv">5</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">1</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4000656</code></pre>
-</div>
-</div>
-<p><small><em>(This works because you start with all possibilities up till 4 and then exclude all options resulting in less than 2.)</em></small></p>
-<p>The probability of a value of <span class="math inline">\(k \leq 3\)</span> in <a href="#fig-ppois" class="quarto-xref">Figure&nbsp;<span>3</span></a> is given by:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">3</span>, <span class="at">lambda =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6472319</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>If there are on average 5 falling stars in the sky every night, the chance of observing no more than 3 on a given night is equal to:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.cdf(<span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.2650259152973615</code></pre>
-</div>
-</div>
-<p>And the chance of observing at least 3 is equal to:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> poisson.cdf(<span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.8753479805169189</code></pre>
-</div>
-</div>
-<p><small><em>(This works because you start with 1 (100%) exclude all options resulting in less than 3.)</em></small></p>
-<p>To compute the probability of a certain range, just subtract the smaller value from the greater:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 2 to 4 falling stars:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.cdf(<span class="dv">4</span>, <span class="dv">5</span>) <span class="op">-</span> poisson.cdf(<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.40006560307069977</code></pre>
-</div>
-</div>
-<p><small><em>(This works because you start with all possibilities up till 4 and then exclude all options resulting in less than 2.)</em></small></p>
-<p>The probability of a value of <span class="math inline">\(k \leq 3\)</span> in <a href="#fig-ppois" class="quarto-xref">Figure&nbsp;<span>3</span></a> is given by:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.cdf(<span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0.6472318887822313</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
-<p><small><em>Up till what point does the probability equal at least</em> <span class="math inline">\(p\)</span>?</small></p>
+<details>
+<summary>
+Visual interpretation
+</summary>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-qpois" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-qpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poissondistribution_files/figure-html/fig-qpois-1.png" class="img-fluid figure-img" width="2100">
+<div>
+<figure class="figure">
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Quantile function of a Poisson distribution with <span class="math inline">\(\lambda= 3\)</span>.
+</div>
+</div>
+</details>
+<p>The probability of a value of <span class="math inline">\(z \leq 1.5\)</span> in <a href="#fig-pnorm" class="quarto-xref">Figure&nbsp;<span>3</span></a> is given by:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0668072</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>If adult males in The Netherlands are <span class="math inline">\(1.838\)</span> m on average, with a standard deviation of <span class="math inline">\(7\)</span> cm, the chance of being 2 meters or taller is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> norm.cdf(<span class="dv">2</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.010326027446208808</code></pre>
+</div>
+</div>
+<p>To compute the probability of a range, just subtract the smaller value from the greater:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of being within 5 cm from the mean</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.cdf(<span class="fl">1.888</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>) <span class="op">-</span> norm.cdf(<span class="fl">1.788</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.5249494759460464</code></pre>
+</div>
+</div>
+<details>
+<summary>
+Visual interpretation
+</summary>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<p>The probability of a value of <span class="math inline">\(z \leq 1.5\)</span> in <a href="#fig-pnorm" class="quarto-xref">Figure&nbsp;<span>3</span></a> is given by:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.cdf(<span class="op">-</span><span class="fl">1.5</span>, loc <span class="op">=</span> <span class="dv">0</span>, scale <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.06680720126885807</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<p><small><em>Up till what point does the surface area equal a given probability</em> <span class="math inline">\(p\)</span>?</small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-qnorm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="normal-distribution_files/figure-html/fig-qnorm-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qnorm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Quantile function of a standard normal distribution (<span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma^2 = 1\)</span>).
 </figcaption>
 </figure>
 </div>
@@ -2698,29 +2733,49 @@ Figure&nbsp;4: Quantile function of a Poisson distribution with <span class="mat
 </div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
-  \tag{3}\label{qpois}
-  \text{no simple closed form}
+  \tag{3}\label{qnorm}
+  \mu +  \sqrt{2\sigma^2} \cdot \mathrm{erf}^{-1}(2p - 1)
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(p, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(p, mean, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>poisson.ppf(p, mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>norm.ppf(probability, loc, scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><small>Note: <code>mu</code> refers to the mean (<span class="math inline">\(\lambda\)</span>).</small></p>
+<p><small>Note: <code>loc</code> refers to the mean, <code>scale</code> to the standard deviation.</small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Symbols
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="math inline">\(\mu\)</span>: The mean of the distribution</li>
+<li><span class="math inline">\(\sigma^2\)</span>: The variance of the distribution</li>
+<li><span class="math inline">\(\mathrm{erf}^{-1}\)</span>: The inverse <a href="https://en.wikipedia.org/wiki/Error_function">error function</a>, which has no closed form, but can be approximated numerically</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2729,47 +2784,14 @@ Explanation
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The quantile function is the inverse of the cumulative distribution function. It tells you up till what point the probability equals <span class="math inline">\(p\)</span>. To obtain the opposite—the point <em>after</em> which the probability equals a certain value, simply compute the quantile of <span class="math inline">\(1\)</span> minus the probability (see the examples below).</p>
-<p>There exists no simple expression for the quantile function of the Poisson distribution, but it can be computed anyway using a numeric search. If you are interested how this works, I explain it below.</p>
-<details>
-<summary>
-If no simple closed form exists, how is it calculated?
-</summary>
-<p>The quantile function answers the opposite of the cumulative distribution function:</p>
-<ul>
-<li><strong>Cumulative distribution function</strong>: What is the probability <span class="math inline">\(p\)</span> up till a certain count <span class="math inline">\(k\)</span>?</li>
-<li><strong>Quantile function</strong>: What is the count <span class="math inline">\(k\)</span> that has a probability of at least <span class="math inline">\(p\)</span>?</li>
-</ul>
-<p>This should give you a hint of how a numeric search might work: If you don’t have a quantile function, you can simply try plugging different <span class="math inline">\(k\)</span>s in the cumulative distribution until you find the right answer.</p>
-<p>Suppose that in <a href="#fig-qpois" class="quarto-xref">Figure&nbsp;<span>4</span></a>, you need to know the value for <span class="math inline">\(k\)</span> that has a total probability of at least 80%:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The real answer:</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.8</span>, <span class="at">lambda =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A numeric search using the CDF:</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ppois</span>(k, <span class="at">lambda =</span> <span class="dv">3</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(p <span class="sc">&lt;</span> <span class="fl">0.8</span>){</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">ppois</span>(k, <span class="at">lambda =</span> <span class="dv">3</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>The search stops at <span class="math inline">\(k=4\)</span>, because that is the first instance of a probability of at least 80%.</p>
-<p>There are more efficient ways to go about this, but this is the underlying principle of R’s <code>qpois</code> and Python’s <code>poisson.ppf</code>.</p>
-</details>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2778,47 +2800,45 @@ Examples
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<p>If there are on average 5 falling stars each night, what is the largest number of falling stars for 95% of all nights?</p>
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>How tall (at least) are the largest 5% of adult males in The Netherlands?<br><small>(Assuming a normal distribution with <span class="math inline">\(\mu = 1.838\)</span>, <span class="math inline">\(\sigma = 0.07\)</span>)</small></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fl">0.95</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<pre><code>[1] 1.95314</code></pre>
 </div>
 </div>
-<p>Within what range are the number of falling stars on 95% of all nights?</p>
+<p>Within which heights are 95% of adult males in The Netherlands?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  1 10</code></pre>
+<pre><code>[1] 1.700803 1.975197</code></pre>
 </div>
 </div>
-<p>Apparently, 95% of nights would have 1–10 falling stars if the average were 5.</p>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<p>If there are on average 5 falling stars each night, what is the largest number of falling stars for 95% of all nights?</p>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>How tall (at least) are the largest 5% of adult males in The Netherlands?<br><small>(Assuming a normal distribution with <span class="math inline">\(\mu = 1.838\)</span>, <span class="math inline">\(\sigma = 0.07\)</span>)</small></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.ppf(<span class="fl">0.95</span>, <span class="dv">5</span>)</span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.ppf(<span class="fl">0.95</span>, <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>9.0</code></pre>
+<pre><code>1.953139753886603</code></pre>
 </div>
 </div>
-<p>Within what range are the number of falling stars on 95% of all nights?</p>
+<p>Within which heights are 95% of adult males in The Netherlands?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.ppf([<span class="fl">0.025</span>, <span class="fl">0.975</span>], <span class="dv">5</span>)</span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.ppf([<span class="fl">0.025</span>, <span class="fl">0.975</span>], <span class="fl">1.838</span>, <span class="fl">0.07</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[ 1. 10.]</code></pre>
+<pre><code>[1.70080252 1.97519748]</code></pre>
 </div>
 </div>
-<p>Apparently, 95% of nights would have 1–10 falling stars if the average were 5.</p>
 </div>
 </div>
 </div>
@@ -2832,23 +2852,12 @@ Examples
 <section id="quiz" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
-<p>Perhaps the most commonly used laboratory animal is the mouse species <a href="https://en.wikipedia.org/wiki/C57BL/6">C57BL/6</a>. A study from 2015 estimated its litter size<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to be approximately 7.5.<span class="citation" data-cites="finlay2015"><a href="references.html#ref-finlay2015" role="doc-biblioref">[1]</a></span></p>
-<p>Assuming litter size can be reasonably approximated with a Poisson distribution, what would be the chance of a litter size of 3 or more?</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/C56BL6.jpg" class="img-fluid figure-img"></p>
-<figcaption>C57BL/6 mouse. <small>Source: <a href="https://www.jax.org/strain/003548">jax.org/strain/003548</a></small></figcaption>
-</figure>
-</div>
-</div>
-</div>
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p>If adult female height in The Netherlands can be reasonably approximated by a normal distribution with <span class="math inline">\(\mu = 1.704\)</span> m and <span class="math inline">\(\sigma = 7\)</span> cm, what percentage is taller than <span class="math inline">\(1.80\)</span> m?</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2857,25 +2866,26 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use the code under <em>Example</em> in the <a href="#dpois">probability mass function</a> tab to plot the distribution. This is the best way to get a feel for it.</p>
+<p>First, convert both to the same unit: <span class="math inline">\(\mu = 1.704\)</span> m, <span class="math inline">\(\sigma = 0.07\)</span> m.<br><small><em>(Converting both to cm works as well.)</em></small></p>
+<p>Then, use the code under <em>Examples</em> in the <a href="#dnorm">probability density function</a> tab to plot the distribution. This is the best way to get a feel for it.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poissondistribution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now you can already see what would be a plausible answer: Almost all litter sizes are 3 or larger, so this should be well over 95%.</p>
-<p>The question can be answered with the cumulative distribution function, see the explanation for details.</p>
+<p>Now you can already see from the figure that the answer must be some small number, as <span class="math inline">\(1.8\)</span> is already well into the tails.</p>
+<p>The question can be answered with the cumulative distribution function.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2884,7 +2894,7 @@ Try it in browser
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2893,42 +2903,61 @@ Try it in browser
 </div>
 </div>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
-<p>Use the complement<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> of the cumulative distribution function:</p>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>Use <span class="math inline">\(1\)</span> minus the cumulative distribution function to find the probability in the right tail of the distribution.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">2</span>, <span class="fl">7.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.8</span>, <span class="fl">1.704</span>, <span class="fl">0.07</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9797433</code></pre>
+<pre><code>[1] 0.0851207</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> poisson.cdf(<span class="dv">2</span>, <span class="fl">7.5</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> norm.cdf(<span class="fl">1.8</span>, <span class="fl">1.704</span>, <span class="fl">0.07</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9797432849433356</code></pre>
+<pre><code>0.0851206979548067</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>If a Poisson distribution is a reasonable approximation, only about 2% of litters should be expected to have less than 3 mice.</p>
+<p>About <span class="math inline">\(8.5\%\)</span> is taller than <span class="math inline">\(1.8\)</span> m.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
-<p>Continuing on question 1, within what values would you expect 80% of all litter sizes to be?</p>
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<p>Suppose the beak length of medium ground finches (<em>Geospiza fortis</em>) can be reasonably approximated using a normal distribution with a mean of 11.0 mm with a standard deviation of 0.5 mm. Within what range do you expect 90% to fall?</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="figures/Gfortis3.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Example of a medium ground finch.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2937,14 +2966,25 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This can be answered with the quantile function.</p>
+<p>Use the code under <em>Examples</em> in the <a href="#dnorm">probability density function</a> tab to plot the probability distribution. This is the best way to get a feel for it.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now you can already see what would be a plausible answer… perhaps around 10–12 mm?</p>
+<p>The question can be answered with the quantile function.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2953,7 +2993,7 @@ Try it in browser
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2962,54 +3002,57 @@ Try it in browser
 </div>
 </div>
 </div>
-<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
-<p>80% lies between the lowest 10% and highest 90%:</p>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p>Use the quantile function from <span class="math inline">\(5\%\)</span> to <span class="math inline">\(95\%\)</span> to find the middle <span class="math inline">\(90\%\)</span>:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="at">lambda =</span> <span class="fl">7.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>), <span class="dv">11</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  4 11</code></pre>
+<pre><code>[1] 10.17757 11.82243</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> poisson.ppf([<span class="fl">0.1</span>, <span class="fl">0.9</span>], <span class="fl">7.5</span>)</span>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> norm.ppf([<span class="fl">0.05</span>, <span class="fl">0.95</span>], <span class="dv">11</span>, <span class="fl">0.5</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[ 4. 11.]</code></pre>
+<pre><code>[10.17757319 11.82242681]</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>If a Poisson distribution is a reasonable approximation, the answer is 4–11 mice.</p>
+<p><span class="math inline">\(90\%\)</span> of beak lengths are expected to be within <span class="math inline">\(10.2\)</span> and <span class="math inline">\(11.8\)</span> mm.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="normal-distribution_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <section id="interactive-app" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="interactive-app">Interactive app</h3>
 <p>Practice the concepts covered in this chapter:</p>
-<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/distributions/?v=poisson" class="btn btn-outline-concept" role="button" target="_blank" rel="noreferrer noopener">Distributions app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/distributions/?v=normal" class="btn btn-outline-concept" role="button" target="_blank" rel="noreferrer noopener">Distributions app <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
 <p><small><span class="text-grey">This app runs in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>
 
 
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-finlay2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">J. B. Finlay, X. Liu, R. W. Ermel, and T. W. Adamson, <span>“<span class="nocase"><span>M</span>aternal <span>W</span>eight <span>G</span>ain as a <span>P</span>redictor of <span>L</span>itter <span>S</span>ize in <span>S</span>wiss <span>W</span>ebster, <span>C</span>57<span>B</span><span>L</span>/6<span>J</span>, and <span>B</span><span>A</span><span>L</span><span>B</span>/c<span>J</span> mice</span>,”</span> <em>J Am Assoc Lab Anim Sci</em>, vol. 54, no. 6, pp. 694–699, Nov. 2015.</div>
-</div>
-</div>
 </section>
 </section>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The number of offspring born at one time.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>The cumulative distribution function gives you the left tail of the distribution. Hence, 1 minus the function gives you the right tail. This is called the complement.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>For an explanation, please refer to the <a href="https://youtu.be/jdfG7rKPVNk">video</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -3704,13 +3747,13 @@ Try it in browser
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./normaldistribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-one&quot;></i></span> Normal Distribution">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span>
+      <a href="./probability-distributions.html" class="pagination-link" aria-label="<span class=&quot;text-1f78b4&quot;><i class=&quot;fas fa-dice&quot;></i></span> Probability Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./binomialdistribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-three&quot;></i></span> Binomial Distribution">
-        <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./poisson-distribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-two&quot;></i></span> Poisson Distribution">
+        <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

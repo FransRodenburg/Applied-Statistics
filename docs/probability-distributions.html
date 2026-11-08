@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title> Simple Linear Regression – Applied Statistics</title>
+<title> Probability Distributions – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./LM.html" rel="next">
-<link href="./hypothesistesting.html" rel="prev">
+<link href="./normal-distribution.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -46,6 +46,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-91eb30178993cac9375f1cf299b674ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -258,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simplelinearregression.html"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -294,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./probabilitydistributions.html" class="sidebar-item-text sidebar-link">
+            <a href="./probability-distributions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -303,25 +305,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./normaldistribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./normal-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./poissondistribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./poisson-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./binomialdistribution.html" class="sidebar-item-text sidebar-link">
+  <a href="./binomial-distribution.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypothesistesting.html" class="sidebar-item-text sidebar-link">
+  <a href="./hypothesis-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span></a>
   </div>
 </li>
@@ -329,7 +331,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./simplelinearregression.html" class="sidebar-item-text sidebar-link active">
+            <a href="./simple-linear-regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -352,7 +354,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./multiplelinearregression.html" class="sidebar-item-text sidebar-link">
+            <a href="./multiple-linear-regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -361,7 +363,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./multipleexplanatoryvariables.html" class="sidebar-item-text sidebar-link">
+  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multiple Explanatory Variables</span></span></a>
   </div>
 </li>
@@ -387,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="slr" class="quarto-section-identifier"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></h1>
+<h1 class="title"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</h1>
 </div>
 
 
@@ -404,16 +406,41 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><small><em>Linear regression with a single explanatory variable.</em></small></p>
+<p><small><em>Functions describing the probability of different outcomes of random events.</em></small></p>
 <hr>
-<p>This part introduces the basics of regression analysis, which we will then use for estimation, comparisons, and prediction.</p>
-<p>This part is split into two chapters:</p>
+<p>Just because something is random does not mean every outcome is equally likely. Probability distributions describe how likely each possible outcome of a random event is.</p>
+<p>To get started, familiarize yourself with these three probability distributions:</p>
 <ul>
-<li><a href="LM.html"><span class="text-33a02c"><i class="fas fa-1"></i></span> Ordinary Linear Models</a> <small>(regression of continuous outcomes with a central tendency)</small></li>
-<li><a href="GLM.html"><span class="text-33a02c"><i class="fas fa-2"></i></span> Generalized Linear Models</a> <small>(regression of counts, ratios, binary outcomes, and more)</small></li>
+<li>The <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a> <small>(continuous processes with a central tendency)</small></li>
+<li>The <a href="poisson-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-two"></i></span> Poisson distribution</a> <small>(counts)</small></li>
+<li>The <a href="binomial-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-three"></i></span> binomial distribution</a> <small>(ratios, proportions, binary data)</small></li>
 </ul>
-<p>To get started, watch the <a href="./LM.html#slm-lecture">videos on ordinary linear models</a>.</p>
-<p>These are the most information-dense chapters of the website. Take your time to familiarize yourself with the contents. Both chapters end with interactive apps to test your knowledge, and the ultimate goal: A full analysis for you to do in RStudio.</p>
+<p>The video below introduces these and provides some intuition.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jdfG7rKPVNk" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><small><a href="https://youtu.be/jdfG7rKPVNk" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+<p>There are many other useful probability distributions which we will learn about as we progress, but these three form the starting point for many analyses.</p>
+<p>The last chapter in this section introduces <a href="hypothesis-testing.html"><span class="text-1f78b4"><i class="fas fa-dice-four"></i></span> hypothesis testing</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What level of detail do I need for the exam?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you are using this book in the context of one of my courses, please note the following:</p>
+<ul>
+<li>You do not need to master every detail in this section. The goal is a working understanding you can build on.</li>
+<li>Aim to finish this section within a day. We will revisit the concepts extensively in the following sections.</li>
+<li>On the exam, probability distributions only come up in the context of regression analysis, so focus your efforts on those sections.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 
@@ -1108,13 +1135,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hypothesistesting.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-four&quot;></i></span> Hypothesis Testing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span>
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./LM.html" class="pagination-link" aria-label="Ordinary Linear Models">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./normal-distribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-one&quot;></i></span> Normal Distribution">
+        <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
