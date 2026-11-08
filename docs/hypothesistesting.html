@@ -129,7 +129,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -418,29 +418,6 @@ window.Quarto = {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./datamanagement.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-grey"><i class="fas fa-database"></i></span> Data Management</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tidy Format</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./missingdata.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Missing Data</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -474,7 +451,7 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probabilitydistributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./hypothesistesting.html"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</a></li></ol></nav>
@@ -496,7 +473,7 @@ window.Quarto = {
 </header>
 
 
-<p><small><em>The reasoning behind frequentist hypothesis testing,</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> using <span class="math inline">\(p\)</span><em>-values.</em></small></p>
+<div class="page-columns page-full"><p><small><em>The reasoning behind frequentist hypothesis testing,</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> using <span class="math inline">\(p\)</span><em>-values.</em></small></p><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;As opposed to the main alternative, <a href="https://en.wikipedia.org/wiki/Bayesian_statistics">Bayesian statistics</a>.</p></div></div></div>
 <hr>
 <p>Suppose we want to know the effect of a new compound on blood pressure. In a trial with 30 patients, blood pressure drops in some patients and rises in others. The average drop is 4.8 mmHg:</p>
 <div class="cell">
@@ -519,7 +496,7 @@ Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is
 <p><em>If the compound had no effect, how often would we see a result at least as extreme as ours?</em></p>
 </blockquote>
 <p>That frequency is a <span class="math inline">\(p\)</span>-value. If it is small, our result would be surprising if there were no effect.</p>
-<section id="summary-nhst" class="level2">
+<section id="summary-nhst" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary-nhst">Procedure</h2>
 <p>Hypothesis testing consists of these steps:</p>
 <ol type="1">
@@ -553,12 +530,12 @@ Example: the blood pressure trial
 </div>
 </div>
 </div>
-<p>In the next sections, we explore how steps 4–6 work. For the <span class="math inline">\(t\)</span>-value used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
-<section id="SE" class="level3">
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</p></div></div><p>In the next sections, we explore how steps 4–6 work. For the <span class="math inline">\(t\)</span>-value used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
+<section id="SE" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="SE">Standard error</h3>
 <p><small><em>What is the uncertainty of our estimate?</em></small></p>
 <p>The average change, <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg, is an <em>estimate</em> of the true mean change <span class="math inline">\(\mu\)</span>. With <span class="math inline">\(n=30\)</span> new patients, we would have found a different mean. The extent to which estimates differ from each other in different samples is called the standard error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="math inline">\(\bar{y}\)</span>, we have such an expression:</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.</p></div></div><p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="math inline">\(\bar{y}\)</span>, we have such an expression:</p>
 <p><span class="math display">\[\begin{align}
   \label{trueSEM}
   \tag{1}\mathrm{SE}_{\bar{y}} = \frac{\sigma}{\sqrt{n}}
@@ -571,7 +548,7 @@ Example: the blood pressure trial
 <p>The standard error is small if patients differ little from each other (small <span class="math inline">\(s\)</span>), or if there are many patients (large <span class="math inline">\(n\)</span>). Because of the square root, there are diminishing returns: Going from a sample size of <span class="math inline">\(n=30\)</span> to <span class="math inline">\(60\)</span> is a relatively bigger increase in sample size than going from say, <span class="math inline">\(n = 300\)</span> to <span class="math inline">\(n = 330\)</span>, even though both increase by <span class="math inline">\(30\)</span>.</p>
 <p>For our clinical trial, the standard error is <span class="math inline">\(\frac{9.7}{\sqrt{30}} = 1.77\)</span> mmHg.</p>
 </section>
-<section id="test-statistic" class="level3">
+<section id="test-statistic" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="test-statistic">Test statistic</h3>
 <p><small><em>How far is our estimate from</em> <span class="math inline">\(H_0\)</span><em>?</em></small></p>
 <p>Is a decrease of 4.8 mmHg far from zero? This can be expressed with a <em>test statistic</em>. For a sample mean, we can use the <span class="math inline">\(t\)</span>-value:</p>
@@ -580,13 +557,13 @@ Example: the blood pressure trial
   \tag{3}t = \frac{\bar{y} - \mu_0}{\mathrm{SE}},
 \end{align}\]</span></p>
 <p>where <span class="math inline">\(\mu_0\)</span> is the value under the null hypothesis.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> From the formula, you can see that the <span class="math inline">\(t\)</span>-value is large if there is a large drop in blood pressure, and if the uncertainty of the estimate is small. The <span class="math inline">\(t\)</span>-value is essentially <span class="math inline">\(\frac{\text{difference from zero}}{\text{uncertainty}}\)</span>. The further <span class="math inline">\(t\)</span> is from zero, the less compatible the data are with <span class="math inline">\(H_0\)</span>.</p>
-<p>For our clinical trial, the <span class="math inline">\(t\)</span>-value is <span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”</p></div></div><p>For our clinical trial, the <span class="math inline">\(t\)</span>-value is <span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</p>
 </section>
-<section id="p-value" class="level3">
+<section id="p-value" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(p\)</span>-value</h3>
 <p><small><em>How far from</em> <span class="math inline">\(H_0\)</span> <em>is far enough?</em></small></p>
 <p>If <span class="math inline">\(H_0\)</span> is true, and we make certain assumptions,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math inline">\(t\)</span>-values follow a known distribution: a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="math inline">\(t\)</span>-distribution</a> with <span class="math inline">\(n - 1\)</span> degrees of freedom.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Most <span class="math inline">\(t\)</span>-values are then close to zero, and values far from zero are rare. The <span class="math inline">\(p\)</span>-value is the probability of a <span class="math inline">\(t\)</span>-value at least as far from zero as ours, if <span class="math inline">\(H_0\)</span> is true.</p>
-<p>There is no single formula to compute a <span class="math inline">\(p\)</span>-value: it depends on the test statistic and its distribution under <span class="math inline">\(H_0\)</span>. For the <span class="math inline">\(t\)</span>-value, it is the area under the curve beyond the observed value, in both directions:</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;The <span class="math inline">\(t\)</span>-distribution resembles the <a href="normaldistribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="math inline">\(s\)</span>. With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="math inline">\(t\)</span>-distribution approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="math inline">\(p\)</span>-value: it depends on the test statistic and its distribution under <span class="math inline">\(H_0\)</span>. For the <span class="math inline">\(t\)</span>-value, it is the area under the curve beyond the observed value, in both directions:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -970,17 +947,7 @@ Learn why
 </div>
 </section>
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>As opposed to the main alternative, <a href="https://en.wikipedia.org/wiki/Bayesian_statistics">Bayesian statistics</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>The <span class="math inline">\(t\)</span>-distribution resembles the <a href="normaldistribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="math inline">\(s\)</span>. With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="math inline">\(t\)</span>-distribution approaches the normal distribution.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+
 
 </main> <!-- /main -->
 <style>
