@@ -98,9 +98,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-91eb30178993cac9375f1cf299b674ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -540,9 +540,9 @@ window.Quarto = {
 <section id="summary-glm" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="summary-glm"><span class="header-section-number">2.2</span> Summary</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false">Binomial</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">Binomial</a></li></ul>
 <div class="tab-content">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-lm" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -720,6 +720,10 @@ When would you use a normal GLM with non-canonical link?
 Differences between the output of <code>lm</code> and <code>glm</code>
 </summary>
 <p>An ordinary linear model (LM) is a special case of a generalized linear model (GLM). Compare the output of <code>lm</code> with that of <code>glm</code>:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><code>lm</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><code>glm</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordinary linear model</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris)</span>
@@ -744,6 +748,10 @@ Residual standard error: 0.4071 on 148 degrees of freedom
 Multiple R-squared:   0.76, Adjusted R-squared:  0.7583 
 F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generalized linear model</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>GLM <span class="ot">&lt;-</span> <span class="fu">glm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris, <span class="at">family =</span> <span class="st">"gaussian"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GLM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -769,22 +777,10 @@ AIC: 160.04
 Number of Fisher Scoring iterations: 2</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
 <p>Both methods produce identical estimates and standard errors, demonstrating that a normal GLM is not fundamentally different than an ordinary linear model.</p>
-<p>Focusing on the coefficients first, we can quickly verify that the estimates and their standard errors are indeed identical:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              Estimate Std. Error  t value      Pr(&gt;|t|)
-(Intercept)  4.3066034 0.07838896 54.93890 2.426713e-100
-Petal.Length 0.4089223 0.01889134 21.64602  1.038667e-47</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GLM)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              Estimate Std. Error  t value      Pr(&gt;|t|)
-(Intercept)  4.3066034 0.07838896 54.93890 2.426713e-100
-Petal.Length 0.4089223 0.01889134 21.64602  1.038667e-47</code></pre>
-</div>
-</div>
 <p>Differences between <code>lm</code> and <code>glm</code> include:</p>
 <ul>
 <li><code>lm</code> shows a simple summary of the residuals, <code>glm</code> does not. This is because GLMs are not limited to normally distributed errors, so it does not necessarily help to inspect the residuals. <small>(For distributions other than normal, there is no possible decomposition into <span class="math inline">\(\text{linear function} + \text{error}\)</span>.)</small></li>
@@ -833,7 +829,7 @@ Example
 </div>
 </div>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmpois" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -857,18 +853,18 @@ Figure&nbsp;2.2: Example of Poisson regression. <small>(Apples per year as a fun
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"poisson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"poisson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Poisson()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Poisson()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -971,11 +967,11 @@ Example
 </div>
 </div>
 </div>
-<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="binary">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Example: Ratio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Example: Binary</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Example: Ratio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Example: Binary</a></li></ul>
 <div class="tab-content" data-group="binary">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -999,25 +995,25 @@ Figure&nbsp;2.3: Example of logistic regression. <small>(Correct questions as a 
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(success, failure) <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(success, failure) <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"success + failure ~ x"</span>, data,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"success + failure ~ x"</span>, data,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmbinom2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1041,18 +1037,18 @@ Figure&nbsp;2.4: Example of logistic regression. <small>(Probability of passing 
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1169,9 +1165,9 @@ Example
 <section id="quiz-glm" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="quiz-glm"><span class="header-section-number">2.3</span> Quiz</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>Which of the following is implicitly assumed in a generalized linear model? <em>(choose one)</em></p>
 <p><strong>A.</strong> The data follow a distribution in the exponential dispersion family<br>
 <strong>B.</strong> The outcome follows a distribution in the exponential dispersion family<br>
@@ -1194,7 +1190,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <p>Which of the following is implicitly assumed in a generalized linear model? <em>(choose one)</em></p>
 <p><strong>A.</strong> The data follow a distribution in the exponential dispersion family<br>
 <strong>B.</strong> The outcome follows a distribution in the exponential dispersion family<br>
@@ -1229,9 +1225,9 @@ y|x &amp;\sim \text{probability distribution}
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <p>Which probability distributions are associated with these processes?</p>
 <ol type="1">
 <li>The number of bees visiting flowers in one minute.</li>
@@ -1256,7 +1252,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <p>Which probability distributions are associated with these processes?</p>
 <ol type="1">
 <li>The number of bees visiting flowers in one minute. <strong>Poisson</strong></li>
@@ -1289,9 +1285,9 @@ Learn why
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
@@ -1318,7 +1314,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
@@ -1401,175 +1397,90 @@ How to read data in R
 
 </main> <!-- /main -->
 <style>
-
 .dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
-
 .dm-scheme .dropdown-item.active { font-weight: 700; }
-
 </style>
-
 <script>
-
 // Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
-
 // Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
-
 (function () {
-
   // webR editors are created light and switch only when the body class changes, so on a
-
   // page that loads in dark mode they would stay light. Set the dark editor theme after
-
   // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
-
   // script and cannot be called from here; Monaco's theme applies to all editors.)
-
   if (document.getElementById("qwebr-monaco-editor-init")) {
-
     var t = 0;
-
     var id = setInterval(function () {
-
       var me = window.monaco && window.monaco.editor;
-
       if (!me && ++t < 480) return;
-
       clearInterval(id);
-
       if (!me) return;
-
       var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
-
       me.onDidCreateEditor(function () { setTimeout(fix, 0); });
-
       fix();
-
     }, 250);
-
   }
-
-
 
   // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
-
   // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
-
   // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
-
   var K = "quarto-color-scheme";
-
   var ok = false;
-
   try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
-
   var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
-
   if (!ok || !toggles.length) return;
-
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
-
   var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
-
   var name = { light: "Light", dark: "Dark", system: "System" };
-
   function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
-
   function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
-
   function show() {
-
     var c = choice();
-
     document.querySelectorAll(".dm-scheme").forEach(function (m) {
-
       var b = m.querySelector(".dm-btn");
-
       b.querySelector("i").className = "bi " + icon[c];
-
       b.setAttribute("aria-label", "Color scheme: " + name[c]);
-
       m.querySelectorAll(".dropdown-item").forEach(function (it) {
-
         var on = it.dataset.choice === c;
-
         it.classList.toggle("active", on);
-
         it.setAttribute("aria-checked", on ? "true" : "false");
-
       });
-
     });
-
   }
-
   function apply(dark) {
-
     localAlternateSentinel = dark ? "alternate" : "default";
-
     toggleColorMode(dark);
-
     show();
-
     window.dispatchEvent(new Event("resize"));
-
   }
-
   function set(c) {
-
     var dark = c === "dark" || (c === "system" && mq.matches);
-
     try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
-
     apply(dark);
-
   }
-
   toggles.forEach(function (t) {
-
     var m = document.createElement("div");
-
     m.className = "dropdown dm-scheme d-inline-block";
-
     m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
-
       '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
-
       ["light", "dark", "system"].map(function (c) {
-
         return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
-
       }).join("") + "</ul>";
-
     m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
-
     t.insertAdjacentElement("afterend", m);
-
     t.style.display = "none";
-
   });
-
   // Under System, Quarto's own listener switches the page when the system setting changes.
-
   mq.addEventListener("change", show);
-
   // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
-
   window.addEventListener("storage", function (e) {
-
     if (e.key !== K && e.key !== null) return;
-
     var s = stored();
-
     apply(s === "alternate" || (s === null && mq.matches));
-
   });
-
   show();
-
 })();
-
 </script>
-
 <script>
 
 // Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
@@ -1615,67 +1526,36 @@ How to read data in R
 </script>
 
 <script>
-
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
-
 (function () {
-
   function go(u, pr) {
-
     fetch(u).then(function (r) { return r.json(); }).then(function (f) {
-
       var i = 0;
-
       function next() {
-
         if (i >= f.length) return;
-
         fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
-
           var d = r.body.getReader();
-
           return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
-
         }).catch(function () {}).then(next);
-
       }
-
       next(); next(); next();
-
     }).catch(function () {});
-
   }
-
   try {
-
     if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
-
       if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
-
       return;
-
     }
-
     var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
-
       return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
-
     });
-
     if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
-
     var u = new URL("../prefetch.json", a.href);
-
     var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
-
     if (document.readyState === "complete") t(); else addEventListener("load", t);
-
   } catch (e) {}
-
 })();
-
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

@@ -78,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-91eb30178993cac9375f1cf299b674ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-eb4353ce8d04450829dee245d351eb02.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -459,7 +459,7 @@ window.Quarto = {
   <li><a href="#summary-lm" id="toc-summary-lm" class="nav-link" data-scroll-target="#summary-lm"><span class="header-section-number">1.2</span> Summary</a></li>
   <li><a href="#quiz-lm" id="toc-quiz-lm" class="nav-link" data-scroll-target="#quiz-lm"><span class="header-section-number">1.3</span> Quiz</a>
   <ul class="collapse">
-  <li><a href="#interactive-apps" id="toc-interactive-apps" class="nav-link" data-scroll-target="#interactive-apps">Interactive apps</a></li>
+  <li><a href="#LM-app" id="toc-LM-app" class="nav-link" data-scroll-target="#LM-app">Interactive apps</a></li>
   </ul></li>
   <li><a href="#apply-lm" id="toc-apply-lm" class="nav-link" data-scroll-target="#apply-lm"><span class="header-section-number">1.4</span> Apply your knowledge</a></li>
   </ul>
@@ -716,7 +716,7 @@ F-statistic: 18.64 on 1 and 28 DF,  p-value: 0.0001783</code></pre>
 =================================================================
 Model:              OLS              Adj. R-squared:     0.378   
 Dependent Variable: height           AIC:                234.5127
-Date:               2026-11-08 16:21 BIC:                237.3151
+Date:               2026-11-11 10:24 BIC:                237.3151
 No. Observations:   30               Log-Likelihood:     -115.26 
 Df Model:           1                F-statistic:        18.64   
 Df Residuals:       28               Prob (F-statistic): 0.000178
@@ -740,6 +740,7 @@ errors is correctly specified.</code></pre>
 </div>
 </div>
 </div>
+<p>The <a href="#LM-app">interactive app</a> at the end of the chapter lets you hover over elements of the regression table and see what they mean.</p>
 <hr>
 <p>A simple linear model makes several key <strong>assumptions</strong> which are required for valid inference:</p>
 <ul>
@@ -793,7 +794,7 @@ Handling outliers
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>First, realize that apparent outliers can also appear due to other underlying issues, as explained in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>. If you are sure the issue is outlyingness, I recommend these steps in order:</p>
+<p>First, realize that outliers can also appear due to other underlying issues, as explained in the <a href="https://youtu.be/_B6VDSa9N60" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>. If you are sure the issue is outlyingness, I recommend these steps in order:</p>
 <ol type="1">
 <li>Look up the observation in the dataset.
 <ul>
@@ -812,7 +813,7 @@ Handling outliers
 <li>There is strong contextual evidence that it is not representative of the rest of the data.<br><small><span class="text-grey">(e.g., a single patient of advanced age)</span></small></li>
 </ul></li>
 </ol>
-<p>Inexperienced analysts are often quick to filter and discard observations, impute missing values, etc., but these are dangerous actions that can severely bias statistical inference. Approach these decisions with caution, or consult with an expert.</p>
+<p>Inexperienced analysts are often quick to filter and discard observations, impute missing values, etc., but these are dangerous actions that can severely bias statistical inference. Handling outliers is not beginner stuff. Approach decisions with caution, or consult with an expert.</p>
 </div>
 </div>
 </div>
@@ -937,8 +938,8 @@ Learn why
 </div>
 </div>
 </div>
-<section id="interactive-apps" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="interactive-apps">Interactive apps</h3>
+<section id="LM-app" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="LM-app">Interactive apps</h3>
 <p>Practice the concepts covered in this chapter:</p>
 <p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/LM-diagnostics/" class="btn btn-outline-primary mb-2" role="button" target="_blank" rel="noreferrer noopener">Diagnostics <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> <a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/?v=lm" class="btn btn-outline-output mb-2" role="button" target="_blank" rel="noreferrer noopener">Regression tables <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
 <p><small><span class="text-grey">Both apps run in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>
@@ -987,175 +988,90 @@ How to read data in R
 
 </main> <!-- /main -->
 <style>
-
 .dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
-
 .dm-scheme .dropdown-item.active { font-weight: 700; }
-
 </style>
-
 <script>
-
 // Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
-
 // Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
-
 (function () {
-
   // webR editors are created light and switch only when the body class changes, so on a
-
   // page that loads in dark mode they would stay light. Set the dark editor theme after
-
   // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
-
   // script and cannot be called from here; Monaco's theme applies to all editors.)
-
   if (document.getElementById("qwebr-monaco-editor-init")) {
-
     var t = 0;
-
     var id = setInterval(function () {
-
       var me = window.monaco && window.monaco.editor;
-
       if (!me && ++t < 480) return;
-
       clearInterval(id);
-
       if (!me) return;
-
       var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
-
       me.onDidCreateEditor(function () { setTimeout(fix, 0); });
-
       fix();
-
     }, 250);
-
   }
-
-
 
   // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
-
   // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
-
   // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
-
   var K = "quarto-color-scheme";
-
   var ok = false;
-
   try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
-
   var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
-
   if (!ok || !toggles.length) return;
-
   var mq = window.matchMedia("(prefers-color-scheme: dark)");
-
   var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
-
   var name = { light: "Light", dark: "Dark", system: "System" };
-
   function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
-
   function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
-
   function show() {
-
     var c = choice();
-
     document.querySelectorAll(".dm-scheme").forEach(function (m) {
-
       var b = m.querySelector(".dm-btn");
-
       b.querySelector("i").className = "bi " + icon[c];
-
       b.setAttribute("aria-label", "Color scheme: " + name[c]);
-
       m.querySelectorAll(".dropdown-item").forEach(function (it) {
-
         var on = it.dataset.choice === c;
-
         it.classList.toggle("active", on);
-
         it.setAttribute("aria-checked", on ? "true" : "false");
-
       });
-
     });
-
   }
-
   function apply(dark) {
-
     localAlternateSentinel = dark ? "alternate" : "default";
-
     toggleColorMode(dark);
-
     show();
-
     window.dispatchEvent(new Event("resize"));
-
   }
-
   function set(c) {
-
     var dark = c === "dark" || (c === "system" && mq.matches);
-
     try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
-
     apply(dark);
-
   }
-
   toggles.forEach(function (t) {
-
     var m = document.createElement("div");
-
     m.className = "dropdown dm-scheme d-inline-block";
-
     m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
-
       '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
-
       ["light", "dark", "system"].map(function (c) {
-
         return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
-
       }).join("") + "</ul>";
-
     m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
-
     t.insertAdjacentElement("afterend", m);
-
     t.style.display = "none";
-
   });
-
   // Under System, Quarto's own listener switches the page when the system setting changes.
-
   mq.addEventListener("change", show);
-
   // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
-
   window.addEventListener("storage", function (e) {
-
     if (e.key !== K && e.key !== null) return;
-
     var s = stored();
-
     apply(s === "alternate" || (s === null && mq.matches));
-
   });
-
   show();
-
 })();
-
 </script>
-
 <script>
 
 // Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
@@ -1201,67 +1117,36 @@ How to read data in R
 </script>
 
 <script>
-
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
-
 (function () {
-
   function go(u, pr) {
-
     fetch(u).then(function (r) { return r.json(); }).then(function (f) {
-
       var i = 0;
-
       function next() {
-
         if (i >= f.length) return;
-
         fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
-
           var d = r.body.getReader();
-
           return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
-
         }).catch(function () {}).then(next);
-
       }
-
       next(); next(); next();
-
     }).catch(function () {});
-
   }
-
   try {
-
     if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
-
       if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
-
       return;
-
     }
-
     var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
-
       return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
-
     });
-
     if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
-
     var u = new URL("../prefetch.json", a.href);
-
     var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
-
     if (document.readyState === "complete") t(); else addEventListener("load", t);
-
   } catch (e) {}
-
 })();
-
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
