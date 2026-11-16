@@ -7,7 +7,7 @@ editor: visual
 
 ## Description
 
-A company wants to know whether smoking is more common among its male or female workers.
+A company wants to know whether smoking is more common among its male or female workers, and whether this depends on their age.
 
 ## Dependencies
 
@@ -95,7 +95,7 @@ plot(RQR)
 
 ## Interpreting the model output
 
-This is essentially an ANCOVA, but since we only have two categories for the categorical variable, we can get all the answers from the regression table:
+Since we only have two categories for the categorical variable, we can get all the answers from the regression table:
 
 ```{r}
 summary(GLM)
@@ -109,7 +109,7 @@ summary(GLM)
 
 -   What if you are male and older than $0$ years? In that case, you also have to add the effect of the interaction. For example, at an age of $20$, males are estimated to smoke with probability $\frac{1}{1 + e^{-(-4.009476 + 3.132006 + 20 \times (0.044102 - 0.089392))}} \approx 14.4\%$. Finally, the interaction is also significant ($p < 2 \cdot 10^{-16}$), so the effect of age on the probability of smoking differs significantly between men and women.
 
--   The model appears slightly underdispersed: $\frac{5724.4}{9833} \approx 0.58$, but the visual diagnostics did not indicate significant problems (note again, diagnostics for binary GLMs are tricky).
+-   For a binary outcome, the ratio of residual deviance to degrees of freedom ($\frac{5724.4}{9833} \approx 0.58$) says nothing about dispersion, so we cannot use it here (note again, diagnostics for binary GLMs are tricky).
 
 -   This model explains $1 - \frac{5724.4}{6074.7} \approx 5.8\%$ of the deviance, so very little.
 

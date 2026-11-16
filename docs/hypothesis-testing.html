@@ -418,8 +418,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./interaction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -444,7 +450,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#SE" id="toc-SE" class="nav-link" data-scroll-target="#SE">Standard error</a></li>
   <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test statistic</a></li>
-  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="math inline">\(p\)</span>-value</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span></a></li>
   <li><a href="#CI" id="toc-CI" class="nav-link" data-scroll-target="#CI">Confidence interval</a></li>
   </ul></li>
   <li><a href="#error-rates" id="toc-error-rates" class="nav-link" data-scroll-target="#error-rates">Error rates</a></li>
@@ -479,7 +485,7 @@ window.Quarto = {
 </header>
 
 
-<div class="page-columns page-full"><p><small><em>The reasoning behind frequentist hypothesis testing,</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> using <span class="math inline">\(p\)</span><em>-values.</em></small></p><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;As opposed to the main alternative, <a href="https://en.wikipedia.org/wiki/Bayesian_statistics">Bayesian statistics</a>.</p></div></div></div>
+<div class="page-columns page-full"><p><small><em>The reasoning behind frequentist hypothesis testing,</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> using <span class="text-nowrap"><span class="math inline">\(p\)</span><em>-values.</em></span></small></p><div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;As opposed to the main alternative, <a href="https://en.wikipedia.org/wiki/Bayesian_statistics">Bayesian statistics</a>.</p></div></div></div>
 <hr>
 <p>Suppose we want to know the effect of a new compound on blood pressure. In a trial with 30 patients, blood pressure drops in some patients and rises in others. The average drop is 4.8 mmHg:</p>
 <div class="cell">
@@ -501,17 +507,17 @@ Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is
 <blockquote class="blockquote">
 <p><em>If the compound had no effect, how often would we see a result at least as extreme as ours?</em></p>
 </blockquote>
-<p>That frequency is a <span class="math inline">\(p\)</span>-value. If it is small, our result would be surprising if there were no effect.</p>
+<p>That frequency is a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value.</span> If it is small, our result would be surprising if there were no effect.</p>
 <section id="summary-nhst" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary-nhst">Procedure</h2>
 <p>Hypothesis testing consists of these steps:</p>
 <ol type="1">
-<li>Choose a null hypothesis (<span class="math inline">\(H_0\)</span>).</li>
-<li>Choose a level of significance (<span class="math inline">\(\alpha\)</span>).</li>
+<li>Choose a null hypothesis <span class="text-nowrap">(<span class="math inline">\(H_0\)</span>).</span></li>
+<li>Choose a level of significance <span class="text-nowrap">(<span class="math inline">\(\alpha\)</span>).</span></li>
 <li>Collect the data.</li>
 <li>Calculate a test statistic.</li>
-<li>Calculate the <span class="math inline">\(p\)</span>-value.</li>
-<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \leq \alpha\)</span>. <span class="text-grey">Otherwise, do not reject <span class="math inline">\(H_0\)</span>.</span></li>
+<li>Calculate the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value.</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="text-nowrap"><span class="math inline">\(p \leq \alpha\)</span>.</span> <span class="text-grey">Otherwise, do not reject <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span></span></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -526,50 +532,50 @@ Example: the blood pressure trial
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><span class="math inline">\(H_0\!: \mu = 0\)</span>. The medicine does not change blood pressure on average.</li>
-<li>Set <span class="math inline">\(\alpha = 0.05\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><span class="text-nowrap"><span class="math inline">\(H_0\!: \mu = 0\)</span>.</span> The medicine does not change blood pressure on average.</li>
+<li>Set <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></span></li>
 <li>In <span class="math inline">\(n = 30\)</span> patients, we found a mean of <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg and standard deviation of <span class="math inline">\(s = 9.7\)</span> mmHg.</li>
-<li>We can use the <a href="#test-statistic"><span class="math inline">\(t\)</span>-value</a>, which is here the mean divided by its standard error: <span class="math inline">\(t = \frac{\bar{y}}{\mathrm{SE}_{\bar{y}}} = -2.7\)</span>.</li>
-<li>If <span class="math inline">\(H_0\)</span> were true, a <span class="math inline">\(t\)</span>-value at least this far from zero can be calculated to occur with probability <span class="math inline">\(p = 0.011\)</span>.</li>
-<li>Since <span class="math inline">\(p \leq 0.05\)</span>, we reject <span class="math inline">\(H_0\)</span>: The average decrease of 4.8 mmHg is significantly non-zero.</li>
+<li>We can use the <span class="text-nowrap"><a href="#test-statistic"><span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span></a>,</span> which is here the mean divided by its standard error: <span class="text-nowrap"><span class="math inline">\(t = \frac{\bar{y}}{\mathrm{SE}_{\bar{y}}} = -2.7\)</span>.</span></li>
+<li>If <span class="math inline">\(H_0\)</span> were true, a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least this far from zero can be calculated to occur with probability <span class="text-nowrap"><span class="math inline">\(p = 0.011\)</span>.</span></li>
+<li>Since <span class="text-nowrap"><span class="math inline">\(p \leq 0.05\)</span>,</span> we reject <span class="text-nowrap"><span class="math inline">\(H_0\)</span>:</span> The average decrease of 4.8 mmHg is significantly non-zero.</li>
 </ol>
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</p></div></div><p>In the next sections, we explore how steps 4–6 work. For the <span class="math inline">\(t\)</span>-value used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</p></div></div><p>In the next sections, we explore how steps 4–6 work. For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
 <section id="SE" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="SE">Standard error</h3>
 <p><small><em>What is the uncertainty of our estimate?</em></small></p>
-<p>The average change, <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg, is an <em>estimate</em> of the true mean change <span class="math inline">\(\mu\)</span>. With <span class="math inline">\(n=30\)</span> new patients, we would have found a different mean. The extent to which estimates differ from each other in different samples is called the standard error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.</p></div></div><p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="math inline">\(\bar{y}\)</span>, we have such an expression:</p>
+<p>The average change, <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg, is an <em>estimate</em> of the true mean change <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With <span class="math inline">\(n=30\)</span> new patients, we would have found a different mean. The extent to which estimates differ from each other in different samples is called the standard error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.</p></div></div><p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="text-nowrap"><span class="math inline">\(\bar{y}\)</span>,</span> we have such an expression:</p>
 <p><span class="math display">\[\begin{align}
   \label{trueSEM}
   \tag{1}\mathrm{SE}_{\bar{y}} = \frac{\sigma}{\sqrt{n}}
 \end{align}\]</span></p>
-<p>In practice, we do not know <span class="math inline">\(\sigma\)</span>, so we can <em>estimate</em> the standard error, by plugging in an estimate <span class="math inline">\(s\)</span>:</p>
+<p>In practice, we do not know <span class="text-nowrap"><span class="math inline">\(\sigma\)</span>,</span> so we can <em>estimate</em> the standard error, by plugging in an estimate <span class="text-nowrap"><span class="math inline">\(s\)</span>:</span></p>
 <p><span class="math display">\[\begin{align}
   \label{SEM}
   \tag{2}\hat{\mathrm{SE}}_{\bar{y}} = \frac{s}{\sqrt{n}}
 \end{align}\]</span></p>
-<p>The standard error is small if patients differ little from each other (small <span class="math inline">\(s\)</span>), or if there are many patients (large <span class="math inline">\(n\)</span>). Because of the square root, there are diminishing returns: Going from a sample size of <span class="math inline">\(n=30\)</span> to <span class="math inline">\(60\)</span> is a relatively bigger increase in sample size than going from say, <span class="math inline">\(n = 300\)</span> to <span class="math inline">\(n = 330\)</span>, even though both increase by <span class="math inline">\(30\)</span>.</p>
+<p>The standard error is small if patients differ little from each other (small <span class="text-nowrap"><span class="math inline">\(s\)</span>),</span> or if there are many patients (large <span class="text-nowrap"><span class="math inline">\(n\)</span>).</span> Because of the square root, there are diminishing returns: To halve the standard error, you need four times as many patients.</p>
 <p>For our clinical trial, the standard error is <span class="math inline">\(\frac{9.7}{\sqrt{30}} = 1.77\)</span> mmHg.</p>
 </section>
 <section id="test-statistic" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="test-statistic">Test statistic</h3>
-<p><small><em>How far is our estimate from</em> <span class="math inline">\(H_0\)</span><em>?</em></small></p>
-<p>Is a decrease of 4.8 mmHg far from zero? This can be expressed with a <em>test statistic</em>. For a sample mean, we can use the <span class="math inline">\(t\)</span>-value:</p>
+<p><small><em>How far is our estimate from</em> <span class="text-nowrap"><span class="math inline">\(H_0\)</span><em>?</em></span></small></p>
+<p>Is a decrease of 4.8 mmHg far from zero? This can be expressed with a <em>test statistic</em>. For a sample mean, we can use the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value:</span></p>
 <p><span class="math display">\[\begin{align}
   \label{t}
   \tag{3}t = \frac{\bar{y} - \mu_0}{\mathrm{SE}},
 \end{align}\]</span></p>
-<p>where <span class="math inline">\(\mu_0\)</span> is the value under the null hypothesis.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> From the formula, you can see that the <span class="math inline">\(t\)</span>-value is large if there is a large drop in blood pressure, and if the uncertainty of the estimate is small. The <span class="math inline">\(t\)</span>-value is essentially <span class="math inline">\(\frac{\text{difference from zero}}{\text{uncertainty}}\)</span>. The further <span class="math inline">\(t\)</span> is from zero, the less compatible the data are with <span class="math inline">\(H_0\)</span>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”</p></div></div><p>For our clinical trial, the <span class="math inline">\(t\)</span>-value is <span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</p>
+<p>where <span class="math inline">\(\mu_0\)</span> is the value under the null hypothesis.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> From the formula, you can see that the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is large if there is a large drop in blood pressure, and if the uncertainty of the estimate is small. The <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is essentially <span class="text-nowrap"><span class="math inline">\(\frac{\text{difference from zero}}{\text{uncertainty}}\)</span>.</span> The further <span class="math inline">\(t\)</span> is from zero, the less compatible the data are with <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”</p></div></div><p>For our clinical trial, the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is <span class="text-nowrap"><span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</span></p>
 </section>
 <section id="p-value" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(p\)</span>-value</h3>
+<h3 class="anchored" data-anchor-id="p-value"><span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span></h3>
 <p><small><em>How far from</em> <span class="math inline">\(H_0\)</span> <em>is far enough?</em></small></p>
-<p>If <span class="math inline">\(H_0\)</span> is true, and we make certain assumptions,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="math inline">\(t\)</span>-values follow a known distribution: a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="math inline">\(t\)</span>-distribution</a> with <span class="math inline">\(n - 1\)</span> degrees of freedom.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Most <span class="math inline">\(t\)</span>-values are then close to zero, and values far from zero are rare. The <span class="math inline">\(p\)</span>-value is the probability of a <span class="math inline">\(t\)</span>-value at least as far from zero as ours, if <span class="math inline">\(H_0\)</span> is true.</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;The <span class="math inline">\(t\)</span>-distribution resembles the <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="math inline">\(s\)</span>. With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="math inline">\(t\)</span>-distribution approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="math inline">\(p\)</span>-value: it depends on the test statistic and its distribution under <span class="math inline">\(H_0\)</span>. For the <span class="math inline">\(t\)</span>-value, it is the area under the curve beyond the observed value, in both directions:</p>
+<p>If <span class="math inline">\(H_0\)</span> is true, and we make certain assumptions,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> follow a known distribution: a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span></a> with <span class="math inline">\(n - 1\)</span> degrees of freedom.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Most <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> are then close to zero, and values far from zero are rare. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability of a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least as far from zero as ours, if <span class="math inline">\(H_0\)</span> is true.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;The <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> resembles the <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="text-nowrap"><span class="math inline">\(s\)</span>.</span> With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value:</span> it depends on the test statistic and its distribution under <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span> For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value,</span> it is the area under the curve beyond the observed value, in both directions:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -578,13 +584,13 @@ Example: the blood pressure trial
 <img src="hypothesis-testing_files/figure-html/fig-tdist-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Distribution of the <span class="math inline">\(t\)</span>-value if <span class="math inline">\(H_0\)</span> is true (<span class="math inline">\(t\)</span>-distribution with 29 degrees of freedom). The dotted line marks the observed <span class="math inline">\(t\)</span>-value. The blue area is the probability of a <span class="math inline">\(t\)</span>-value at least this far from zero (the <span class="math inline">\(p\)</span>-value).
+Figure&nbsp;2: Distribution of the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> if <span class="math inline">\(H_0\)</span> is true <span class="text-nowrap">(<span class="math inline">\(t\)</span>-distribution</span> with 29 degrees of freedom). The dotted line marks the observed <span class="text-nowrap"><span class="math inline">\(t\)</span>-value.</span> The blue area is the probability of a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least this far from zero (the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value).</span>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>For our clinical trial, <span class="math inline">\(p = 0.011\)</span> (the shaded area in <a href="#fig-tdist" class="quarto-xref">Figure&nbsp;<span>2</span></a>). At <span class="math inline">\(\alpha = 0.05\)</span>, we would reject <span class="math inline">\(H_0\)</span> and conclude there is a significant decrease. Had <span class="math inline">\(p\)</span> been larger than <span class="math inline">\(\alpha\)</span>, we would not have rejected <span class="math inline">\(H_0\)</span>, and concluded the decrease was not significant.</p>
+<p>For our clinical trial, <span class="math inline">\(p = 0.011\)</span> (the shaded area in <a href="#fig-tdist" class="quarto-xref">Figure&nbsp;<span>2</span></a>). At <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>,</span> we would reject <span class="math inline">\(H_0\)</span> and conclude there is a significant decrease. Had <span class="math inline">\(p\)</span> been larger than <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> we would not have rejected <span class="text-nowrap"><span class="math inline">\(H_0\)</span>,</span> and concluded the decrease was not significant.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -605,7 +611,7 @@ Why <em>both</em> directions?
 <section id="CI" class="level3">
 <h3 class="anchored" data-anchor-id="CI">Confidence interval</h3>
 <p><small><em>Which values are plausible?</em></small></p>
-<p>A <span class="math inline">\(p\)</span>-value only tells us whether one particular value (<span class="math inline">\(\mu_0 = 0\)</span>) can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="math inline">\(\mu\)</span>. It is good practice to report not only the <span class="math inline">\(p\)</span>-value, but also the effect size and a 95% confidence interval.</p>
+<p>A <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> only tells us whether one particular value <span class="text-nowrap">(<span class="math inline">\(\mu_0 = 0\)</span>)</span> can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> It is good practice to report not only the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value,</span> but also the effect size and a 95% confidence interval.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -618,13 +624,13 @@ Why <em>95%</em> confidence intervals?
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If you set a significance level of <span class="math inline">\(\alpha\)</span>, that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <em>95%</em> confidence intervals.</p>
-<p>Note that this 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="math inline">\(\mu\)</span>. “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>If you set a significance level of <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <em>95%</em> confidence intervals.</p>
+<p>Note that this 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
 </div>
 </div>
 </div>
-<p>For our clinical trial, the 95% confidence interval runs from -8.4 to -1.2 mmHg. Zero lies outside it, which here corresponds to <span class="math inline">\(p \leq 0.05\)</span>. Unlike the <span class="math inline">\(p\)</span>-value, however, the interval also shows how large the effect could plausibly be.</p>
-<p>Whether an effect matters in practice is a subject-matter judgment, not a statistical one (e.g., a drop of less than 5 mmHg may not be worth taking a medicine). Once that is decided, the interval can distinguish situations that a <span class="math inline">\(p\)</span>-value cannot:</p>
+<p>For our clinical trial, the 95% confidence interval runs from -8.4 to -1.2 mmHg. Zero lies outside it, which here corresponds to <span class="text-nowrap"><span class="math inline">\(p \leq 0.05\)</span>.</span> Unlike the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value,</span> however, the interval also shows how large the effect could plausibly be.</p>
+<p>Whether an effect matters in practice is a subject-matter judgment, not a statistical one (e.g., a drop of less than 5 mmHg may not be worth taking a medicine). Once that is decided, the interval can distinguish situations that a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> cannot:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ci" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -633,7 +639,7 @@ Why <em>95%</em> confidence intervals?
 <img src="hypothesis-testing_files/figure-html/fig-ci-1.png" class="img-fluid figure-img" width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% confidence intervals. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.
+Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% confidence intervals. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.
 </figcaption>
 </figure>
 </div>
@@ -670,62 +676,62 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 </tr>
 </tbody>
 </table>
-<p>The probability of a true positive, <span class="math inline">\(1 - \beta\)</span>, is called the <strong>power</strong> of a test: its ability to detect a real difference from <span class="math inline">\(H_0\)</span>. Unlike <span class="math inline">\(\alpha\)</span>, power is not directly chosen. It depends on the size of the true effect, <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(n\)</span> and the variance. Power calculations (for very simple tests) and simulation (for anything else) can be used to determine an appropriate sample size to attain a certain power.</p>
+<p>The probability of a true positive, <span class="text-nowrap"><span class="math inline">\(1 - \beta\)</span>,</span> is called the <strong>power</strong> of a test: its ability to detect a real difference from <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span> Unlike <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> power is not directly chosen. It depends on the size of the true effect, <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> <span class="math inline">\(n\)</span> and the variance. Power calculations (for very simple tests) and simulation (for anything else) can be used to determine an appropriate sample size to attain a certain power.</p>
 </section>
 <section id="limitations-of-hypothesis-testing" class="level2">
 <h2 class="anchored" data-anchor-id="limitations-of-hypothesis-testing">Limitations of hypothesis testing</h2>
 <p>Hypothesis testing is ubiquitous in science, which is why it is important that you understand statistical significance, power, and false positives/negatives. It is also a highly criticized practice, because it is very susceptible to misuse.</p>
 <ul>
-<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="math inline">\(\alpha\)</span>, and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven. <span class="text-grey">(See <a href="#error-rates">Error rates</a>.)</span></li>
-<li>A test relies on assumptions (e.g., independent observations). If these do not hold, the <span class="math inline">\(p\)</span>-value loses its meaning. <span class="text-grey">(These will be covered in the following chapters.)</span></li>
-<li>A test relies on a fixed plan. The hypotheses, <span class="math inline">\(\alpha\)</span> and the analysis must be chosen before looking at the data. Otherwise, <span class="math inline">\(p\)</span>-values and <span class="math inline">\(\alpha\)</span> lose their meaning.</li>
+<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven. <span class="text-grey">(See <a href="#error-rates">Error rates</a>.)</span></li>
+<li>A test relies on assumptions (e.g., independent observations). If these do not hold, the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> loses its meaning. <span class="text-grey">(These will be covered in the following chapters.)</span></li>
+<li>A test relies on a fixed plan. The hypotheses, <span class="math inline">\(\alpha\)</span> and the analysis must be chosen before looking at the data. Otherwise, <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and <span class="math inline">\(\alpha\)</span> lose their meaning.</li>
 </ul>
-<p>In addition, a lot of misuse stems from misunderstanding <span class="math inline">\(p\)</span>-values and confidence intervals. Hence, the list below contains some of the most common misconceptions.</p>
+<p>In addition, a lot of misuse stems from misunderstanding <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and confidence intervals. Hence, the list below contains some of the most common misconceptions.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Common misconceptions about <span class="math inline">\(p\)</span>-values
+Common misconceptions about <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Misinterpretations of <span class="math inline">\(p\)</span>-values are widespread.<span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span> Below are some of the most frequent, based on published research and surveys of researchers.<span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span></p>
+<p>Misinterpretations of <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> are widespread.<span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span> Below are some of the most frequent, based on published research and surveys of researchers.<span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span></p>
 <dl>
-<dt>“If <span class="math inline">\(p &gt; 0.05\)</span>, there is no effect.”</dt>
+<dt>“If <span class="text-nowrap"><span class="math inline">\(p &gt; 0.05\)</span>,</span> there is no effect.”</dt>
 <dd>
 <p>Absence of evidence is not proof of absence. The effect may be too small to detect with this sample size. If the confidence interval includes effects that would matter in practice, the study is inconclusive. Only if the interval excludes all effects that would matter can we conclude that any effect is negligible, which is the idea behind <a href="https://en.wikipedia.org/wiki/Equivalence_test">equivalence testing</a>.</p>
 </dd>
-<dt>“The <span class="math inline">\(p\)</span>-value is the probability that <span class="math inline">\(H_0\)</span> is true.”</dt>
+<dt>“The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability that <span class="math inline">\(H_0\)</span> is true.”</dt>
 <dd>
-<p>The <span class="math inline">\(p\)</span>-value is the probability of a result at least as extreme as the one observed, computed assuming that <span class="math inline">\(H_0\)</span> and all other model assumptions are true. It is not the probability that <span class="math inline">\(H_0\)</span> is true given the data. Compare a diagnostic test: the probability of a positive result in a healthy patient is not the probability that a patient with a positive result is healthy.</p>
+<p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability of a result at least as extreme as the one observed, computed assuming that <span class="math inline">\(H_0\)</span> and all other model assumptions are true. It is not the probability that <span class="math inline">\(H_0\)</span> is true given the data. Compare a diagnostic test: the probability of a positive result in a healthy patient is not the probability that a patient with a positive result is healthy.</p>
 </dd>
-<dt>“If <span class="math inline">\(p &lt; 0.05\)</span>, there is at most a 5% chance of a false positive.”</dt>
+<dt>“If <span class="text-nowrap"><span class="math inline">\(p &lt; 0.05\)</span>,</span> there is at most a 5% chance of a false positive.”</dt>
 <dd>
-<p><span class="math inline">\(\alpha = 0.05\)</span> is the chance of a significant result if <span class="math inline">\(H_0\)</span> is true. The chance that a significant result is a false positive also depends on how often the tested effects are different from <span class="math inline">\(H_0\)</span>, and on power.<span class="citation" data-cites="colquhoun2014"><a href="references.html#ref-colquhoun2014" role="doc-biblioref">[3]</a></span></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span> is the chance of a significant result if <span class="math inline">\(H_0\)</span> is true. The chance that a significant result is a false positive also depends on how often the tested effects are different from <span class="text-nowrap"><span class="math inline">\(H_0\)</span>,</span> and on power.<span class="citation" data-cites="colquhoun2014"><a href="references.html#ref-colquhoun2014" role="doc-biblioref">[3]</a></span></p>
 </dd>
-<dt>“The <span class="math inline">\(p\)</span>-value is the probability that the result is due to chance alone.”</dt>
+<dt>“The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability that the result is due to chance alone.”</dt>
 <dd>
-<p>The <span class="math inline">\(p\)</span>-value is computed by assuming that chance alone, under <span class="math inline">\(H_0\)</span> and the model, produced the data. It cannot also be the probability of that assumption. This is a variant of the claim that the <span class="math inline">\(p\)</span>-value is the probability that <span class="math inline">\(H_0\)</span> is true.</p>
+<p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is computed by assuming that chance alone, under <span class="math inline">\(H_0\)</span> and the model, produced the data. It cannot also be the probability of that assumption. This is a variant of the claim that the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability that <span class="math inline">\(H_0\)</span> is true.</p>
 </dd>
 <dt>“<span class="math inline">\(1 - p\)</span> is the probability that a replication will be significant.”</dt>
 <dd>
-<p>The chance that a replication is significant is its <em>power</em>, which depends on the unknown true effect. Suppose the true effect equals the observed one and the original study had <span class="math inline">\(p = 0.05\)</span>. Then a replication of the same size is significant only about half the time.<span class="citation" data-cites="goodman1992"><a href="references.html#ref-goodman1992" role="doc-biblioref">[10]</a></span></p>
+<p>The chance that a replication is significant is its <em>power</em>, which depends on the unknown true effect. Suppose the true effect equals the observed one and the original study had <span class="text-nowrap"><span class="math inline">\(p = 0.05\)</span>.</span> Then a replication of the same size is significant only about half the time.<span class="citation" data-cites="goodman1992"><a href="references.html#ref-goodman1992" role="doc-biblioref">[10]</a></span></p>
 </dd>
 <dt>“One study is significant and another is not, so their results contradict each other.”</dt>
 <dd>
-<p>The difference between significant and not significant is not itself necessarily significant.<span class="citation" data-cites="gelman2006 nieuwenhuis2011"><a href="references.html#ref-nieuwenhuis2011" role="doc-biblioref">[8]</a>, <a href="references.html#ref-gelman2006" role="doc-biblioref">[11]</a></span> To compare two studies, estimate the difference between their effects and its confidence interval. Discordant results are expected even when both studies estimate the same effect. If two independent studies each have power <span class="math inline">\(1 - \beta\)</span>, the chance that exactly one is significant is <span class="math inline">\(2\beta(1-\beta)\)</span>. At 50% power, they disagree half the time.</p>
+<p>The difference between significant and not significant is not itself necessarily significant.<span class="citation" data-cites="gelman2006 nieuwenhuis2011"><a href="references.html#ref-nieuwenhuis2011" role="doc-biblioref">[8]</a>, <a href="references.html#ref-gelman2006" role="doc-biblioref">[11]</a></span> To compare two studies, estimate the difference between their effects and its confidence interval. Discordant results are expected even when both studies estimate the same effect. If two independent studies each have power <span class="text-nowrap"><span class="math inline">\(1 - \beta\)</span>,</span> the chance that exactly one is significant is <span class="text-nowrap"><span class="math inline">\(2\beta(1-\beta)\)</span>.</span> At 50% power, they disagree half the time.</p>
 </dd>
-<dt>“A smaller <span class="math inline">\(p\)</span>-value means a larger or more important effect.”</dt>
+<dt>“A smaller <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> means a larger or more important effect.”</dt>
 <dd>
-<p>The <span class="math inline">\(p\)</span>-value depends on the size of the effect, its variability, and the sample size. With enough data, any nonzero effect, however negligible, is significant. The estimate and its confidence interval show the size of the effect. Whether that size matters is a subject-matter judgment.</p>
+<p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> depends on the size of the effect, its variability, and the sample size. With enough data, any nonzero effect, however negligible, is significant. The estimate and its confidence interval show the size of the effect. Whether that size matters is a subject-matter judgment.</p>
 </dd>
 <dt>“Out of many tests, the significant ones are the important ones.”</dt>
 <dd>
-<p>Significance does not indicate importance, as above. Moreover, even if <span class="math inline">\(H_0\)</span> is true, each test has a chance of <span class="math inline">\(\alpha\)</span> of being significant. With <span class="math inline">\(k\)</span> independent tests of true null hypotheses, the chance of at least one false positive is <span class="math inline">\(1 - (1 - \alpha)^k\)</span>. For example, among 10 comparisons, that chance is already over 40%. Without multiple testing correction, false positives are therefore likely. And estimates selected because they are significant are biased upward, especially when power is low.<span class="citation" data-cites="gelman2014"><a href="references.html#ref-gelman2014" role="doc-biblioref">[12]</a></span></p>
+<p>Significance does not indicate importance, as above. Moreover, even if <span class="math inline">\(H_0\)</span> is true, each test has a chance of <span class="math inline">\(\alpha\)</span> of being significant. With <span class="math inline">\(k\)</span> independent tests of true null hypotheses, the chance of at least one false positive is <span class="text-nowrap"><span class="math inline">\(1 - (1 - \alpha)^k\)</span>.</span> For example, among 10 comparisons, that chance is already over 40%. Without multiple testing correction, false positives are therefore likely. And estimates selected because they are significant are biased upward, especially when power is low.<span class="citation" data-cites="gelman2014"><a href="references.html#ref-gelman2014" role="doc-biblioref">[12]</a></span></p>
 </dd>
 </dl>
 </div>
@@ -746,7 +752,7 @@ Common misconceptions about confidence intervals
 <dl>
 <dt>“95% of the observations lie in the confidence interval.”</dt>
 <dd>
-<p>A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="math inline">\(\bar{y}\)</span>, not the spread of the observations. As the sample size grows, the interval narrows, but the observations remain as spread out as before.</p>
+<p>A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="text-nowrap"><span class="math inline">\(\bar{y}\)</span>,</span> not the spread of the observations. As the sample size grows, the interval narrows, but the observations remain as spread out as before.</p>
 </dd>
 <dt>“There is a 95% probability that the true value lies in this interval.”</dt>
 <dd>
@@ -776,13 +782,13 @@ Common misconceptions about confidence intervals
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="math inline">\(p = 0.19\)</span>. Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
+<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="text-nowrap"><span class="math inline">\(p = 0.19\)</span>.</span> Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="hypothesis-testing_files/figure-html/quizci-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.</figcaption>
+<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.</figcaption>
 </figure>
 </div>
 </div>
@@ -810,13 +816,13 @@ Hint
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="math inline">\(p = 0.19\)</span>. Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
+<p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="text-nowrap"><span class="math inline">\(p = 0.19\)</span>.</span> Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="hypothesis-testing_files/figure-html/quizci-answer-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="math inline">\(\delta\)</span>, the smallest effect that matters in practice.</figcaption>
+<figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.</figcaption>
 </figure>
 </div>
 </div>
@@ -838,8 +844,8 @@ Learn why
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>A.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
-<strong>B.</strong> Zero lies inside the interval (<span class="math inline">\(p &gt; 0.05\)</span>), so the result is not significant.<br>
+<p><strong>A.</strong> Zero lies inside the interval <span class="text-nowrap">(<span class="math inline">\(p &gt; 0.05\)</span>),</span> so the result is not significant.<br>
+<strong>B.</strong> Zero lies inside the interval <span class="text-nowrap">(<span class="math inline">\(p &gt; 0.05\)</span>),</span> so the result is not significant.<br>
 <strong>C.</strong> The result is not significant, but the interval also includes drops of more than 5 mmHg, which would matter in practice. The study is inconclusive.<br>
 <strong>D.</strong> Only if the interval excludes all effects that would matter can we conclude that any effect is negligible. This interval reaches <span class="math inline">\(-8.1\)</span> mmHg.<br>
 <strong>E.</strong> Absence of evidence is not proof of absence. The effect may be too small to detect with this sample size.</p>
@@ -857,7 +863,7 @@ Learn why
 <p><strong>A.</strong> 95% of the patients had a change between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
 <strong>B.</strong> There is a 95% probability that the true mean change lies between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
 <strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
-<strong>D.</strong> If the trial were repeated many times, 95% of the intervals would contain the true mean change.</p>
+<strong>D.</strong> In 95% of repeated trials, the interval would contain the true mean change.</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -880,10 +886,7 @@ Hint
 <p><strong>A.</strong> 95% of the patients had a change between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
 <strong>B.</strong> There is a 95% probability that the true mean change lies between <span class="math inline">\(-9.2\)</span> and <span class="math inline">\(-1.4\)</span> mmHg.<br>
 <strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
-<strong>D. If the trial were repeated many times, 95% of the intervals would contain the true mean change.</strong></p>
-<p>For a more in depth explanation, please refer to the video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+<strong>D. In 95% of repeated trials, the interval would contain the true mean change.</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -896,10 +899,13 @@ Learn why
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>A.</strong> A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="math inline">\(\bar{y}\)</span>, not the spread of the observations.<br>
+<p><strong>A.</strong> A confidence interval shows the uncertainty in an <em>estimate</em>, like the sample mean <span class="text-nowrap"><span class="math inline">\(\bar{y}\)</span>,</span> not the spread of the observations.<br>
 <strong>B.</strong> The 95% describes the method, not a single interval. A single interval either contains the true mean change or not, and we cannot tell which.<br>
 <strong>C.</strong> The boundaries are no sharper than the significance level they come from. Values just outside the interval are hardly less compatible with the data than values just inside it.<br>
-<strong>D.</strong> The 95% describes the method: It is the share of intervals that would contain the true mean change if the trial were repeated many times.</p>
+<strong>D.</strong> This is the textbook definition.</p>
+<p>For a more in depth explanation, please refer to the video:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
 </div>
 </div>
 </div>

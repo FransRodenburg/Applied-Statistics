@@ -66,6 +66,8 @@ div.csl-indent {
 <link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -416,8 +418,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./interaction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -481,7 +489,7 @@ Why not just several one-on-one analyses?
 <img src="multiple-linear-regression_files/figure-html/fig-ovb-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the model.
+Figure&nbsp;1: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the model. Arrows are effects on the outcome <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{Y}\)</span>);</span> the line means that <span class="math inline">\(\boldsymbol{O}\)</span> and <span class="math inline">\(\boldsymbol{X}\)</span> are related.
 </figcaption>
 </figure>
 </div>
@@ -514,7 +522,7 @@ Example
 <img src="multiple-linear-regression_files/figure-html/fig-confounding-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the model.
+Figure&nbsp;2: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the model. Arrows are effects on the outcome <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{Y}\)</span>);</span> the line means that <span class="math inline">\(\boldsymbol{C}\)</span> and <span class="math inline">\(\boldsymbol{X}\)</span> are related.
 </figcaption>
 </figure>
 </div>
@@ -547,7 +555,7 @@ Example
 <img src="multiple-linear-regression_files/figure-html/fig-simpson-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Observed trend excluding (left) and including (right) a grouping variable (<span class="math inline">\(x_2\)</span>).
+Figure&nbsp;3: Observed trend excluding (left) and including (right) a grouping variable <span class="text-nowrap">(<span class="math inline">\(x_2\)</span>).</span>
 </figcaption>
 </figure>
 </div>
@@ -607,22 +615,43 @@ Table&nbsp;1: Success rates of kidney stone removal methods by size.
 </div>
 </figure>
 </div>
-<p>How is this contradiction possible? Open surgery is used in more often in severe cases (i.e., larger stones), which have a lower success rate. This lowers the total success rate below that of PN. Failing to account for this second variable (size) leads to the wrong conclusion that open surgery performs worse.</p>
+<p>How is this contradiction possible? Open surgery is used more often in severe cases (i.e., larger stones), which have a lower success rate. This lowers the total success rate below that of PN. Failing to account for this second variable (size) leads to the wrong conclusion that open surgery performs worse.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Contrary to one-on-one analyses, multiple regression can simultaneously take into account the effect of multiple contributing factors. This allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables, which avoids the phenomena described above.</p>
+<p>Contrary to one-on-one analyses, multiple regression can simultaneously take into account the effect of multiple contributing factors. This allows you to see what the effect of one variable is <em>given</em> the effect of all other included variables, which avoids the phenomena described above, provided those variables were measured and included.</p>
 </details>
-<p>This part is split into two chapters:</p>
+<p>This part is split into three chapters:</p>
 <ol type="1">
 <li><a href="dummy-variables.html">Dummy Variables</a> <small>(categorical explanatory variables)</small></li>
+<li><a href="additive-effects.html">Additive Effects</a> <small>(more than one explanatory variable)</small></li>
 <li><a href="interaction.html">Interaction</a> <small>(when the effect of one variable depends on another)</small></li>
 </ol>
 <p>To get started, read the <a href="./dummy-variables.html#summary-dummy">summary on dummy variables</a>.</p>
-<p>Both chapters end with the regression tables app to test your knowledge and the ultimate goal: A full analysis for you to do in RStudio.</p>
+<p>All three chapters end with the regression tables app to test your knowledge and the ultimate goal: A full analysis for you to do in RStudio.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What level of detail do I need for the exam?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you are using this book in the context of one of my courses, please note the following:</p>
+<ul>
+<li>On the exam, you interpret these models from their regression table. Focus on what each row means.</li>
+<li>Some examples use 3D plots to visually explain what the coefficients mean. However, you do not need to read or draw such plots yourself. In practice, 3D plots are rarely used, because they are hard to judge objectively. Researchers use other tools instead, such as <a href="https://strengejacke.github.io/sjPlot/articles/plot_marginal_effects.html">marginal effects plots <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> and <a href="https://strengejacke.github.io/sjPlot/articles/plot_interactions.html">interaction plots <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>.</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">

@@ -17,6 +17,7 @@ If you use any packages, include them here, not where they are (first) used. Thi
 
 ```{r}
 library("car")     # QQ-plots with confidence intervals
+library("emmeans") # Slopes and comparisons per group
 library("ggplot2") # Adjusting the plot produced by plot_model
 library("lmtest")  # Breusch-Pagan test
 library("sfsmisc") # Better plot axes
@@ -132,11 +133,37 @@ summary(LM)
 
 -   The third coefficient is the difference between ascorbic acid and orange juice **at a dose of** $1$ mg/day: With ascorbic acid, the mean is $3.7$ lower ($p = 0.000303$).
 
--   The interaction is the difference in the effect of dose between the two supplements: For ascorbic acid, every doubling of the dose increases the mean odontoblast length by $6.4 + 2.7 = 9.1$. This difference in slopes is significant ($p = 0.0274$), so the effect of the dose depends on the supplement.
+-   The interaction is the difference in the effect of dose between the two supplements: For ascorbic acid, every doubling of the dose increases the mean odontoblast length by $2.7$ more than for orange juice. This difference in slopes is significant ($p = 0.0274$), so the effect of the dose depends on the supplement. The slope for ascorbic acid is the sum of `log2(dose)` and `log2(dose):suppVC` ($9.1$).
 
--   Because the slopes differ, so does the difference between the supplements: At $0.5$ mg/day ($\log_2(0.5) = -1$), ascorbic acid is estimated to be $3.7 + 2.7 = 6.4$ lower than orange juice, but at $2$ mg/day ($\log_2(2) = 1$), only $3.7 - 2.7 = 1.0$ lower.
+-   Because the slopes differ, so does the difference between the supplements: At $0.5$ mg/day ($\log_2(0.5) = -1$), we subtract the interaction from `suppVC`, and ascorbic acid is estimated to be $6.4$ lower than orange juice. At $2$ mg/day ($\log_2(2) = 1$), we add it, and the difference is only $1.0$.
 
 -   This model explains $77.6\%$ of the variance in odontoblast length.
+
+Instead of adding coefficients by hand, `emtrends` gives the slope for each supplement, with a confidence interval, and compares them:
+
+```{r}
+EMT <- emtrends(LM, specs = pairwise ~ supp, var = "log2(dose)")
+EMT
+```
+
+-   Every doubling of the dose increases the mean odontoblast length by $6.4$ for orange juice, and by $9.1$ for ascorbic acid.
+
+-   The comparison of the two slopes is the same test as the interaction in the regression table.
+
+-   Note `var = "log2(dose)"`: With `var = "dose"`, you would get the slope per mg/day at the average dose, instead of per doubling.
+
+Because the slopes differ, the difference between the supplements depends on the dose. With `emmeans`, we can compare the supplements at each dose:
+
+```{r}
+EMM <- emmeans(LM, specs = pairwise ~ supp | dose, at = list(dose = c(0.5, 1, 2)))
+EMM$contrasts
+```
+
+-   At $0.5$ mg/day, the mean with orange juice is $6.4$ higher than with ascorbic acid ($p < 0.0001$), and at $1$ mg/day $3.7$ higher ($p = 0.0003$).
+
+-   At $2$ mg/day, the difference is only $1.0$, and not significant ($p = 0.4983$).
+
+-   A note on multiple testing: `emmeans` corrects the pairwise comparisons *within* each dose. With only two supplements, that is a single comparison per dose, so nothing is corrected here. The three doses are not corrected for each other. If you want that, use for example `summary(EMM$contrasts, by = NULL, adjust = "holm")`.
 
 ## Visualize the estimated relationship
 

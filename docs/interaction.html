@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Interaction – Applied Statistics</title>
+<title>5&nbsp; Interaction – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./dummy-variables.html" rel="prev">
+<link href="./additive-effects.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -324,7 +324,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./interaction.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./interaction.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -433,8 +433,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./interaction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -455,12 +461,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#summary-interaction" id="toc-summary-interaction" class="nav-link active" data-scroll-target="#summary-interaction"><span class="header-section-number">4.1</span> Summary</a></li>
-  <li><a href="#quiz-interaction" id="toc-quiz-interaction" class="nav-link" data-scroll-target="#quiz-interaction"><span class="header-section-number">4.2</span> Quiz</a>
+  <li><a href="#summary-interaction" id="toc-summary-interaction" class="nav-link active" data-scroll-target="#summary-interaction"><span class="header-section-number">5.1</span> Summary</a></li>
+  <li><a href="#quiz-interaction" id="toc-quiz-interaction" class="nav-link" data-scroll-target="#quiz-interaction"><span class="header-section-number">5.2</span> Quiz</a>
   <ul class="collapse">
-  <li><a href="#interactive-app" id="toc-interactive-app" class="nav-link" data-scroll-target="#interactive-app">Interactive app</a></li>
+  <li><a href="#interaction-app" id="toc-interaction-app" class="nav-link" data-scroll-target="#interaction-app">Interactive app</a></li>
   </ul></li>
-  <li><a href="#apply-interaction" id="toc-apply-interaction" class="nav-link" data-scroll-target="#apply-interaction"><span class="header-section-number">4.3</span> Apply your knowledge</a></li>
+  <li><a href="#apply-interaction" id="toc-apply-interaction" class="nav-link" data-scroll-target="#apply-interaction"><span class="header-section-number">5.3</span> Apply your knowledge</a></li>
   </ul>
 </nav>
     </div>
@@ -468,9 +474,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./interaction.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./interaction.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="interaction" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></h1>
+<h1 class="title"><span id="interaction" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></h1>
 </div>
 
 
@@ -490,18 +496,34 @@ window.Quarto = {
 <p><small><i>Linear regression where the effect of one variable depends on another.</i></small></p>
 <hr>
 <p><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> I’ve recently begun restructuring the website. This chapter is under construction.</p>
-<section id="summary-interaction" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="summary-interaction"><span class="header-section-number">4.1</span> Summary</h2>
+<p>This chapter uses <a href="GLM.html#summary-glm">GLM</a> notation for formulas <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> but to focus on the concept of interaction, only normal examples are shown (<code>lm</code>). For Poisson and binomial examples, try the explore mode of the <a href="#interaction-app">interactive app</a> at the bottom.</p>
+<p><strong>Note</strong>: A regression model can in principle have <em>any number</em> of explanatory variables. This chapter only shows combinations of two variables, because that is still (relatively) easy to visualize.</p>
+<section id="summary-interaction" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="summary-interaction"><span class="header-section-number">5.1</span> Summary</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" aria-current="page">Slope × groups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Groups × groups</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" aria-current="page">Slope depends on group</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Difference depends on group</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">Slope depends on other slope</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<!-- Figure: two non-parallel lines, one per group (compare: parallel lines in Slope & groups, Dummy Variables). -->
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-slope-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Interaction between a continuous and categorical explanatory variable. The effect of age differs, depending on the diet. The resulting lines are not parallel. <small>(Age and mass of 40 fish on two diets.)</small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
   \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 + \beta_3 \cdot x_1 \cdot x_2 \\ \tag{1}\label{interactionslope}\\
-  x_2 &amp;= \begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}
+  x_2 &amp;=\begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}
 \end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
@@ -510,12 +532,14 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">*</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><small><span class="text-grey">Note that <code>x * group</code> is shorthand notation for <code>x + group + x:group</code>.</span></small></p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x * group"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><small><span class="text-grey">Note that <code>x * group</code> is shorthand notation for <code>x + group + x:group</code>.</span></small></p>
 </div>
 </div>
 </div>
@@ -531,7 +555,40 @@ Symbols &amp; definitions
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1\)</span> — explanatory variable <span class="text-grey">(continuous)</span></dt>
+<dd>
+<p>The variable the outcome is regressed on.</p>
+</dd>
+<dt><span class="math inline">\(x_2\)</span> — explanatory variable <span class="text-grey">(dummy)</span></dt>
+<dd>
+<p>Translates the groups into a number that can be used in the formula. It works like a switch: In group B, it is on <span class="text-nowrap">(<span class="math inline">\(x_2 = 1\)</span>)</span> and adds <span class="math inline">\(\beta_2\)</span> and <span class="math inline">\(\beta_3 \cdot x_1\)</span> to <span class="text-nowrap"><span class="math inline">\(\eta\)</span>;</span> in group A (the reference group), it is off <span class="text-nowrap">(<span class="math inline">\(x_2 = 0\)</span>).</span></p>
+</dd>
+<dt><span class="math inline">\(x_1 \cdot x_2\)</span> — interaction term</dt>
+<dd>
+<p>Allows the effect of one variable to differ depending on the value of the other.<br><small><span class="text-grey">In group B, it adds an additional <span class="math inline">\(\beta_3\)</span> to the slope. In group A, <span class="text-nowrap"><span class="math inline">\(x_2 = 0\)</span>,</span> so it adds nothing.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.<br><small><span class="text-grey">Here, <span class="math inline">\(x_2\)</span> is zero in group A (the reference group), so this is <span class="math inline">\(\eta\)</span> in group A at <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the slope of age for diet A (the reference group).</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the difference in mean mass between diet B and diet A at age <span class="text-nowrap"><span class="math inline">\(0\)</span>:</span> The difference in intercept.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_3\)</span> — slope <span class="text-grey">(interaction)</span></dt>
+<dd>
+<p>Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">Here, <span class="math inline">\(x_2\)</span> can only increase from <span class="math inline">\(0\)</span> (group A) to <span class="math inline">\(1\)</span> (group B), so this is the difference in the slope of <span class="math inline">\(x_1\)</span> between group B and group A.</span></small></p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -547,8 +604,45 @@ Explanation
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
-<!-- beta_1 = slope in group A, beta_1 + beta_3 = slope in group B, beta_3 = difference in slopes; main effects now mean "in the reference group"; a * b = a + b + a:b, keep the main effects; include an interaction for a biological reason, not by trying every combination; >2 groups give k - 1 interaction rows, tested together with anova(). -->
+<p>In the previous chapter, both groups shared a single slope, forcing the lines to be parallel. An interaction removes that restriction: Each group gets its own slope. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in slope</strong> for group B:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-slope-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> is continuous and <span class="math inline">\(x_2\)</span> a dummy variable.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The two lines of A and B are then defined as follows:</p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Intercept</th>
+<th style="text-align: center;">Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">In a GLM, these are the intercept and slope of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>):</span> The difference in slope <span class="text-nowrap">(<span class="math inline">\(\beta_3\)</span>)</span> is on the scale of the link function, not on the scale of the outcome.</span></small></p>
 </div>
 </div>
 </div>
@@ -564,31 +658,208 @@ Example
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<!-- Figure: the four group means, connected by lines; arrow from where the mean would be without interaction (as in the regression tables app). -->
-<p>Mathematical formula:</p>
-<p><span class="math display">\[\begin{align}
-  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 + \beta_3 \cdot x_1 \cdot x_2 \\ \tag{2}\label{interactiondummy}\\
-  x_1 &amp;= \begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}, \quad x_2 = \begin{cases}1 \quad \text{if treated}\\ 0 \quad \text{otherwise} \end{cases}
-\end{align}\]</span></p>
-<p>Code:</p>
+<p>Fitted to the data of <a href="#fig-interaction-slope" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the model gives the following estimates:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group <span class="sc">*</span> treatment, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">*</span> group, data)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 1.7833373  0.3734647 4.7751163 2.981017e-05
+x           0.9372913  0.1291960 7.2548014 1.524880e-08
+groupB      0.2946387  0.5450118 0.5406097 5.921060e-01
+x:groupB    1.1476960  0.1789760 6.4125676 1.959523e-07</code></pre>
+</div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group * treatment"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x * group"</span>, data).fit()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept        1.7833      0.373      4.775      0.000       1.026       2.541
+group[T.B]       0.2946      0.545      0.541      0.592      -0.811       1.400
+x                0.9373      0.129      7.255      0.000       0.675       1.199
+x:group[T.B]     1.1477      0.179      6.413      0.000       0.785       1.511
+================================================================================</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note that Python names the rows <code>group[T.B]</code> and <code>x:group[T.B]</code>, instead of <code>groupB</code> and <code>x:groupB</code>.</span></small></p>
+</div>
+</div>
+</div>
+<p>The estimated slope for the <em>reference group</em> (A) is given by <code>x</code> (0.94). For group B, we have to add <code>x:groupB</code> and the slope becomes 2.08. Apparently, this difference is significant <span class="text-nowrap">(<span class="math inline">\(p = 1.96 \times 10^{-7}\)</span>).</span></p>
+<p>The <a href="./hypothesis-testing.html#p-value"><span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span></a> of <code>x</code> tells us whether the slope of the reference group differs significantly from zero. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>x:groupB</code> tells us whether the <em>difference</em> in slope for group B differs significantly from zero. With only two groups, this is the same as asking whether there is significant interaction. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>groupB</code> tells us whether B differs from the reference group at <span class="math inline">\(x_1 = 0\)</span> (which is rarely an interesting question).</p>
+<p>Instead of adding the coefficients by hand, the slope of each group can be obtained with <code>emtrends</code> from the <a href="./dummy-variables.html#emmeans"><code>emmeans</code></a> package. It also gives the standard error and confidence interval of the slope of group B, which the regression table does not show:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"emmeans"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emtrends</span>(model, pairwise <span class="sc">~</span> group, <span class="at">var =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$emtrends
+ group x.trend    SE df lower.CL upper.CL
+ A       0.937 0.129 36    0.675     1.20
+ B       2.085 0.124 36    1.834     2.34
+
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate    SE df t.ratio p.value
+ A - B       -1.15 0.179 36  -6.413 &lt;0.0001</code></pre>
+</div>
+</div>
+<details>
+<summary>
+What if there are more than two groups?
+</summary>
+<p>With more than two groups, every group except the reference group gets its own offset from the intercept and its own difference from the reference slope:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">*</span> group, threegroups)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 1.7833373  0.3995931 4.4628835 4.149242e-05
+x           0.9372913  0.1382348 6.7804283 9.362370e-09
+groupB      0.2946387  0.5831420 0.5052606 6.154319e-01
+groupC      1.0473689  0.5319435 1.9689477 5.409993e-02
+x:groupB    1.1476960  0.1914976 5.9932660 1.748311e-07
+x:groupC    0.4813085  0.1910061 2.5198593 1.473011e-02</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x * group"</span>, threegroups).fit()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept        1.7833      0.400      4.463      0.000       0.982       2.584
+group[T.B]       0.2946      0.583      0.505      0.615      -0.874       1.464
+group[T.C]       1.0474      0.532      1.969      0.054      -0.019       2.114
+x                0.9373      0.138      6.780      0.000       0.660       1.214
+x:group[T.B]     1.1477      0.191      5.993      0.000       0.764       1.532
+x:group[T.C]     0.4813      0.191      2.520      0.015       0.098       0.864
+================================================================================</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Careful, the corresponding <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> only tell you whether the slopes differ from the <em>reference group</em>. To test the <em>overall</em> interaction, use an omnibus test instead:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"car"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type II tests)
+
+Response: y
+           Sum Sq Df F value    Pr(&gt;F)    
+x         206.894  1 372.894 &lt; 2.2e-16 ***
+group     126.377  2 113.887 &lt; 2.2e-16 ***
+x:group    20.214  2  18.216 8.991e-07 ***
+Residuals  29.961 54                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sm.stats.anova_lm(model, typ<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              sum_sq    df           F        PR(&gt;F)
+group     126.376635   2.0  113.887319  4.239164e-20
+x         206.893569   1.0  372.894147  6.576123e-26
+x:group    20.214185   2.0   18.216495  8.990948e-07
+Residual   29.960923  54.0         NaN           NaN</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note that <code>anova_lm</code> only works for ordinary linear models. For a GLM, use <code>.wald_test_terms(scalar=True)</code> on the fitted model.</span></small></p>
+</div>
+</div>
+</div>
+<p>Apparently, the interaction is significant <span class="text-nowrap">(<span class="math inline">\(p = 8.99 \times 10^{-7}\)</span>).</span> Note that if it were not, the other rows of the regression table still only apply to the reference group (<code>x</code>) and to <span class="math inline">\(x_1 = 0\)</span> (<code>groupB</code>, <code>groupC</code>): <strong>Do not use a model with interaction</strong> to draw conclusions about <code>x</code> or <code>group</code> on their own. What to do instead, is covered in the next chapter.</p>
+<!-- Link to model-selection.qmd once it exists. -->
+<p>To determine <em>which</em> slopes differ, we can perform pairwise comparisons:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">emtrends</span>(model, pairwise <span class="sc">~</span> group, <span class="at">var =</span> <span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$emtrends
+ group x.trend    SE df lower.CL upper.CL
+ A       0.937 0.138 54     0.66     1.21
+ B       2.085 0.133 54     1.82     2.35
+ C       1.419 0.132 54     1.15     1.68
+
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate    SE df t.ratio p.value
+ A - B      -1.148 0.191 54  -5.993 &lt;0.0001
+ A - C      -0.481 0.191 54  -2.520  0.0385
+ B - C       0.666 0.187 54   3.565  0.0022
+
+P value adjustment: tukey method for comparing a family of 3 estimates </code></pre>
+</div>
+</div>
+<p>After multiple testing correction, all three slopes differ significantly from each other.</p>
+</details>
+<p>For a complete analysis, refer to the <a href="#apply-interaction">tutorials</a> at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-dummy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-dummy-1.png" class="img-fluid figure-img" style="width:71.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: Interaction between two categorical explanatory variables. The effect of treatment differs, depending on the group (and vice versa). This is sometimes called difference-in-differences. <small>(Dry mass of 40 plants of two varieties, with and without fertilizer treatment.)</small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematical formula:</p>
+<p><span class="math display">\[\begin{align}
+  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 + \beta_3 \cdot x_1 \cdot x_2 \\ \tag{2}\label{interactiondummy}\\
+  x_1 &amp;=\begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}, \\
+  x_2 &amp;= \begin{cases}1 \quad \text{if treated}\\ 0 \quad \text{otherwise} \end{cases}
+\end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group <span class="sc">*</span> treatment, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group * treatment"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -605,7 +876,36 @@ Symbols &amp; definitions
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1, x_2\)</span> — explanatory variables <span class="text-grey">(dummy variables)</span></dt>
+<dd>
+<p>Translate both categorical variables into numbers that can be used in the formula. Each works like a switch: <span class="math inline">\(x_1\)</span> is on in group B and adds <span class="math inline">\(\beta_1\)</span> to <span class="text-nowrap"><span class="math inline">\(\eta\)</span>;</span> <span class="math inline">\(x_2\)</span> is on for treated observations and adds <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>;</span> for untreated observations in group A, both are off.</p>
+</dd>
+<dt><span class="math inline">\(x_1 \cdot x_2\)</span> — interaction term</dt>
+<dd>
+<p>Allows the effect of one variable to differ depending on the value of the other. It works like a switch too: It is only on for treated observations in group B, and then adds <span class="math inline">\(\beta_3\)</span> to <span class="text-nowrap"><span class="math inline">\(\eta\)</span>.</span></p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.<br><small><span class="text-grey">Here, both are zero for untreated observations in group A (the reference groups), so this is <span class="math inline">\(\eta\)</span> in untreated group A.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the difference in mean dry mass between variety B and variety A, for untreated plants.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the difference in mean dry mass between treated and untreated plants, for variety A.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_3\)</span> — slope <span class="text-grey">(interaction)</span></dt>
+<dd>
+<p>Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">Here, this is how much the difference between group B and group A differs between treated and untreated. Or equivalently, how much the difference between treated and untreated differs between group B and group A.</span></small></p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -621,8 +921,50 @@ Explanation
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
-<!-- beta_3 = difference in differences; GLMs: the interaction works on the link scale (e.g., a ratio on the count scale for Poisson). -->
+<p>In the previous chapter, the difference between treated and untreated was the same in both groups. An interaction removes that restriction: Each group gets its own difference. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in differences</strong> for group B:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-dummy-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-dummy-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: The difference between group B and group A is <span class="math inline">\(\beta_1\)</span> in untreated, and <span class="math inline">\(\beta_1 + \beta_3\)</span> in treated. The difference between treated and untreated in group A is <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>.</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The means of the four combinations are then defined as follows:</p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<colgroup>
+<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Untreated</th>
+<th style="text-align: center;">Treated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">In a GLM, these are values of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>):</span> The difference in differences <span class="text-nowrap">(<span class="math inline">\(\beta_3\)</span>)</span> is on the scale of the link function, not on the scale of the outcome.</span></small></p>
 </div>
 </div>
 </div>
@@ -638,43 +980,266 @@ Example
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<p>Fitted to the data of <a href="#fig-interaction-dummy" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group <span class="sc">*</span> treatment, data)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)         10.105358  0.3640119 27.761065 6.652852e-26
+groupB               2.105682  0.5147906  4.090366 2.313941e-04
+treatmentyes         1.176680  0.5147906  2.285744 2.826074e-02
+groupB:treatmentyes  2.512948  0.7280238  3.451738 1.440020e-03</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group * treatment"</span>, data).fit()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>===============================================================================================
+                                  coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                      10.1054      0.364     27.761      0.000       9.367      10.844
+group[T.B]                      2.1057      0.515      4.090      0.000       1.062       3.150
+treatment[T.yes]                1.1767      0.515      2.286      0.028       0.133       2.221
+group[T.B]:treatment[T.yes]     2.5129      0.728      3.452      0.001       1.036       3.989
+===============================================================================================</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note that Python names the rows <code>group[T.B]</code>, <code>treatment[T.yes]</code> and <code>group[T.B]:treatment[T.yes]</code>, instead of <code>groupB</code>, <code>treatmentyes</code> and <code>groupB:treatmentyes</code>.</span></small></p>
+</div>
+</div>
+</div>
+<p>The estimated difference between treated and untreated in the <em>reference group</em> (A) is given by <code>treatmentyes</code> (1.18). For group B, we have to add <code>groupB:treatmentyes</code> and the difference becomes 3.69. Apparently, this difference in differences is significant <span class="text-nowrap">(<span class="math inline">\(p = 1.44 \times 10^{-3}\)</span>).</span></p>
+<p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>treatmentyes</code> tells us whether treated differs significantly from untreated in the reference group. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>groupB:treatmentyes</code> tells us whether that difference is significantly <em>different</em> in group B. With only two groups and two treatments, this is the same as asking whether there is significant interaction. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>groupB</code> tells us whether B differs from the reference group, but only among the untreated.</p>
+<p><small><span class="text-grey">The same holds the other way around: <code>groupB:treatmentyes</code> is also how much the difference between B and A changes with treatment.</span></small></p>
+<p>The difference between treated and untreated <em>within each group</em> can be obtained with <code>emmeans</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>EMM <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> treatment <span class="sc">|</span> group)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>EMM<span class="sc">$</span>contrasts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>group = A:
+ contrast estimate    SE df t.ratio p.value
+ no - yes    -1.18 0.515 36  -2.286  0.0283
+
+group = B:
+ contrast estimate    SE df t.ratio p.value
+ no - yes    -3.69 0.515 36  -7.167 &lt;0.0001</code></pre>
+</div>
+</div>
+<p>Careful, without <code>| group</code>, <code>emmeans</code> compares treated and untreated averaged over both groups, and warns that the result may be misleading because of the interaction.</p>
+<p>For a complete analysis, refer to the <a href="#apply-interaction">tutorials</a> at the bottom of the page.</p>
 </div>
 </div>
 </div>
 </div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-slope-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-slope-slope-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Interaction between two continuous explanatory variables. Neither nitrogen, nor phosphorus does much on its own, but adding both results in a marked increase. The resulting regression plane is curved.<br><small>(Dry mass of 60 plants, grown with different amounts of added nitrogen and phosphorus.)</small>
+</figcaption>
+</figure>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+</div>
+<p><small><span class="text-grey">3D plots like this one are only meant to build intuition. See <a href="multiple-linear-regression.html">what to expect on the exam</a>.</span></small></p>
+<p>Mathematical formula:</p>
+<p><span class="math display">\[\begin{align}
+  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 + \beta_3 \cdot x_1 \cdot x_2 \tag{3}\label{interactionslopeslope}
+\end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">*</span> x2, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x1 * x2"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Slope × slope
+Symbols &amp; definitions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
-<!-- Two continuous variables: the slope of one changes gradually with the other; shown as lines at a few values of x_2, or as a surface. -->
-<p><span class="math display">\[\begin{align}
-  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 + \beta_3 \cdot x_1 \cdot x_2 \tag{3}\label{interactionslopeslope}
-\end{align}\]</span></p>
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1, x_2\)</span> — explanatory variables <span class="text-grey">(continuous)</span></dt>
+<dd>
+<p>The variables the outcome is regressed on.</p>
+</dd>
+<dt><span class="math inline">\(x_1 \cdot x_2\)</span> — interaction term</dt>
+<dd>
+<p>Allows the effect of one variable to differ depending on the value of the other.<br><small><span class="text-grey">At <span class="text-nowrap"><span class="math inline">\(x_2 = 0\)</span>,</span> it adds nothing to the slope of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>;</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 1\)</span>,</span> it adds <span class="text-nowrap"><span class="math inline">\(\beta_3\)</span>;</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 2\)</span>,</span> it adds <span class="text-nowrap"><span class="math inline">\(2 \cdot \beta_3\)</span>;</span> and so on.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.</p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the slope of nitrogen for plants that received no phosphorus.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">In the example, this is the slope of phosphorus for plants that received no nitrogen.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_3\)</span> — slope <span class="text-grey">(interaction)</span></dt>
+<dd>
+<p>Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one.<br><small><span class="text-grey">Or equivalently, the change in the slope of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> when <span class="math inline">\(x_1\)</span> increases by one.</span></small></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the previous chapter, the slope of <span class="math inline">\(x_1\)</span> was the same at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> which made the model a flat plane. An interaction removes that restriction: The plane is curved. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>change in the slope</strong> of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-slope-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-slope-slope-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous. The slope of <span class="math inline">\(x_1\)</span> is <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_2 = 0\)</span> and <span class="math inline">\(\beta_1 + \beta_3\)</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 1\)</span>:</span> Higher with positive interaction (left, the shape of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>), lower with negative interaction (right).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>At a given value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> the model is a straight line in <span class="text-nowrap"><span class="math inline">\(x_1\)</span>:</span></p>
+<p><span class="math display">\[\eta = \underbrace{(\beta_0 + \beta_2 \cdot x_2)}_{\text{intercept}} + \underbrace{(\beta_1 + \beta_3 \cdot x_2)}_{\text{slope}} \cdot x_1\]</span></p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 42%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Intercept</th>
+<th style="text-align: center;">Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_2 = 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_2 = 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_2 = 2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + 2 \cdot \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1 + 2 \cdot \beta_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">In a GLM, these are the intercept and slope of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>):</span> The change in slope <span class="text-nowrap">(<span class="math inline">\(\beta_3\)</span>)</span> is on the scale of the link function, not on the scale of the outcome.</span></small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fitted to the data of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>, the model gives the following estimates:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">*</span> x2, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">*</span> x2, data)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 1.1679667  0.3541745 3.297716 1.696996e-03
+x1          0.8314048  0.6316336 1.316277 1.934434e-01
+x2          1.4313812  0.5553290 2.577537 1.261042e-02
+x1:x2       7.0129649  1.0052702 6.976199 3.788830e-09</code></pre>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x1 * x2"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x1 * x2"</span>, data).fit()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      1.1680      0.354      3.298      0.002       0.458       1.877
+x1             0.8314      0.632      1.316      0.193      -0.434       2.097
+x2             1.4314      0.555      2.578      0.013       0.319       2.544
+x1:x2          7.0130      1.005      6.976      0.000       4.999       9.027
+==============================================================================</code></pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<p>The estimated slope of <code>x1</code> is 0.83, but only where <span class="text-nowrap"><span class="math inline">\(x_2 = 0\)</span>.</span> For every increase of <span class="math inline">\(x_2\)</span> by one, we have to add <code>x1:x2</code> (7.01). At <span class="text-nowrap"><span class="math inline">\(x_2 = 0.5\)</span>,</span> for example, the slope becomes <span class="text-nowrap"><span class="math inline">\(\hat{\beta}_1 + 0.5 \cdot \hat{\beta}_3 = 4.34\)</span>.</span> Apparently, this change in slope is significant <span class="text-nowrap">(<span class="math inline">\(p = 3.79 \times 10^{-9}\)</span>).</span></p>
+<p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>x1:x2</code> tells us whether there is significant interaction. Careful with the other two rows: The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of <code>x1</code> only tells you whether the slope of <span class="math inline">\(x_1\)</span> differs from zero where <span class="text-nowrap"><span class="math inline">\(x_2 = 0\)</span>,</span> and that of <code>x2</code> only where <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span></p>
+<p><small><span class="text-grey">The same holds the other way around: <code>x1:x2</code> is also the change in the slope of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> when <span class="math inline">\(x_1\)</span> increases by one.</span></small></p>
+<p>For a complete analysis, refer to the <a href="#apply-interaction">tutorials</a> at the bottom of the page.</p>
 </div>
 </div>
 </div>
@@ -682,56 +1247,27 @@ Slope × slope
 </div>
 </div>
 </section>
-<section id="quiz-interaction" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="quiz-interaction"><span class="header-section-number">4.2</span> Quiz</h2>
+<section id="quiz-interaction" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="quiz-interaction"><span class="header-section-number">5.2</span> Quiz</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
-<p><em>To do.</em></p>
-<div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p>Below is the regression table of the Example under <a href="#interaction-slope"><em>Slope depends on group</em></a>: the mass of fish on two diets, at different ages.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 1.7833373  0.3734647 4.7751163 2.981017e-05
+x           0.9372913  0.1291960 7.2548014 1.524880e-08
+groupB      0.2946387  0.5450118 0.5406097 5.921060e-01
+x:groupB    1.1476960  0.1789760 6.4125676 1.959523e-07</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
-<p><em>To do.</em></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Learn why
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Answer</a></li></ul>
-<div class="tab-content">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<p><em>To do.</em></p>
+<p>The row <code>groupB</code> is not significant. What does that tell us? <em>(choose one)</em></p>
+<p><strong>A.</strong> Fish on diets A and B have the same mass on average<br>
+<strong>B.</strong> There is no significant difference between the diets at age <span class="math inline">\(0\)</span><br>
+<strong>C.</strong> There is no significant difference between the diets at any age<br>
+<strong>D.</strong> The row <code>groupB</code> can be left out of the model</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -744,13 +1280,27 @@ Hint
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<p>See the table “Purpose of the coefficients” in the Explanation: Which part of the line of group B does <span class="math inline">\(\beta_2\)</span> change?</p>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
-<p><em>To do.</em></p>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>Below is the regression table of the Example under <a href="#interaction-slope"><em>Slope depends on group</em></a>: the mass of fish on two diets, at different ages.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) 1.7833373  0.3734647 4.7751163 2.981017e-05
+x           0.9372913  0.1291960 7.2548014 1.524880e-08
+groupB      0.2946387  0.5450118 0.5406097 5.921060e-01
+x:groupB    1.1476960  0.1789760 6.4125676 1.959523e-07</code></pre>
+</div>
+</div>
+<p>The row <code>groupB</code> is not significant. What does that tell us? <em>(choose one)</em></p>
+<p><strong>A.</strong> Fish on diets A and B have the same mass on average<br>
+<strong>B. There is no significant difference between the diets at age <span class="math inline">\(0\)</span></strong><br>
+<strong>C.</strong> There is no significant difference between the diets at any age<br>
+<strong>D.</strong> The row <code>groupB</code> can be left out of the model</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -763,7 +1313,95 @@ Learn why
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>To do.</em></p>
+<p><strong>A.</strong> Not significant does not mean no difference. Moreover, the row only applies at one age (see <strong>B</strong>).<br>
+<strong>B.</strong> In a model with interaction, <code>groupB</code> is the difference in <em>intercept</em>: the difference between the diets where <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span> That is all this row tells us. Since the youngest fish in these data is half a year old, it is not a very interesting age either.<br>
+<strong>C.</strong> The slopes differ significantly (<code>x:groupB</code>), so the difference between the diets grows with age. At age <span class="text-nowrap"><span class="math inline">\(3\)</span>,</span> for example, the estimated difference is <span class="math inline">\(\hat{\beta}_2 + 3 \cdot \hat{\beta}_3 = 3.74\)</span> g.<br>
+<strong>D.</strong> Without <code>groupB</code>, both lines would be forced to start at the same intercept, and the other rows would change meaning. A variable that is part of an interaction stays in the model.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>A model of the mass of fish (g) with an interaction between age (<code>x</code>, in years) and diet (<code>group</code>) gives these estimates:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)  2.1304172 0.31327708  6.800425 6.007465e-08
+x            0.4718536 0.09638445  4.895537 2.066545e-05
+groupB       3.8629041 0.42676240  9.051651 8.298897e-11
+x:groupB    -0.5183927 0.13891655 -3.731684 6.543836e-04</code></pre>
+</div>
+</div>
+<p>Which plot shows this model?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="interaction_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Work out the intercept and the slope of each line with the table “Purpose of the coefficients” in the Explanation under <a href="#interaction-slope"><em>Slope depends on group</em></a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>A model of the mass of fish (g) with an interaction between age (<code>x</code>, in years) and diet (<code>group</code>) gives these estimates:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)  2.1304172 0.31327708  6.800425 6.007465e-08
+x            0.4718536 0.09638445  4.895537 2.066545e-05
+groupB       3.8629041 0.42676240  9.051651 8.298897e-11
+x:groupB    -0.5183927 0.13891655 -3.731684 6.543836e-04</code></pre>
+</div>
+</div>
+<p>Which plot shows this model? <strong>Plot C</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="interaction_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The line of diet A has intercept 2.13 and slope 0.47 in all four plots. For diet B, the intercept is the sum of <code>(Intercept)</code> and <code>groupB</code> (5.99), and the slope is the sum of <code>x</code> and <code>x:groupB</code> (-0.05): an almost flat line.</p>
+<p><strong>A.</strong> Here, the line of B is steeper than that of A, so <code>x:groupB</code> would be positive.<br>
+<strong>B.</strong> Here, the mass of B decreases with age, so <code>x:groupB</code> would be more negative than -0.52.<br>
+<strong>C.</strong> An almost flat line for B, starting at 5.99.<br>
+<strong>D.</strong> Parallel lines: <code>x:groupB</code> would be zero, as in the <a href="#additive-slope">previous chapter</a>.</p>
 </div>
 </div>
 </div>
@@ -771,15 +1409,15 @@ Learn why
 </div>
 </div>
 <!-- Question ideas: slope in group B (beta_1 + beta_3); predicted mean of B and treated; what a non-significant groupB row means in a model with interaction; which of two plots matches this table. -->
-<section id="interactive-app" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="interactive-app">Interactive app</h3>
-<p>Practice the concepts covered in this chapter:</p>
-<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/" class="btn btn-outline-output" role="button" target="_blank" rel="noreferrer noopener">Regression tables <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+<section id="interaction-app" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="interaction-app">Interactive app</h3>
+<p>Practice the concepts covered in this chapter (the app does not include models with two continuous variables):</p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/?v=interaction" class="btn btn-outline-output" role="button" target="_blank" rel="noreferrer noopener">Regression tables <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
 <p><small><span class="text-grey">This app runs in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>
 </section>
 </section>
-<section id="apply-interaction" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="apply-interaction"><span class="header-section-number">4.3</span> Apply your knowledge</h2>
+<section id="apply-interaction" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="apply-interaction"><span class="header-section-number">5.3</span> Apply your knowledge</h2>
 <p>Now analyze a dataset yourself. Start with the worked examples, then do the exercise:</p>
 <ul>
 <li>Tutorial — linear model (<a href="tutorials/tutorial-interaction-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/tooth-growth.csv">data <i class="fas fa-download"></i></a>)</li>
@@ -787,7 +1425,7 @@ Learn why
 <li>Exercise (<a href="exercises/exercise-interaction.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/ischemic-stroke.csv">data <i class="fas fa-download"></i></a>)</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -796,7 +1434,7 @@ How to read data in R
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Save the data and qmd file <strong>in the same location</strong> on your computer.</li>
@@ -1386,8 +2024,8 @@ How to read data in R
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./dummy-variables.html" class="pagination-link" aria-label="Dummy Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span>
+      <a href="./additive-effects.html" class="pagination-link" aria-label="Additive Effects">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

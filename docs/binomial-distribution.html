@@ -1986,8 +1986,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./interaction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -2326,7 +2332,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p><small><em>A discrete, probability distribution that can be left or right skewed.</em></small></p>
 <hr>
-<p>The binomial distribution is the number of successes out of the number of trials. It is used to model <strong>ratios</strong>, <strong>fractions</strong> and <strong>binary data</strong>. If trials are independent and have a fixed probability of success <span class="math inline">\(p\)</span>, then the binomial distribution is not an approximation, but <em>the</em> probability distribution of ratios.</p>
+<p>The binomial distribution is the number of successes out of the number of trials. It is used to model <strong>ratios</strong>, <strong>fractions</strong> and <strong>binary data</strong>. If trials are independent and have a fixed probability of success <span class="text-nowrap"><span class="math inline">\(p\)</span>,</span> then the binomial distribution is not an approximation, but <em>the</em> probability distribution of ratios.</p>
 <p>In reality, the probability of success may depend on unknown, unmeasured, or otherwise unaccounted for external factors: If we consider the effect of smoking on the probability of developing lung cancer, then such external factors might include familial history, exposure to other carcinogens, etc. For this reason, analyses based on a binomial distribution should include some assessment of whether the chosen distribution is realistic.</p>
 <section id="properties" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="properties">Properties</h2>
@@ -2334,7 +2340,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" aria-current="page">Probability mass function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Cumulative distribution function</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Quantile function</a></li></ul>
 <div class="tab-content" data-group="distributionfunctions">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
-<p><small><em>What is the probability of a given number of successes</em> <span class="math inline">\(k\)</span>?</small></p>
+<p><small><em>What is the probability of a given number of successes</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2343,7 +2349,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <img src="binomial-distribution_files/figure-html/fig-dbinom-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Probability mass function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="math inline">\(p = 0.75\)</span>.
+Figure&nbsp;1: Probability mass function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
 </figcaption>
 </figure>
 </div>
@@ -2351,7 +2357,7 @@ Figure&nbsp;1: Probability mass function of a binomial distribution with <span c
 </div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
-  \tag{1}\label{dpois}
+  \tag{1}\label{dbinom}
   \binom{n}{k} p^k (1 - p)^{n - k}
 \end{align}\]</span></p>
 <p>Code:</p>
@@ -2384,10 +2390,10 @@ Symbols
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\(n\)</span>: The number of trials</li>
-<li><span class="math inline">\(k\)</span>: The number of successes</li>
-<li><span class="math inline">\(p\)</span>: The probability of success</li>
-<li><span class="math inline">\(x \choose y\)</span>: The <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a></li>
+<li><span class="text-nowrap"><span class="math inline">\(n\)</span>:</span> The number of trials</li>
+<li><span class="text-nowrap"><span class="math inline">\(k\)</span>:</span> The number of successes</li>
+<li><span class="text-nowrap"><span class="math inline">\(p\)</span>:</span> The probability of success</li>
+<li><span class="text-nowrap"><span class="math inline">\(x \choose y\)</span>:</span> The <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a></li>
 </ul>
 </div>
 </div>
@@ -2404,10 +2410,10 @@ Explanation
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The binomial distribution is a discrete probability distribution. There are only <span class="math inline">\(n + 1\)</span> possible values for the outcome (<span class="math inline">\(0, 1, 2, \dots, n\)</span>). Hence, you can directly read probabilities off the <span class="math inline">\(y\)</span>-axis in <a href="#fig-dbinom" class="quarto-xref">Figure&nbsp;<span>1</span></a>.</p>
+<p>The binomial distribution is a discrete probability distribution. There are only <span class="math inline">\(n + 1\)</span> possible values for the outcome <span class="text-nowrap">(<span class="math inline">\(0, 1, 2, \dots, n\)</span>).</span> Hence, you can directly read probabilities off the <span class="text-nowrap"><span class="math inline">\(y\)</span>-axis</span> in <a href="#fig-dbinom" class="quarto-xref">Figure&nbsp;<span>1</span></a>.</p>
 <p>The correct term for a probability function of a discrete distribution is a probability <em>mass</em> function, though it is common in literature to see people call both discrete and continuous versions a probability density function.</p>
 <p>Note that while it looks like the probability is zero at <span class="math inline">\(k = 2\)</span> or less in <a href="#fig-dbinom" class="quarto-xref">Figure&nbsp;<span>1</span></a>, it is never exactly zero within the range of possible values. The probability is just too small to be visible in the figure.</p>
-<p>The number of successes cannot be negative, nor larger than the number of trials. If <span class="math inline">\(p\)</span> is close to zero or one, the remaining probability gets pressed up into the side. If you increase <span class="math inline">\(n\)</span>, or move <span class="math inline">\(p\)</span> closer to a half, you move further away from zero, so this skew becomes less apparent:</p>
+<p>The number of successes cannot be negative, nor larger than the number of trials. If <span class="math inline">\(p\)</span> is close to zero or one, the remaining probability gets pressed up into the side. If you increase <span class="text-nowrap"><span class="math inline">\(n\)</span>,</span> or move <span class="math inline">\(p\)</span> closer to a half, you move further away from zero, so this skew becomes less apparent:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pskew" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2416,7 +2422,7 @@ Explanation
 <img src="binomial-distribution_files/figure-html/fig-pskew-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Increasing <span class="math inline">\(n\)</span>, or moving <span class="math inline">\(p\)</span> closer to <span class="math inline">\(0.5\)</span> results in a more symmetric distribution.
+Figure&nbsp;2: Increasing <span class="text-nowrap"><span class="math inline">\(n\)</span>,</span> or moving <span class="math inline">\(p\)</span> closer to <span class="math inline">\(0.5\)</span> results in a more symmetric distribution.
 </figcaption>
 </figure>
 </div>
@@ -2448,7 +2454,7 @@ Example
 <pre><code>[1] 0.016222</code></pre>
 </div>
 </div>
-<p>Using the following code, you can plot the probability mass function of binomial distribution with <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(p = 0.8\)</span>:</p>
+<p>Using the following code, you can plot the probability mass function of binomial distribution with <span class="math inline">\(n = 10\)</span> and <span class="text-nowrap"><span class="math inline">\(p = 0.8\)</span>:</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
@@ -2473,7 +2479,7 @@ Example
 <pre><code>np.float64(0.0162220001220703)</code></pre>
 </div>
 </div>
-<p>Using the following code, you can plot the probability mass function of binomial distribution with <span class="math inline">\(n = 10\)</span> and <span class="math inline">\(p = 0.8\)</span>:</p>
+<p>Using the following code, you can plot the probability mass function of binomial distribution with <span class="math inline">\(n = 10\)</span> and <span class="text-nowrap"><span class="math inline">\(p = 0.8\)</span>:</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
@@ -2501,7 +2507,7 @@ Example
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
-<p><small><em>What is the probability up till a given point</em> <span class="math inline">\(k\)</span>?</small></p>
+<p><small><em>What is the probability up till a given point</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2510,7 +2516,7 @@ Example
 <img src="binomial-distribution_files/figure-html/fig-pbinom-3.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Cumulative distribution function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="math inline">\(p = 0.75\)</span>.
+Figure&nbsp;3: Cumulative distribution function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
 </figcaption>
 </figure>
 </div>
@@ -2518,7 +2524,7 @@ Figure&nbsp;3: Cumulative distribution function of a binomial distribution with 
 </div>
 <p>Mathematical formula:</p>
 <p><span class="math display">\[\begin{align}
-  \tag{2}\label{ppois}
+  \tag{2}\label{pbinom}
   \sum_{i = 0}^k \binom{n}{i} p^i (1 - p)^{n - i}
 \end{align}\]</span></p>
 <p>Code:</p>
@@ -2551,11 +2557,11 @@ Symbols
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><span class="math inline">\(n\)</span>: The number of trials</li>
-<li><span class="math inline">\(k\)</span>: The number of successes</li>
-<li><span class="math inline">\(p\)</span>: The probability of success</li>
-<li><span class="math inline">\(x \choose y\)</span>: The <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a></li>
-<li><span class="math inline">\(\sum\)</span>: Summation (compute for <span class="math inline">\(0, 1, \dots, k\)</span> and add all results)</li>
+<li><span class="text-nowrap"><span class="math inline">\(n\)</span>:</span> The number of trials</li>
+<li><span class="text-nowrap"><span class="math inline">\(k\)</span>:</span> The number of successes</li>
+<li><span class="text-nowrap"><span class="math inline">\(p\)</span>:</span> The probability of success</li>
+<li><span class="text-nowrap"><span class="math inline">\(x \choose y\)</span>:</span> The <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a></li>
+<li><span class="text-nowrap"><span class="math inline">\(\sum\)</span>:</span> Summation (compute for <span class="math inline">\(0, 1, \dots, k\)</span> and add all results)</li>
 </ul>
 </div>
 </div>
@@ -2572,7 +2578,7 @@ Explanation
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The cumulative distribution function (CDF) is the sum of the probability mass function up till a given point <span class="math inline">\(k\)</span>. It can be used to calculate the probability of the number of successes being no greater than a certain value. To obtain the opposite—the chance of an observation <em>greater</em> than a certain value, simply use <span class="math inline">\(1\)</span> minus the CDF. Finally, to compute the chance of being within a certain range, you can subtract the CDF of the smaller value, from the CDF of the larger value (see the examples below).</p>
+<p>The cumulative distribution function (CDF) is the sum of the probability mass function up till a given point <span class="text-nowrap"><span class="math inline">\(k\)</span>.</span> It can be used to calculate the probability of the number of successes being no greater than a certain value. To obtain the opposite—the chance of an observation <em>greater</em> than a certain value, simply use <span class="math inline">\(1\)</span> minus the CDF. Finally, to compute the chance of being within a certain range, you can subtract the CDF of the smaller value, from the CDF of the larger value (see the examples below).</p>
 </div>
 </div>
 </div>
@@ -2592,7 +2598,7 @@ Examples
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<p>If you randomly guess multiple choice questions with 4 options on a 10-question exam, the chance of failing (<span class="math inline">\(\leq 5\)</span> questions right) is:</p>
+<p>If you randomly guess multiple choice questions with 4 options on a 10-question exam, the chance of failing <span class="text-nowrap">(<span class="math inline">\(\leq 5\)</span></span> questions right) is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2606,7 +2612,7 @@ Examples
 <pre><code>[1] 0.07812691</code></pre>
 </div>
 </div>
-<p><small><em>(This works because you start with 1 (100%) exclude all options resulting in less than 5.)</em></small></p>
+<p><small><em>(This works because you start with 1 (100%) and exclude all options resulting in less than 5.)</em></small></p>
 <p>To compute the probability of a certain range, just subtract the smaller value from the greater:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 5 to 7 questions right:</span></span>
@@ -2625,7 +2631,7 @@ Examples
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<p>If you randomly guess multiple choice questions with 4 options on a 10-question exam, the chance of failing (<span class="math inline">\(\leq 5\)</span> questions right) is:</p>
+<p>If you randomly guess multiple choice questions with 4 options on a 10-question exam, the chance of failing <span class="text-nowrap">(<span class="math inline">\(\leq 5\)</span></span> questions right) is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> binom</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> binom.cdf(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)</span>
@@ -2642,7 +2648,7 @@ Examples
 <pre><code>0.07812690734863281</code></pre>
 </div>
 </div>
-<p><small><em>(This works because you start with 1 (100%) exclude all options resulting in less than 5.)</em></small></p>
+<p><small><em>(This works because you start with 1 (100%) and exclude all options resulting in less than 5.)</em></small></p>
 <p>To compute the probability of a certain range, just subtract the smaller value from the greater:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of 5 to 7 questions right:</span></span>
@@ -2669,7 +2675,7 @@ Examples
 </div>
 </div>
 <div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
-<p><small><em>Up till what point does the probability equal at least</em> <span class="math inline">\(p\)</span>?</small></p>
+<p><small><em>Up till what point does the probability equal at least</em> <span class="text-nowrap"><span class="math inline">\(p\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-qbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2678,7 +2684,7 @@ Examples
 <img src="binomial-distribution_files/figure-html/fig-qbinom-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Quantile function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="math inline">\(p = 0.75\)</span>.
+Figure&nbsp;4: Quantile function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
 </figcaption>
 </figure>
 </div>
@@ -2719,7 +2725,7 @@ Explanation
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The quantile function is the inverse of the cumulative distribution function. It tells you up till what point the probability equals <span class="math inline">\(p\)</span>. To obtain the opposite—the point <em>after</em> which the probability equals a certain value, simply compute the quantile of <span class="math inline">\(1\)</span> minus the probability (see the examples below).</p>
+<p>The quantile function is the inverse of the cumulative distribution function. It tells you up till what point the probability equals <span class="text-nowrap"><span class="math inline">\(p\)</span>.</span> To obtain the opposite—the point <em>after</em> which the probability equals a certain value, simply compute the quantile of <span class="math inline">\(1\)</span> minus the probability (see the examples below).</p>
 <p>There exists no simple expression for the quantile function of the binomial distribution, but it can be computed anyway using a numeric search. If you are interested how this works, I explain it below.</p>
 <details>
 <summary>
@@ -2727,10 +2733,10 @@ If no simple closed form exists, how is it calculated?
 </summary>
 <p>The quantile function answers the opposite of the cumulative distribution function:</p>
 <ul>
-<li><strong>Cumulative distribution function</strong>: What is the probability <span class="math inline">\(p\)</span> up till a certain number of successes <span class="math inline">\(k\)</span>?</li>
-<li><strong>Quantile function</strong>: What is the number of successes <span class="math inline">\(k\)</span> that has a probability of at least <span class="math inline">\(p\)</span>?</li>
+<li><strong>Cumulative distribution function</strong>: What is the probability <span class="math inline">\(p\)</span> up till a certain number of successes <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></li>
+<li><strong>Quantile function</strong>: What is the number of successes <span class="math inline">\(k\)</span> that has a probability of at least <span class="text-nowrap"><span class="math inline">\(p\)</span>?</span></li>
 </ul>
-<p>This should give you a hint of how a numeric search might work: If you don’t have a quantile function, you can simply try plugging different <span class="math inline">\(k\)</span>s in the cumulative distribution until you find the right answer.</p>
+<p>This should give you a hint of how a numeric search might work: If you don’t have a quantile function, you can simply try plugging different <span class="text-nowrap"><span class="math inline">\(k\)</span>s</span> in the cumulative distribution until you find the right answer.</p>
 <p>Suppose that in <a href="#fig-qbinom" class="quarto-xref">Figure&nbsp;<span>4</span></a>, you need to know the value for <span class="math inline">\(k\)</span> that has a total probability of at least 80%:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The real answer:</span></span>
@@ -2750,7 +2756,7 @@ If no simple closed form exists, how is it calculated?
 <pre><code>[1] 9</code></pre>
 </div>
 </div>
-<p>The search stops at <span class="math inline">\(k=9\)</span>, because that is the first instance of a probability of at least 80%.</p>
+<p>The search stops at <span class="text-nowrap"><span class="math inline">\(k=9\)</span>,</span> because that is the first instance of a probability of at least 80%.</p>
 <p>There are more efficient ways to go about this, but this is the underlying principle of R’s <code>qbinom</code> and Python’s <code>binom.ppf</code>.</p>
 </details>
 </div>
@@ -2786,7 +2792,7 @@ Examples
 <pre><code>[1] 0 5</code></pre>
 </div>
 </div>
-<p>Apparently, 95% of students would answer 0–5 questions right.</p>
+<p>Apparently, at least 95% of students would answer 0–5 questions right.</p>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <p>If all students randomly guess all 4-choice questions on a 10-question exam, what is the highest number of correct questions for 95% of students?</p>
@@ -2806,7 +2812,7 @@ Examples
 <pre><code>[0. 5.]</code></pre>
 </div>
 </div>
-<p>Apparently, 95% of students would answer 0–5 questions right.</p>
+<p>Apparently, at least 95% of students would answer 0–5 questions right.</p>
 </div>
 </div>
 </div>
@@ -2961,7 +2967,7 @@ Try it in browser
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
-<p>Continuing on question 1, what is the smallest number of flowers the students should expect, with a 5% chance of happening?</p>
+<p>Continuing on question 1, what number of flowers will the students reach or exceed with a probability of at least 95%?</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">

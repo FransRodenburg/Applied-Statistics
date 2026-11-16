@@ -1,0 +1,198 @@
+---
+title: "Tutorial - Additive Effects (Linear Model)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+Crop yield (kg) is compared for three types of insect sprays. Each spray was applied at four concentrations ($0.1$, $1$, $10$ and $100$ mg/mL). Do the sprays differ in yield, when the concentration is taken into account?
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("car")      # QQ-plots with confidence intervals, omnibus test
+library("emmeans")  # Post hoc comparisons
+library("ggplot2")  # Adjusting the plot produced by plot_model
+library("sandwich") # Robust standard errors
+library("sfsmisc")  # Better plot axes
+library("sjPlot")   # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("spray-concentration.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   `spray` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$spray <- factor(DF$spray)
+table(DF$spray, DF$concentration)
+```
+
+-   The study is completely balanced: every combination of spray and concentration occurs exactly once. That is not much, but if we treat concentration as numeric, there are enough observations to fit a model, as long as we don't make it too complex.
+
+-   `concentration` is numeric, ranging from $0.1$ to $100$ mg/mL, and `yield` is numeric, ranging from $77.5$ to $197.2$ kg. There are no apparent issues.
+
+## Visualizing the data
+
+We have a continuous outcome, a continuous explanatory variable and a categorical one. A scatterplot with a different color for each spray shows all three:
+
+```{r}
+cols <- c("darkorange", "steelblue", "seagreen")
+plot(yield ~ concentration, data = DF,
+     axes = FALSE, pch = 16, col = cols[spray],
+     xlab = "Concentration (mg/mL)", ylab = "Yield (kg)")
+eaxis(1)
+eaxis(2)
+legend("topleft", legend = levels(DF$spray), col = cols, pch = 16, bty = "n",
+       title = "Spray")
+```
+
+-   Yield is much higher at $100$ mg/mL than at the other concentrations, for all three sprays.
+
+-   At every concentration, spray C has the lowest yield. The difference is small compared to the effect of concentration.
+
+-   The concentration increases in steps of $10\times$, so the three lowest concentrations are hard to tell apart in this plot. A logarithmic axis shows them at equal distance:
+
+```{r}
+plot(yield ~ concentration, data = DF, log = "x",
+     axes = FALSE, pch = 16, col = cols[spray],
+     xlab = "Concentration (mg/mL)", ylab = "Yield (kg)")
+eaxis(1, n.axp = 1)
+eaxis(2)
+legend("topleft", legend = levels(DF$spray), col = cols, pch = 16, bty = "n",
+       title = "Spray")
+```
+
+-   On this logarithmic axis, the increase is clearly not a straight line: Yield hardly changes from $0.1$ to $10$ mg/mL, and then increases sharply. That is what a straight line on the original scale looks like on a logarithmic axis, so we will use concentration as is, and not its logarithm.
+
+## Fitting the model
+
+Yield is continuous with a more or less central tendency, so we can try a conditional normal approximation.
+
+The research question is about the difference between sprays, and concentration is included to account for its (large) effect on yield. Without interaction, the model assumes the effect of concentration is the same for each spray (parallel lines):
+
+```{r}
+LM <- lm(yield ~ concentration + spray, data = DF)
+```
+
+## Model diagnostics
+
+```{r}
+par(mfrow = c(2, 2))      # Plot in a 2x2 grid
+plot(LM, which = 1)       # Residuals vs fitted
+qqPlot(residuals(LM))     # QQ-plot
+mtext("QQ-plot", 3, 0.25) # Title for the QQ-plot
+plot(LM, which = 3)       # Scale-location
+plot(LM, which = 5)       # Residuals vs leverage
+par(mfrow = c(1, 1))      # Restore the default
+```
+
+-   **Residuals vs Fitted**: The fitted values form two clusters: the observations at $100$ mg/mL on the right, and all others on the left. With only $12$ observations, the red line mostly follows individual points. There is no clear pattern.
+
+-   **QQ-plot**: All residuals fall within the confidence band, so there is little deviation from normality.
+
+-   **Scale-Location**: No clear trend, so no evidence of non-constant variance.
+
+-   **Residuals vs Leverage**: The three observations at $100$ mg/mL have about twice the leverage of the others. This makes sense: they are far from the other concentrations, so the slope is almost entirely determined by these three. Observation 12 (spray C at $100$ mg/mL) is marked as anomalous, with a Cook's distance of $d \approx 0.81$. Since this is less than $1.0$, we could opt to just ignore it. I show below in the `emmeans` part how much the conclusions depend on it.
+
+Altogether, there are no serious deviations from the model assumptions, but keep in mind that diagnostics based on $12$ observations cannot reveal much.
+
+## Interpreting the model output
+
+```{r}
+summary(LM)
+```
+
+-   Spray A is not shown in the regression table, so it is the reference group (in the intercept): At a theoretical concentration of $0$ mg/mL, the estimated mean yield for spray A is $99.7$ kg.
+
+-   The second coefficient is the effect of concentration, which is the same **for every spray**: Every $1$ mg/mL increase in concentration increases the mean yield by $1.0$ kg ($p = 3.23 \cdot 10^{-9}$).
+
+-   The third coefficient is the difference between spray B and spray A, **at any concentration**: With spray B, the mean yield is $2.0$ kg higher, but this difference is not significant ($p = 0.598$).
+
+-   The fourth coefficient is the difference between spray C and spray A, at any concentration: With spray C, the mean yield is $12.3$ kg lower ($p = 0.0108$).
+
+-   To compare B with C, you would have to either use `relevel`, or use an ANOVA-style comparison with `emmeans` as shown below. Also, the $p$-values in this table are not corrected for multiple testing.
+
+-   This model explains $99.0\%$ of the variance in yield. That sounds amazing, but almost all of it is the difference between $100$ mg/mL and the other concentrations.
+
+## Omnibus test
+
+Before using `emmeans`, let's see if there is an overall difference among sprays. With more than one explanatory variable, use `Anova` from the `car` package: It tests each variable while accounting for the other.
+
+```{r}
+Anova(LM)
+```
+
+At the same concentration, the sprays differ significantly in mean yield ($p = 0.00986$). The other $p$-value is that of concentration, which we already saw in the regression table.
+
+## Post hoc comparison
+
+```{r}
+EMM <- emmeans(LM, specs = pairwise ~ spray)
+EMM
+```
+
+-   The estimated means (`emmean`) are those at the average concentration in the data. Because the lines are parallel, the differences between sprays are the same at any other concentration.
+
+-   After multiple testing correction, spray C results in significantly lower yield than spray A ($12.3$ kg, $p = 0.0260$) and spray B ($14.3$ kg, $p = 0.0120$). Sprays A and B do not differ significantly ($p = 0.850$).
+
+### Extra: Why include concentration?
+
+What if we had ignored concentration and just compared the sprays?
+
+```{r}
+LM_spray <- lm(yield ~ spray, data = DF)
+Anova(LM_spray)
+```
+
+The estimated differences between the sprays are the same (the design is balanced), but they are now nowhere near significant ($p = 0.904$). Without concentration in the model, its large effect on yield ends up in the residual variance, and the much smaller differences between sprays drown in it. This is one of the main reasons to include more than one explanatory variable in a model.
+
+### Extra: Robust standard errors
+
+You could use robust standard errors in case you want to account for the near-outlier found in the diagnostics. In small samples like this one, use `type = "HC3"`:
+
+```{r}
+vcov <- vcovHC(LM, type = "HC3") # robust variance-covariance matrix
+EMM <- emmeans(LM, specs = pairwise ~ spray, vcov = vcov)
+EMM$contrasts
+```
+
+All the estimates are the same as before, but we now have robust standard errors, and hence, different $p$-values. The differences between spray C and the other two sprays are no longer significant ($p = 0.113$ and $p = 0.079$). Keep in mind that with only $12$ observations, robust standard errors are not very reliable either. An honest conclusion is that spray C appears to result in lower yield, but that this rests on few observations and should be confirmed in a larger experiment.
+
+## Visualize the estimated relationship
+
+This is a nice addition for any report/presentation, and not much effort thanks to the `sjPlot` package:
+
+```{r}
+plot_model(LM, type = "pred", terms = c("concentration", "spray")) +
+  ggtitle("Estimated relationship") +
+  xlab("Concentration (mg/mL)") +
+  ylab("Yield (kg)")
+```
+
+The lines are parallel: The model estimates a single effect of concentration, and a constant difference between sprays. Whether the effect of concentration differs between sprays is a question for a model with interaction (next chapter).

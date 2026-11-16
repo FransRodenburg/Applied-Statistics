@@ -85,6 +85,7 @@ GLM <- glm(cbind(germ, 10 - germ) ~ conc, family = "binomial", data = DF)
 Here we'll use randomized quantile residuals generated with the `DHARMa` package.
 
 ```{r}
+set.seed(2024) # Makes the simulated residuals reproducible
 RQR <- simulateResiduals(GLM)
 plot(RQR)
 ```
@@ -111,7 +112,7 @@ What do we see here?
 testDispersion(RQR)
 ```
 
--   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, 79% of simulations had more extreme dispersion, so this model's dispersion is well within what is expected in a conditional binomial distribution.
+-   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, about 40% of simulations had a lower dispersion than our sample. The test is two-sided, so $p$ is twice that. This model's dispersion is well within what is expected in a conditional binomial distribution.
 
 -   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{13.991}{19} \approx 0.74$. This suggests slight underdispersion, but from the previous diagnostics we can conclude it is not problematic.
 
@@ -135,7 +136,7 @@ summary(GLM)
 
     -   If you need numbers like this, you can quickly obtain them with `predict(GLM, list(conc = 50), type = "response")`.
 
--   The model is not overdispersed, because the residual deviance is not even larger than the residual degrees of freedom. It is also not underdispersed, because $\frac{13.991}{19} \approx 0.7$, which is still fairly close to $1$.
+-   The model is not overdispersed, because the residual deviance is not even larger than the residual degrees of freedom. The ratio $\frac{13.991}{19} \approx 0.74$ suggests slight underdispersion, but the diagnostics showed it is not problematic.
 
 -   This relationship explains $1 - \frac{13.991}{142.788} \approx 90.2\%$ of the deviance in germination, so the relationship is quite strong.
 

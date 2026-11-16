@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Additive Effects – Applied Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./interaction.html" rel="next">
+<link href="./dummy-variables.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./additive-effects.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Statistics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poisson-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./binomial-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./simple-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GLM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./multiple-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interaction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summary-additive" id="toc-summary-additive" class="nav-link active" data-scroll-target="#summary-additive"><span class="header-section-number">4.1</span> Summary</a></li>
+  <li><a href="#quiz-additive" id="toc-quiz-additive" class="nav-link" data-scroll-target="#quiz-additive"><span class="header-section-number">4.2</span> Quiz</a>
+  <ul class="collapse">
+  <li><a href="#additive-app" id="toc-additive-app" class="nav-link" data-scroll-target="#additive-app">Interactive app</a></li>
+  </ul></li>
+  <li><a href="#apply-additive" id="toc-apply-additive" class="nav-link" data-scroll-target="#apply-additive"><span class="header-section-number">4.3</span> Apply your knowledge</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./additive-effects.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="additive" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><small><i>Linear regression with more than one explanatory variable.</i></small></p>
+<hr>
+<p><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> I’ve recently begun restructuring the website. This chapter is under construction.</p>
+<p>This chapter uses <a href="GLM.html#summary-glm">GLM</a> notation for formulas <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> but to focus on the concept of combining explanatory variables, only normal examples are shown (<code>lm</code>). For Poisson and binomial examples, try the explore mode of the <a href="#additive-app">interactive app</a> at the bottom.</p>
+<p><strong>Note</strong>: A regression model can in principle have <em>any number</em> of explanatory variables. This chapter only shows combinations of two variables, because that is still (relatively) easy to visualize.</p>
+<section id="summary-additive" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="summary-additive"><span class="header-section-number">4.1</span> Summary</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" aria-current="page">Continuous &amp; groups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Groups &amp; groups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-3" role="tab" aria-controls="tabset-7-3" aria-selected="false">Continuous &amp; continuous</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-slope-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: One continuous and one categorical explanatory variable and the estimated line of each group.<br><small>(Age and mass of 40 fish of two species.)</small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematical formula:</p>
+<p><span class="math display">\[\begin{align}
+  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 \\ \tag{1}\label{additiveslope}\\
+  x_2 &amp;=\begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}
+\end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x + group"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Symbols &amp; definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1\)</span> — explanatory variable <span class="text-grey">(continuous)</span></dt>
+<dd>
+<p>The variable the outcome is regressed on.</p>
+</dd>
+<dt><span class="math inline">\(x_2\)</span> — explanatory variable <span class="text-grey">(dummy)</span></dt>
+<dd>
+<p>Translates the groups into a number that can be used in the formula. It works like a switch: In group B, it is on <span class="text-nowrap">(<span class="math inline">\(x_2 = 1\)</span>)</span> and adds <span class="math inline">\(\beta_2\)</span> to <span class="text-nowrap"><span class="math inline">\(\eta\)</span>;</span> in group A (the reference group), it is off <span class="text-nowrap">(<span class="math inline">\(x_2 = 0\)</span>).</span></p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.<br><small><span class="text-grey">Here, <span class="math inline">\(x_2\)</span> is zero in group A (the reference group), so this is <span class="math inline">\(\eta\)</span> in group A at <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one, while <span class="math inline">\(x_2\)</span> stays the same.<br><small><span class="text-grey">Here, this change is the same in group A and group B: The lines of both groups are parallel.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one, while <span class="math inline">\(x_1\)</span> stays the same.<br><small><span class="text-grey">Here, <span class="math inline">\(x_2\)</span> can only increase from <span class="math inline">\(0\)</span> (group A) to <span class="math inline">\(1\)</span> (group B), so this is the difference in <span class="math inline">\(\eta\)</span> between group B and group A, at any value of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>:</span> The distance between the parallel lines.</span></small></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With a continuous variable and a dummy variable in the same model, each group gets its own line. Without interaction, both groups share a single slope, so the lines are parallel. The coefficient <span class="math inline">\(\beta_2\)</span> is the <strong>distance between the lines</strong>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-slope-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: The intercept <span class="text-nowrap">(<span class="math inline">\(\beta_0\)</span>)</span> is <span class="math inline">\(\eta\)</span> in group A, when <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span> The slope <span class="math inline">\(\beta_1\)</span> is the same in both groups, and <span class="math inline">\(\beta_2\)</span> is the distance between the parallel lines.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The two lines of A and B are then defined as follows:</p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Intercept</th>
+<th style="text-align: center;">Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">A model with a single slope for both groups is called a <em>main effects model</em>. It assumes the fitted lines are parallel. If the slopes differ, see the next chapter, <a href="interaction.html">interaction</a>.</span></small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fitted to the data of <a href="#fig-additive-slope" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x <span class="sc">+</span> group, data)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 2.5555947 0.30157250 8.474230 3.409922e-10
+x           0.8164085 0.09298538 8.779966 1.404885e-10
+groupB      1.7377959 0.21491229 8.086070 1.068026e-09</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x + group"</span>, data).fit()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      2.5556      0.302      8.474      0.000       1.945       3.167
+group[T.B]     1.7378      0.215      8.086      0.000       1.302       2.173
+x              0.8164      0.093      8.780      0.000       0.628       1.005
+==============================================================================</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note that Python names the row <code>group[T.B]</code>, instead of <code>groupB</code>.</span></small></p>
+</div>
+</div>
+</div>
+<p>The estimated slope is given by <code>x</code> (0.82), and it is the same in both groups. The estimated intercept of the <em>reference group</em> (A) is given by <code>(Intercept)</code> (2.56). For group B, we have to add <code>groupB</code> and the intercept becomes 4.29. Apparently, this difference is significant <span class="text-nowrap">(<span class="math inline">\(p = 1.07 \times 10^{-9}\)</span>).</span></p>
+<p>With a continuous variable in the model, the mean of a group depends on <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span> By default, <a href="./dummy-variables.html#emmeans"><code>emmeans</code></a> compares the groups at the average <span class="math inline">\(x\)</span> (here 2.58):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"emmeans"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$emmeans
+ group emmean   SE df lower.CL upper.CL
+ A       4.66 0.15 37     4.36     4.97
+ B       6.40 0.15 37     6.10     6.70
+
+Confidence level used: 0.95 
+
+$contrasts
+ contrast estimate    SE df t.ratio p.value
+ A - B       -1.74 0.215 37  -8.086 &lt;0.0001</code></pre>
+</div>
+</div>
+<p>Because the lines are parallel, the difference between the groups is the same at any value of <span class="text-nowrap"><span class="math inline">\(x\)</span>,</span> and equal to <code>groupB</code> in the regression table (<code>emmeans</code> shows <code>A - B</code>, hence the opposite sign).</p>
+<p>For a complete analysis, refer to the <a href="#apply-additive">tutorials</a> at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-dummy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-dummy-1.png" class="img-fluid figure-img" style="width:71.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Two categorical variables and the estimated mean of each combination.<br><small>(Dry mass of 40 plants of two varieties, with and without fertilizer treatment.)</small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematical formula:</p>
+<p><span class="math display">\[\begin{align}
+  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 \\ \tag{2}\label{additivedummy}\\
+  x_1 &amp;=\begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}\\
+  x_2 &amp;= \begin{cases}1 \quad \text{if treated}\\ 0 \quad \text{otherwise} \end{cases}
+\end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group <span class="sc">+</span> treatment, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group + treatment"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Symbols &amp; definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1, x_2\)</span> — explanatory variables <span class="text-grey">(dummy variables)</span></dt>
+<dd>
+<p>Translate both categorical variables into numbers that can be used in the formula. Each works like a switch: <span class="math inline">\(x_1\)</span> is on in group B and adds <span class="math inline">\(\beta_1\)</span> to <span class="text-nowrap"><span class="math inline">\(\eta\)</span>;</span> <span class="math inline">\(x_2\)</span> is on for treated observations and adds <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>;</span> for untreated observations in group A, both are off.</p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.<br><small><span class="text-grey">Here, both are zero for untreated observations in group A (the reference groups), so this is <span class="math inline">\(\eta\)</span> in untreated group A.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one, while <span class="math inline">\(x_2\)</span> stays the same.<br><small><span class="text-grey">Here, <span class="math inline">\(x_1\)</span> can only increase from <span class="math inline">\(0\)</span> (group A) to <span class="math inline">\(1\)</span> (group B), so this is the difference in <span class="math inline">\(\eta\)</span> between group B and group A, the same with and without treatment.</span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one, while <span class="math inline">\(x_1\)</span> stays the same.<br><small><span class="text-grey">Here, <span class="math inline">\(x_2\)</span> can only increase from <span class="math inline">\(0\)</span> (untreated) to <span class="math inline">\(1\)</span> (treated), so this is the difference in <span class="math inline">\(\eta\)</span> between treated and untreated, the same in group A and group B.</span></small></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With two categorical variables in the same model, both get their own dummy variable. Without interaction, their effects simply add up: The <strong>difference between treated and untreated</strong> <span class="text-nowrap">(<span class="math inline">\(\beta_2\)</span>)</span> is the same in group A and group B:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-dummy-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-dummy-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: The intercept <span class="text-nowrap">(<span class="math inline">\(\beta_0\)</span>)</span> is <span class="math inline">\(\eta\)</span> in untreated group A. The slope <span class="math inline">\(\beta_1\)</span> is the difference between group B and group A, and <span class="math inline">\(\beta_2\)</span> is the difference between treated and untreated.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The means of the four combinations are then defined as follows:</p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Untreated</th>
+<th style="text-align: center;">Treated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1 + \beta_2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">A model in which the difference between treated and untreated is the same in both groups is called a <em>main effects model</em>. If that difference varies between groups, see the next chapter, <a href="interaction.html">interaction</a>.</span></small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fitted to the data of <a href="#fig-additive-dummy" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group <span class="sc">+</span> treatment, data)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept)  10.6729336  0.2213147 48.225135 5.271722e-35
+groupB        1.9296313  0.2555523  7.550829 5.298221e-09
+treatmentyes  0.4067254  0.2555523  1.591555 1.199937e-01</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group + treatment"</span>, data).fit()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+Intercept           10.6729      0.221     48.225      0.000      10.225      11.121
+group[T.B]           1.9296      0.256      7.551      0.000       1.412       2.447
+treatment[T.yes]     0.4067      0.256      1.592      0.120      -0.111       0.925
+====================================================================================</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note that Python names the rows <code>group[T.B]</code> and <code>treatment[T.yes]</code>, instead of <code>groupB</code> and <code>treatmentyes</code>.</span></small></p>
+</div>
+</div>
+</div>
+<p>The estimated mean of the <em>reference groups</em> (untreated, group A) is given by <code>(Intercept)</code> (10.67). For group B, we have to add <code>groupB</code> (1.93), and for treated observations, <code>treatmentyes</code> (0.41). For treated observations in group B, we have to add both, and the mean becomes 13.01. Apparently, group B differs significantly from A <span class="text-nowrap">(<span class="math inline">\(p = 5.30 \times 10^{-9}\)</span>),</span> but the treatment effect is not significant <span class="text-nowrap">(<span class="math inline">\(p = 0.120\)</span>).</span></p>
+<p>For a complete analysis, refer to the <a href="#apply-additive">tutorials</a> at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-slope-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-slope-slope-1.png" class="img-fluid figure-img" width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.5: Two continuous explanatory variables and the resulting regression plane.<br><small>(Dry mass of 60 plants, grown with different amounts of added nitrogen and phosphorus.)</small><br><small><span class="text-grey">3D plots like this one are only meant to build intuition. See <a href="multiple-linear-regression.html">what to expect on the exam</a>.</span></small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematical formula:</p>
+<p><span class="math display">\[\begin{align}
+  \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 \tag{3}\label{additiveslopeslope}
+\end{align}\]</span></p>
+<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<p>Code:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x1 + x2"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Symbols &amp; definitions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
+<dd>
+<p>The linear combination of the explanatory variables and their coefficients.<br><small><span class="text-grey">For ordinary linear models, this is just the predicted value of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>).</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(x_1, x_2\)</span> — explanatory variables <span class="text-grey">(continuous)</span></dt>
+<dd>
+<p>The variables the outcome is regressed on.</p>
+</dd>
+<dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
+<dd>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are zero.</p>
+</dd>
+<dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_1\)</span> increases by one, while <span class="math inline">\(x_2\)</span> stays the same.<br><small><span class="text-grey">Here, this change is the same at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>.</span></span></small></p>
+</dd>
+<dt><span class="math inline">\(\beta_2\)</span> — slope</dt>
+<dd>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when <span class="math inline">\(x_2\)</span> increases by one, while <span class="math inline">\(x_1\)</span> stays the same.<br><small><span class="text-grey">Here, this change is the same at any value of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>.</span></span></small></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Explanation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>With two continuous variables in the same model, each gets its own slope. Without interaction, the slope of one variable is the same at any value of the other. Instead of a line, the model is now a flat <strong>plane</strong>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-additive-slope-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-additive-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="additive-effects_files/figure-html/fig-additive-slope-slope-coef-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-additive-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.6: Visual interpretation of the coefficients when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous. The slope of <span class="math inline">\(x_1\)</span> is <span class="math inline">\(\beta_1\)</span> at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>.</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>At a given value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> the model is a straight line in <span class="text-nowrap"><span class="math inline">\(x_1\)</span>:</span></p>
+<p><span class="math display">\[\eta = \underbrace{(\beta_0 + \beta_2 \cdot x_2)}_{\text{intercept}} + \underbrace{\beta_1}_{\text{slope}} \cdot x_1\]</span></p>
+<table class="w-auto caption-top table">
+<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Intercept</th>
+<th style="text-align: center;">Slope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_2 = 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_2 = 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_2 = 2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_0 + 2 \cdot \beta_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><small><span class="text-grey">A model in which the slope of <span class="math inline">\(x_1\)</span> is the same at every value of <span class="math inline">\(x_2\)</span> is called a <em>main effects model</em>. If the slope changes with <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> see the next chapter, <a href="interaction.html">interaction</a>.</span></small></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fitted to the data of <a href="#fig-additive-slope-slope" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, data)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 2.195186  0.2173984 10.09752 2.631674e-14
+x1          4.866548  0.3118129 15.60727 3.064375e-22
+x2          3.733792  0.3120147 11.96672 3.487701e-17</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ x1 + x2"</span>, data).fit()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      2.1952      0.217     10.098      0.000       1.760       2.631
+x1             4.8665      0.312     15.607      0.000       4.242       5.491
+x2             3.7338      0.312     11.967      0.000       3.109       4.359
+==============================================================================</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The estimated slope of <code>x1</code> is 4.87: The change in the mean of <span class="math inline">\(y\)</span> when <span class="math inline">\(x_1\)</span> increases by one, <em>while <span class="math inline">\(x_2\)</span> stays the same</em>. Likewise, the estimated slope of <code>x2</code> is 3.73, while <span class="math inline">\(x_1\)</span> stays the same. Both slopes differ significantly from zero in this case.</p>
+<p>For a complete analysis, refer to the <a href="#apply-additive">tutorials</a> at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quiz-additive" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="quiz-additive"><span class="header-section-number">4.2</span> Quiz</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>A researcher compares the mass of fish of two species and finds no significant difference <span class="text-nowrap">(<span class="math inline">\(p = 0.31\)</span>).</span> After adding the age of the fish to the model, the estimated difference between the species is almost the same, but it is now significant <span class="text-nowrap">(<span class="math inline">\(p = 0.002\)</span>).</span> What is the most likely explanation? <em>(choose one)</em></p>
+<p><strong>A.</strong> Age was a confounder, so the first estimate was biased<br>
+<strong>B.</strong> Age explains much of the variation in mass, so the difference between the species is estimated more precisely<br>
+<strong>C.</strong> Adding an explanatory variable always lowers the <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> of the others<br>
+<strong>D.</strong> The species differ more in older fish</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The estimate hardly changed. What else does a <a href="./hypothesis-testing.html#test-statistic">test statistic</a> depend on?</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>A researcher compares the mass of fish of two species and finds no significant difference <span class="text-nowrap">(<span class="math inline">\(p = 0.31\)</span>).</span> After adding the age of the fish to the model, the estimated difference between the species is almost the same, but it is now significant <span class="text-nowrap">(<span class="math inline">\(p = 0.002\)</span>).</span> What is the most likely explanation? <em>(choose one)</em></p>
+<p><strong>A.</strong> Age was a confounder, so the first estimate was biased<br>
+<strong>B. Age explains much of the variation in mass, so the difference between the species is estimated more precisely</strong><br>
+<strong>C.</strong> Adding an explanatory variable always lowers the <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> of the others<br>
+<strong>D.</strong> The species differ more in older fish</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> A confounder changes the estimate itself (see <a href="multiple-linear-regression.html">omitted variable bias</a>). Here, the estimated difference stayed almost the same.<br>
+<strong>B.</strong> The <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is the estimate divided by its standard error. Without age in the model, the variation in mass that is due to age ends up in the residual variance, which makes the standard error large. With age in the model, the residual variance is smaller, and so is the standard error. The <a href="#apply-additive">tutorial</a> on a linear model shows an example.<br>
+<strong>C.</strong> It can also raise them, for example when the added variable is strongly related to another explanatory variable. And adding variables until a result is significant is not a fixed plan (see <a href="./hypothesis-testing.html#limitations-of-hypothesis-testing">limitations of hypothesis testing</a>).<br>
+<strong>D.</strong> That would be an <a href="interaction.html">interaction</a>. This model has none: It assumes the difference between the species is the same at every age.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p>A binomial GLM without interaction models the probability of death of rats as a function of the concentration of a toxic gas <span class="text-nowrap">(<span class="math inline">\(x_1\)</span>)</span> and sex <span class="text-nowrap">(<span class="math inline">\(x_2\)</span>),</span> as in the <a href="#apply-additive">tutorial</a> on a binomial GLM. Which statement is correct? <em>(choose one)</em></p>
+<p><strong>A.</strong> The difference in the probability of death between male and female rats is the same at every concentration<br>
+<strong>B.</strong> The difference in the log-odds of death between male and female rats is the same at every concentration<br>
+<strong>C.</strong> Plotted as probabilities, the curves of male and female rats are parallel<br>
+<strong>D.</strong> If the plotted curves are not parallel, the model must contain an interaction</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On which scale is a GLM linear? See the formula of a <a href="./GLM.html#glm-summary-binomial">binomial GLM</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>A binomial GLM without interaction models the probability of death of rats as a function of the concentration of a toxic gas <span class="text-nowrap">(<span class="math inline">\(x_1\)</span>)</span> and sex <span class="text-nowrap">(<span class="math inline">\(x_2\)</span>),</span> as in the <a href="#apply-additive">tutorial</a> on a binomial GLM. Which statement is correct? <em>(choose one)</em></p>
+<p><strong>A.</strong> The difference in the probability of death between male and female rats is the same at every concentration<br>
+<strong>B. The difference in the log-odds of death between male and female rats is the same at every concentration</strong><br>
+<strong>C.</strong> Plotted as probabilities, the curves of male and female rats are parallel<br>
+<strong>D.</strong> If the plotted curves are not parallel, the model must contain an interaction</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> The effects add up on the scale of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> which for a binomial GLM is the log-odds. Translated back to probabilities, the difference is not constant: In the tutorial, it is <span class="math inline">\(4.3\)</span> percentage points at <span class="math inline">\(0\)</span> ppm, but <span class="math inline">\(28.3\)</span> at <span class="math inline">\(20\)</span> ppm.<br>
+<strong>B.</strong> This is what ‘without interaction’ means in a GLM: <span class="math inline">\(\beta_2\)</span> is added to <span class="math inline">\(\eta\)</span> at any value of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>.</span><br>
+<strong>C.</strong> The lines are parallel on the scale of <span class="math inline">\(\eta\)</span> only. As probabilities, both curves are squeezed between <span class="math inline">\(0\)</span> and <span class="text-nowrap"><span class="math inline">\(1\)</span>,</span> so the distance between them changes.<br>
+<strong>D.</strong> Curves that are not parallel on the scale of the outcome are what a GLM without interaction looks like. Interaction means that the lines are not parallel on the scale of <span class="text-nowrap"><span class="math inline">\(\eta\)</span>.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="additive-app" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="additive-app">Interactive app</h3>
+<p>Practice the concepts covered in this chapter (the app does not include models with two continuous variables):</p>
+<p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/?v=additive" class="btn btn-outline-output" role="button" target="_blank" rel="noreferrer noopener">Regression tables <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
+<p><small><span class="text-grey">This app runs in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>
+</section>
+</section>
+<section id="apply-additive" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="apply-additive"><span class="header-section-number">4.3</span> Apply your knowledge</h2>
+<p>Now analyze a dataset yourself. Start with the worked examples, then do the exercise:</p>
+<ul>
+<li>Tutorial — linear model (<a href="tutorials/tutorial-additive-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/spray-concentration.csv">data <i class="fas fa-download"></i></a>)</li>
+<li>Tutorial — binomial GLM (<a href="tutorials/tutorial-additive-GLM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/hydrogen-sulfide.csv">data <i class="fas fa-download"></i></a>)</li>
+<li>Exercise (<a href="exercises/exercise-additive.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/cancer.csv">data <i class="fas fa-download"></i></a>)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to read data in R
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Save the data and qmd file <strong>in the same location</strong> on your computer.</li>
+<li>Open the qmd file in RStudio.</li>
+<li>Set working directory to source file location.<br><small>(<strong>Session</strong> &gt; <strong>Set Working Directory</strong> &gt; <strong>To Source File Location</strong>)</small></li>
+<li>R will now read from the folder the qmd file is located, so you can just use <code>read.csv("name-of-data.csv")</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+.dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
+.dm-scheme .dropdown-item.active { font-weight: 700; }
+</style>
+<script>
+// Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
+// Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
+(function () {
+  // webR editors are created light and switch only when the body class changes, so on a
+  // page that loads in dark mode they would stay light. Set the dark editor theme after
+  // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
+  // script and cannot be called from here; Monaco's theme applies to all editors.)
+  if (document.getElementById("qwebr-monaco-editor-init")) {
+    var t = 0;
+    var id = setInterval(function () {
+      var me = window.monaco && window.monaco.editor;
+      if (!me && ++t < 480) return;
+      clearInterval(id);
+      if (!me) return;
+      var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
+      me.onDidCreateEditor(function () { setTimeout(fix, 0); });
+      fix();
+    }, 250);
+  }
+
+  // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
+  // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
+  // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
+  var K = "quarto-color-scheme";
+  var ok = false;
+  try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
+  var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
+  if (!ok || !toggles.length) return;
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
+  var name = { light: "Light", dark: "Dark", system: "System" };
+  function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
+  function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
+  function show() {
+    var c = choice();
+    document.querySelectorAll(".dm-scheme").forEach(function (m) {
+      var b = m.querySelector(".dm-btn");
+      b.querySelector("i").className = "bi " + icon[c];
+      b.setAttribute("aria-label", "Color scheme: " + name[c]);
+      m.querySelectorAll(".dropdown-item").forEach(function (it) {
+        var on = it.dataset.choice === c;
+        it.classList.toggle("active", on);
+        it.setAttribute("aria-checked", on ? "true" : "false");
+      });
+    });
+  }
+  function apply(dark) {
+    localAlternateSentinel = dark ? "alternate" : "default";
+    toggleColorMode(dark);
+    show();
+    window.dispatchEvent(new Event("resize"));
+  }
+  function set(c) {
+    var dark = c === "dark" || (c === "system" && mq.matches);
+    try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
+    apply(dark);
+  }
+  toggles.forEach(function (t) {
+    var m = document.createElement("div");
+    m.className = "dropdown dm-scheme d-inline-block";
+    m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
+      '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
+      ["light", "dark", "system"].map(function (c) {
+        return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
+      }).join("") + "</ul>";
+    m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
+    t.insertAdjacentElement("afterend", m);
+    t.style.display = "none";
+  });
+  // Under System, Quarto's own listener switches the page when the system setting changes.
+  mq.addEventListener("change", show);
+  // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
+  window.addEventListener("storage", function (e) {
+    if (e.key !== K && e.key !== null) return;
+    var s = stored();
+    apply(s === "alternate" || (s === null && mq.matches));
+  });
+  show();
+})();
+</script>
+<script>
+
+// Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
+
+// dark copy <name>-dark.png, made by darkmode/figures.R; in light mode, the original. If a
+
+// dark copy fails to load, the original is shown. In dark mode, dark.scss hides a figure
+
+// until it is marked here (data-dm), which happens once its dark copy has loaded.
+
+(function () {
+
+  function swap() {
+
+    var dark = document.body.classList.contains("quarto-dark");
+
+    document.querySelectorAll('img[src*="_files/figure-html/"]').forEach(function (im) {
+
+      var l = im.dataset.light || im.getAttribute("src");
+
+      im.dataset.light = l;
+
+      var want = dark && !im.dataset.nodark && !im.closest(".light-content, .dark-content") ? l.replace(/\.png$/, "-dark.png") : l;
+
+      if (im.getAttribute("src") === want) { im.dataset.dm = "1"; return; }
+
+      im.onload = function () { im.dataset.dm = "1"; };
+
+      im.onerror = function () { im.onerror = null; im.dataset.nodark = "1"; im.dataset.dm = "1"; im.setAttribute("src", l); };
+
+      im.setAttribute("src", want);
+
+    });
+
+  }
+
+  swap();
+
+  new MutationObserver(swap).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+})();
+
+</script>
+
+<script>
+// Prefetching of the apps' files (apps-src/README.md, "Prefetching").
+(function () {
+  function go(u, pr) {
+    fetch(u).then(function (r) { return r.json(); }).then(function (f) {
+      var i = 0;
+      function next() {
+        if (i >= f.length) return;
+        fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
+          var d = r.body.getReader();
+          return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
+        }).catch(function () {}).then(next);
+      }
+      next(); next(); next();
+    }).catch(function () {});
+  }
+  try {
+    if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
+      if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
+      return;
+    }
+    var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
+      return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
+    });
+    if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
+    var u = new URL("../prefetch.json", a.href);
+    var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
+    if (document.readyState === "complete") t(); else addEventListener("load", t);
+  } catch (e) {}
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./dummy-variables.html" class="pagination-link" aria-label="Dummy Variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./interaction.html" class="pagination-link" aria-label="Interaction">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

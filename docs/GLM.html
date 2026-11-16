@@ -453,8 +453,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./interaction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -479,7 +485,7 @@ window.Quarto = {
   <li><a href="#summary-glm" id="toc-summary-glm" class="nav-link" data-scroll-target="#summary-glm"><span class="header-section-number">2.2</span> Summary</a></li>
   <li><a href="#quiz-glm" id="toc-quiz-glm" class="nav-link" data-scroll-target="#quiz-glm"><span class="header-section-number">2.3</span> Quiz</a>
   <ul class="collapse">
-  <li><a href="#interactive-apps" id="toc-interactive-apps" class="nav-link" data-scroll-target="#interactive-apps">Interactive apps</a></li>
+  <li><a href="#GLM-app" id="toc-GLM-app" class="nav-link" data-scroll-target="#GLM-app">Interactive apps</a></li>
   </ul></li>
   <li><a href="#apply-glm" id="toc-apply-glm" class="nav-link" data-scroll-target="#apply-glm"><span class="header-section-number">2.4</span> Apply your knowledge</a></li>
   </ul>
@@ -540,9 +546,9 @@ window.Quarto = {
 <section id="summary-glm" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="summary-glm"><span class="header-section-number">2.2</span> Summary</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false">Binomial</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true">Normal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false">Poisson</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-3" role="tab" aria-controls="tabset-14-3" aria-selected="false">Binomial</a></li></ul>
 <div class="tab-content">
-<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div id="tabset-14-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-14-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-lm" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -558,9 +564,9 @@ Figure&nbsp;2.1: Example of a simple linear model. <small>(Height and weight of 
 </div>
 </div>
 <p>Mathematical formula:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="normal-form">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">As ordinary LM</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">As GLM</a></li></ul>
-<div class="tab-content">
+<div class="tab-content" data-group="normal-form">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p><span class="math display">\[\begin{align}
   \label{lm}
@@ -576,8 +582,8 @@ Figure&nbsp;2.1: Example of a simple linear model. <small>(Height and weight of 
   \eta &amp;= \beta_0 + \beta_1 \cdot x
 \end{align}\]</span></p>
 <p>An ordinary linear model can also be written as a generalized linear model (GLM). This helps to see how ordinary linear models fit into the broader GLM framework.</p>
-<p>Compare this to Poisson or binomial regression: In each case, we are estimating the mean of a distribution (here: <span class="math inline">\(\mu\)</span>), and that mean changes depending on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
-<p>The middle equation is the link function—how the mean relates to the linear equation (<span class="math inline">\(\eta\)</span>). For a normal distribution, this is called the <em>identity</em>, which leaves the linear predictor unchanged, such that the linear equation <em>is</em> the mean of the resulting normal distribution.</p>
+<p>Compare this to Poisson or binomial regression: In each case, we are estimating the mean of a distribution (here: <span class="text-nowrap"><span class="math inline">\(\mu\)</span>),</span> and that mean changes depending on the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>).</span></p>
+<p>The middle equation is the link function—how the mean relates to the linear equation <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>).</span> For a normal distribution, this is called the <em>identity</em>, which leaves the linear predictor unchanged, such that the linear equation <em>is</em> the mean of the resulting normal distribution.</p>
 </div>
 </div>
 </div>
@@ -621,11 +627,11 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></span></p>
+<p>The outcome at a given value of <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span> <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="text-nowrap"><span class="math inline">\(x\)</span>.)</span></em></span></p>
 </dd>
 <dt><span class="math inline">\(\mathcal{N}\)</span> — normal distribution</dt>
 <dd>
-<p>See <a href="normal-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></span> Normal Distribution</a>. <span class="math inline">\(y|x \sim \mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span> means: The outcome follows a conditional normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. It is called conditional, because <span class="math inline">\(\mu\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
+<p>See <a href="normal-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-one" title="A six-sided die" aria-label="dice-one"></i></span> Normal Distribution</a>. <span class="math inline">\(y|x \sim \mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span> means: The outcome follows a conditional normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="text-nowrap"><span class="math inline">\(\sigma^2\)</span>.</span> It is called conditional, because <span class="math inline">\(\mu\)</span> is not a fixed number, but depends on <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\theta\)</span> — natural parameter</dt>
 <dd>
@@ -634,28 +640,28 @@ The parameter in which the formula of the distribution is written in a GLM. Only
 <summary>
 More
 </summary>
-A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
+A GLM involves three quantities: the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> the mean <span class="text-nowrap">(<span class="math inline">\(\mu\)</span>),</span> and the natural parameter <span class="text-nowrap">(<span class="math inline">\(\theta\)</span>).</span> The link function connects <span class="math inline">\(\eta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>,</span> and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="text-nowrap"><span class="math inline">\(\eta = \theta\)</span>.</span> With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
 </details>
 </dd>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values.</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="text-nowrap"><span class="math inline">\(+\infty\)</span>.</span> This ensures the model can only predict valid values.</p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the normal distribution, the natural parameter is the mean itself, so the canonical link is the [identity function] (https://en.wikipedia.org/wiki/Identity_function), which amounts to doing nothing. No transformation is needed anyway, because the mean of a normal distribution can already take on any value.</p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter <span class="text-nowrap">(<span class="math inline">\(\eta=\theta\)</span>).</span> For the normal distribution, the natural parameter is the mean itself, so the canonical link is the <a href="https://en.wikipedia.org/wiki/Identity_function">identity function</a>, which amounts to doing nothing. No transformation is needed anyway, because the mean of a normal distribution can already take on any value.</p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
-<p>The function that describes the relationship between the explanatory variable and the (transformed) mean of the outcome.</p>
+<p>The linear combination of the explanatory variables and their coefficients.</p>
 </dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Mean of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
+<p>Mean of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate.</p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the mean of the outcome (<span class="math inline">\(y\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
+<p>Change in the mean of the outcome <span class="text-nowrap">(<span class="math inline">\(y\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate.</p>
 </dd>
 </dl>
 </div>
@@ -674,9 +680,9 @@ Explanation
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Ordinary linear models are a special case of generalized linear models (GLMs). Whereas the former only support normally distributed errors, GLMs can handle any probability distribution in the <a href="https://en.wikipedia.org/wiki/Exponential_dispersion_model">exponential dispersion family</a>.</p>
-<p>To understand GLMs, try to let go of the idea that a linear model is <span class="math inline">\(\text{linear function} + \text{error}\)</span>, and instead take on a different perspective: <strong>A GLM is a probability distribution with a mean that depends on the explanatory variable (</strong><span class="math inline">\(x\)</span>). The technical term for this is <em>conditional</em> normality: If we know the value of the <span class="math inline">\(x\)</span>, then at that point, the outcome follows a normal distribution. Move to a different value of <span class="math inline">\(x\)</span> and the mean of the distribution changes. This concept is visualized in the <a href="https://youtu.be/6Nfv0Xr44y8?t=155" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> first video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
-<p>Once we take on the perspective of a conditional probability distribution for the outcome, we can easily swap that distribution with another one, like Poisson or binomial. The only missing piece to do this is called the <strong>link function</strong>. Its purpose is to ensure the linear function will always output valid values (e.g., counts cannot be negative). If the link function also happens to coincide with the mean of the chosen probability distribution, it is called the <strong>canonical</strong> link function.</p>
-<p>In the case of a normal distribution <span class="math inline">\(\mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span>, the mean <span class="math inline">\(\mu\)</span> can already take on any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>, so no such translation is needed and we use what is called the <strong>identity</strong> function (it simply outputs the same value as the input). Since the identity link function coincides with the mean of the normal distribution, it is canonical.</p>
+<p>To understand GLMs, try to let go of the idea that a linear model is <span class="text-nowrap"><span class="math inline">\(\text{linear function} + \text{error}\)</span>,</span> and instead take on a different perspective: <strong>A GLM is a probability distribution with a mean that depends on the explanatory variable (</strong><span class="text-nowrap"><span class="math inline">\(x\)</span>).</span> The technical term for this is <em>conditional</em> normality: If we know the value of the <span class="text-nowrap"><span class="math inline">\(x\)</span>,</span> then at that point, the outcome follows a normal distribution. Move to a different value of <span class="math inline">\(x\)</span> and the mean of the distribution changes. This concept is visualized in the <a href="https://youtu.be/6Nfv0Xr44y8?t=155" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> first video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
+<p>Once we take on the perspective of a conditional probability distribution for the outcome, we can easily swap that distribution with another one, like Poisson or binomial. The only missing piece to do this is called the <strong>link function</strong>. Its purpose is to ensure the linear function will always output valid values (e.g., counts cannot be negative). If the link function is the one for which the linear predictor equals the natural parameter of the chosen probability distribution, it is called the <strong>canonical</strong> link function.</p>
+<p>In the case of a normal distribution <span class="text-nowrap"><span class="math inline">\(\mathcal{N}\! \left(\mu, \, \sigma^2\right)\)</span>,</span> the mean <span class="math inline">\(\mu\)</span> can already take on any value from <span class="math inline">\(-\infty\)</span> to <span class="text-nowrap"><span class="math inline">\(+\infty\)</span>,</span> so no such translation is needed and we use what is called the <strong>identity</strong> function (it simply outputs the same value as the input). Since the natural parameter of the normal distribution is the mean itself, the identity link function is canonical.</p>
 <details>
 <summary>
 When would you use a normal GLM with non-canonical link?
@@ -715,100 +721,6 @@ When would you use a normal GLM with non-canonical link?
 </tbody>
 </table>
 </details>
-<details>
-<summary>
-Differences between the output of <code>lm</code> and <code>glm</code>
-</summary>
-<p>An ordinary linear model (LM) is a special case of a generalized linear model (GLM). Compare the output of <code>lm</code> with that of <code>glm</code>:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><code>lm</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><code>glm</code></a></li></ul>
-<div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordinary linear model</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Sepal.Length ~ Petal.Length, data = iris)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--1.24675 -0.29657 -0.01515  0.27676  1.00269 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   4.30660    0.07839   54.94   &lt;2e-16 ***
-Petal.Length  0.40892    0.01889   21.65   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.4071 on 148 degrees of freedom
-Multiple R-squared:   0.76, Adjusted R-squared:  0.7583 
-F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-</div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generalized linear model</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>GLM <span class="ot">&lt;-</span> <span class="fu">glm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> iris, <span class="at">family =</span> <span class="st">"gaussian"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GLM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-glm(formula = Sepal.Length ~ Petal.Length, family = "gaussian", 
-    data = iris)
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   4.30660    0.07839   54.94   &lt;2e-16 ***
-Petal.Length  0.40892    0.01889   21.65   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for gaussian family taken to be 0.1657097)
-
-    Null deviance: 102.168  on 149  degrees of freedom
-Residual deviance:  24.525  on 148  degrees of freedom
-AIC: 160.04
-
-Number of Fisher Scoring iterations: 2</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>Both methods produce identical estimates and standard errors, demonstrating that a normal GLM is not fundamentally different than an ordinary linear model.</p>
-<p>Differences between <code>lm</code> and <code>glm</code> include:</p>
-<ul>
-<li><code>lm</code> shows a simple summary of the residuals, <code>glm</code> does not. This is because GLMs are not limited to normally distributed errors, so it does not necessarily help to inspect the residuals. <small>(For distributions other than normal, there is no possible decomposition into <span class="math inline">\(\text{linear function} + \text{error}\)</span>.)</small></li>
-<li><code>lm</code> always shows a <span class="math inline">\(t\)</span>-value. <code>glm</code> shows a <span class="math inline">\(t\)</span>-value for some distributions and a <span class="math inline">\(z\)</span>-value for others (particularly Poisson and binomial). The reason for this is a bit technical, but it boils down to whether the spread of the outcome had to be estimated from the data. For the normal distribution it does (<span class="math inline">\(\sigma^2\)</span>), so <code>glm</code> shows <span class="math inline">\(t\)</span>-values here too. For Poisson and binomial GLMs, the spread follows from the mean, nothing extra is estimated, and <code>glm</code> shows <span class="math inline">\(z\)</span>-values. A longer explanation is included at the end.</li>
-<li><code>lm</code> shows <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{\mathrm{adjusted}}\)</span>, a GLM does not. This is because GLMs do not explain variance (<span class="math inline">\(\sigma^2\)</span>), but a more broad definition of spread, called <em>deviance</em>.</li>
-<li><code>glm</code> does not show the residual standard deviation for the same reason.</li>
-<li><code>lm</code> includes an omnibus <span class="math inline">\(F\)</span>-test. This test is not suitable for GLMs, so it is not included in the output of <code>glm</code>.</li>
-<li><code>glm</code> shows the null and residual deviance. Deviance is a measure of spread that applies more generally than the variance (<span class="math inline">\(\sigma^2\)</span>).
-<ul>
-<li>This gives you a similar piece of information as <span class="math inline">\(R^2\)</span> does in <code>lm</code>: There was originally a deviance of <code>102.168</code>, and only <code>24.525</code> left.</li>
-<li>In the special case of a normal GLM, the deviance explained coincides with the variance explained: <span class="math inline">\(1 - \frac{\texttt{24.525}}{102.168} = 76\%\)</span>, again showing that an ordinary linear model is the same as a normal GLM with identity link.</li>
-</ul></li>
-<li><code>glm</code> shows the <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterion (AIC)</a> value by default, <code>lm</code> does not. This difference is superficial, as AIC is well-defined for both models (try <code>AIC(LM)</code>). Note that this number is useless in isolation—it is only useful when comparing models.</li>
-<li>At the bottom, <code>glm</code> shows the number of iterations it took for the fitting procedure to converge, by means of Fisher scoring. This is a fast method for obtaining the estimates of a GLM, which is not used in <code>lm</code>.</li>
-</ul>
-<details>
-<summary>
-Technical explanation: <span class="math inline">\(t\)</span>-values vs <span class="math inline">\(z\)</span>-values
-</summary>
-<p>The test statistic (<span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span>) of a regression table is an estimate divided by its standard error. This standard error depends on the spread of the outcome:</p>
-<ul>
-<li>If the spread is presumed <strong>known</strong>, the statistic is compared to a normal distribution (a <span class="math inline">\(z\)</span>-value). This is the case for Poisson (<span class="math inline">\(\text{mean}=\text{variance}=\lambda\)</span>) and binomial (<span class="math inline">\(\text{variance}= np(1-p)\)</span>).</li>
-<li>If the spread is <strong>estimated</strong>, this adds uncertainty. The statistic is then compared to a <span class="math inline">\(t\)</span>-distribution with the residual degrees of freedom, whose heavier tails account for that extra uncertainty. This is the case for normal, but also gamma, quasi-Poisson and quasi-binomial GLMs.</li>
-</ul>
-<p>Try for example, fitting one of the Poisson GLM examples with <code>family = "quasipoisson"</code>. The <span class="math inline">\(z\)</span>-values become <span class="math inline">\(t\)</span>-values, because the dispersion is now estimated separately.</p>
-<p>The <span class="math inline">\(t\)</span>-distribution is exact only for the normal distribution. For all other GLMs, both <span class="math inline">\(t\)</span> and <span class="math inline">\(z\)</span> are large-sample approximations. In practice, model assumptions rarely hold exactly. Hence, this technical difference is not so important, and there also exist better, more general methods of obtaining <span class="math inline">\(p\)</span>-values and confidence intervals, like <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>.</p>
-</details>
-</details>
 </div>
 </div>
 </div>
@@ -824,12 +736,192 @@ Example
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Refer to the <a href="LM.html">previous chapter</a>.</p>
+<p>An ordinary linear model (LM) is a special case of a generalized linear model (GLM). Compare the output of both forms, fitted to the data of <a href="#fig-lm" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="normal-form">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">As ordinary LM</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">As GLM</a></li></ul>
+<div class="tab-content" data-group="normal-form">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>LM <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, data)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(LM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.6528  -6.0195  -0.8388   5.4498  18.0977 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 153.5513     7.8959   19.45   &lt;2e-16 ***
+x             0.1417     0.1019    1.39    0.171    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 8.155 on 48 degrees of freedom
+Multiple R-squared:  0.03871,   Adjusted R-squared:  0.01868 
+F-statistic: 1.933 on 1 and 48 DF,  p-value: 0.1709</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>LM <span class="op">=</span> smf.ols(<span class="st">"y ~ x"</span>, data).fit()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LM.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.039
+Model:                            OLS   Adj. R-squared:                  0.019
+Method:                 Least Squares   F-statistic:                     1.933
+Date:                Mon, 16 Nov 2026   Prob (F-statistic):              0.171
+Time:                        06:57:40   Log-Likelihood:                -174.86
+No. Observations:                  50   AIC:                             353.7
+Df Residuals:                      48   BIC:                             357.5
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    153.5513      7.896     19.447      0.000     137.675     169.427
+x              0.1417      0.102      1.390      0.171      -0.063       0.347
+==============================================================================
+Omnibus:                        0.633   Durbin-Watson:                   1.952
+Prob(Omnibus):                  0.729   Jarque-Bera (JB):                0.754
+Skew:                           0.183   Prob(JB):                        0.686
+Kurtosis:                       2.522   Cond. No.                         531.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>GLM <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"gaussian"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(GLM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = y ~ x, family = "gaussian", data = data)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 153.5513     7.8959   19.45   &lt;2e-16 ***
+x             0.1417     0.1019    1.39    0.171    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 66.49756)
+
+    Null deviance: 3320.4  on 49  degrees of freedom
+Residual deviance: 3191.9  on 48  degrees of freedom
+AIC: 355.71
+
+Number of Fisher Scoring iterations: 2</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>GLM <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Gaussian()).fit(use_t <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(GLM.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Generalized Linear Model Regression Results                  
+==============================================================================
+Dep. Variable:                      y   No. Observations:                   50
+Model:                            GLM   Df Residuals:                       48
+Model Family:                Gaussian   Df Model:                            1
+Link Function:               Identity   Scale:                          66.498
+Method:                          IRLS   Log-Likelihood:                -174.86
+Date:                Mon, 16 Nov 2026   Deviance:                       3191.9
+Time:                        06:57:40   Pearson chi2:                 3.19e+03
+No. Iterations:                     3   Pseudo R-squ. (CS):            0.03871
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    153.5513      7.896     19.447      0.000     137.675     169.427
+x              0.1417      0.102      1.390      0.171      -0.063       0.347
+==============================================================================</code></pre>
+</div>
+</div>
+<p><small><span class="text-grey">Note <code>use_t = True</code>: Without it, statsmodels compares the test statistic of every GLM to a normal distribution <span class="text-nowrap">(<span class="math inline">\(z\)</span>-values),</span> even when the spread was estimated from the data, as it is here. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and confidence intervals would then differ slightly from those of <code>ols</code>, and from those of R.</span></small></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Both methods produce identical estimates and standard errors, demonstrating that a normal GLM is not fundamentally different from an ordinary linear model.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>Differences between <code>lm</code> and <code>glm</code> include:</p>
+<ul>
+<li><code>lm</code> shows a simple summary of the residuals, <code>glm</code> does not. This is because GLMs are not limited to normally distributed errors, so it does not necessarily help to inspect the residuals. <small>(For distributions other than normal, there is no possible decomposition into <span class="text-nowrap"><span class="math inline">\(\text{linear function} + \text{error}\)</span>.)</span></small></li>
+<li><code>lm</code> always shows a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value.</span> <code>glm</code> shows a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> for some distributions and a <span class="text-nowrap"><span class="math inline">\(z\)</span>-value</span> for others (particularly Poisson and binomial). The reason for this is a bit technical, but it boils down to whether the spread of the outcome had to be estimated from the data. For the normal distribution it does <span class="text-nowrap">(<span class="math inline">\(\sigma^2\)</span>),</span> so <code>glm</code> shows <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> here too. For Poisson and binomial GLMs, the spread follows from the mean, nothing extra is estimated, and <code>glm</code> shows <span class="text-nowrap"><span class="math inline">\(z\)</span>-values.</span> A longer explanation is included at the end.</li>
+<li><code>lm</code> shows <span class="math inline">\(R^2\)</span> and <span class="text-nowrap"><span class="math inline">\(R^2_{\mathrm{adjusted}}\)</span>,</span> a GLM does not. This is because GLMs do not explain variance <span class="text-nowrap">(<span class="math inline">\(\sigma^2\)</span>),</span> but a more broad definition of spread, called <em>deviance</em>.</li>
+<li><code>glm</code> does not show the residual standard deviation for the same reason.</li>
+<li><code>lm</code> includes an omnibus <span class="text-nowrap"><span class="math inline">\(F\)</span>-test.</span> This test is not suitable for GLMs, so it is not included in the output of <code>glm</code>.</li>
+<li><code>glm</code> shows the null and residual deviance. Deviance is a measure of spread that applies more generally than the variance <span class="text-nowrap">(<span class="math inline">\(\sigma^2\)</span>).</span>
+<ul>
+<li>This gives you a similar piece of information as <span class="math inline">\(R^2\)</span> does in <code>lm</code>: There was originally a deviance of 3320.4, of which 3191.9 is left.</li>
+<li>In the special case of a normal GLM, the deviance explained coincides with the variance explained: <span class="text-nowrap"><span class="math inline">\(1 - \frac{3191.9}{3320.4} = 3.9\%\)</span>,</span> again showing that an ordinary linear model is the same as a normal GLM with identity link.</li>
+</ul></li>
+<li><code>glm</code> shows the <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterion (AIC)</a> value by default, <code>lm</code> does not. This difference is superficial, as AIC is well-defined for both models (try <code>AIC(LM)</code>). Note that this number is useless in isolation—it is only useful when comparing models.</li>
+<li>At the bottom, <code>glm</code> shows the number of iterations it took for the fitting procedure to converge, by means of Fisher scoring. This is a fast method for obtaining the estimates of a GLM, which is not used in <code>lm</code>.</li>
+</ul>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>Differences between <code>ols</code> and <code>glm</code> include:</p>
+<ul>
+<li><code>ols</code> shows tests and statistics of the residuals (<code>Omnibus</code>, <code>Jarque-Bera</code>, <code>Durbin-Watson</code>, <code>Skew</code>, <code>Kurtosis</code>), <code>glm</code> does not. This is because GLMs are not limited to normally distributed errors, so it does not necessarily help to inspect the residuals. Either way, the assumptions are better checked visually, as shown in the <a href="LM.html#summary-lm">previous chapter</a>.</li>
+<li><code>ols</code> shows <span class="math inline">\(R^2\)</span> and <span class="text-nowrap"><span class="math inline">\(R^2_{\mathrm{adjusted}}\)</span>,</span> <code>glm</code> does not. Instead, <code>glm</code> shows a <em>pseudo</em> <span class="math inline">\(R^2\)</span> (<code>Pseudo R-squ. (CS)</code>), a measure based on the likelihood that mimics <span class="text-nowrap"><span class="math inline">\(R^2\)</span>.</span> For a normal GLM, it is practically the same as <span class="text-nowrap"><span class="math inline">\(R^2\)</span>.</span></li>
+<li><code>ols</code> includes an omnibus <span class="text-nowrap"><span class="math inline">\(F\)</span>-test.</span> This test is not suitable for GLMs, so it is not included in the output of <code>glm</code>.</li>
+<li><code>glm</code> shows <code>Scale</code>, which for a normal GLM is the estimated variance <span class="text-nowrap">(<span class="math inline">\(\hat{\sigma}^2 = 66.5\)</span>).</span> Its square root is the residual standard deviation <span class="text-nowrap">(<span class="math inline">\(\hat{\sigma} = 8.15\)</span>),</span> which neither output shows.</li>
+<li><code>glm</code> shows the residual deviance (<code>Deviance</code>), but not the null deviance. The latter is stored in <code>GLM.null_deviance</code>. As in R, <span class="math inline">\(1 - \frac{3191.9}{3320.4} = 3.9\%\)</span> of the deviance is explained, the same as <span class="text-nowrap"><span class="math inline">\(R^2\)</span>.</span></li>
+<li><code>ols</code> shows the <a href="https://en.wikipedia.org/wiki/Akaike_information_criterion">Akaike information criterion (AIC)</a> and the Bayesian information criterion (BIC), <code>glm</code> does not. Its AIC is stored in <code>GLM.aic</code>. Note that R counts <span class="math inline">\(\sigma^2\)</span> as one more parameter, so the AIC of R is always <span class="math inline">\(2\)</span> higher than that of statsmodels. Only compare AIC values computed in the same way.</li>
+<li><code>glm</code> shows the number of iterations it took for the fitting procedure to converge (<code>No. Iterations</code>), by means of iteratively reweighted least squares (<code>IRLS</code>), the same procedure that R calls Fisher scoring. This is a fast method for obtaining the estimates of a GLM, which is not used in <code>ols</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Technical explanation: <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> vs <span class="text-nowrap"><span class="math inline">\(z\)</span>-values</span>
+</summary>
+<p>The <a href="./hypothesis-testing.html#test-statistic">test statistic</a> <span class="text-nowrap">(<span class="math inline">\(t\)</span></span> or <span class="text-nowrap"><span class="math inline">\(z\)</span>)</span> of a regression table is an estimate divided by its standard error. This standard error depends on the spread of the outcome:</p>
+<ul>
+<li>If the spread is presumed <strong>known</strong>, the statistic is compared to a normal distribution (a <span class="text-nowrap"><span class="math inline">\(z\)</span>-value).</span> This is the case for Poisson <span class="text-nowrap">(<span class="math inline">\(\text{mean}=\text{variance}=\lambda\)</span>)</span> and binomial <span class="text-nowrap">(<span class="math inline">\(\text{variance}= np(1-p)\)</span>).</span></li>
+<li>If the spread is <strong>estimated</strong>, this adds uncertainty. The statistic is then compared to a <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> with the residual degrees of freedom, whose heavier tails account for that extra uncertainty. This is the case for normal, but also gamma, quasi-Poisson and quasi-binomial GLMs.</li>
+</ul>
+<p>Try for example, fitting one of the Poisson GLM examples with <code>family = "quasipoisson"</code>. The <span class="text-nowrap"><span class="math inline">\(z\)</span>-values</span> become <span class="text-nowrap"><span class="math inline">\(t\)</span>-values,</span> because the dispersion is now estimated separately.</p>
+<p>The <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> is exact only for the normal distribution. For all other GLMs, both <span class="math inline">\(t\)</span> and <span class="math inline">\(z\)</span> are large-sample approximations. In practice, model assumptions rarely hold exactly. Hence, this technical difference is not so important, and there also exist better, more general methods of obtaining <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and confidence intervals, like <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrapping</a>.</p>
+</details>
+<p>How to interpret the estimates themselves is shown in the Example of the <a href="LM.html#summary-lm">previous chapter</a>. For a complete analysis, refer to the <a href="LM.html#apply-lm">tutorial</a> of the previous chapter.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-14-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-2-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmpois" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -853,18 +945,18 @@ Figure&nbsp;2.2: Example of Poisson regression. <small>(Apples per year as a fun
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"poisson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"poisson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Poisson()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Poisson()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -892,11 +984,11 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></span></p>
+<p>The outcome at a given value of <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span> <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="text-nowrap"><span class="math inline">\(x\)</span>.)</span></em></span></p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Pois}\)</span> — Poisson distribution</dt>
 <dd>
-<p>See <a href="poisson-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-two" title="A six-sided die" aria-label="dice-two"></i></span> Poisson Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Pois}(\lambda)\)</span> means: The outcome follows a conditional Poisson distribution with rate <span class="math inline">\(\lambda\)</span>. It is called conditional, because <span class="math inline">\(\lambda\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
+<p>See <a href="poisson-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-two" title="A six-sided die" aria-label="dice-two"></i></span> Poisson Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Pois}(\lambda)\)</span> means: The outcome follows a conditional Poisson distribution with rate <span class="text-nowrap"><span class="math inline">\(\lambda\)</span>.</span> It is called conditional, because <span class="math inline">\(\lambda\)</span> is not a fixed number, but depends on <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\theta\)</span> — natural parameter</dt>
 <dd>
@@ -905,28 +997,28 @@ The parameter in which the formula of the distribution is written in a GLM. Only
 <summary>
 More
 </summary>
-A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
+A GLM involves three quantities: the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> the mean <span class="text-nowrap">(<span class="math inline">\(\mu\)</span>),</span> and the natural parameter <span class="text-nowrap">(<span class="math inline">\(\theta\)</span>).</span> The link function connects <span class="math inline">\(\eta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>,</span> and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="text-nowrap"><span class="math inline">\(\eta = \theta\)</span>.</span> With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
 </details>
 </dd>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values. For a Poisson GLM, that means non-negative counts.</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="text-nowrap"><span class="math inline">\(+\infty\)</span>.</span> This ensures the model can only predict valid values. For a Poisson GLM, that means non-negative counts.</p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the Poisson distribution, this is the natural logarithm: <span class="math inline">\(\log(\lambda)\)</span>.</p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter <span class="text-nowrap">(<span class="math inline">\(\eta=\theta\)</span>).</span> For the Poisson distribution, this is the natural logarithm: <span class="text-nowrap"><span class="math inline">\(\log(\lambda)\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
-<p>The function that describes the relationship between the explanatory variable and the (transformed) mean of the outcome.</p>
+<p>The linear combination of the explanatory variables and their coefficients.</p>
 </dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the mean count at <span class="math inline">\(x=0\)</span>.</p>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the mean count at <span class="text-nowrap"><span class="math inline">\(x=0\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in mean count when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM&amp;t=43" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>).</p>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a Poisson GLM with log-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in mean count when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM&amp;t=43" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>).</p>
 </dd>
 </dl>
 </div>
@@ -944,8 +1036,8 @@ Explanation
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A Poisson GLM is used to model <strong>count data</strong>. It is the model of choice when counts are truly independent and occur at a fixed rate—that is, when the rate depends <em>only</em> on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
-<p>In a Poisson GLM, we estimate the rate of occurrence (<span class="math inline">\(\lambda\)</span>). Since events cannot occur at a negative rate, a suitable link function must ensure <span class="math inline">\(\lambda \geq 0\)</span>. A common choice is the natural logarithm <span class="math inline">\(\log(\lambda) = \eta\)</span>, because it implies <span class="math inline">\(\lambda = e^{\eta}\)</span> (always positive). This is also the canonical link function of a Poisson GLM. An example of a non-canonical link function is the square root <span class="math inline">\(\sqrt{\lambda} = \eta\)</span>.</p>
+<p>A Poisson GLM is used to model <strong>count data</strong>. It is the model of choice when counts are truly independent and occur at a fixed rate—that is, when the rate depends <em>only</em> on the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>).</span></p>
+<p>In a Poisson GLM, we estimate the rate of occurrence <span class="text-nowrap">(<span class="math inline">\(\lambda\)</span>).</span> Since events cannot occur at a negative rate, a suitable link function must ensure <span class="text-nowrap"><span class="math inline">\(\lambda \geq 0\)</span>.</span> A common choice is the natural logarithm <span class="text-nowrap"><span class="math inline">\(\log(\lambda) = \eta\)</span>,</span> because it implies <span class="math inline">\(\lambda = e^{\eta}\)</span> (always positive). This is also the canonical link function of a Poisson GLM. An example of a non-canonical link function is the square root <span class="text-nowrap"><span class="math inline">\(\sqrt{\lambda} = \eta\)</span>.</span></p>
 <p>In practice, counts are often correlated, zero-inflated, or otherwise not truly independent and occurring at a fixed rate. For an explanation of this topic, as well as alternatives to Poisson regression, refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
 </div>
 </div>
@@ -962,16 +1054,51 @@ Example
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Refer to the <a href="#apply-glm">tutorials</a> below.</p>
+<p>Fitted to the data of <a href="#fig-glmpois" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"poisson"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   z value     Pr(&gt;|z|)
+(Intercept) -0.8866302  0.2560763 -3.462368 5.354448e-04
+x            1.2475808  0.1088400 11.462526 2.034914e-30</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Poisson()).fit()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.8866      0.256     -3.462      0.001      -1.389      -0.385
+x              1.2476      0.109     11.463      0.000       1.034       1.461
+==============================================================================</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+</div>
+<p>The estimates are on the scale of the link function (the logarithm), so to interpret them, we transform them back with <span class="text-nowrap"><span class="math inline">\(\exp\)</span>.</span> The estimated intercept is given by <code>(Intercept)</code> <span class="text-nowrap">(<span class="math inline">\(\hat{\beta}_0 = -0.89\)</span>):</span> A tree of age <span class="math inline">\(0\)</span> would carry on average <span class="math inline">\(\exp(\hat{\beta}_0) = 0.41\)</span> apples, but this lies outside the range of the data. The estimated slope is given by <code>x</code> <span class="text-nowrap">(<span class="math inline">\(\hat{\beta}_1 = 1.25\)</span>):</span> Every additional year of age multiplies the mean number of apples by <span class="text-nowrap"><span class="math inline">\(\exp(\hat{\beta}_1) = 3.48\)</span>.</span> Apparently, this slope differs significantly from zero <span class="text-nowrap">(<span class="math inline">\(p &lt; 2.22 \times 10^{-16}\)</span>).</span></p>
+<p>How to read the regression table of a GLM is explained in the <a href="https://youtu.be/_oDiAMQj1hM" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> sixth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
+<p>For a complete analysis, refer to the <a href="#apply-glm">tutorials</a> at the bottom of the page.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-14-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-14-3-tab">
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="binary">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Example: Ratio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Example: Binary</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Example: Ratio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Example: Binary</a></li></ul>
 <div class="tab-content" data-group="binary">
-<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -995,25 +1122,26 @@ Figure&nbsp;2.3: Example of logistic regression. <small>(Correct questions as a 
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(success, failure) <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(success, failure) <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><small><span class="text-grey">Here, <code>cbind</code> provides two columns (successes, failures) to <code>glm</code>.</span></small></p>
 </div>
-<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"success + failure ~ x"</span>, data,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"success + failure ~ x"</span>, data,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-glmbinom2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1037,18 +1165,18 @@ Figure&nbsp;2.4: Example of logistic regression. <small>(Probability of passing 
 \end{align}\]</span></p>
 <p>Code:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content" data-group="language">
-<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"y ~ x"</span>, data, family <span class="op">=</span> sm.families.Binomial()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1079,11 +1207,11 @@ Symbols &amp; definitions
 </dd>
 <dt><span class="math inline">\(y|x\)</span> — conditional response variable</dt>
 <dd>
-<p>The outcome at a given value of <span class="math inline">\(x\)</span>. <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>.)</em></span></p>
+<p>The outcome at a given value of <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span> <span class="text-grey"><em>(Read: <span class="math inline">\(y\)</span> given <span class="text-nowrap"><span class="math inline">\(x\)</span>.)</span></em></span></p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Binom}\)</span> — binomial distribution</dt>
 <dd>
-<p>See <a href="binomial-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-three" title="A six-sided die" aria-label="dice-three"></i></span> Binomial Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Binom}(n, \, p)\)</span> means: The outcome follows a conditional binomial distribution with <span class="math inline">\(n\)</span> trials and probability of success <span class="math inline">\(p\)</span>. It is called conditional, because <span class="math inline">\(p\)</span> is not a fixed number, but depends on <span class="math inline">\(x\)</span>.</p>
+<p>See <a href="binomial-distribution.html"><span class="text-steelblue"><i class="fa-solid fa-dice-three" title="A six-sided die" aria-label="dice-three"></i></span> Binomial Distribution</a>. <span class="math inline">\(y|x \sim \mathsf{Binom}(n, \, p)\)</span> means: The outcome follows a conditional binomial distribution with <span class="math inline">\(n\)</span> trials and probability of success <span class="text-nowrap"><span class="math inline">\(p\)</span>.</span> It is called conditional, because <span class="math inline">\(p\)</span> is not a fixed number, but depends on <span class="text-nowrap"><span class="math inline">\(x\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\mathsf{Bernoulli}\)</span> — Bernoulli distribution</dt>
 <dd>
@@ -1096,28 +1224,28 @@ The parameter in which the formula of the distribution is written in a GLM. Only
 <summary>
 More
 </summary>
-A GLM involves three quantities: the linear predictor (<span class="math inline">\(\eta\)</span>), the mean (<span class="math inline">\(\mu\)</span>), and the natural parameter (<span class="math inline">\(\theta\)</span>). The link function connects <span class="math inline">\(\eta\)</span> to <span class="math inline">\(\mu\)</span>, and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="math inline">\(\mu\)</span>. With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="math inline">\(\eta = \theta\)</span>. With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
+A GLM involves three quantities: the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> the mean <span class="text-nowrap">(<span class="math inline">\(\mu\)</span>),</span> and the natural parameter <span class="text-nowrap">(<span class="math inline">\(\theta\)</span>).</span> The link function connects <span class="math inline">\(\eta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>,</span> and the distribution itself connects <span class="math inline">\(\theta\)</span> to <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With the canonical link, these two connections cancel out, so the linear predictor <em>is</em> that parameter: <span class="text-nowrap"><span class="math inline">\(\eta = \theta\)</span>.</span> With any other link, there is an extra conversion step in between. See also <a href="https://stats.stackexchange.com/a/349177/176202">here</a>.
 </details>
 </dd>
 <dt>link function</dt>
 <dd>
-<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. This ensures the model can only predict valid values. For a binomial GLM, that means probabilities between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.</p>
+<p>A function that stretches the possible range of the mean of the distribution from <span class="math inline">\(-\infty\)</span> to <span class="text-nowrap"><span class="math inline">\(+\infty\)</span>.</span> This ensures the model can only predict valid values. For a binomial GLM, that means probabilities between <span class="math inline">\(0\)</span> and <span class="text-nowrap"><span class="math inline">\(1\)</span>.</span></p>
 </dd>
 <dt>canonical link function</dt>
 <dd>
-<p>The one link function for which the linear predictor <em>is</em> the natural parameter (<span class="math inline">\(\eta=\theta\)</span>). For the binomial distribution, this is the logarithm of the odds, or logit: <span class="math inline">\(\log \left( \frac{p}{1-p} \right)\)</span>.</p>
+<p>The one link function for which the linear predictor <em>is</em> the natural parameter <span class="text-nowrap">(<span class="math inline">\(\eta=\theta\)</span>).</span> For the binomial distribution, this is the logarithm of the odds, or logit: <span class="text-nowrap"><span class="math inline">\(\log \left( \frac{p}{1-p} \right)\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\eta\)</span> — linear predictor</dt>
 <dd>
-<p>The function that describes the relationship between the explanatory variable and the (transformed) mean of the outcome.</p>
+<p>The linear combination of the explanatory variables and their coefficients.</p>
 </dd>
 <dt><span class="math inline">\(\beta_0\)</span> — intercept</dt>
 <dd>
-<p>Mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a binmial GLM with logit-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the mean odds at <span class="math inline">\(x=0\)</span>. No direct interpretation in terms of probability is possible.</p>
+<p>Value of the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> is zero. <span class="math inline">\(\hat{\beta}_0\)</span> (beta-hat) is its estimate. For a binomial GLM with logit-link, <span class="math inline">\(\exp(\beta_0)\)</span> is the odds at <span class="text-nowrap"><span class="math inline">\(x=0\)</span>.</span></p>
 </dd>
 <dt><span class="math inline">\(\beta_1\)</span> — slope</dt>
 <dd>
-<p>Change in the mean of the linear predictor (<span class="math inline">\(\eta\)</span>), when the explanatory variable (<span class="math inline">\(x\)</span>) increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a binomial GLM with logit-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in mean odds when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM&amp;t=101" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>). No direct interpretation in terms of probability is possible.</p>
+<p>Change in the linear predictor <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> when the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>)</span> increases by one. <span class="math inline">\(\hat{\beta}_1\)</span> (beta-hat) is its estimate. For a binomial GLM with logit-link, <span class="math inline">\(\exp(\beta_1)\)</span> is the multiplicative change in odds when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (see: <span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> <a href="https://www.youtube.com/watch?v=_oDiAMQj1hM&amp;t=101" target="_blank" rel="noreferrer noopener">GLM Regression Table <i class="fa-solid fa-external-link" aria-label="external-link"></i></a>). No direct interpretation in terms of probability is possible.</p>
 </dd>
 </dl>
 </div>
@@ -1135,8 +1263,8 @@ Explanation
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>A binomial GLM is used to model <strong>ratios</strong> and <strong>binary outcomes</strong>. It is the model of choice when the trials are truly independent and the probability of success fixed—that is, when the probability of success depends <em>only</em> on the explanatory variable (<span class="math inline">\(x\)</span>).</p>
-<p>In a binomial GLM, we estimate the probability of success (<span class="math inline">\(p\)</span>). Since probabilities must be within <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, a suitable link function must ensure <span class="math inline">\(0 \leq p \leq 1\)</span>. A common choice is the logit <span class="math display">\[\log\left(\frac{p}{1 - p}\right) = \eta \quad \implies \quad p = \frac{1}{1 + e^{-\eta}}\]</span> which is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> for any value of <span class="math inline">\(\eta\)</span>. This is also the canonical link function of a binomial GLM. Examples of non-canonical link functions include the <a href="https://en.wikipedia.org/wiki/Probit">probit</a> <span class="math inline">\(\Phi^{-1}(p) = \eta\)</span> and the complementary log-log <span class="math inline">\(\log(-\log(1 - p)) = \eta\)</span>.</p>
+<p>A binomial GLM is used to model <strong>ratios</strong> and <strong>binary outcomes</strong>. It is the model of choice when the trials are truly independent and the probability of success fixed—that is, when the probability of success depends <em>only</em> on the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>).</span></p>
+<p>In a binomial GLM, we estimate the probability of success <span class="text-nowrap">(<span class="math inline">\(p\)</span>).</span> Since probabilities must be within <span class="math inline">\(0\)</span> and <span class="text-nowrap"><span class="math inline">\(1\)</span>,</span> a suitable link function must ensure <span class="text-nowrap"><span class="math inline">\(0 \leq p \leq 1\)</span>.</span> A common choice is the logit <span class="math display">\[\log\left(\frac{p}{1 - p}\right) = \eta \quad \implies \quad p = \frac{1}{1 + e^{-\eta}}\]</span> which is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> for any value of <span class="text-nowrap"><span class="math inline">\(\eta\)</span>.</span> This is also the canonical link function of a binomial GLM. Examples of non-canonical link functions include the <a href="https://en.wikipedia.org/wiki/Probit">probit</a> <span class="math inline">\(\Phi^{-1}(p) = \eta\)</span> and the complementary log-log <span class="text-nowrap"><span class="math inline">\(\log(-\log(1 - p)) = \eta\)</span>.</span></p>
 <p>Often, trials are correlated or otherwise not truly independent and occurring with a fixed probability of success. For an explanation of this topic, as well as alternatives to binomial regression, refer to the <a href="https://youtu.be/xJm6eN5ZDzk" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> fourth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
 <p>Finally, if you have the choice—such as during the study design phase—always use the original number of successes and failures, not a percentage or proportion. Computing a percentage discards valuable information (i.e., the number of trials).</p>
 </div>
@@ -1154,7 +1282,43 @@ Example
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Refer to the <a href="#apply-glm">tutorials</a>.</p>
+<p>Fitted to the data of <a href="#fig-glmbinom" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>, the model gives the following estimates:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-13-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-13-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(success, failure) <span class="sc">~</span> x, data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   z value     Pr(&gt;|z|)
+(Intercept) -3.9617625 0.35489660 -11.16315 6.176645e-29
+x            0.3697794 0.03145516  11.75576 6.596137e-32</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-13-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-13-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.glm(<span class="st">"success + failure ~ x"</span>, data,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                family <span class="op">=</span> sm.families.Binomial()).fit()</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -3.9618      0.355    -11.163      0.000      -4.657      -3.266
+x              0.3698      0.031     11.756      0.000       0.308       0.431
+==============================================================================</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The estimates are on the scale of the link function (the logit), so to interpret them, we transform them back with <span class="text-nowrap"><span class="math inline">\(\exp\)</span>,</span> which gives odds. The estimated intercept is given by <code>(Intercept)</code> <span class="text-nowrap">(<span class="math inline">\(\hat{\beta}_0 = -3.96\)</span>):</span> Without studying, the odds of a correct answer are <span class="text-nowrap"><span class="math inline">\(\exp(\hat{\beta}_0) = 0.02\)</span>.</span> The estimated slope is given by <code>x</code> <span class="text-nowrap">(<span class="math inline">\(\hat{\beta}_1 = 0.37\)</span>):</span> Every additional hour of studying multiplies the odds of a correct answer by <span class="text-nowrap"><span class="math inline">\(\exp(\hat{\beta}_1) = 1.45\)</span>.</span> Apparently, this slope differs significantly from zero <span class="text-nowrap">(<span class="math inline">\(p &lt; 2.22 \times 10^{-16}\)</span>).</span></p>
+<p>How to read the regression table of a GLM is explained in the <a href="https://youtu.be/_oDiAMQj1hM" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> sixth video <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> on GLM.</p>
+<p>For a complete analysis, refer to the <a href="#apply-glm">tutorials</a> at the bottom of the page.</p>
 </div>
 </div>
 </div>
@@ -1165,9 +1329,9 @@ Example
 <section id="quiz-glm" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="quiz-glm"><span class="header-section-number">2.3</span> Quiz</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<div id="tabset-15-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-15-1-tab">
 <p>Which of the following is implicitly assumed in a generalized linear model? <em>(choose one)</em></p>
 <p><strong>A.</strong> The data follow a distribution in the exponential dispersion family<br>
 <strong>B.</strong> The outcome follows a distribution in the exponential dispersion family<br>
@@ -1190,7 +1354,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<div id="tabset-15-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-15-2-tab">
 <p>Which of the following is implicitly assumed in a generalized linear model? <em>(choose one)</em></p>
 <p><strong>A.</strong> The data follow a distribution in the exponential dispersion family<br>
 <strong>B.</strong> The outcome follows a distribution in the exponential dispersion family<br>
@@ -1208,7 +1372,7 @@ Learn why
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The distributional assumption is about the <em>conditional</em> outcome, which means: At any given value of the explanatory variable (<span class="math inline">\(x\)</span>), the outcome is assumed to follow the specified distribution. But the <em>unconditional</em> outcome (disregarding the value of <span class="math inline">\(x\)</span>) is not assumed to follow anything.</p>
+<p>The distributional assumption is about the <em>conditional</em> outcome, which means: At any given value of the explanatory variable <span class="text-nowrap">(<span class="math inline">\(x\)</span>),</span> the outcome is assumed to follow the specified distribution. But the <em>unconditional</em> outcome (disregarding the value of <span class="text-nowrap"><span class="math inline">\(x\)</span>)</span> is not assumed to follow anything.</p>
 <p>In mathematical terms,</p>
 <span class="math display">\[\begin{aligned}
 
@@ -1225,9 +1389,9 @@ y|x &amp;\sim \text{probability distribution}
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div id="tabset-16-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-16-1-tab">
 <p>Which probability distributions are associated with these processes?</p>
 <ol type="1">
 <li>The number of bees visiting flowers in one minute.</li>
@@ -1252,7 +1416,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<div id="tabset-16-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-16-2-tab">
 <p>Which probability distributions are associated with these processes?</p>
 <ol type="1">
 <li>The number of bees visiting flowers in one minute. <strong>Poisson</strong></li>
@@ -1274,7 +1438,7 @@ Learn why
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>The number of bees per minute is a <strong>count</strong> over a fixed time window, so a starting point would be a Poisson distribution.</li>
-<li>The number of germinated seeds <em>sounds</em> like a count, but beware: there is a hard upper limit (<span class="math inline">\(20\)</span> seeds planted). Hence, it is better to consider this the number of successes out of <span class="math inline">\(20\)</span> trials (a <strong>ratio</strong>), which can be modeled with a binomial distribution.</li>
+<li>The number of germinated seeds <em>sounds</em> like a count, but beware: there is a hard upper limit <span class="text-nowrap">(<span class="math inline">\(20\)</span></span> seeds planted). Hence, it is better to consider this the number of successes out of <span class="math inline">\(20\)</span> trials (a <strong>ratio</strong>), which can be modeled with a binomial distribution.</li>
 <li>Concentration is a <strong>continuous</strong> outcome, so a starting point could be an ordinary linear model (normal distribution). If cortisol concentrations turn out to be highly skewed, we could try transformation (e.g., modeling <span class="math inline">\(\log_{10}(\mathrm{concentration})\)</span> instead), or using a distribution that can be right-skewed, like the <a href="https://en.wikipedia.org/wiki/Gamma_distribution">gamma distribution</a>.</li>
 <li>If we don’t count sharks, but simply note their presence/absence, this is a <strong>binary</strong> outcome. This can be modeled with a binomial distribution with a single trial. This is also called a Bernoulli distribution.</li>
 </ol>
@@ -1285,9 +1449,9 @@ Learn why
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true">Question 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false">Answer</a></li></ul>
 <div class="tab-content">
-<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<div id="tabset-17-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-17-1-tab">
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
@@ -1314,7 +1478,7 @@ Hint
 </div>
 </div>
 </div>
-<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<div id="tabset-17-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-17-2-tab">
 <p>Which statements are correct?</p>
 <ol type="1">
 <li>Overdispersion leads to poor estimates of the intercept and slope.</li>
@@ -1342,7 +1506,7 @@ Learn why
 <li>Changing a link function changes the estimated relationship (although usually the effect is small). For the same reason as <strong>1</strong> then, <strong>3</strong> is incorrect, as excess spread is not addressed this way.</li>
 <li>A Poisson distribution does arise in <em>theory</em> if counts are independent and occurring at a fixed rate. However, in real life, these are rarely realistic assumptions and at best, they hold approximately. Hence, <strong>4</strong> is incorrect.</li>
 <li>Despite the name, <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">negative binomial</a> is an alternative to the Poisson (not binomial) distribution that is commonly used to address overdispersion. Hence, <strong>5</strong> is correct.</li>
-<li>Overdispersion happens because the Poisson and binomial distribution only have a single free parameter (<span class="math inline">\(\lambda\)</span> and <span class="math inline">\(p\)</span>, respectively). In ordinary linear models, there is a separate parameter for the variance (<span class="math inline">\(\sigma^2\)</span>), so it is not possible to have overdispersion. Hence, <strong>6</strong> is correct. Variance is not always <em>constant</em> in ordinary linear models, but that is a separate issue.</li>
+<li>Overdispersion happens because the Poisson and binomial distribution only have a single free parameter <span class="text-nowrap">(<span class="math inline">\(\lambda\)</span></span> and <span class="text-nowrap"><span class="math inline">\(p\)</span>,</span> respectively). In ordinary linear models, there is a separate parameter for the variance <span class="text-nowrap">(<span class="math inline">\(\sigma^2\)</span>),</span> so it is not possible to have overdispersion. Hence, <strong>6</strong> is correct. Variance is not always <em>constant</em> in ordinary linear models, but that is a separate issue.</li>
 </ol>
 </div>
 </div>
@@ -1350,8 +1514,8 @@ Learn why
 </div>
 </div>
 </div>
-<section id="interactive-apps" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="interactive-apps">Interactive apps</h3>
+<section id="GLM-app" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="GLM-app">Interactive apps</h3>
 <p>Practice the concepts covered in this chapter:</p>
 <p><a href="https://fransrodenburg.github.io/Applied-Statistics/apps/GLM-diagnostics/" class="btn btn-outline-primary mb-2" role="button" target="_blank" rel="noreferrer noopener">Diagnostics <i class="fa-solid fa-external-link" aria-label="external-link"></i></a> <a href="https://fransrodenburg.github.io/Applied-Statistics/apps/regtab/?v=glm" class="btn btn-outline-output mb-2" role="button" target="_blank" rel="noreferrer noopener">Regression tables <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></p>
 <p><small><span class="text-grey">Both apps run in your browser. The first time, your browser downloads about 50 MB, which can take a minute or more.</span></small></p>

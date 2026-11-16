@@ -1,0 +1,146 @@
+---
+title: "Tutorial - Additive Effects (Binomial GLM)"
+author: "Dr. F.J. Rodenburg"
+format: html
+editor: visual
+---
+
+## Description
+
+Mortality of male and female rats is compared after short-term exposure to different concentrations of hydrogen sulfide ($\text{H}_2\text{S}$, measured in ppm). Each observation is a group of $50$ rats, of which the number of deaths was counted.
+
+## Dependencies
+
+If you use any packages, include them here, not where they are (first) used. This avoids multiple calls to the same package. You can add a short comment after each package explaining what it's used for.
+
+```{r}
+library("DHARMa")  # GLM diagnostics
+library("ggplot2") # Adjusting the plot produced by plot_model
+library("sfsmisc") # Better plot axes
+library("sjPlot")  # Marginal effects plots
+```
+
+## Reading the data
+
+Read the data and perform at least some data quality checks:
+
+-   Do the dimensions (rows, columns) match what you expect? A common problem is when the delimiter is not recognized, in this case the number of columns.
+
+-   Are numbers recognized as numeric?
+
+-   Are categorical variables stored as `factor`, or `character`? In case of the latter, convert them to `factor`.
+
+-   Are there any missing values? Any unrealistic values?
+
+```{r}
+DF <- read.csv("hydrogen-sulfide.csv")
+
+# Some simple data quality checks:
+dim(DF)
+str(DF)
+head(DF)
+summary(DF)
+```
+
+If you note anything interesting, write this down:
+
+-   `sex` is stored as `character`, so we convert it to a `factor`:
+
+```{r}
+DF$sex <- factor(DF$sex)
+table(DF$H2S_concentration, DF$sex)
+```
+
+-   The study is completely balanced: every combination of concentration and sex occurs twice. This is not a requirement, but it is more powerful than an unbalanced design.
+
+-   `n_dead` is an integer, ranging from $1$ to $33$, and never exceeds `n_total`, which is $50$ for every observation.
+
+-   Note how we have a categorical (`sex`) and continuous (`H2S_concentration`) explanatory variable.
+
+## Visualizing the data
+
+The outcome is a number of deaths out of a total. If the total differs between observations, you should plot the proportion (`n_dead / n_total`). Here, the total is $50$ rats for every observation, so we can just show the number of deaths:
+
+```{r}
+cols <- c("coral", "steelblue")
+plot(n_dead ~ H2S_concentration, data = DF,
+     axes = FALSE, pch = 16, col = cols[sex],
+     xlab = bquote(H[2]*S ~ "concentration (ppm)"), ylab = "Number of deaths (out of 50)")
+eaxis(1)
+eaxis(2)
+legend("topleft", legend = levels(DF$sex), col = cols, pch = 16, bty = "n")
+```
+
+-   The number of deaths increases with the concentration, for both sexes.
+
+-   At $10$ and $20$ ppm, more male than female rats died.
+
+-   The spread also increases with the concentration. This is to be expected for this type of outcome: The variance of a binomial distribution is smallest when the probability is close to $0$ (or $1$).
+
+*(With `bquote`, you can use subscripts and other mathematical notation in a plot. If you want to learn more about this, see `?plotmath`.)*
+
+## Fitting the model
+
+This is a number of successes (deaths) out of a number of trials (rats). We can use a binomial GLM for that. The outcome is then specified as two columns: the number of successes, and the number of failures.
+
+Without interaction, the model assumes the effect of the concentration is the same for male and female rats (on the scale of the linear predictor):
+
+```{r}
+GLM <- glm(cbind(n_dead, n_total - n_dead) ~ H2S_concentration + sex,
+           family = "binomial", data = DF)
+```
+
+## Model diagnostics
+
+```{r}
+set.seed(2024) # Makes the simulated residuals reproducible
+RQR <- simulateResiduals(GLM)
+plot(RQR)
+```
+
+-   **QQ-plot**: The quantile residuals closely follow the red line, and none of the tests indicate problems.
+
+    -   **KS-test**: Here, $p=0.655$, so no deviation from the assumed distribution detected.
+
+    -   **Dispersion test**: Here, $p=0.432$, so no over- or underdispersion detected.
+
+    -   **Outlier test**: One observation falls outside the range of the simulations (shown as a red star in the right plot), but the test is not significant ($p = 0.14$).
+
+-   **Residuals vs predicted**: One of the three quantile lines is marked red, suggesting a deviation from the assumed mean-variance relationship. However, with three separate tests, there is an inflated chance of a false positive, which is why there is also an overall test. That test is not significant ("Combined adjusted quantile test n.s."). Keep in mind that there are only $12$ observations.
+
+Overall, no significant problems with the model assumptions were detected.
+
+## Interpreting the model output
+
+```{r}
+summary(GLM)
+```
+
+These estimates are on the logit scale. To obtain probabilities, we have to back-transform:
+
+-   Female rats are not shown in the regression table. This means they are the reference group in the intercept: At a concentration of $0$ ppm, female rats have an estimated probability of death of $\frac{1}{1 + e^{4.07389}} \approx 1.7\%$.
+
+-   The second coefficient shows the effect of the concentration, which on the logit scale is the same **for both sexes**. For example, at $20$ ppm, female rats have an estimated probability of death of $\frac{1}{1 + e^{-(-4.07389 + 20 \times 0.13492)}} \approx 20.2\%$. This effect is significant ($p = 4.30 \cdot 10^{-14}$).
+
+-   The third coefficient shows the difference for male rats, which on the logit scale is the same **at any concentration**: At $0$ ppm, male rats have an estimated probability of death of $\frac{1}{1 + e^{-(-4.07389 + 1.31335)}} \approx 5.9\%$. This difference is significant ($p = 2.77 \cdot 10^{-7}$).
+
+-   What if you are male and exposed to $20$ ppm? Without interaction, you simply add both effects: $\frac{1}{1 + e^{-(-4.07389 + 20 \times 0.13492 + 1.31335)}} \approx 48.4\%$.
+
+-   Note that the effects only add up on the logit scale. In terms of probabilities, the difference between male and female rats is not constant: It is $4.3$ percentage points at $0$ ppm ($5.9\%$ against $1.7\%$), but $28.3$ percentage points at $20$ ppm ($48.4\%$ against $20.2\%$).
+
+-   The dispersion ratio is somewhat greater than one: $\frac{16.498}{9} \approx 1.83$, but the dispersion test in the diagnostics was not significant.
+
+-   This model explains $1 - \frac{16.498}{117.149} \approx 85.9\%$ of the deviance, so a large proportion of the spread in the outcome is accounted for.
+
+## Visualize the estimated relationship
+
+For GLMs, this `plot_model` function is a great help, because it automatically translates everything back to the scale of the outcome (probability of death). By default, `plot_model` connects the predictions at the observed concentrations with straight lines. Here, we ask for predictions in small steps of $0.5$ ppm instead, to show the curve:
+
+```{r}
+plot_model(GLM, type = "pred", terms = c("H2S_concentration [0:20 by=0.5]", "sex")) +
+  ggtitle("Estimated relationship") +
+  xlab("Hydrogen sulfide concentration (ppm)") +
+  ylab("Probability of death")
+```
+
+The curves are not parallel, even though the model has no interaction: The effects of concentration and sex are additive on the logit scale, not on the scale of the probability.

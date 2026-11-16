@@ -133,7 +133,7 @@ summary(GLM)
 
 -   Area A is not shown in the regression table. This means A is reference group in the intercept: Area A has an estimated rate of $e^{2.4277}\approx 11$ sharks on average.
 
--   The second coefficient shows the difference for area B: This area has an estimated rate of $e^{2.4277 -1.0415} \approx 4$ sharks on average. This difference is significant ($p = 0.00193$).
+-   The second coefficient shows the difference for area B: This area has an estimated rate of $e^{2.4277 -1.0415} \approx 4$ sharks on average. This difference is significant ($p = 0.00192$).
 
 -   We could continue interpreting the differences with area A in the same fashion, but there are two issues, because of which it is better to do comparisons with `emmeans`:
 
