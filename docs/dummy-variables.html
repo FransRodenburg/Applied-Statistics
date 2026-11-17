@@ -78,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3c097011e3d2b1365af944a3245f1693.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -495,7 +495,6 @@ window.Quarto = {
 
 <p><small><i>Linear regression with categorical explanatory variables.</i></small></p>
 <hr>
-<p><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> I’ve recently begun restructuring the website. This chapter is under construction.</p>
 <p>This chapter uses <a href="GLM.html#summary-glm">GLM</a> notation for formulas <span class="text-nowrap">(<span class="math inline">\(\eta\)</span>),</span> but to focus on the concept of dummy variables, only normal examples are shown (<code>lm</code>). For Poisson and binomial examples, try the explore mode of the <a href="#dummy-app">interactive app</a> at the bottom.</p>
 <section id="summary-dummy" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="summary-dummy"><span class="header-section-number">3.1</span> Summary</h2>
@@ -503,6 +502,7 @@ window.Quarto = {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" aria-current="page">Two groups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Any number of groups</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<span id="dummy-2" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dummy-2" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -517,16 +517,20 @@ Figure&nbsp;3.1: One explanatory variable (diet) consisting of 2 categories and 
 </div>
 </div>
 </div>
+<div class="block-label">
 <p>Mathematical formula:</p>
+</div>
 <p><span class="math display">\[\begin{align}
   \eta &amp;= \beta_0 + \beta_1 \cdot x \\ \tag{1}\label{dummy2}\\
   x &amp;=\begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}
 \end{align}\]</span></p>
-<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<div class="lang-main">
+<div class="block-label">
 <p>Code:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -536,6 +540,7 @@ Figure&nbsp;3.1: One explanatory variable (diet) consisting of 2 categories and 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -640,9 +645,9 @@ Example
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Fitted to the data of <a href="#fig-dummy-2" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>, the model gives the following estimates:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span>
@@ -678,9 +683,9 @@ group[T.B]     1.9632      0.343      5.718      0.000       1.260       2.667
 Comparison with a classical <span class="text-nowrap"><span class="math inline">\(t\)</span>-test</span>
 </summary>
 <p>The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> of the slope in the regression table tests whether the difference between the groups is zero. This is the same test as a two-sample <span class="text-nowrap"><span class="math inline">\(t\)</span>-test</span> with equal variances: Both give the same <a href="./hypothesis-testing.html#test-statistic"><span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span></a> and the same <span class="text-nowrap"><span class="math inline">\(p\)</span>-value:</span></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(y <span class="sc">~</span> group, data, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -721,6 +726,7 @@ mean in group A mean in group B
 </div>
 </div>
 <div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<span id="dummy-k" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dummy-k" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -735,17 +741,21 @@ Figure&nbsp;3.3: One explanatory variable (diet) consisting of 3 categories and 
 </div>
 </div>
 </div>
+<div class="block-label">
 <p>Mathematical formula:</p>
+</div>
 <p><span class="math display">\[\begin{align}
   \eta &amp;= \beta_0 + \beta_1 \cdot x_1 + \beta_2 \cdot x_2 \\ \tag{2}\label{dummyk}\\
   x_1 &amp;= \begin{cases}1 \quad \text{if B}\\ 0 \quad \text{otherwise} \end{cases}\\
   x_2 &amp;= \begin{cases}1 \quad \text{if C}\\ 0 \quad \text{otherwise} \end{cases}
 \end{align}\]</span></p>
-<p><small><span class="text-grey">For an ordinary linear model, <span class="math inline">\(\eta\)</span> is simply the mean of <span class="text-nowrap"><span class="math inline">\(y\)</span>.</span></span></small></p>
+<div class="lang-main">
+<div class="block-label">
 <p>Code:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -755,6 +765,7 @@ Figure&nbsp;3.3: One explanatory variable (diet) consisting of 3 categories and 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ group"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -871,9 +882,9 @@ Example
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Fitted to the data of <a href="#fig-dummy-k" class="quarto-xref">Figure&nbsp;<span>3.3</span></a>, the model gives the following estimates:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span>
@@ -906,39 +917,24 @@ group[T.C]     0.5016      0.417      1.203      0.236      -0.340       1.343
 </div>
 </div>
 <p>The estimated mean of the <em>reference group</em> (A) is given by <code>(Intercept)</code> (5.26). For group B, we have to add <code>groupB</code> and the mean becomes 7.2. For group C, we have to add <code>groupC</code> and the mean becomes 5.76.</p>
-<p><span id="emmeans">Instead of adding the coefficients by hand, we can let the <code>emmeans</code> package do it.</span> It also gives the standard error and confidence interval of each mean:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"emmeans"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>EMM <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> group)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>EMM<span class="sc">$</span>emmeans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> group emmean    SE df lower.CL upper.CL
- A       5.26 0.295 42     4.66     5.85
- B       7.20 0.295 42     6.60     7.79
- C       5.76 0.295 42     5.16     6.35
-
-Confidence level used: 0.95 </code></pre>
-</div>
-</div>
-<p>These are called <em>estimated marginal means</em>: the mean of each group according to the model.</p>
 <p>Careful, the <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> of <code>groupB</code> and <code>groupC</code> only tell you whether these groups differ from the <em>reference group</em>. They do not tell you whether B differs from C, nor whether there are any differences between the groups at all.</p>
 <details>
 <summary>
 How to change the reference group
 </summary>
 <p>By default, the reference group is the first group in alphabetical order. With more than two groups, the choice matters: It determines which differences the regression table shows. The model itself does not change, so neither do the estimated means, nor the omnibus test.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(data<span class="sc">$</span>group), <span class="at">ref =</span> <span class="st">"C"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">factor</span>(data<span class="sc">$</span>group), <span class="at">ref =</span> <span class="st">"C"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> group, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ C(group, Treatment(reference='C'))"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">"y ~ C(group, Treatment(reference='C'))"</span>, data).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -949,13 +945,13 @@ How to change the reference group
 How to compare all groups at once
 </summary>
 <p>First, to test the <em>overall</em> effect of group, we can use an omnibus test:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"car"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"car"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type II tests)
 
@@ -970,8 +966,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sm.stats.anova_lm(model, typ<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sm.stats.anova_lm(model, typ<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             sum_sq    df          F    PR(&gt;F)
 group     30.507772   2.0  11.697125  0.000092
@@ -982,13 +978,15 @@ Residual  54.771000  42.0        NaN       NaN</code></pre>
 </div>
 </div>
 </div>
-<p>Apparently, there are significant differences between the groups <span class="text-nowrap">(<span class="math inline">\(p = 9.16 \times 10^{-5}\)</span>).</span> To determine <em>which</em> groups differ, we can perform pairwise comparisons:</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content" data-group="language">
+<p>Apparently, there are significant differences between the groups <span class="text-nowrap">(<span class="math inline">\(p = 9.16 \times 10^{-5}\)</span>).</span> <span id="emmeans">To determine <em>which</em> groups differ, we can perform pairwise comparisons:</span></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>EMM<span class="sc">$</span>contrasts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"emmeans"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>EMM <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(model, pairwise <span class="sc">~</span> group)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>EMM<span class="sc">$</span>contrasts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> contrast estimate    SE df t.ratio p.value
  A - B      -1.943 0.417 42  -4.659 &lt;0.0001
@@ -1003,10 +1001,10 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>tk <span class="op">=</span> pairwise_tukeyhsd(data[<span class="st">"y"</span>], data[<span class="st">"group"</span>], alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tk.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.multicomp <span class="im">import</span> pairwise_tukeyhsd</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tk <span class="op">=</span> pairwise_tukeyhsd(data[<span class="st">"y"</span>], data[<span class="st">"group"</span>], alpha<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tk.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Multiple Comparison of Means - Tukey HSD, FWER=0.05 
 ====================================================
@@ -1189,6 +1187,11 @@ Learn why
 <section id="apply-dummy" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="apply-dummy"><span class="header-section-number">3.3</span> Apply your knowledge</h2>
 <p>Now analyze a dataset yourself. Start with the worked examples, then do the exercise:</p>
+<div class="lang-main">
+<div class="tabset-margin-container"></div><div class="panel-tabset show-tabs" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content show-tabs" data-group="r-python">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <ul>
 <li>Tutorial — linear model (<a href="tutorials/tutorial-dummy-LM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/insect-sprays.csv">data <i class="fas fa-download"></i></a>)</li>
 <li>Tutorial — Poisson GLM (<a href="tutorials/tutorial-dummy-GLM.qmd">qmd <i class="fas fa-download"></i></a>, <a href="data/sharks.csv">data <i class="fas fa-download"></i></a>)</li>
@@ -1212,6 +1215,13 @@ How to read data in R
 <li>Set working directory to source file location.<br><small>(<strong>Session</strong> &gt; <strong>Set Working Directory</strong> &gt; <strong>To Source File Location</strong>)</small></li>
 <li>R will now read from the folder the qmd file is located, so you can just use <code>read.csv("name-of-data.csv")</code>.</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p><i class="fa-solid fa-person-digging" aria-label="person-digging"></i> Under construction. Check back later.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1349,6 +1359,33 @@ How to read data in R
 
 </script>
 
+<script>
+// Links to a tab, or to anything inside a tab that is not open: opens the tab, then scrolls
+// to the target. See README.md, "Links to tabs".
+(function () {
+  function show() {
+    try {
+      var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!el) return;
+      var panes = [], p = el.closest(".tab-pane");
+      while (p) { panes.unshift(p); p = p.parentElement.closest(".tab-pane"); }
+      if (!panes.length) return;
+      panes.forEach(function (p) {
+        var tab = document.getElementById(p.id + "-tab");
+        if (tab && !p.classList.contains("active")) tab.click();
+      });
+      var to = el.classList.contains("tab-anchor") ? el.closest(".panel-tabset") || el : el;
+      setTimeout(function () { to.scrollIntoView(); }, 0);
+    } catch (e) {}
+  }
+  window.addEventListener("load", show);
+  window.addEventListener("hashchange", show);
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (a && a.hash && a.hash === location.hash && a.pathname === location.pathname) setTimeout(show, 0);
+  });
+})();
+</script>
 <script>
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
 (function () {

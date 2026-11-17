@@ -43,9 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-1e8b695005fd085cb3f74f43446f6ab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-690876b74e72e2a4c784615029f31fb8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3c097011e3d2b1365af944a3245f1693.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -559,6 +559,33 @@ ul.task-list li input[type="checkbox"] {
 
 </script>
 
+<script>
+// Links to a tab, or to anything inside a tab that is not open: opens the tab, then scrolls
+// to the target. See README.md, "Links to tabs".
+(function () {
+  function show() {
+    try {
+      var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!el) return;
+      var panes = [], p = el.closest(".tab-pane");
+      while (p) { panes.unshift(p); p = p.parentElement.closest(".tab-pane"); }
+      if (!panes.length) return;
+      panes.forEach(function (p) {
+        var tab = document.getElementById(p.id + "-tab");
+        if (tab && !p.classList.contains("active")) tab.click();
+      });
+      var to = el.classList.contains("tab-anchor") ? el.closest(".panel-tabset") || el : el;
+      setTimeout(function () { to.scrollIntoView(); }, 0);
+    } catch (e) {}
+  }
+  window.addEventListener("load", show);
+  window.addEventListener("hashchange", show);
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (a && a.hash && a.hash === location.hash && a.pathname === location.pathname) setTimeout(show, 0);
+  });
+})();
+</script>
 <script>
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
 (function () {
