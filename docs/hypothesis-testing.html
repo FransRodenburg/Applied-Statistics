@@ -63,9 +63,9 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3c097011e3d2b1365af944a3245f1693.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -533,7 +533,7 @@ Example: the blood pressure trial
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><span class="text-nowrap"><span class="math inline">\(H_0\!: \mu = 0\)</span>.</span> The medicine does not change blood pressure on average.</li>
-<li>Set <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></span></li>
+<li>Set <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>.</span> <small><span class="text-grey">In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</span></small></li>
 <li>In <span class="math inline">\(n = 30\)</span> patients, we found a mean of <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg and standard deviation of <span class="math inline">\(s = 9.7\)</span> mmHg.</li>
 <li>We can use the <span class="text-nowrap"><a href="#test-statistic"><span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span></a>,</span> which is here the mean divided by its standard error: <span class="text-nowrap"><span class="math inline">\(t = \frac{\bar{y}}{\mathrm{SE}_{\bar{y}}} = -2.7\)</span>.</span></li>
 <li>If <span class="math inline">\(H_0\)</span> were true, a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least this far from zero can be calculated to occur with probability <span class="text-nowrap"><span class="math inline">\(p = 0.011\)</span>.</span></li>
@@ -542,12 +542,12 @@ Example: the blood pressure trial
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</p></div></div><p>In the next sections, we explore how steps 4–6 work. For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
+<p>In the next sections, we explore how steps 4–6 work. For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> used in this example, step 4 first requires an estimate of the uncertainty: the standard error.</p>
 <section id="SE" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="SE">Standard error</h3>
 <p><small><em>What is the uncertainty of our estimate?</em></small></p>
-<p>The average change, <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg, is an <em>estimate</em> of the true mean change <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With <span class="math inline">\(n=30\)</span> new patients, we would have found a different mean. The extent to which estimates differ from each other in different samples is called the standard error.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.</p></div></div><p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="text-nowrap"><span class="math inline">\(\bar{y}\)</span>,</span> we have such an expression:</p>
+<p>The average change, <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg, is an <em>estimate</em> of the true mean change <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> With <span class="math inline">\(n=30\)</span> new patients, we would have found a different mean. The extent to which estimates differ from each other in different samples is called the standard error.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;More precisely, the standard error of an estimate is the standard deviation of the estimates you would obtain by repeatedly sampling <span class="math inline">\(n\)</span> observations from the same population.</p></div></div><p>The most straightforward way to obtain a standard error would be to repeat the clinical trial many times and see how much the decrease in blood pressure varies across samples. Thankfully for our patients, that is not necessary if we have an analytic expression for the standard error. For the sample mean <span class="text-nowrap"><span class="math inline">\(\bar{y}\)</span>,</span> we have such an expression:</p>
 <p><span class="math display">\[\begin{align}
   \label{trueSEM}
   \tag{1}\mathrm{SE}_{\bar{y}} = \frac{\sigma}{\sqrt{n}}
@@ -568,14 +568,14 @@ Example: the blood pressure trial
   \label{t}
   \tag{3}t = \frac{\bar{y} - \mu_0}{\mathrm{SE}},
 \end{align}\]</span></p>
-<p>where <span class="math inline">\(\mu_0\)</span> is the value under the null hypothesis.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> From the formula, you can see that the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is large if there is a large drop in blood pressure, and if the uncertainty of the estimate is small. The <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is essentially <span class="text-nowrap"><span class="math inline">\(\frac{\text{difference from zero}}{\text{uncertainty}}\)</span>.</span> The further <span class="math inline">\(t\)</span> is from zero, the less compatible the data are with <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span></p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”</p></div></div><p>For our clinical trial, the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is <span class="text-nowrap"><span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</span></p>
+<p>where <span class="math inline">\(\mu_0\)</span> is the value under the null hypothesis.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> From the formula, you can see that the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is large if there is a large drop in blood pressure, and if the uncertainty of the estimate is small. The <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is essentially <span class="text-nowrap"><span class="math inline">\(\frac{\text{difference from zero}}{\text{uncertainty}}\)</span>.</span> The further <span class="math inline">\(t\)</span> is from zero, the less compatible the data are with <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span></p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;We can in principle compare our estimate to any number. Often, however, asking “Is there an effect?” is the same as asking “Does it differ from zero?”</p></div></div><p>For our clinical trial, the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> is <span class="text-nowrap"><span class="math inline">\(\frac{-4.8 - 0}{1.77} = -2.71\)</span>.</span></p>
 </section>
 <section id="p-value" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="p-value"><span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span></h3>
 <p><small><em>How far from</em> <span class="math inline">\(H_0\)</span> <em>is far enough?</em></small></p>
-<p>If <span class="math inline">\(H_0\)</span> is true, and we make certain assumptions,<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> follow a known distribution: a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span></a> with <span class="math inline">\(n - 1\)</span> degrees of freedom.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Most <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> are then close to zero, and values far from zero are rare. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability of a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least as far from zero as ours, if <span class="math inline">\(H_0\)</span> is true.</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;The <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> resembles the <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="text-nowrap"><span class="math inline">\(s\)</span>.</span> With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value:</span> it depends on the test statistic and its distribution under <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span> For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value,</span> it is the area under the curve beyond the observed value, in both directions:</p>
+<p>If <span class="math inline">\(H_0\)</span> is true, and we make certain assumptions,<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> follow a known distribution: a <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution"><span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span></a> with <span class="math inline">\(n - 1\)</span> degrees of freedom.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Most <span class="text-nowrap"><span class="math inline">\(t\)</span>-values</span> are then close to zero, and values far from zero are rare. The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability of a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least as far from zero as ours, if <span class="math inline">\(H_0\)</span> is true.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn5"><p><sup>5</sup>&nbsp;The <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> resembles the <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="text-nowrap"><span class="math inline">\(s\)</span>.</span> With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value:</span> it depends on the test statistic and its distribution under <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span> For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value,</span> it is the area under the curve beyond the observed value, in both directions:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -682,7 +682,7 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 <h2 class="anchored" data-anchor-id="limitations-of-hypothesis-testing">Limitations of hypothesis testing</h2>
 <p>Hypothesis testing is ubiquitous in science, which is why it is important that you understand statistical significance, power, and false positives/negatives. It is also a highly criticized practice, because it is very susceptible to misuse.</p>
 <ul>
-<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven. <span class="text-grey">(See <a href="#error-rates">Error rates</a>.)</span></li>
+<li>A test is never conclusive. Even if <span class="math inline">\(H_0\)</span> is true, it rejects with probability <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> and even if <span class="math inline">\(H_0\)</span> is false, it may fail to reject. <span class="math inline">\(H_0\)</span> can be shown to be implausible, but never strictly disproven.</li>
 <li>A test relies on assumptions (e.g., independent observations). If these do not hold, the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> loses its meaning. <span class="text-grey">(These will be covered in the following chapters.)</span></li>
 <li>A test relies on a fixed plan. The hypotheses, <span class="math inline">\(\alpha\)</span> and the analysis must be chosen before looking at the data. Otherwise, <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and <span class="math inline">\(\alpha\)</span> lose their meaning.</li>
 </ul>
@@ -904,7 +904,7 @@ Learn why
 <strong>C.</strong> The boundaries are no sharper than the significance level they come from. Values just outside the interval are hardly less compatible with the data than values just inside it.<br>
 <strong>D.</strong> This is the textbook definition.</p>
 <p>For a more in depth explanation, please refer to the video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M?enablejsapi=1" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
 </div>
 </div>
@@ -1115,6 +1115,50 @@ Learn why
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest("a[href]") : null;
     if (a && a.hash && a.hash === location.hash && a.pathname === location.pathname) setTimeout(show, 0);
+  });
+})();
+</script>
+<script>
+// Pauses YouTube videos in a tab or callout when it closes. See README.md, "Videos pause when hidden".
+(function () {
+  function pause(el) {
+    if (!el) return;
+    el.querySelectorAll('iframe[src*="youtube.com/embed/"]').forEach(function (f) {
+      try {
+        f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":[]}', new URL(f.src).origin);
+      } catch (e) {}
+    });
+  }
+  document.addEventListener("hide.bs.tab", function (e) {
+    pause(document.getElementById(e.target.getAttribute("aria-controls")));
+  });
+  document.addEventListener("hide.bs.collapse", function (e) {
+    pause(e.target);
+  });
+})();
+</script>
+<script>
+// Video tabsets reopen on the tab the reader last opened. See README.md, "Video tabs remembered".
+(function () {
+  var sets = [].filter.call(document.querySelectorAll(".panel-tabset"), function (ts) {
+    return ts.querySelector(":scope > .tab-content > .tab-pane > .quarto-video");
+  });
+  function tabs(ts) { return [].slice.call(ts.querySelectorAll(":scope > .nav-tabs .nav-link")); }
+  function key(i) { return "video-tab:" + location.pathname + ":" + i; }
+  var target = null;
+  try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+  sets.forEach(function (ts, i) {
+    try {
+      if (target && ts.contains(target)) return;
+      var tab = tabs(ts)[localStorage.getItem(key(i))];
+      if (tab && !tab.classList.contains("active")) tab.click();
+    } catch (e) {}
+  });
+  document.addEventListener("shown.bs.tab", function (e) {
+    try {
+      var i = sets.indexOf(e.target.closest(".panel-tabset"));
+      if (i >= 0) localStorage.setItem(key(i), tabs(sets[i]).indexOf(e.target));
+    } catch (e) {}
   });
 })();
 </script>

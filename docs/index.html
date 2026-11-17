@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3c097011e3d2b1365af944a3245f1693.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-a26cd590c6118bb6639c61e9be47b28d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -748,6 +748,50 @@ Motivation
   document.addEventListener("click", function (e) {
     var a = e.target.closest ? e.target.closest("a[href]") : null;
     if (a && a.hash && a.hash === location.hash && a.pathname === location.pathname) setTimeout(show, 0);
+  });
+})();
+</script>
+<script>
+// Pauses YouTube videos in a tab or callout when it closes. See README.md, "Videos pause when hidden".
+(function () {
+  function pause(el) {
+    if (!el) return;
+    el.querySelectorAll('iframe[src*="youtube.com/embed/"]').forEach(function (f) {
+      try {
+        f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":[]}', new URL(f.src).origin);
+      } catch (e) {}
+    });
+  }
+  document.addEventListener("hide.bs.tab", function (e) {
+    pause(document.getElementById(e.target.getAttribute("aria-controls")));
+  });
+  document.addEventListener("hide.bs.collapse", function (e) {
+    pause(e.target);
+  });
+})();
+</script>
+<script>
+// Video tabsets reopen on the tab the reader last opened. See README.md, "Video tabs remembered".
+(function () {
+  var sets = [].filter.call(document.querySelectorAll(".panel-tabset"), function (ts) {
+    return ts.querySelector(":scope > .tab-content > .tab-pane > .quarto-video");
+  });
+  function tabs(ts) { return [].slice.call(ts.querySelectorAll(":scope > .nav-tabs .nav-link")); }
+  function key(i) { return "video-tab:" + location.pathname + ":" + i; }
+  var target = null;
+  try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+  sets.forEach(function (ts, i) {
+    try {
+      if (target && ts.contains(target)) return;
+      var tab = tabs(ts)[localStorage.getItem(key(i))];
+      if (tab && !tab.classList.contains("active")) tab.click();
+    } catch (e) {}
+  });
+  document.addEventListener("shown.bs.tab", function (e) {
+    try {
+      var i = sets.indexOf(e.target.closest(".panel-tabset"));
+      if (i >= 0) localStorage.setItem(key(i), tabs(sets[i]).indexOf(e.target));
+    } catch (e) {}
   });
 })();
 </script>
