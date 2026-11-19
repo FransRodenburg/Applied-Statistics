@@ -94,12 +94,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -2000,8 +2000,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -2363,10 +2363,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><small><em>What is the probability of a given count</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dpois" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dpois" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of the probability of each count k from 0 to 20 for a Poisson distribution with lambda = 3. The probability is highest at 2 and 3 (about 0.22 each) and nearly zero beyond 9.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poisson-distribution_files/figure-html/fig-dpois-1.png" class="img-fluid figure-img" width="2100">
+<img src="poisson-distribution_files/figure-html/fig-dpois-1.png" class="img-fluid figure-img" alt="Bar chart of the probability of each count k from 0 to 20 for a Poisson distribution with lambda = 3. The probability is highest at 2 and 3 (about 0.22 each) and nearly zero beyond 9." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Probability mass function of a Poisson distribution with <span class="text-nowrap"><span class="math inline">\(\lambda  = 3\)</span>.</span>
@@ -2443,10 +2443,10 @@ Explanation
 <p>Counts cannot be negative. If lambda is close to zero, the probability on the left side of the distribution gets pressed up into the side. If you increase lambda, you move further away from zero, so this skew becomes less apparent:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-lambdaskew" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-lambdaskew" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar charts of three Poisson distributions. With lambda = 2, the bars are high, close to 0 and skewed to the right; with lambda = 10, lower and wider around 10; with lambda = 30, lowest and widest, and nearly symmetric around 30.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-lambdaskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poisson-distribution_files/figure-html/fig-lambdaskew-1.png" class="img-fluid figure-img" width="2100">
+<img src="poisson-distribution_files/figure-html/fig-lambdaskew-1.png" class="img-fluid figure-img" alt="Bar charts of three Poisson distributions. With lambda = 2, the bars are high, close to 0 and skewed to the right; with lambda = 10, lower and wider around 10; with lambda = 30, lowest and widest, and nearly symmetric around 30." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lambdaskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Increasing <span class="math inline">\(\lambda\)</span> results in a more symmetric distribution.
@@ -2489,7 +2489,7 @@ Example
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="Plot produced by the example code: vertical bars of y against x from 0 to 20, highest at 1 and 2 (about 0.27) and nearly zero beyond 6." width="672"></p>
 </figure>
 </div>
 </div>
@@ -2518,7 +2518,7 @@ Example
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" alt="Plot produced by the example code: a bar chart for x from 0 to 20, highest at 1 and 2 (about 0.27) and nearly zero beyond 6." width="672"></p>
 </figure>
 </div>
 </div>
@@ -2535,10 +2535,10 @@ Example
 <p><small><em>What is the probability up till a given point</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ppois" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-ppois" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of a Poisson distribution with lambda = 3, in which the bars from 0 up to and including a count k, here 3, are highlighted and bracketed with a question mark and a percent sign; the bars beyond k are gray.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ppois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poisson-distribution_files/figure-html/fig-ppois-3.png" class="img-fluid figure-img" width="2100">
+<img src="poisson-distribution_files/figure-html/fig-ppois-3.png" class="img-fluid figure-img" alt="Bar chart of a Poisson distribution with lambda = 3, in which the bars from 0 up to and including a count k, here 3, are highlighted and bracketed with a question mark and a percent sign; the bars beyond k are gray." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ppois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Cumulative distribution function of a Poisson distribution with <span class="text-nowrap"><span class="math inline">\(\lambda = 3\)</span>.</span>
@@ -2711,10 +2711,10 @@ Examples
 <p><small><em>Up till what point does the probability equal at least</em> <span class="text-nowrap"><span class="math inline">\(p\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-qpois" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-qpois" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of a Poisson distribution with lambda = 3, in which the bars from 0 up to an unknown count are highlighted and bracketed with the label p; the unknown count, here 3, is marked with a question mark.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="poisson-distribution_files/figure-html/fig-qpois-1.png" class="img-fluid figure-img" width="2100">
+<img src="poisson-distribution_files/figure-html/fig-qpois-1.png" class="img-fluid figure-img" alt="Bar chart of a Poisson distribution with lambda = 3, in which the bars from 0 up to an unknown count are highlighted and bracketed with the label p; the unknown count, here 3, is marked with a question mark." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qpois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Quantile function of a Poisson distribution with <span class="text-nowrap"><span class="math inline">\(\lambda= 3\)</span>.</span>
@@ -2874,7 +2874,7 @@ Examples
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="figures/C56BL6.jpg" class="img-fluid figure-img"></p>
+<p><img src="figures/C56BL6.jpg" class="img-fluid figure-img" alt="Photo of a black C57BL/6 laboratory mouse in profile, on a white background."></p>
 <figcaption>C57BL/6 mouse. <small>Source: <a href="https://www.jax.org/strain/003548">jax.org/strain/003548</a></small></figcaption>
 </figure>
 </div>
@@ -2897,7 +2897,7 @@ Hint
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="poisson-distribution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" alt="Bar chart of the probability of each litter size from 0 to 20, highest around 7. The bars for litter sizes of 3 or more are highlighted and bracketed; the bars for 1 and 2 are gray and very short." width="2100"></p>
 </figure>
 </div>
 </div>

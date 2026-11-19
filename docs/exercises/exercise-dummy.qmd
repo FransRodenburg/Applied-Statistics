@@ -1,5 +1,5 @@
 ---
-title: "Exercise - Dummy Variables"
+title: "Exercise - Categorical Variables"
 author: "Dr. F.J. Rodenburg"
 format: html
 editor: visual

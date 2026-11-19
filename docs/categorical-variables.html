@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Dummy Variables – Applied Statistics</title>
+<title>3&nbsp; Categorical Variables – Applied Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,12 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -324,7 +324,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./dummy-variables.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./categorical-variables.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -427,8 +427,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -474,9 +474,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./dummy-variables.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./categorical-variables.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="dummy" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></h1>
+<h1 class="title"><span id="dummy" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></h1>
 </div>
 
 
@@ -505,10 +505,10 @@ window.Quarto = {
 <span id="dummy-2" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dummy-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dummy-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mass (g) of fish on diets A and B, shown as points with a horizontal line at each group mean. Fish on diet B are heavier on average (about 7 g) than fish on diet A (about 5 g).">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dummy-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="dummy-variables_files/figure-html/fig-dummy-2-1.png" class="img-fluid figure-img" style="width:71.0%">
+<img src="categorical-variables_files/figure-html/fig-dummy-2-1.png" class="img-fluid figure-img" style="width:71.0%" alt="Mass (g) of fish on diets A and B, shown as points with a horizontal line at each group mean. Fish on diet B are heavier on average (about 7 g) than fish on diet A (about 5 g).">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dummy-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: One explanatory variable (diet) consisting of 2 categories and the estimated mean of each group.<br><small>(Mass of 30 fish on two diets.)</small>
@@ -593,10 +593,10 @@ Explanation
 <p>Linear models work with numbers, but a categorical variable consists of labels (e.g., group A and group B). A <strong>dummy variable</strong> translates those labels into a <span class="math inline">\(0\)</span> or a <span class="text-nowrap"><span class="math inline">\(1\)</span>,</span> so that they can be used in the formula. You do not have to create it yourself: R and Python do this automatically for a categorical variable. The coefficient <span class="math inline">\(\beta_1\)</span> in this case is the <strong>difference between the groups</strong>:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dummy-2-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dummy-2-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of eta against x, with x = 0 for group A and x = 1 for group B. A dot for group A is labeled beta 0, and a line rises to a higher dot for group B. The vertical difference between the two dots is labeled beta 1.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dummy-2-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="dummy-variables_files/figure-html/fig-dummy-2-coef-1.png" class="img-fluid figure-img" width="672">
+<img src="categorical-variables_files/figure-html/fig-dummy-2-coef-1.png" class="img-fluid figure-img" alt="Diagram of eta against x, with x = 0 for group A and x = 1 for group B. A dot for group A is labeled beta 0, and a line rises to a higher dot for group B. The vertical difference between the two dots is labeled beta 1." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dummy-2-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.2: The intercept <span class="text-nowrap">(<span class="math inline">\(\beta_0\)</span>)</span> is <span class="text-nowrap"><span class="math inline">\(\eta\)</span>,</span> when <span class="math inline">\(x = 0\)</span> (group A). The slope <span class="text-nowrap">(<span class="math inline">\(\beta_1\)</span>)</span> is the change in <span class="text-nowrap"><span class="math inline">\(\eta\)</span>,</span> when <span class="math inline">\(x\)</span> increases by <span class="math inline">\(1\)</span> (from group A to group B).
@@ -612,19 +612,19 @@ Figure&nbsp;3.2: The intercept <span class="text-nowrap">(<span class="math inli
 <tr class="header">
 <th style="text-align: center;">Group</th>
 <th style="text-align: center;"><span class="math inline">\(x\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\eta\)</span></th>
+<th><span class="math inline">\(\eta\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><strong>A</strong></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\beta_0\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>B</strong></td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -729,10 +729,10 @@ mean in group A mean in group B
 <span id="dummy-k" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dummy-k" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dummy-k" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mass (g) of fish on diets A, B and C, shown as points with a horizontal line at each group mean. Diet B has the highest mean (about 7 g), followed by diet C (about 6 g) and diet A (about 5 g).">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dummy-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="dummy-variables_files/figure-html/fig-dummy-k-1.png" class="img-fluid figure-img" width="2100">
+<img src="categorical-variables_files/figure-html/fig-dummy-k-1.png" class="img-fluid figure-img" alt="Mass (g) of fish on diets A, B and C, shown as points with a horizontal line at each group mean. Diet B has the highest mean (about 7 g), followed by diet C (about 6 g) and diet A (about 5 g)." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dummy-k-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.3: One explanatory variable (diet) consisting of 3 categories and the estimated mean of each group.<br><small>(Mass of 45 fish on three diets.)</small>
@@ -822,10 +822,10 @@ Explanation
 <p>With more than two groups, a single dummy variable is no longer enough. Every group except the reference group gets its own dummy variable, and with it, its own <strong>difference from the reference group</strong>:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dummy-k-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dummy-k-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three-dimensional diagram of eta above two dummy variables, x1 and x2. Group A, where both are 0, is a dot labeled beta 0. Group B (x1 = 1) and group C (x2 = 1) are dots above group A's level; their heights above it are labeled beta 1 and beta 2.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dummy-k-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="dummy-variables_files/figure-html/fig-dummy-k-coef-1.png" class="img-fluid figure-img" width="672">
+<img src="categorical-variables_files/figure-html/fig-dummy-k-coef-1.png" class="img-fluid figure-img" alt="Three-dimensional diagram of eta above two dummy variables, x1 and x2. Group A, where both are 0, is a dot labeled beta 0. Group B (x1 = 1) and group C (x2 = 1) are dots above group A's level; their heights above it are labeled beta 1 and beta 2." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dummy-k-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.4: The intercept <span class="text-nowrap">(<span class="math inline">\(\beta_0\)</span>)</span> is <span class="math inline">\(\eta\)</span> in group A, where both dummy variables are zero. The slopes <span class="text-nowrap">(<span class="math inline">\(\beta_1\)</span></span> and <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>)</span> are the differences of group B and group C with group A.
@@ -842,7 +842,7 @@ Figure&nbsp;3.4: The intercept <span class="text-nowrap">(<span class="math inli
 <th style="text-align: center;">Group</th>
 <th style="text-align: center;"><span class="math inline">\(x_1\)</span></th>
 <th style="text-align: center;"><span class="math inline">\(x_2\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(\eta\)</span></th>
+<th><span class="math inline">\(\eta\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -850,19 +850,19 @@ Figure&nbsp;3.4: The intercept <span class="text-nowrap">(<span class="math inli
 <td style="text-align: center;"><strong>A</strong></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\beta_0\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>B</strong></td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><strong>C</strong></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
 </tr>
 </tbody>
 </table>

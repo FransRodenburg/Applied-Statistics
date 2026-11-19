@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -412,8 +412,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -490,10 +490,10 @@ window.Quarto = {
 <p>Suppose we want to know the effect of a new compound on blood pressure. In a trial with 30 patients, blood pressure drops in some patients and rises in others. The average drop is 4.8 mmHg:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-bptrial" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-bptrial" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Points showing the change in blood pressure (mmHg) of each of 30 patients, from about -27 to 13, with a dotted line at 0 and a horizontal line at the average, about -5 mmHg. Most points lie below zero, but several lie above it.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-bptrial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="hypothesis-testing_files/figure-html/fig-bptrial-1.png" class="img-fluid figure-img" width="336">
+<img src="hypothesis-testing_files/figure-html/fig-bptrial-1.png" class="img-fluid figure-img" alt="Points showing the change in blood pressure (mmHg) of each of 30 patients, from about -27 to 13, with a dotted line at 0 and a horizontal line at the average, about -5 mmHg. Most points lie below zero, but several lie above it." width="336">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bptrial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is one patient; the horizontal spread only prevents overlap. The dotted line marks no change.
@@ -578,10 +578,10 @@ Example: the blood pressure trial
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;In this case, independent observations and normally distributed errors. The errors are here simply the differences from the mean.</p></div><div id="fn5"><p><sup>5</sup>&nbsp;The <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> resembles the <a href="normal-distribution.html"><span class="text-1f78b4"><i class="fas fa-dice-one"></i></span> normal distribution</a>, but has heavier tails. These account for the extra uncertainty of estimating <span class="math inline">\(\sigma\)</span> by <span class="text-nowrap"><span class="math inline">\(s\)</span>.</span> With more observations, <span class="math inline">\(s\)</span> becomes more precise, and the <span class="text-nowrap"><span class="math inline">\(t\)</span>-distribution</span> approaches the normal distribution.</p></div></div><p>There is no single formula to compute a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value:</span> it depends on the test statistic and its distribution under <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span> For the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value,</span> it is the area under the curve beyond the observed value, in both directions:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-tdist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bell-shaped curve of probability density against the t-value, centered at 0. A dotted line marks the observed t-value at about -2.7, and the small areas in both tails, beyond -2.7 and beyond 2.7, are shaded.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="hypothesis-testing_files/figure-html/fig-tdist-1.png" class="img-fluid figure-img" width="576">
+<img src="hypothesis-testing_files/figure-html/fig-tdist-1.png" class="img-fluid figure-img" alt="Bell-shaped curve of probability density against the t-value, centered at 0. A dotted line marks the observed t-value at about -2.7, and the small areas in both tails, beyond -2.7 and beyond 2.7, are shaded." width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Distribution of the <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> if <span class="math inline">\(H_0\)</span> is true <span class="text-nowrap">(<span class="math inline">\(t\)</span>-distribution</span> with 29 degrees of freedom). The dotted line marks the observed <span class="text-nowrap"><span class="math inline">\(t\)</span>-value.</span> The blue area is the probability of a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least this far from zero (the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value).</span>
@@ -633,10 +633,10 @@ Why <em>95%</em> confidence intervals?
 <p>Whether an effect matters in practice is a subject-matter judgment, not a statistical one (e.g., a drop of less than 5 mmHg may not be worth taking a medicine). Once that is decided, the interval can distinguish situations that a <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> cannot:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ci" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-ci" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four estimates with their 95% confidence intervals, on an axis of change in blood pressure with a dotted line at 0 and a gray band from minus delta to delta. First, labeled significant, relevant: a wide interval entirely below minus delta. Second, labeled significant, not relevant: a narrow interval inside the band, just below zero. Third, labeled not significant, inconclusive: a very wide interval that includes zero and extends beyond both edges of the band. Fourth, labeled not significant, not relevant: an interval around zero, inside the band.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="hypothesis-testing_files/figure-html/fig-ci-1.png" class="img-fluid figure-img" width="576">
+<img src="hypothesis-testing_files/figure-html/fig-ci-1.png" class="img-fluid figure-img" alt="Four estimates with their 95% confidence intervals, on an axis of change in blood pressure with a dotted line at 0 and a gray band from minus delta to delta. First, labeled significant, relevant: a wide interval entirely below minus delta. Second, labeled significant, not relevant: a narrow interval inside the band, just below zero. Third, labeled not significant, inconclusive: a very wide interval that includes zero and extends beyond both edges of the band. Fourth, labeled not significant, not relevant: an interval around zero, inside the band." width="576">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% confidence intervals. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.
@@ -787,7 +787,7 @@ Common misconceptions about confidence intervals
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hypothesis-testing_files/figure-html/quizci-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="hypothesis-testing_files/figure-html/quizci-1.png" class="img-fluid figure-img" alt="An estimate of the change in blood pressure at -3.2 mmHg with its 95% confidence interval from -8.1 to 1.7 mmHg, on an axis from -10 to 10, with a dotted line at 0 and a gray band from -5 to 5 mmHg." width="576"></p>
 <figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.</figcaption>
 </figure>
 </div>
@@ -821,7 +821,7 @@ Hint
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hypothesis-testing_files/figure-html/quizci-answer-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="hypothesis-testing_files/figure-html/quizci-answer-1.png" class="img-fluid figure-img" alt="An estimate of the change in blood pressure at -3.2 mmHg with its 95% confidence interval from -8.1 to 1.7 mmHg, on an axis from -10 to 10, with a dotted line at 0 and a gray band from -5 to 5 mmHg." width="576"></p>
 <figcaption>The trial in this question. The point is the estimate, the line is its 95% confidence interval. The gray area marks effects smaller than <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> the smallest effect that matters in practice.</figcaption>
 </figure>
 </div>
@@ -904,7 +904,7 @@ Learn why
 <strong>C.</strong> The boundaries are no sharper than the significance level they come from. Values just outside the interval are hardly less compatible with the data than values just inside it.<br>
 <strong>D.</strong> This is the textbook definition.</p>
 <p>For a more in depth explanation, please refer to the video:</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M?enablejsapi=1" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M?enablejsapi=1" title="Video on confidence intervals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
 </div>
 </div>

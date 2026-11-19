@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./dummy-variables.html" rel="next">
+<link href="./categorical-variables.html" rel="next">
 <link href="./GLM.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -59,12 +59,12 @@ div.csl-indent {
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -412,8 +412,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -483,10 +483,10 @@ Why not just several one-on-one analyses?
 <p><small><em>Estimating the effect of one variable without accounting for the effect of others can lead to a biased result.</em></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-ovb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-ovb" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of the variables X, O and Y. Left, actual relationship: X and O both have an arrow to Y, and a line connects X and O. Right, observed relationship: O is faded out, and only a single arrow from X to Y remains, labeled biased.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="multiple-linear-regression_files/figure-html/fig-ovb-1.png" class="img-fluid figure-img" width="2100">
+<img src="multiple-linear-regression_files/figure-html/fig-ovb-1.png" class="img-fluid figure-img" alt="Two diagrams of the variables X, O and Y. Left, actual relationship: X and O both have an arrow to Y, and a line connects X and O. Right, observed relationship: O is faded out, and only a single arrow from X to Y remains, labeled biased." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ovb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{O}\)</span> is not included in the model. Arrows are effects on the outcome <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{Y}\)</span>);</span> the line means that <span class="math inline">\(\boldsymbol{O}\)</span> and <span class="math inline">\(\boldsymbol{X}\)</span> are related.
@@ -516,10 +516,10 @@ Example
 <p><small><em>A special case of omitted-variable bias—a confounder can create the illusion of a relationship where none exists.</em></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-confounding" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-confounding" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of the variables X, C and Y. Left, actual relationship: only C has an arrow to Y, and a line connects X and C; there is no arrow from X to Y. Right, observed relationship: C is faded out, and an arrow from X to Y appears, labeled biased.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="multiple-linear-regression_files/figure-html/fig-confounding-1.png" class="img-fluid figure-img" width="2100">
+<img src="multiple-linear-regression_files/figure-html/fig-confounding-1.png" class="img-fluid figure-img" alt="Two diagrams of the variables X, C and Y. Left, actual relationship: only C has an arrow to Y, and a line connects X and C; there is no arrow from X to Y. Right, observed relationship: C is faded out, and an arrow from X to Y appears, labeled biased." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: True relationship (left) and biased estimate (right) if <span class="math inline">\(\boldsymbol{C}\)</span> is not included in the model. Arrows are effects on the outcome <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{Y}\)</span>);</span> the line means that <span class="math inline">\(\boldsymbol{C}\)</span> and <span class="math inline">\(\boldsymbol{X}\)</span> are related.
@@ -550,10 +550,10 @@ Example
 <p><small><em>An example of confounding. Trends can appear, disappear and even completely change direction when including another variable in the model.</em></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-simpson" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two scatter plots of y against x1 with the same points. Left, excluding x2: one regression line through all points slopes downward. Right, including x2: the points form three groups, each with its own regression line, and all three lines slope upward.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="multiple-linear-regression_files/figure-html/fig-simpson-1.png" class="img-fluid figure-img" width="2100">
+<img src="multiple-linear-regression_files/figure-html/fig-simpson-1.png" class="img-fluid figure-img" alt="Two scatter plots of y against x1 with the same points. Left, excluding x2: one regression line through all points slopes downward. Right, including x2: the points form three groups, each with its own regression line, and all three lines slope upward." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpson-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Observed trend excluding (left) and including (right) a grouping variable <span class="text-nowrap">(<span class="math inline">\(x_2\)</span>).</span>
@@ -627,11 +627,11 @@ Table&nbsp;1: Success rates of kidney stone removal methods by size.
 </details>
 <p>This part is split into three chapters:</p>
 <ol type="1">
-<li><a href="dummy-variables.html">Dummy Variables</a> <small>(categorical explanatory variables)</small></li>
+<li><a href="categorical-variables.html">Categorical Variables</a> <small>(dummy variables)</small></li>
 <li><a href="additive-effects.html">Additive Effects</a> <small>(more than one explanatory variable)</small></li>
 <li><a href="interaction.html">Interaction</a> <small>(when the effect of one variable depends on another)</small></li>
 </ol>
-<p>To get started, read the <a href="./dummy-variables.html#summary-dummy">summary on dummy variables</a>.</p>
+<p>To get started, read the <a href="./categorical-variables.html#summary-dummy">summary on categorical variables</a>.</p>
 <p>All three chapters end with the regression tables app to test your knowledge and the ultimate goal: A full analysis for you to do in RStudio.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1345,8 +1345,8 @@ What level of detail do I need for the exam?
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dummy-variables.html" class="pagination-link" aria-label="Dummy Variables">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./categorical-variables.html" class="pagination-link" aria-label="Categorical Variables">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

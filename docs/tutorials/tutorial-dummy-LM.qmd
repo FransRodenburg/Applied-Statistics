@@ -1,5 +1,5 @@
 ---
-title: "Tutorial - Dummy Variables (Linear Model)"
+title: "Tutorial - Categorical Variables (Linear Model)"
 author: "Dr. F.J. Rodenburg"
 format: html
 editor: visual

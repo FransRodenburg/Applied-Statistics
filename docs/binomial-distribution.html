@@ -74,12 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -1980,8 +1980,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -2344,10 +2344,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><small><em>What is the probability of a given number of successes</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-dbinom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of the probability of each number of successes k from 0 to 10, for 10 trials with success probability 0.75. The probability is highest at 8 (about 0.28), followed by 7 (0.25), and nearly zero below 4.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="binomial-distribution_files/figure-html/fig-dbinom-1.png" class="img-fluid figure-img" width="2100">
+<img src="binomial-distribution_files/figure-html/fig-dbinom-1.png" class="img-fluid figure-img" alt="Bar chart of the probability of each number of successes k from 0 to 10, for 10 trials with success probability 0.75. The probability is highest at 8 (about 0.28), followed by 7 (0.25), and nearly zero below 4." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Probability mass function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
@@ -2423,10 +2423,10 @@ Explanation
 <p>The number of successes cannot be negative, nor larger than the number of trials. If <span class="math inline">\(p\)</span> is close to zero or one, the remaining probability gets pressed up into the side. If you increase <span class="text-nowrap"><span class="math inline">\(n\)</span>,</span> or move <span class="math inline">\(p\)</span> closer to a half, you move further away from zero, so this skew becomes less apparent:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pskew" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pskew" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Grid of nine binomial bar charts, with n = 10, 30 and 100 trials in the rows and p = 0.2, 0.5 and 0.8 in the columns. With p = 0.5, the bars are symmetric; with p = 0.2 they are skewed to the right and with p = 0.8 to the left. The skew becomes less visible as n increases.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="binomial-distribution_files/figure-html/fig-pskew-1.png" class="img-fluid figure-img" width="2100">
+<img src="binomial-distribution_files/figure-html/fig-pskew-1.png" class="img-fluid figure-img" alt="Grid of nine binomial bar charts, with n = 10, 30 and 100 trials in the rows and p = 0.2, 0.5 and 0.8 in the columns. With p = 0.5, the bars are symmetric; with p = 0.2 they are skewed to the right and with p = 0.8 to the left. The skew becomes less visible as n increases." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pskew-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Increasing <span class="text-nowrap"><span class="math inline">\(n\)</span>,</span> or moving <span class="math inline">\(p\)</span> closer to <span class="math inline">\(0.5\)</span> results in a more symmetric distribution.
@@ -2471,7 +2471,7 @@ Example
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="Plot produced by the example code: vertical bars of y against x from 0 to 10, highest at 8 (about 0.30) and nearly zero below 5." width="672"></p>
 </figure>
 </div>
 </div>
@@ -2501,7 +2501,7 @@ Example
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" alt="Plot produced by the example code: a bar chart for x from 0 to 10, highest at 8 (about 0.30) and nearly zero below 5." width="672"></p>
 </figure>
 </div>
 </div>
@@ -2518,10 +2518,10 @@ Example
 <p><small><em>What is the probability up till a given point</em> <span class="text-nowrap"><span class="math inline">\(k\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pbinom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of a binomial distribution with 10 trials and p = 0.75, in which the bars from 0 up to and including a number k, here 5, are highlighted and bracketed with a question mark and a percent sign; the bars beyond k are gray.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="binomial-distribution_files/figure-html/fig-pbinom-3.png" class="img-fluid figure-img" width="2100">
+<img src="binomial-distribution_files/figure-html/fig-pbinom-3.png" class="img-fluid figure-img" alt="Bar chart of a binomial distribution with 10 trials and p = 0.75, in which the bars from 0 up to and including a number k, here 5, are highlighted and bracketed with a question mark and a percent sign; the bars beyond k are gray." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Cumulative distribution function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
@@ -2693,10 +2693,10 @@ Examples
 <p><small><em>Up till what point does the probability equal at least</em> <span class="text-nowrap"><span class="math inline">\(p\)</span>?</span></small></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-qbinom" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-qbinom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar chart of a binomial distribution with 10 trials and p = 0.75, in which the bars from 0 up to an unknown number are highlighted and bracketed with the label p; the unknown number, here 5, is marked with a question mark.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="binomial-distribution_files/figure-html/fig-qbinom-1.png" class="img-fluid figure-img" width="2100">
+<img src="binomial-distribution_files/figure-html/fig-qbinom-1.png" class="img-fluid figure-img" alt="Bar chart of a binomial distribution with 10 trials and p = 0.75, in which the bars from 0 up to an unknown number are highlighted and bracketed with the label p; the unknown number, here 5, is marked with a question mark." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qbinom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Quantile function of a binomial distribution with <span class="math inline">\(n = 10\)</span> trials and <span class="text-nowrap"><span class="math inline">\(p = 0.75\)</span>.</span>
@@ -2928,7 +2928,7 @@ Hint
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="binomial-distribution_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" alt="Bar chart of the probability of each number of flowers from 0 to 30, highest around 7. The bars for 10 flowers or more are highlighted and bracketed; they decrease from about 0.09 at 10 to nearly zero at 15." width="2100"></p>
 </figure>
 </div>
 </div>

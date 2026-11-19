@@ -1,5 +1,5 @@
 ---
-title: "Tutorial - Dummy Variables (Poisson GLM)"
+title: "Tutorial - Categorical Variables (Poisson GLM)"
 author: "Dr. F.J. Rodenburg"
 format: html
 editor: visual

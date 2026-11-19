@@ -74,12 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7e1db4ec85030d76b683a481f3840a35.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
@@ -427,8 +427,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dummy-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Dummy Variables</span></span></a>
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -505,10 +505,10 @@ window.Quarto = {
 <span id="interaction-slope" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-slope" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatter plot of mass (g) against age (years) for fish on diets A and B, each diet with its own regression line. Both lines start near 2 g at age 0, but the line of diet B rises much more steeply than that of diet A.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-slope-1.png" class="img-fluid figure-img" width="2100">
+<img src="interaction_files/figure-html/fig-interaction-slope-1.png" class="img-fluid figure-img" alt="Scatter plot of mass (g) against age (years) for fish on diets A and B, each diet with its own regression line. Both lines start near 2 g at age 0, but the line of diet B rises much more steeply than that of diet A." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.1: Interaction between a continuous and categorical explanatory variable. The effect of age differs, depending on the diet. The resulting lines are not parallel. <small>(Age and mass of 40 fish on two diets.)</small>
@@ -611,10 +611,10 @@ Explanation
 <p>In the previous chapter, both groups shared a single slope, forcing the lines to be parallel. An interaction removes that restriction: Each group gets its own slope. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in slope</strong> for group B:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of two rising lines of eta against x1 that are not parallel, group A below group B. A dot where the line of group A crosses x1 = 0 is labeled beta 0, and the distance up to group B at x1 = 0 is labeled beta 2. From x1 = 1 to x1 = 2, group A rises by beta 1, and group B rises by beta 1 plus an extra amount labeled beta 3.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-slope-coef-1.png" class="img-fluid figure-img" width="672">
+<img src="interaction_files/figure-html/fig-interaction-slope-coef-1.png" class="img-fluid figure-img" alt="Diagram of two rising lines of eta against x1 that are not parallel, group A below group B. A dot where the line of group A crosses x1 = 0 is labeled beta 0, and the distance up to group B at x1 = 0 is labeled beta 2. From x1 = 1 to x1 = 2, group A rises by beta 1, and group B rises by beta 1 plus an extra amount labeled beta 3." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.2: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> is continuous and <span class="math inline">\(x_2\)</span> a dummy variable.
@@ -629,20 +629,20 @@ Figure&nbsp;5.2: Visual interpretation of interaction when <span class="math inl
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Intercept</th>
-<th style="text-align: center;">Slope</th>
+<th>Intercept</th>
+<th>Slope</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>A</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\beta_1\)</span></td>
 </tr>
 <tr class="even">
 <td><strong>B</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -704,6 +704,20 @@ x:group[T.B]     1.1477      0.179      6.413      0.000       0.785       1.511
 <summary>
 What if there are more than two groups?
 </summary>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-interaction-three-groups" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatter plot of mass (g) against age (years) for fish on diets A, B and C, each diet with its own regression line. The three lines start between about 2 and 3 g at age 0, but rise with different slopes: diet B most steeply, diet A least, and diet C in between.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interaction-three-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interaction_files/figure-html/fig-interaction-three-groups-1.png" class="img-fluid figure-img" alt="Scatter plot of mass (g) against age (years) for fish on diets A, B and C, each diet with its own regression line. The three lines start between about 2 and 3 g at age 0, but rise with different slopes: diet B most steeply, diet A least, and diet C in between." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-three-groups-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: The data of <a href="#fig-interaction-slope" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> with a third diet, and the estimated line of each diet.<br><small>(Age and mass of 60 fish on three diets.)</small>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>With more than two groups, every group except the reference group gets its own offset from the intercept and its own difference from the reference slope:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
@@ -844,13 +858,13 @@ C - B -0.666387  0.186914 -3.565204  2.190286e-03</code></pre>
 <span id="interaction-dummy" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-dummy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-dummy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dry mass (g) of plants of varieties A and B, with and without treatment, shown as points with a horizontal line at each group mean. Treatment increases dry mass a little in variety A (from about 10 g to 11 g) and much more in variety B (from about 12 g to 16 g).">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-dummy-1.png" class="img-fluid figure-img" style="width:71.0%">
+<img src="interaction_files/figure-html/fig-interaction-dummy-1.png" class="img-fluid figure-img" style="width:71.0%" alt="Dry mass (g) of plants of varieties A and B, with and without treatment, shown as points with a horizontal line at each group mean. Treatment increases dry mass a little in variety A (from about 10 g to 11 g) and much more in variety B (from about 12 g to 16 g).">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-dummy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.3: Interaction between two categorical explanatory variables. The effect of treatment differs, depending on the group (and vice versa). This is sometimes called difference-in-differences. <small>(Dry mass of 40 plants of two varieties, with and without fertilizer treatment.)</small>
+Figure&nbsp;5.4: Interaction between two categorical explanatory variables. The effect of treatment differs, depending on the group (and vice versa). This is sometimes called difference-in-differences. <small>(Dry mass of 40 plants of two varieties, with and without fertilizer treatment.)</small>
 </figcaption>
 </figure>
 </div>
@@ -945,13 +959,13 @@ Explanation
 <p>In the previous chapter, the difference between treated and untreated was the same in both groups. An interaction removes that restriction: Each group gets its own difference. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in differences</strong> for group B:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-dummy-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-dummy-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram with x1 at 0 (group A) and 1 (group B), with a line for untreated and a steeper line for treated above it. A dot for untreated group A is labeled beta 0, and the distance up to treated group A is labeled beta 2. From group A to group B, the untreated line rises by beta 1, and the treated line by beta 1 plus an extra amount labeled beta 3.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-dummy-coef-1.png" class="img-fluid figure-img" width="672">
+<img src="interaction_files/figure-html/fig-interaction-dummy-coef-1.png" class="img-fluid figure-img" alt="Diagram with x1 at 0 (group A) and 1 (group B), with a line for untreated and a steeper line for treated above it. A dot for untreated group A is labeled beta 0, and the distance up to treated group A is labeled beta 2. From group A to group B, the untreated line rises by beta 1, and the treated line by beta 1 plus an extra amount labeled beta 3." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-dummy-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.4: The difference between group B and group A is <span class="math inline">\(\beta_1\)</span> in untreated, and <span class="math inline">\(\beta_1 + \beta_3\)</span> in treated. The difference between treated and untreated in group A is <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>.</span>
+Figure&nbsp;5.5: The difference between group B and group A is <span class="math inline">\(\beta_1\)</span> in untreated, and <span class="math inline">\(\beta_1 + \beta_3\)</span> in treated. The difference between treated and untreated in group A is <span class="text-nowrap"><span class="math inline">\(\beta_2\)</span>.</span>
 </figcaption>
 </figure>
 </div>
@@ -968,20 +982,20 @@ Figure&nbsp;5.4: The difference between group B and group A is <span class="math
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Untreated</th>
-<th style="text-align: center;">Treated</th>
+<th>Untreated</th>
+<th>Treated</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>A</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
 </tr>
 <tr class="even">
 <td><strong>B</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_1\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1001,7 +1015,7 @@ Example
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Fitted to the data of <a href="#fig-interaction-dummy" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, the model gives the following estimates:</p>
+<p>Fitted to the data of <a href="#fig-interaction-dummy" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>, the model gives the following estimates:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
 <div class="tab-content" data-group="r-python">
@@ -1048,13 +1062,13 @@ group[T.B]:treatment[T.yes]     2.5129      0.728      3.452      0.001       1.
 <span id="interaction-slope-slope" class="tab-anchor"></span>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-slope-slope" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-slope-slope" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three-dimensional plot of dry mass (g) against added nitrogen (0 to 1 g) and phosphorus (0 to 1 g), with a curved, twisted regression surface through the points. Dry mass is highest where both nitrogen and phosphorus are high.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-slope-slope-1.png" class="img-fluid figure-img" width="2100">
+<img src="interaction_files/figure-html/fig-interaction-slope-slope-1.png" class="img-fluid figure-img" alt="Three-dimensional plot of dry mass (g) against added nitrogen (0 to 1 g) and phosphorus (0 to 1 g), with a curved, twisted regression surface through the points. Dry mass is highest where both nitrogen and phosphorus are high." width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-slope-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.5: Interaction between two continuous explanatory variables. Neither nitrogen, nor phosphorus does much on its own, but adding both results in a marked increase. The resulting regression plane is curved.<br><small>(Dry mass of 59 plants, grown with different amounts of added nitrogen and phosphorus.)</small>
+Figure&nbsp;5.6: Interaction between two continuous explanatory variables. Neither nitrogen, nor phosphorus does much on its own, but adding both results in a marked increase. The resulting regression plane is curved.<br><small>(Dry mass of 59 plants, grown with different amounts of added nitrogen and phosphorus.)</small>
 </figcaption>
 </figure>
 </div>
@@ -1148,13 +1162,13 @@ Explanation
 <p>In the previous chapter, the slope of <span class="math inline">\(x_1\)</span> was the same at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> which made the model a flat plane. An interaction removes that restriction: The plane is curved. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>change in the slope</strong> of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-interaction-slope-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-interaction-slope-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of a twisted plane above x1 and x2, each from 0 to 1, titled positive interaction and negative interaction. In both, a dot at the corner where both are 0 is labeled beta 0, the rise along x1 at x2 = 0 is labeled beta 1, and the rise along x2 at x1 = 0 is labeled beta 2. At x2 = 1, the rise along x1 differs from beta 1 by an amount labeled beta 3: larger with positive interaction, smaller with negative interaction.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-interaction-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="interaction_files/figure-html/fig-interaction-slope-slope-coef-1.png" class="img-fluid figure-img" width="672">
+<img src="interaction_files/figure-html/fig-interaction-slope-slope-coef-1.png" class="img-fluid figure-img" alt="Two diagrams of a twisted plane above x1 and x2, each from 0 to 1, titled positive interaction and negative interaction. In both, a dot at the corner where both are 0 is labeled beta 0, the rise along x1 at x2 = 0 is labeled beta 1, and the rise along x2 at x1 = 0 is labeled beta 2. At x2 = 1, the rise along x1 differs from beta 1 by an amount labeled beta 3: larger with positive interaction, smaller with negative interaction." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.6: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous. The slope of <span class="math inline">\(x_1\)</span> is <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_2 = 0\)</span> and <span class="math inline">\(\beta_1 + \beta_3\)</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 1\)</span>:</span> Higher with positive interaction (left, the shape of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>), lower with negative interaction (right).
+Figure&nbsp;5.7: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous. The slope of <span class="math inline">\(x_1\)</span> is <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_2 = 0\)</span> and <span class="math inline">\(\beta_1 + \beta_3\)</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 1\)</span>:</span> Higher with positive interaction (left, the shape of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>), lower with negative interaction (right).
 </figcaption>
 </figure>
 </div>
@@ -1163,7 +1177,7 @@ Figure&nbsp;5.6: Visual interpretation of interaction when <span class="math inl
 <p>Grouping the terms shows that <span class="math inline">\(x_2\)</span> changes both the intercept and the slope of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>:</span></p>
 <p><span class="math display">\[\eta = \underbrace{(\beta_0 + \beta_2 \cdot x_2)}_{\text{intercept}} + \underbrace{(\beta_1 + \beta_3 \cdot x_2)}_{\text{slope}} \cdot x_1\]</span></p>
 <table class="w-auto caption-top table">
-<caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
+<caption><span class="text-nowrap">Example interpretation of the coefficients.</span></caption>
 <colgroup>
 <col style="width: 15%">
 <col style="width: 42%">
@@ -1172,25 +1186,25 @@ Figure&nbsp;5.6: Visual interpretation of interaction when <span class="math inl
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Intercept</th>
-<th style="text-align: center;">Slope</th>
+<th>Intercept</th>
+<th>Slope</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(x_2 = 0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\beta_1\)</span></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(x_2 = 1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
+<td><span class="math inline">\(\beta_0 + \beta_2\)</span></td>
+<td><span class="math inline">\(\beta_1 + \beta_3\)</span></td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(x_2 = 2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_0 + 2 \cdot \beta_2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_1 + 2 \cdot \beta_3\)</span></td>
+<td><span class="math inline">\(\beta_0 + 2 \cdot \beta_2\)</span></td>
+<td><span class="math inline">\(\beta_1 + 2 \cdot \beta_3\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1210,7 +1224,7 @@ Example
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Fitted to the data of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>, the model gives the following estimates:</p>
+<p>Fitted to the data of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>, the model gives the following estimates:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
 <div class="tab-content" data-group="r-python">
@@ -1355,7 +1369,7 @@ x:groupB    -0.5183927 0.13891655 -3.731684 6.543836e-04</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" alt="Four panels, A to D, each showing mass (g) against age (0 to 5 years) with a line for diet A and a line for diet B. In every panel, the line of diet A rises from about 2.1 g to 4.5 g, and the line of diet B starts at about 6 g at age 0. At age 5, the line of diet B ends at about 11 g in panel A, 0.8 g in panel B, 5.8 g in panel C and 8.4 g in panel D." width="2100"></p>
 </figure>
 </div>
 </div>
@@ -1393,7 +1407,7 @@ x:groupB    -0.5183927 0.13891655 -3.731684 6.543836e-04</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interaction_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="interaction_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" alt="The same four panels, with panel C highlighted and the others grayed out. In panel C, the line of diet A rises from about 2.1 g to 4.5 g, while the line of diet B is nearly flat, falling slightly from about 6 g to 5.8 g." width="2100"></p>
 </figure>
 </div>
 </div>
