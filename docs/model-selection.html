@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Model Selection – Applied Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./interaction.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-29a84dff168effbb1abebb2fcaba6d23.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ba5cde3aa59b40a0d0403de1480df751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b1455952e548b27ff007d34d4ae8c265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ba5cde3aa59b40a0d0403de1480df751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating slimcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      refreshSafariScrollbar();
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./model-selection.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Selection</span></a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Statistics</a> 
+        <div class="sidebar-tools-main">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-1-label"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-1f78b4&quot;><i class=&quot;fas fa-dice&quot;></i></span> Probability Distributions">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./normal-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-one"></i></span> Normal Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./poisson-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-two"></i></span> Poisson Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./binomial-distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./simple-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-2-label"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-33a02c&quot;><i class=&quot;fas fa-chart-line&quot;></i></span> Simple Linear Regression">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Ordinary Linear Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./GLM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./multiple-linear-regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-33a02c&quot;><i class=&quot;fas fa-layer-group&quot;></i></span> Multiple Linear Regression">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Categorical Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./additive-effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Additive Effects</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./interaction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./model-selection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#research-objectives" id="toc-research-objectives" class="nav-link active" data-scroll-target="#research-objectives"><span class="header-section-number">6.1</span> Type of Research Question</a></li>
+  <li><a href="#in-advance" id="toc-in-advance" class="nav-link" data-scroll-target="#in-advance"><span class="header-section-number">6.2</span> Choosing the model in advance</a>
+  <ul class="collapse">
+  <li><a href="#which-variables" id="toc-which-variables" class="nav-link" data-scroll-target="#which-variables">Which variables to include</a></li>
+  <li><a href="#planned-comparisons" id="toc-planned-comparisons" class="nav-link" data-scroll-target="#planned-comparisons">Planned comparisons</a></li>
+  <li><a href="#after-fitting" id="toc-after-fitting" class="nav-link" data-scroll-target="#after-fitting">Changing the model after fitting</a></li>
+  </ul></li>
+  <li><a href="#comparing-models" id="toc-comparing-models" class="nav-link" data-scroll-target="#comparing-models"><span class="header-section-number">6.3</span> Measures for comparing models</a></li>
+  <li><a href="#sec-data-driven" id="toc-sec-data-driven" class="nav-link" data-scroll-target="#sec-data-driven"><span class="header-section-number">6.4</span> What data-driven selection does to <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and estimates</a></li>
+  <li><a href="#sample-size" id="toc-sample-size" class="nav-link" data-scroll-target="#sample-size"><span class="header-section-number">6.5</span> Parameters vs.&nbsp;sample size</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content" tabindex="-1">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./multiple-linear-regression.html"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</a></li><li class="breadcrumb-item"><a href="./model-selection.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Selection</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="model-selection" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Selection</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><small><i>How to choose the right model for the research question.</i></small></p>
+<hr>
+<p>So far, we used regression models to estimate the direction, size and significance of effects. This is called <em>inference</em>, and it is one of three ways in which a model can be used <span class="citation" data-cites="shmueli2010 tredennick2021"><a href="references.html#ref-shmueli2010" role="doc-biblioref">[1]</a>, <a href="references.html#ref-tredennick2021" role="doc-biblioref">[2]</a></span>. Valid inference requires the model to be chosen <em>before</em> seeing the outcome. Yet, many textbooks, papers and even statistics courses teach choosing the ‘better’ looking model with measures like AIC. How problematic that is depends on the type of research question.</p>
+<section id="research-objectives" class="level2 page-columns page-full" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="research-objectives"><span class="header-section-number">6.1</span> Type of Research Question</h2>
+<p>Research questions in empirical<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> sciences can be divided into three types:</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Empirical sciences collect evidence primarily through observations. A counterexample is mathematics, where proofs are derived based on axiomatic truths.</p></div></div><div class="tabset-margin-container"></div><div class="panel-tabset goal-select" data-group="goal">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Inference</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Exploration</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Prediction</a></li></ul>
+<div class="tab-content goal-select" data-group="goal">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<span id="goal-inference" class="tab-anchor"></span>
+<p><small><em>Estimating the size and direction of an effect; testing pre-specified hypotheses.</em></small></p>
+<div class="block-label">
+<p>Example questions:</p>
+</div>
+<ul>
+<li>Does a compound affect blood pressure?</li>
+<li>Which diet is most effective, and by how much?</li>
+<li>Does a medicine work differently in men and women? <small><span class="text-grey">(example of an <a href="interaction.html">interaction</a>)</span></small></li>
+</ul>
+<div class="block-label">
+<p>Model selection:</p>
+</div>
+<p>To the extent possible, the primary outcome, model and any hypotheses should be <strong>chosen in advance</strong>, based on expert knowledge. Some fields even require <a href="https://www.cos.io/initiatives/prereg" target="_blank" rel="noreferrer noopener">preregistration</a>.</p>
+<div class="checklist">
+<ul>
+<li><span class="ok">✓</span> Choosing a flexible model from the start (e.g., negative binomial instead of Poisson; a spline instead of a linear effect), or making it <em>more</em> flexible when diagnostics reveal a problem you did not foresee, such as a curved relationship.</li>
+<li><span class="ok">✓</span> Reducing dimensions without using the outcome, for example with <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noreferrer noopener">PCA</a> on the explanatory variables.</li>
+<li><span class="ok">✓</span> Comparing models when the choice of model <em>is</em> the answer to a planned question.<br><small><span class="text-grey">(e.g., a model with and without interaction, or competing hypotheses compared by AIC <span class="citation" data-cites="burnham2002"><a href="references.html#ref-burnham2002" role="doc-biblioref">[3]</a></span>)</span></small></li>
+<li><span class="no">✗</span> Using a simpler or less robust analysis because a check found nothing (e.g., a Poisson model after a non-significant test for overdispersion) <span class="citation" data-cites="rasch2011 zimmerman2004"><a href="references.html#ref-rasch2011" role="doc-biblioref">[4]</a>, <a href="references.html#ref-zimmerman2004" role="doc-biblioref">[5]</a></span>.</li>
+<li><span class="no">✗</span> Adding or dropping terms by their <span class="text-nowrap"><span class="math inline">\(p\)</span>-values,</span> adjusted <span class="text-nowrap"><span class="math inline">\(R^2\)</span>,</span> AIC, BIC or another measure of fit (see <a href="#sec-data-driven" class="quarto-xref"><span>Section 6.4</span></a>).</li>
+</ul>
+</div>
+<div class="block-label">
+<p>Reporting:</p>
+</div>
+<p>Mention every choice made in analysis, and show whether another reasonable choice would change the conclusion. A convention used in some fields is reporting <em>two</em> models: One with only the variables of interest and one that adds all suspected confounders <span class="citation" data-cites="vonelm2007"><a href="references.html#ref-vonelm2007" role="doc-biblioref">[6]</a></span>.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<span id="goal-exploration" class="tab-anchor"></span>
+<p><small><em>Making sense of large datasets; finding patterns for follow-up studies; generating new hypotheses.</em></small></p>
+<div class="block-label">
+<p>Example questions:</p>
+</div>
+<ul>
+<li>How are 20 biomarkers for sepsis related to each other?</li>
+<li>What adaptations to drought are typical of plants growing in dunes?</li>
+<li>Do some bird species respond more strongly to urban noise than others? <small><span class="text-grey">(<em>After</em> concluding that birds respond significantly to urban noise)</span></small></li>
+</ul>
+<div class="block-label">
+<p>Model selection:</p>
+</div>
+<p>Any method is acceptable, including choosing variables based on the <a href="#comparing-models">measures for comparing models</a> later in this chapter. However, some methods are less stable than others. With stepwise selection, which adds or removes one variable at a time, a slightly different sample often leads to a different set of variables, especially when the variables are <a href="#sample-size">correlated</a> <span class="citation" data-cites="heinze2018"><a href="references.html#ref-heinze2018" role="doc-biblioref">[7]</a></span>. Treat selected variables as a ‘plausible set’ at best.</p>
+<div class="block-label">
+<p>Reporting:</p>
+</div>
+<p>Report everything you tried, and clearly indicate—<strong>including in the abstract</strong>—that the study is exploratory in nature. The same data cannot be used to generate and test the same hypothesis (i.e., moving the goalpost after kicking the ball).</p>
+<div class="checklist">
+<ul>
+<li><span class="ok">✓</span> Presenting the findings as hypotheses for a follow-up study.</li>
+<li><span class="no">✗</span> Disguising an exploratory study as confirmational.<br><small><span class="text-grey">(e.g., “We found a significant effect of A and B, but not of C.”)</span></small></li>
+</ul>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<span id="goal-prediction" class="tab-anchor"></span>
+<p><small><em>Predicting the outcome of new observations.</em></small></p>
+<div class="block-label">
+<p>Example questions:</p>
+</div>
+<ul>
+<li>Which patients should receive treatment?</li>
+<li>What is a patient’s risk of a heart attack in the next ten years?</li>
+<li>Which coral reefs will bleach during the next marine heatwave?</li>
+</ul>
+<div class="block-label">
+<p>Model selection:</p>
+</div>
+<p>Predictive modeling uses a holdout set, or cross-validation, to report performance on unseen observations. Model selection is fine for predictive modeling, as long as you <strong>include any model selection in the training procedure</strong>. Additionally, model selection can itself <a href="#sample-size">overfit</a>, because the more models you compare, the more likely the best one partly fits noise in the data used to choose it <span class="citation" data-cites="cawley2010"><a href="references.html#ref-cawley2010" role="doc-biblioref">[8]</a></span>.</p>
+<div class="checklist">
+<ul>
+<li><span class="ok">✓</span> Including any variable that improves the predictions, as estimated by cross-validation or approximated by AIC <span class="citation" data-cites="stone1977"><a href="references.html#ref-stone1977" role="doc-biblioref">[9]</a></span>.</li>
+<li><span class="no">✗</span> Using all data (before splitting) to scale or select variables, or any other form of <a href="https://en.wikipedia.org/wiki/Leakage_(machine_learning)" target="_blank" rel="noreferrer noopener">data leakage</a>.</li>
+<li><span class="no">✗</span> Using the same held-out data to choose the model <em>and</em> report its predictive performance. <br><small><span class="text-grey">(That requires a separate test set, or <em>nested</em> cross-validation.)</span></small></li>
+</ul>
+</div>
+<div class="block-label">
+<p>Reporting:</p>
+</div>
+<p>Report how well the chosen model predicts data that were not used to fit or choose it, using a separate test set or cross-validation. Performance on data used to fit or choose the model will be optimistically biased.</p>
+<p>Predictive modeling works quite differently from what this book covers. A great resource is <a href="https://www.statlearning.com/" target="_blank" rel="noreferrer noopener">An Introduction to Statistical Learning</a>, free to download in an R and a Python edition. Ch. 5 covers cross-validation and Ch. 6 model selection.</p>
+</div>
+</div>
+</div>
+<p>A study can have several goals. For example, in clinical science, it is not uncommon to have a primary outcome with a planned, preregistered analysis, and subgroup analyses with looser rules, because these are considered exploratory. The most important takeaways:</p>
+<ol type="1">
+<li>Be transparent: Report every choice in the analysis, including what you tried and did not keep.</li>
+<li>Decide the goal before the analysis. It determines which choices are allowed, and a model that is ‘best’ for one goal can be inferior, or even wrong, for another <span class="citation" data-cites="shmueli2010"><a href="references.html#ref-shmueli2010" role="doc-biblioref">[1]</a></span>.</li>
+<li>Data used to choose a model cannot also be used to test it, whether by its <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> or by its predictive performance.</li>
+</ol>
+</section>
+<section id="in-advance" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="in-advance"><span class="header-section-number">6.2</span> Choosing the model in advance</h2>
+<div class="goal-row">
+<p><span class="goal-label">Applies to:</span> <span class="goal goal-infer">Inference</span> <span class="goal goal-explore goal-off" aria-hidden="true">Exploration</span> <span class="goal goal-predict goal-off" aria-hidden="true">Prediction</span></p>
+</div>
+<p>Standard <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and confidence intervals assume that the analysis was fixed before seeing the data <span class="citation" data-cites="ich1998"><a href="references.html#ref-ich1998" role="doc-biblioref">[10]</a></span>. Choices that <em>do not</em> use the outcome are generally safe, as they cannot bias the analysis toward significance. A choice that does use the outcome, such as a change after the <a href="#after-diagnostics">diagnostics</a>, should not depend on the estimate of interest <span class="citation" data-cites="ich1998 posch2012"><a href="references.html#ref-ich1998" role="doc-biblioref">[10]</a>, <a href="references.html#ref-posch2012" role="doc-biblioref">[11]</a></span>, and should err on the side of caution. This section explains how to make such choices, and <a href="#sec-data-driven" class="quarto-xref"><span>Section 6.4</span></a> what happens otherwise.</p>
+<section id="which-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="which-variables">Which variables to include</h3>
+<p>Whether a variable belongs in the model depends on how it is related to the explanatory variable of interest <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{X}\)</span>)</span> and to the outcome <span class="text-nowrap">(<span class="math inline">\(\boldsymbol{Y}\)</span>).</span> A directed acyclic graph (DAG) shows this as a diagram with an arrow from each cause to its effect. <small><span class="text-grey">(<em>Acyclic</em> means the graph never forms a loop.)</span></small></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Confounder</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Mediator</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">Collider</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><small><em>A confounder affects both the outcome</em> and <em>the variable of interest.</em></small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-confounder" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of the variables X, C and Y. Left, actual relationship: C has an arrow to X and one to Y; there is no arrow between X and Y. Right, without C in the model: C is faded out, and an arrow from X to Y appears, labeled biased.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confounder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-confounder-1.png" class="img-fluid figure-img" alt="Two diagrams of the variables X, C and Y. Left, actual relationship: C has an arrow to X and one to Y; there is no arrow between X and Y. Right, without C in the model: C is faded out, and an arrow from X to Y appears, labeled biased." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confounder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Confounding by <span class="text-nowrap"><span class="math inline">\(\boldsymbol{C}\)</span>:</span> actual relationship (left) and what the model estimates without <span class="math inline">\(\boldsymbol{C}\)</span> (right).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A confounder <span class="math inline">\(\boldsymbol{C}\)</span> affects both <span class="math inline">\(\boldsymbol{X}\)</span> and <span class="text-nowrap"><span class="math inline">\(\boldsymbol{Y}\)</span>,</span> so the two vary together, even if <span class="math inline">\(\boldsymbol{X}\)</span> has no effect on <span class="text-nowrap"><span class="math inline">\(\boldsymbol{Y}\)</span>.</span> A model without <span class="math inline">\(\boldsymbol{C}\)</span> attributes this to <span class="text-nowrap"><span class="math inline">\(\boldsymbol{X}\)</span>,</span> so its estimate is biased. Hence, include any confounders in the model.</p>
+<p><small><span class="text-grey">In interventional studies, randomized treatment allocation averages out confounding effects, but including them can still increase power by explaining part of the spread in the outcome.</span></small></p>
+<div class="example callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Coffee consumption is often linked to lung cancer, but this link is caused by the confounding variable smoking. On average, smokers drink more coffee <em>and</em> are much more likely to develop lung cancer. Large overarching meta-analyses adjusting for smoking typically show that coffee consumption is not a risk factor for lung cancer <span class="citation" data-cites="Guertin2016 galarraga2016 jin2024"><a href="references.html#ref-Guertin2016" role="doc-biblioref">[12]</a>–<a href="references.html#ref-jin2024" role="doc-biblioref">[14]</a></span>.</p>
+<p>For additional examples of confounding, see: <a href="https://stats.stackexchange.com/q/432866/176202">stats.stackexchange.com/q/432866</a></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<span id="mediation" class="tab-anchor"></span>
+<p><small><em>A mediator is a variable through which the variable of interest affects the outcome.</em></small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-mediator" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of the variables X, M and Y. Left, actual relationship: an arrow from X to M and one from M to Y; there is no arrow from X to Y. Right, with M in the model: the same arrows, and between X and Y the label no effect.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-mediator-1.png" class="img-fluid figure-img" alt="Two diagrams of the variables X, M and Y. Left, actual relationship: an arrow from X to M and one from M to Y; there is no arrow from X to Y. Right, with M in the model: the same arrows, and between X and Y the label no effect." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Mediation through <span class="text-nowrap"><span class="math inline">\(\boldsymbol{M}\)</span>:</span> actual relationship (left) and what the model estimates with <span class="math inline">\(\boldsymbol{M}\)</span> (right).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>With a mediator <span class="math inline">\(\boldsymbol{M}\)</span> in the model, the coefficient of <span class="math inline">\(\boldsymbol{X}\)</span> measures only the part of its effect that does not run through <span class="math inline">\(\boldsymbol{M}\)</span> (the <em>direct</em> effect). If the whole effect runs through <span class="text-nowrap"><span class="math inline">\(\boldsymbol{M}\)</span>,</span> the model finds no effect at all. Hence, leave mediators out of the model. If the purpose of a study <em>is</em> to determine whether an effect is direct or mediated, look up mediation analysis.</p>
+<p><small><span class="text-grey">In interventional studies, include only variables measured before the treatment started, because the treatment cannot have affected them.</span></small></p>
+<div class="example callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose you want to estimate how much fossil fuel consumption contributes to global warming. CO<sub>2</sub> levels are related to global temperature, so it is tempting to include them in the model. However, fossil fuel consumption does not raise the temperature <em>directly</em>. It raises CO<sub>2</sub> levels, which in turn raise the temperature.</p>
+<p><span class="math display">\[\text{fossil fuel consumption} \to \mathrm{CO}_2 \to \text{average global temperature}\]</span></p>
+<p>In this example, CO<sub>2</sub> is a <em>mediator</em>. Including a mediator removes the indirect effect of the variable of interest <span class="citation" data-cites="schisterman2009"><a href="references.html#ref-schisterman2009" role="doc-biblioref">[15]</a></span>. With CO<sub>2</sub> in the model, the coefficient of fossil fuel consumption is close to zero. That is not wrong, because there is no <em>direct</em> effect, but it also does not answer the question.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p><small><em>A collider is affected by both the variable of interest and the outcome.</em></small></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-collider" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of the variables X, K and Y. Left, actual relationship: an arrow from X to K and one from Y to K; there is no arrow between X and Y. Right, with K in the model: the same arrows, and an arrow from X to Y appears, labeled biased.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-collider-1.png" class="img-fluid figure-img" alt="Two diagrams of the variables X, K and Y. Left, actual relationship: an arrow from X to K and one from Y to K; there is no arrow between X and Y. Right, with K in the model: the same arrows, and an arrow from X to Y appears, labeled biased." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Collider bias from <span class="text-nowrap"><span class="math inline">\(\boldsymbol{K}\)</span>:</span> actual relationship (left) and what the model estimates with <span class="math inline">\(\boldsymbol{K}\)</span> (right).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Because <span class="math inline">\(\boldsymbol{X}\)</span> and <span class="math inline">\(\boldsymbol{Y}\)</span> both affect a collider <span class="text-nowrap"><span class="math inline">\(\boldsymbol{K}\)</span>,</span> observations with the same value of <span class="math inline">\(\boldsymbol{K}\)</span> that differ in <span class="math inline">\(\boldsymbol{X}\)</span> tend to differ in <span class="math inline">\(\boldsymbol{Y}\)</span> as well. With <span class="math inline">\(\boldsymbol{K}\)</span> in the model, the coefficient of <span class="math inline">\(\boldsymbol{X}\)</span> describes how <span class="math inline">\(\boldsymbol{Y}\)</span> differs with <span class="math inline">\(\boldsymbol{X}\)</span> at the same value of <span class="text-nowrap"><span class="math inline">\(\boldsymbol{K}\)</span>,</span> so <span class="math inline">\(\boldsymbol{X}\)</span> and <span class="math inline">\(\boldsymbol{Y}\)</span> appear related, even if <span class="math inline">\(\boldsymbol{X}\)</span> has no effect on <span class="text-nowrap"><span class="math inline">\(\boldsymbol{Y}\)</span>.</span> Hence, leave colliders out of the model.</p>
+<p><small><span class="text-grey">In interventional studies, include only variables measured before the treatment started, because neither the treatment nor the outcome can have affected them.</span></small></p>
+<div class="example callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose a new antibiotic does not affect how quickly patients with pneumonia recover, but patients who receive it are kept in the hospital one extra day for monitoring. Patients who recover sooner also leave sooner. Among patients who stayed equally long, those on the new antibiotic must then have recovered a day sooner. With length of stay in the model, the antibiotic would seem to shorten recovery, even though it has no effect at all <span class="citation" data-cites="cole2010"><a href="references.html#ref-cole2010" role="doc-biblioref">[16]</a></span>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>For your own study, draw a DAG before you collect data: every variable you plan to measure, with an arrow for each effect you expect (see <a href="#fig-street-lights" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> for an example). It shows which variables are confounders, mediators or colliders, and it makes your assumptions visible to your readers.</p>
+</section>
+<section id="planned-comparisons" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="planned-comparisons">Planned comparisons</h3>
+<p>Whether to include an interaction does not depend solely on the research question. If subject knowledge suggests that a medicine works differently in men and women, by a clinically relevant amount, then a model without interaction is wrong. Leave it out only if there is no reason to expect it, and do not remove it merely because it is non-significant.</p>
+<p>Comparing models is part of the method only if the comparison itself is the planned question, such as whether the effect of the medicine differs between men and women, or which of several competing hypotheses, each written down beforehand as a model, fits best <span class="citation" data-cites="burnham2002"><a href="references.html#ref-burnham2002" role="doc-biblioref">[3]</a></span>. The comparison then answers that question (see <a href="#comparing-models">measures for comparing models</a>).</p>
+</section>
+<section id="after-fitting" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="after-fitting">Changing the model after fitting</h3>
+<p>After fitting, the model may still be changed in two ways:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Removing terms</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<span id="after-diagnostics" class="tab-anchor"></span>
+<p>A model chosen in advance can still be wrong in ways the design did not foresee. If the diagnostics reveal a problem, make the model more flexible, for example with an extra term or a transformation for a curved relationship. Report such a change clearly, together with the result of the model as planned. A check that finds nothing, however, is not a valid reason to switch to a simpler model <span class="citation" data-cites="campbell2021"><a href="references.html#ref-campbell2021" role="doc-biblioref">[17]</a></span> (see <a href="#sec-data-driven" class="quarto-xref"><span>Section 6.4</span></a>).</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<span id="negligible-terms" class="tab-anchor"></span>
+<p>A non-significant term can still be biologically relevant. Remove a term only if it is <a href="./hypothesis-testing.html#fig-ci">negligible</a>, that is, if its 95% confidence interval lies entirely within effects that are not biologically relevant <span class="citation" data-cites="lakens2017"><a href="references.html#ref-lakens2017" role="doc-biblioref">[18]</a></span>. Which effects are biologically relevant is a subject-matter judgment, made before seeing the data. Confounders should not be removed even then, because a confounder that is strongly related to the variable of interest can bias its estimate, however small its own effect. In a small study, the interval is rarely that narrow. If the interval exceeds the threshold for relevance, do not remove the term from the model. You can conclude that the study could not determine its practical relevance <span class="citation" data-cites="altman1995"><a href="references.html#ref-altman1995" role="doc-biblioref">[19]</a></span>.</p>
+<div id="negligible-interaction" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What if a suspected interaction turns out to be negligible?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Decide in advance how large an interaction would have to be to matter in practice <span class="text-nowrap">(<span class="math inline">\(\delta\)</span>).</span> For example, a difference of less than 5 mmHg in the effect of a medicine between men and women, or a change of less than 1 mmHg in its effect per ten years of age, may not be clinically relevant. If the 95% confidence interval of the interaction lies entirely between <span class="math inline">\(-\delta\)</span> and <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> report that the interaction is negligible, and refit the model without it to estimate main effects. If the interval extends beyond <span class="text-nowrap"><span class="math inline">\(\delta\)</span>,</span> report that the study could not determine whether the interaction matters (but do not remove it from the model).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="example callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A study tests whether street lights affect the number of caterpillars in roadside vegetation. Of 40 roadside sites, 20 are chosen at random to get LED street lights, and the other 20 stay dark. Later that season, the caterpillars at each site are counted. Before the lights are installed, two other characteristics of each site are recorded. One is the number of shrub species, since caterpillars feed on shrubs. The other is whether the site borders forest or grassland.</p>
+<p>The goal is inferential: Does LED light change the number of caterpillars, and by how much? So we choose the model before the caterpillars are counted. Counts like these are nearly always overdispersed, so we choose a negative binomial GLM instead of a Poisson model. The number of shrub species <em>probably</em> affects the number of caterpillars, so including it makes the estimate of light more precise. Since the shrub species were recorded before the lights were installed, light cannot have affected them. The number of shrub species is therefore neither a mediator nor a collider, and including it does not bias the estimate of light. Habitat could be included for the same reason. Either choice is valid, as long as it is made before seeing the counts. For our example, let’s say we leave habitat out.</p>
+<p>We also leave out bat activity during the experiment. Bats hunt the moths that gather around street lights, so light may reduce the number of caterpillars through bat activity, which makes bat activity a possible <a href="#mediation">mediator</a>. Finally, we have no reason to expect light to affect caterpillars differently next to forest than next to grassland, so the model has no interaction.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-street-lights" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A diagram of five variables in boxes. Arrows point from LED light to caterpillars (marked with a question mark), from LED light to bat activity, from bat activity to caterpillars, and from habitat and shrub species to caterpillars. No arrow points to LED light. LED light, caterpillars and shrub species are black; bat activity and habitat are grey.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-street-lights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-street-lights-1.png" class="img-fluid figure-img" alt="A diagram of five variables in boxes. Arrows point from LED light to caterpillars (marked with a question mark), from LED light to bat activity, from bat activity to caterpillars, and from habitat and shrub species to caterpillars. No arrow points to LED light. LED light, caterpillars and shrub species are black; bat activity and habitat are grey." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-street-lights-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: The effects assumed in the street light study. The arrow with the question mark is the effect of interest. Light was assigned at random, so no arrow points to it. Variables in black are in the model; those in grey are left out.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>After fitting, we check the model’s diagnostics. Had they revealed a problem (e.g., a curved relationship with the number of shrub species), we would make the model more flexible, and also report the model as planned. Suppose for now that they reveal none. The model then stays as planned. We keep the number of shrub species, whether or not it is significant, and we do not add habitat. The methods and results could read:</p>
+<blockquote class="blockquote">
+<p><em>The number of caterpillars was analyzed with a negative binomial GLM with light and the number of shrub species, as planned before the data were collected. LED light did not significantly change the number of caterpillars (1.10 times as many as in the dark, 95% CI 0.72 to 1.68, <span class="text-nowrap"><span class="math inline">\(p = 0.664\)</span>)</span></em>.</p>
+</blockquote>
+<p>Had we added habitat only <em>after</em> seeing the counts (e.g., because <code>light</code> then became significant), that <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> would not have been valid (see <a href="#sec-data-driven" class="quarto-xref"><span>Section 6.4</span></a>).</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="comparing-models" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="comparing-models"><span class="header-section-number">6.3</span> Measures for comparing models</h2>
+<div class="goal-row">
+<p><span class="goal-label">Applies to:</span> <span class="goal goal-infer">Inference</span> <span class="goal goal-explore">Exploration</span> <span class="goal goal-predict">Prediction</span></p>
+</div>
+<p>For inference, use these measures only to answer a <a href="#planned-comparisons">planned comparison</a>.</p>
+<p>The measures below weigh how well a model fits, measured by <span class="text-nowrap"><span class="math inline">\(-2 \log \mathcal{L}\)</span>,</span> against how many parameters it has. <span class="math inline">\(\mathcal{L}\)</span> is the likelihood: the probability of the observed data under the fitted model. The better a model fits, the lower <span class="text-nowrap"><span class="math inline">\(-2 \log \mathcal{L}\)</span>.</span></p>
+<p>If one model contains all terms of the other, they can be compared with a likelihood ratio test, a general form of the <a href="./categorical-variables.html#dummy-k">omnibus test</a>. It tests whether the extra parameters of the larger model are all zero.</p>
+<div class="block-label">
+<p>Mathematical formula:</p>
+</div>
+<p><span class="math display">\[\begin{align}
+\text{LR} &amp;= -2 \log \mathcal{L}_0 - (-2 \log \mathcal{L}_1)
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(\mathcal{L}_0\)</span> is the likelihood of the smaller model (<code>m0</code> in the code) and <span class="math inline">\(\mathcal{L}_1\)</span> that of the larger (<code>m1</code>). The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> comes from a <span class="text-nowrap"><span class="math inline">\(\chi^2\)</span>-distribution</span> with as many degrees of freedom as the larger model has extra parameters. With one extra parameter, <span class="math inline">\(p &lt; 0.05\)</span> if <span class="math inline">\(-2 \log \mathcal{L}\)</span> decreases by more than <span class="text-nowrap"><span class="math inline">\(3.84\)</span>.</span></p>
+<div class="lang-main">
+<div class="block-label">
+<p>Code:</p>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href=""><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href=""><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m0, m1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><small><span class="text-grey"><code>anova()</code> performs the likelihood ratio test; for an ordinary linear model, it performs the <span class="text-nowrap"><span class="math inline">\(F\)</span>-test,</span> its exact counterpart for the normal distribution.</span></small></p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (m1.llf <span class="op">-</span> m0.llf)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> m1.df_model <span class="op">-</span> m0.df_model</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>stats.chi2.sf(LR, df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Two common measures for model selection are AIC (Akaike information criterion) and BIC (Bayesian information criterion). Lower values are better.</p>
+<div class="block-label">
+<p>Mathematical formula:</p>
+</div>
+<p><span class="math display">\[\begin{align}
+\text{AIC} &amp;= -2 \log \mathcal{L} + 2k \\
+\text{BIC} &amp;= -2 \log \mathcal{L} + k \log n
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(k\)</span> is the number of estimated parameters (the coefficients, plus, for example, the dispersion parameter of a negative binomial model), <span class="math inline">\(n\)</span> the number of observations, and <span class="math inline">\(\log\)</span> the natural logarithm.</p>
+<p>AIC prefers the larger of two models if <span class="math inline">\(-2 \log \mathcal{L}\)</span> decreases by more than <span class="math inline">\(2\)</span> per extra parameter, BIC if it decreases by more than <span class="text-nowrap"><span class="math inline">\(\log n\)</span>.</span> From 8 observations on, BIC is therefore stricter. AIC approximates how well a model predicts new observations, as estimated by leave-one-out cross-validation <span class="citation" data-cites="stone1977"><a href="references.html#ref-stone1977" role="doc-biblioref">[9]</a></span>. BIC is preferred when the goal is parsimony (finding as simple a model as possible that explains well).</p>
+<div class="lang-main">
+<div class="block-label">
+<p>Code:</p>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="r-python">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href=""><span class="lang-icon lang-r" title="R">R</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href=""><span class="lang-icon lang-python" title="Python">Python</span></a></li></ul>
+<div class="tab-content" data-group="r-python">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(m0, m1)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(m0, m1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m0.aic, m1.aic)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(m0.bic, m1.bic)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><small><span class="text-grey"><code>m0</code> and <code>m1</code> stand for any two models of the same outcome, fitted to the same observations. Unlike the likelihood ratio test, AIC and BIC do not require one model to contain the other.</span></small></p>
+</section>
+<section id="sec-data-driven" class="level2 page-columns page-full" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-data-driven"><span class="header-section-number">6.4</span> What data-driven selection does to <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and estimates</h2>
+<div class="goal-row">
+<p><span class="goal-label">Applies to:</span> <span class="goal goal-infer">Inference</span> <span class="goal goal-explore">Exploration</span> <span class="goal goal-predict goal-off" aria-hidden="true">Prediction</span></p>
+</div>
+<p>If the analysis is based on the data,<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> the false positive rate is no longer guaranteed to be <span class="math inline">\(\alpha\)</span> <span class="citation" data-cites="gelmanloken2014"><a href="references.html#ref-gelmanloken2014" role="doc-biblioref">[20]</a></span>. The effect can be large: A simulation study found that deciding whether and how to include just <em>one</em> explanatory variable, and reporting whichever choice gave a significant result, raised the false positive rate from 5% to 12% <span class="citation" data-cites="simmons2011"><a href="references.html#ref-simmons2011" role="doc-biblioref">[21]</a></span>. Confidence intervals become too narrow, and the effects that are selected are estimated too far from zero, because an effect is more likely to be selected when the sample exaggerates it <span class="citation" data-cites="whittingham2006 heinze2018"><a href="references.html#ref-heinze2018" role="doc-biblioref">[7]</a>, <a href="references.html#ref-whittingham2006" role="doc-biblioref">[22]</a></span>. Common ways of choosing the model by the data:</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;As opposed to chosen based on the research question, primary outcome and study design.</p></div></div><div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Selecting terms</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Simplifying after a check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>Stepwise selection, removing terms that are not significant, is the most common example <span class="citation" data-cites="whittingham2006 heinze2018"><a href="references.html#ref-heinze2018" role="doc-biblioref">[7]</a>, <a href="references.html#ref-whittingham2006" role="doc-biblioref">[22]</a></span>. Removing a confounder because it is not significant also biases the estimate of the effect you are interested in <span class="citation" data-cites="mickey1989"><a href="references.html#ref-mickey1989" role="doc-biblioref">[23]</a></span>. Likewise, removing an interaction because it is not significant biases the estimates, even if there is no interaction at all <span class="citation" data-cites="kahan2013"><a href="references.html#ref-kahan2013" role="doc-biblioref">[24]</a></span>.</p>
+<p><strong>Statistical measures like AIC do not avoid this problem</strong>. For a term with one parameter, selection based on lower AIC is identical to selecting <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> below <span class="text-nowrap"><span class="math inline">\(0.157\)</span>.</span> R’s <code>step()</code> function, which adds and removes terms by AIC, therefore performs stepwise selection with <span class="text-nowrap"><span class="math inline">\(\alpha \approx 0.157\)</span>.</span> BIC and adjusted <span class="math inline">\(R^2\)</span> are likewise thresholds for the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value,</span> each with a different <span class="math inline">\(\alpha\)</span> <span class="citation" data-cites="heinze2018 murtaugh2014"><a href="references.html#ref-heinze2018" role="doc-biblioref">[7]</a>, <a href="references.html#ref-murtaugh2014" role="doc-biblioref">[25]</a></span>.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p>A non-significant diagnostic check is not a good reason to switch to a simpler model. With few observations, diagnostics often miss the very problems they are meant to detect, and choosing the model by such a check inflates the false positive rate <span class="citation" data-cites="campbell2021 grambsch1991"><a href="references.html#ref-campbell2021" role="doc-biblioref">[17]</a>, <a href="references.html#ref-grambsch1991" role="doc-biblioref">[26]</a></span>.</p>
+</div>
+</div>
+</div>
+<p>For exploratory research, these biases are acceptable, as long as the report clearly states the type of research question. Present the results as hypotheses for further research. Claiming you have found something significant after selecting the model on the same data is analogous to shooting a ball and moving the goalpost to wherever it lands.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Common misconceptions about model selection
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<dl>
+<dt>“Model selection is harmless if done in moderation.”</dt>
+<dd>
+<p>Even the selection of a <em>single term</em> can greatly affect the false positive rate.</p>
+</dd>
+<dt>“Model selection is harmless, as long as the selection is reported.”</dt>
+<dd>
+<p>Reporting the selection is necessary, but it does not make the <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> valid, because they are computed as if the model had been chosen in advance. Present them as exploratory, or choose the model before seeing the outcome.</p>
+</dd>
+<dt>“Model selection finds the best model.”</dt>
+<dd>
+<p>Goodness-of-fit does not show the role of a variable. If light reduces caterpillars by attracting bats, every measure prefers a model with bat activity measured during the experiment. Yet that variable is a <em>mediator</em>, and including it hides the effect of interest (see <a href="#mediation">Mediator</a>).</p>
+</dd>
+<dt>“Multiple testing correction can account for model selection.”</dt>
+<dd>
+That works only if every candidate model gives a valid test of the same hypothesis, which is rarely the case. A Poisson model of overdispersed counts, for instance, gives too many false positives, and halving <span class="math inline">\(\alpha\)</span> does not fix that <span class="citation" data-cites="horton2007"><a href="references.html#ref-horton2007" role="doc-biblioref">[27]</a></span>. With and without the interaction <code>x1:x2</code>, the coefficient of <code>x1</code> is not even the same effect. With the interaction, it is the effect of <code>x1</code> where <code>x2</code> is zero (see <a href="interaction.html#summary-interaction">Interaction</a>). Methods that do account for the choice of model exist <span class="citation" data-cites="berk2013 harrell2015"><a href="references.html#ref-berk2013" role="doc-biblioref">[28]</a>, <a href="references.html#ref-harrell2015" role="doc-biblioref">[29]</a></span>, but they are beyond the scope of this book.
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section id="sample-size" class="level2 page-columns page-full" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sample-size"><span class="header-section-number">6.5</span> Parameters vs.&nbsp;sample size</h2>
+<div class="goal-row">
+<p><span class="goal-label">Applies to:</span> <span class="goal goal-infer">Inference</span> <span class="goal goal-explore">Exploration</span> <span class="goal goal-predict">Prediction</span></p>
+</div>
+<p>There is a limit to how many parameters you can estimate with a given amount of data. A rough guideline is 10–20 observations per estimated coefficient for continuous outcomes, and 10–20 events of the minority group per coefficient for binary outcomes <span class="citation" data-cites="harrell2015"><a href="references.html#ref-harrell2015" role="doc-biblioref">[29]</a></span>.</p>
+<p>Without more advanced techniques, like regularization, a model that has too many parameters relative to the effective sample size will <strong>overfit</strong>. It describes the <em>sample</em> well, but generalizes poorly to its <em>population</em>. Conversely, a model that is too simple for the pattern in the data will <strong>underfit</strong>. <a href="#fig-overfit" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> illustrates both.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-overfit" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three scatter plots of the same 30 points, which first rise and then fall as x increases. Left, underfit (linear): a straight rising line that misses the curve. Middle, good fit (quadratic): a smooth curve that rises and falls with the points. Right, overfit (15th degree): a wiggly curve that passes close to every point, with deep dips between them.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-overfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-overfit-1.png" class="img-fluid figure-img" alt="Three scatter plots of the same 30 points, which first rise and then fall as x increases. Left, underfit (linear): a straight rising line that misses the curve. Middle, good fit (quadratic): a smooth curve that rises and falls with the points. Right, overfit (15th degree): a wiggly curve that passes close to every point, with deep dips between them." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overfit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: The same 30 observations, fitted with 2, 3 and 16 coefficients. The straight line misses the curve; the 15th-degree polynomial follows the noise, and would predict new observations poorly.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>More parameters lower the bias of the predictions, but raise their variance: how much the predictions would change in another sample. The total error is smallest in between (<a href="#fig-bias-variance" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>). For prediction, cross-validation estimates where that balance lies, and AIC approximates it (see <a href="#comparing-models">measures for comparing models</a>). For inference, the question determines the model. If the data cannot support it, reduce the number of parameters without using the outcome (see <a href="#many-confounders">What if I have many potential confounders?</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bias-variance" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three curves against model complexity, from too few to too many parameters. Bias squared falls, variance rises, and their total is U-shaped, lowest at a point labeled optimal.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bias-variance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="model-selection_files/figure-html/fig-bias-variance-1.png" class="img-fluid figure-img" alt="Three curves against model complexity, from too few to too many parameters. Bias squared falls, variance rises, and their total is U-shaped, lowest at a point labeled optimal." width="2100">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bias-variance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: Prediction error against model complexity. With too few parameters, the predictions are biased; with too many, they vary strongly from sample to sample. The total error is smallest in between.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Interactions are more ‘expensive’ to estimate. In a balanced design with two groups for each variable, the standard error of an interaction is twice that of a main effect, so estimating it equally precisely takes four times as many observations.</p>
+<p>Explanatory variables that carry largely the same information are called colinear.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> The model can then hardly separate their effects, and their standard errors grow <span class="citation" data-cites="harrell2015"><a href="references.html#ref-harrell2015" role="doc-biblioref">[29]</a></span>. In the extreme, one variable is the sum of others, such as body weight, which is the sum of fat-free mass and fat mass. The model then cannot estimate all three, and R reports <code>NA</code> for one of them. If confounders are perfectly colinear, one of them can be left out, because the others carry the same information. Otherwise, colinearity among confounders is no reason to remove any of them. It widens only their own confidence intervals, not that of the variable of interest, whereas removing a confounder can bias the estimate of interest. There are better ways than including strongly colinear confounders as they are, such as combining them without using the outcome (see <a href="#many-confounders">What if I have many potential confounders?</a>).</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Also collinear, or multicollinear, which all have the same meaning.<br>See: <a href="https://stats.stackexchange.com/q/316213/176202">stats.stackexchange.com/q/316213</a></p></div></div><div id="many-confounders" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What if I have many potential confounders?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As confounders are usually not of interest to the research question, but more of a ‘nuisance’ parameter, you can combine, summarize, or reduce them, as long as you do not use the outcome:</p>
+<ol type="1">
+<li>Remember that mediators and colliders do not belong in the model at all. Variables that only affect the outcome are also not needed to avoid bias, so you can leave these out.</li>
+<li>Suspected confounders that carry similar information can be summed or otherwise combined. <small><span class="text-grey">For example, the height and width of a hedge can be multiplied into a single score roughly representing its surface area. Similar categories with very few observations can be merged as well.</span></small></li>
+<li>Methods like <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank" rel="noreferrer noopener">principal component analysis</a> can create a small number of linear combinations of your original confounders. These are harder to interpret, but carry most of the original information, while costing fewer degrees of freedom to estimate.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="quiz" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>A colleague analyzes the number of hospital visits of 15 patients with a Poisson GLM. The dispersion test in the diagnostics is not significant <span class="text-nowrap">(<span class="math inline">\(p = 0.21\)</span>),</span> so a Poisson model is kept. Which statement is correct?</p>
+<p><strong>A.</strong> This is fine, as the test demonstrates there is no overdispersion.<br>
+<strong>B.</strong> A negative binomial model must only be used if the test is significant.<br>
+<strong>C.</strong> A negative binomial model from the start would have been safer.<br>
+<strong>D.</strong> They should report the model with the smallest <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> for the effect of interest.</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>What does a non-significant test show? And what does the <a href="#goal-inference">checklist for inference</a> recommend for counts?</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>A colleague analyzes the number of hospital visits of 15 patients with a Poisson GLM. The dispersion test in the diagnostics is not significant <span class="text-nowrap">(<span class="math inline">\(p = 0.21\)</span>),</span> so a Poisson model is kept. Which statement is correct?</p>
+<p><strong>A.</strong> This is fine, as the test demonstrates there is no overdispersion.<br>
+<strong>B.</strong> A negative binomial model must only be used if the test is significant.<br>
+<strong>C. A negative binomial model from the start would have been safer.</strong><br>
+<strong>D.</strong> They should report the model with the smallest <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> for the effect of interest.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> Failure to detect overdispersion does not prove there is none. With only 15 observations, a dispersion test has limited power.<br>
+<strong>B.</strong> Switching only when the test is significant means keeping the Poisson model whenever the test misses overdispersion, which inflates the false positive rate.<br>
+<strong>C.</strong> If you expect overdispersed counts (as is <em>very</em> common for biological processes), a safer choice is using a negative binomial from the start.<br>
+<strong>D.</strong> This increases false positives beyond the chosen level of significance <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Answer</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>A trial compares two medicines in men and women. The interaction between medicine and sex is not significant: The difference in effect between men and women is estimated at <span class="math inline">\(2.0\)</span> mmHg (95% confidence interval from <span class="math inline">\(-2.7\)</span> to <span class="math inline">\(6.7\)</span> mmHg, <span class="text-nowrap"><span class="math inline">\(p = 0.40\)</span>).</span> A difference of less than <span class="math inline">\(5\)</span> mmHg would not matter in practice. What do you do?</p>
+<p><strong>A.</strong> Remove the interaction, because it is not significant.<br>
+<strong>B.</strong> Remove the interaction, because its estimate is smaller than <span class="math inline">\(5\)</span> mmHg.<br>
+<strong>C.</strong> Keep the interaction, and conclude that you could not determine whether the effect differs between men and women.<br>
+<strong>D.</strong> Keep the interaction, and report the row of the medicine as its effect in everyone.</p>
+<div class="hint callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When is a term negligible? Compare the confidence interval with the effects that would matter.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>A trial compares two medicines in men and women. The interaction between medicine and sex is not significant: The difference in effect between men and women is estimated at <span class="math inline">\(2.0\)</span> mmHg (95% confidence interval from <span class="math inline">\(-2.7\)</span> to <span class="math inline">\(6.7\)</span> mmHg, <span class="text-nowrap"><span class="math inline">\(p = 0.40\)</span>).</span> A difference of less than <span class="math inline">\(5\)</span> mmHg would not matter in practice. What do you do?</p>
+<p><strong>A.</strong> Remove the interaction, because it is not significant.<br>
+<strong>B.</strong> Remove the interaction, because its estimate is smaller than <span class="math inline">\(5\)</span> mmHg.<br>
+<strong>C. Keep the interaction, and conclude that you could not determine whether the effect differs between men and women.</strong><br>
+<strong>D.</strong> Keep the interaction, and report the row of the medicine as its effect in everyone.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Learn why
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A.</strong> A non-significant term is not the same as a negligible one.<br>
+<strong>B.</strong> The estimate alone is not enough. The interval reaches <span class="math inline">\(6.7\)</span> mmHg, a difference that would matter.<br>
+<strong>C.</strong> The interval includes differences that matter, so the result is inconclusive. To report the average effect of the medicine, estimate it from the model with interaction, using <code>emmeans</code>.<br>
+<strong>D.</strong> In a model with interaction, the row of the medicine is its effect in the reference group only.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-shmueli2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">G. Shmueli, <span>“To explain or to predict?”</span> <em>Statistical Science</em>, vol. 25, no. 3, pp. 289–310, 2010.</div>
+</div>
+<div id="ref-tredennick2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. T. Tredennick, G. Hooker, S. P. Ellner, and P. B. Adler, <span>“A practical guide to selecting models for exploration, inference, and prediction in ecology,”</span> <em>Ecology</em>, vol. 102, no. 6, p. e03336, 2021.</div>
+</div>
+<div id="ref-burnham2002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">K. P. Burnham and D. R. Anderson, <em>Model selection and multimodel inference: A practical information-theoretic approach</em>, 2nd ed. New York: Springer, 2002. doi: <a href="https://doi.org/10.1007/b97636">10.1007/b97636</a>.</div>
+</div>
+<div id="ref-rasch2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">D. Rasch, K. D. Kubinger, and K. Moder, <span>“The two-sample t test: Pre-testing its assumptions does not pay off,”</span> <em>Statistical Papers</em>, vol. 52, no. 1, pp. 219–231, 2011.</div>
+</div>
+<div id="ref-zimmerman2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">D. W. Zimmerman, <span>“A note on preliminary tests of equality of variances,”</span> <em>British Journal of Mathematical and Statistical Psychology</em>, vol. 57, no. 1, pp. 173–181, 2004.</div>
+</div>
+<div id="ref-vonelm2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">E. von Elm, D. G. Altman, M. Egger, S. J. Pocock, P. C. Gøtzsche, and J. P. Vandenbroucke, <span>“The <span class="nocase">Strengthening the Reporting of Observational Studies in Epidemiology</span> (<span>STROBE</span>) statement: Guidelines for reporting observational studies,”</span> <em>PLoS Medicine</em>, vol. 4, no. 10, p. e296, 2007, doi: <a href="https://doi.org/10.1371/journal.pmed.0040296">10.1371/journal.pmed.0040296</a>.</div>
+</div>
+<div id="ref-heinze2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">G. Heinze, C. Wallisch, and D. Dunkler, <span>“Variable selection – a review and recommendations for the practicing statistician,”</span> <em>Biometrical Journal</em>, vol. 60, no. 3, pp. 431–449, 2018.</div>
+</div>
+<div id="ref-cawley2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">G. C. Cawley and N. L. C. Talbot, <span>“On over-fitting in model selection and subsequent selection bias in performance evaluation,”</span> <em>Journal of Machine Learning Research</em>, vol. 11, no. 70, pp. 2079–2107, 2010, Available: <a href="https://jmlr.org/papers/v11/cawley10a.html">https://jmlr.org/papers/v11/cawley10a.html</a></div>
+</div>
+<div id="ref-stone1977" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">M. Stone, <span>“An asymptotic equivalence of choice of model by cross-validation and <span>Akaike</span>’s criterion,”</span> <em>Journal of the Royal Statistical Society: Series B (Methodological)</em>, vol. 39, no. 1, pp. 44–47, 1977, doi: <a href="https://doi.org/10.1111/j.2517-6161.1977.tb01603.x">10.1111/j.2517-6161.1977.tb01603.x</a>.</div>
+</div>
+<div id="ref-ich1998" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">International Conference on Harmonisation, <span>“<span>ICH</span> topic E9: Statistical principles for clinical trials,”</span> European Medicines Agency, CPMP/ICH/363/96, Sept. 1998. Available: <a href="https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e-9-statistical-principles-clinical-trials-step-5_en.pdf">https://www.ema.europa.eu/en/documents/scientific-guideline/ich-e-9-statistical-principles-clinical-trials-step-5_en.pdf</a></div>
+</div>
+<div id="ref-posch2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">M. Posch and M. A. Proschan, <span>“Unplanned adaptations before breaking the blind,”</span> <em>Statistics in Medicine</em>, vol. 31, no. 30, pp. 4146–4153, 2012, doi: <a href="https://doi.org/10.1002/sim.5361">10.1002/sim.5361</a>.</div>
+</div>
+<div id="ref-Guertin2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">K. A. Guertin, N. D. Freedman, E. Loftfield, B. I. Graubard, N. E. Caporaso, and R. Sinha, <span>“Coffee consumption and incidence of lung cancer in the NIH-AARP diet and health study,”</span> <em>International Journal of Epidemiology</em>, vol. 45, no. 3, pp. 929–939, June 2015, doi: <a href="https://doi.org/10.1093/ije/dyv104">10.1093/ije/dyv104</a>.</div>
+</div>
+<div id="ref-galarraga2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">V. Galarraga and P. Boffetta, <span>“Coffee drinking and risk of lung cancer<span></span>a meta-analysis,”</span> <em>Cancer Epidemiology, Biomarkers &amp; Prevention</em>, vol. 25, no. 6, pp. 951–957, May 2016, doi: <a href="https://doi.org/10.1158/1055-9965.epi-15-0727">10.1158/1055-9965.epi-15-0727</a>.</div>
+</div>
+<div id="ref-jin2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">S. Jin and Y. Je, <span>“Coffee consumption and risk of lung cancer: A meta-analysis of prospective cohort studies,”</span> <em>Nutrition and Cancer</em>, vol. 76, no. 7, pp. 552–562, May 2024, doi: <a href="https://doi.org/10.1080/01635581.2024.2348219">10.1080/01635581.2024.2348219</a>.</div>
+</div>
+<div id="ref-schisterman2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">E. F. Schisterman, S. R. Cole, and R. W. Platt, <span>“Overadjustment bias and unnecessary adjustment in epidemiologic studies,”</span> <em>Epidemiology</em>, vol. 20, no. 4, pp. 488–495, 2009, doi: <a href="https://doi.org/10.1097/EDE.0b013e3181a819a1">10.1097/EDE.0b013e3181a819a1</a>.</div>
+</div>
+<div id="ref-cole2010" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">S. R. Cole <em>et al.</em>, <span>“Illustrating bias due to conditioning on a collider,”</span> <em>International Journal of Epidemiology</em>, vol. 39, no. 2, pp. 417–420, 2010, doi: <a href="https://doi.org/10.1093/ije/dyp334">10.1093/ije/dyp334</a>.</div>
+</div>
+<div id="ref-campbell2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">H. Campbell, <span>“The consequences of checking for zero-inflation and overdispersion in the analysis of count data,”</span> <em>Methods in Ecology and Evolution</em>, vol. 12, no. 4, pp. 665–680, 2021, doi: <a href="https://doi.org/10.1111/2041-210X.13559">10.1111/2041-210X.13559</a>.</div>
+</div>
+<div id="ref-lakens2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">D. Lakens, <span>“Equivalence tests: A practical primer for t tests, correlations, and meta-analyses,”</span> <em>Social Psychological and Personality Science</em>, vol. 8, no. 4, pp. 355–362, 2017.</div>
+</div>
+<div id="ref-altman1995" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">D. G. Altman and J. M. Bland, <span>“Statistics notes: Absence of evidence is not evidence of absence,”</span> <em>BMJ</em>, vol. 311, no. 7003, p. 485, Aug. 1995, doi: <a href="https://doi.org/10.1136/bmj.311.7003.485">10.1136/bmj.311.7003.485</a>.</div>
+</div>
+<div id="ref-gelmanloken2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">A. Gelman and E. Loken, <span>“The statistical crisis in science,”</span> <em>American Scientist</em>, vol. 102, no. 6, pp. 460–465, 2014.</div>
+</div>
+<div id="ref-simmons2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">J. P. Simmons, L. D. Nelson, and U. Simonsohn, <span>“False-positive psychology: Undisclosed flexibility in data collection and analysis allows presenting anything as significant,”</span> <em>Psychological Science</em>, vol. 22, no. 11, pp. 1359–1366, 2011, doi: <a href="https://doi.org/10.1177/0956797611417632">10.1177/0956797611417632</a>.</div>
+</div>
+<div id="ref-whittingham2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">M. J. Whittingham, P. A. Stephens, R. B. Bradbury, and R. P. Freckleton, <span>“Why do we still use stepwise modelling in ecology and behaviour?”</span> <em>Journal of Animal Ecology</em>, vol. 75, no. 5, pp. 1182–1189, 2006.</div>
+</div>
+<div id="ref-mickey1989" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">R. M. Mickey and S. Greenland, <span>“The impact of confounder selection criteria on effect estimation,”</span> <em>American Journal of Epidemiology</em>, vol. 129, no. 1, pp. 125–137, 1989.</div>
+</div>
+<div id="ref-kahan2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">B. C. Kahan, <span>“Bias in randomised factorial trials,”</span> <em>Statistics in Medicine</em>, vol. 32, no. 26, pp. 4540–4549, 2013, doi: <a href="https://doi.org/10.1002/sim.5869">10.1002/sim.5869</a>.</div>
+</div>
+<div id="ref-murtaugh2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">P. A. Murtaugh, <span>“In defense of <span>P</span> values,”</span> <em>Ecology</em>, vol. 95, no. 3, pp. 611–617, 2014, doi: <a href="https://doi.org/10.1890/13-0590.1">10.1890/13-0590.1</a>.</div>
+</div>
+<div id="ref-grambsch1991" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">P. M. Grambsch and P. C. O’Brien, <span>“The effects of transformations and preliminary tests for non-linearity in regression,”</span> <em>Statistics in Medicine</em>, vol. 10, no. 5, pp. 697–709, 1991.</div>
+</div>
+<div id="ref-horton2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">N. J. Horton, E. Kim, and R. Saitz, <span>“A cautionary note regarding count models of alcohol consumption in randomized controlled trials,”</span> <em>BMC Medical Research Methodology</em>, vol. 7, p. 9, 2007, doi: <a href="https://doi.org/10.1186/1471-2288-7-9">10.1186/1471-2288-7-9</a>.</div>
+</div>
+<div id="ref-berk2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">R. Berk, L. Brown, A. Buja, K. Zhang, and L. Zhao, <span>“Valid post-selection inference,”</span> <em>The Annals of Statistics</em>, vol. 41, no. 2, pp. 802–837, 2013.</div>
+</div>
+<div id="ref-harrell2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">F. E. Harrell, <em>Regression modeling strategies: With applications to linear models, logistic and ordinal regression, and survival analysis</em>, 2nd ed. Cham: Springer, 2015.</div>
+</div>
+</div>
+</section>
+
+
+</main> <!-- /main -->
+<style>
+.dm-scheme .dm-btn { color: inherit; padding: 0 0.25rem; border: 0; background: none; line-height: 1; }
+.dm-scheme .dropdown-item.active { font-weight: 700; }
+</style>
+<script>
+// Dark mode (darkmode/darkmode.md, Phase 2): a Light / Dark / System menu in place of
+// Quarto's two-state toggle (D5), and webR editors that follow dark mode on page load.
+(function () {
+  // webR editors are created light and switch only when the body class changes, so on a
+  // page that loads in dark mode they would stay light. Set the dark editor theme after
+  // each editor is created. (The extension's updateMonacoEditorTheme() lives in a module
+  // script and cannot be called from here; Monaco's theme applies to all editors.)
+  if (document.getElementById("qwebr-monaco-editor-init")) {
+    var t = 0;
+    var id = setInterval(function () {
+      var me = window.monaco && window.monaco.editor;
+      if (!me && ++t < 480) return;
+      clearInterval(id);
+      if (!me) return;
+      var fix = function () { if (document.body.classList.contains("quarto-dark")) me.setTheme("vs-dark"); };
+      me.onDidCreateEditor(function () { setTimeout(fix, 0); });
+      fix();
+    }, 250);
+  }
+
+  // Menu. Uses the storage key, its values "default" (light) and "alternate" (dark), and two
+  // names from Quarto's page template (quarto-html-before-body.ejs, Quarto 1.7.32):
+  // toggleColorMode and localAlternateSentinel. Without them, the built-in toggle stays.
+  var K = "quarto-color-scheme";
+  var ok = false;
+  try { ok = typeof toggleColorMode === "function" && typeof localAlternateSentinel === "string"; } catch (e) {}
+  var toggles = document.querySelectorAll(".quarto-color-scheme-toggle");
+  if (!ok || !toggles.length) return;
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var icon = { light: "bi-sun", dark: "bi-moon", system: "bi-circle-half" };
+  var name = { light: "Light", dark: "Dark", system: "System" };
+  function stored() { try { return localStorage.getItem(K); } catch (e) { return null; } }
+  function choice() { var s = stored(); return s === "alternate" ? "dark" : s === "default" ? "light" : "system"; }
+  function show() {
+    var c = choice();
+    document.querySelectorAll(".dm-scheme").forEach(function (m) {
+      var b = m.querySelector(".dm-btn");
+      b.querySelector("i").className = "bi " + icon[c];
+      b.setAttribute("aria-label", "Color scheme: " + name[c]);
+      m.querySelectorAll(".dropdown-item").forEach(function (it) {
+        var on = it.dataset.choice === c;
+        it.classList.toggle("active", on);
+        it.setAttribute("aria-checked", on ? "true" : "false");
+      });
+    });
+  }
+  function apply(dark) {
+    localAlternateSentinel = dark ? "alternate" : "default";
+    toggleColorMode(dark);
+    show();
+    window.dispatchEvent(new Event("resize"));
+  }
+  function set(c) {
+    var dark = c === "dark" || (c === "system" && mq.matches);
+    try { if (c === "system") localStorage.removeItem(K); else localStorage.setItem(K, dark ? "alternate" : "default"); } catch (e) {}
+    apply(dark);
+  }
+  toggles.forEach(function (t) {
+    var m = document.createElement("div");
+    m.className = "dropdown dm-scheme d-inline-block";
+    m.innerHTML = '<button class="dm-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Color scheme"><i class="bi"></i></button>' +
+      '<ul class="dropdown-menu dropdown-menu-end" role="menu">' +
+      ["light", "dark", "system"].map(function (c) {
+        return '<li><button class="dropdown-item" type="button" role="menuitemradio" data-choice="' + c + '"><i class="bi ' + icon[c] + ' me-2"></i>' + name[c] + "</button></li>";
+      }).join("") + "</ul>";
+    m.querySelectorAll(".dropdown-item").forEach(function (it) { it.addEventListener("click", function () { set(it.dataset.choice); }); });
+    t.insertAdjacentElement("afterend", m);
+    t.style.display = "none";
+  });
+  // Under System, Quarto's own listener switches the page when the system setting changes.
+  mq.addEventListener("change", show);
+  // A choice made in another tab: apply it here without a reload (which would lose code typed in webR cells).
+  window.addEventListener("storage", function (e) {
+    if (e.key !== K && e.key !== null) return;
+    var s = stored();
+    apply(s === "alternate" || (s === null && mq.matches));
+  });
+  show();
+})();
+</script>
+<script>
+
+// Dark mode (darkmode/darkmode.md, Phase 3): in dark mode, each generated figure shows its
+
+// dark copy <name>-dark.png, made by darkmode/figures.R; in light mode, the original. If a
+
+// dark copy fails to load, the original is shown. In dark mode, dark.scss hides a figure
+
+// until it is marked here (data-dm), which happens once its dark copy has loaded.
+
+(function () {
+
+  function swap() {
+
+    var dark = document.body.classList.contains("quarto-dark");
+
+    document.querySelectorAll('img[src*="_files/figure-html/"]').forEach(function (im) {
+
+      var l = im.dataset.light || im.getAttribute("src");
+
+      im.dataset.light = l;
+
+      var want = dark && !im.dataset.nodark && !im.closest(".light-content, .dark-content") ? l.replace(/\.png$/, "-dark.png") : l;
+
+      if (im.getAttribute("src") === want) { im.dataset.dm = "1"; return; }
+
+      im.onload = function () { im.dataset.dm = "1"; };
+
+      im.onerror = function () { im.onerror = null; im.dataset.nodark = "1"; im.dataset.dm = "1"; im.setAttribute("src", l); };
+
+      im.setAttribute("src", want);
+
+    });
+
+  }
+
+  swap();
+
+  new MutationObserver(swap).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+})();
+
+</script>
+
+<script>
+// Links to a tab or a collapsed callout, or to anything inside one that is not open: opens it, then
+// scrolls to the target. See README.md, "Links to tabs".
+(function () {
+  function show() {
+    try {
+      var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (!el) return;
+      var panes = [], p = el.closest(".tab-pane");
+      while (p) { panes.unshift(p); p = p.parentElement.closest(".tab-pane"); }
+      var shut = [], c = el.classList.contains("callout") ? el.querySelector(":scope > .callout-collapse") : el.closest(".callout-collapse");
+      while (c) { if (!c.classList.contains("show")) shut.unshift(c); c = c.parentElement.closest(".callout-collapse"); }
+      if (!panes.length && !shut.length) return;
+      panes.forEach(function (p) {
+        var tab = document.getElementById(p.id + "-tab");
+        if (tab && !p.classList.contains("active")) tab.click();
+      });
+      var to = el.classList.contains("tab-anchor") ? el.closest(".panel-tabset") || el : el;
+      setTimeout(function () {
+        if (!shut.length) { to.scrollIntoView(); return; }
+        // Scroll before opening, so that callout-accordion.html keeps the opened callout in place
+        var inside = !(shut.length === 1 && el.classList.contains("callout"));
+        (inside ? shut[0].closest(".callout") : el).scrollIntoView({ behavior: "instant" });
+        shut.forEach(function (s) {
+          var h = s.closest(".callout").querySelector(":scope > .callout-header");
+          if (h) h.click();
+        });
+        if (inside) setTimeout(function () { el.scrollIntoView({ behavior: "instant" }); }, 600);
+      }, 0);
+    } catch (e) {}
+  }
+  window.addEventListener("load", show);
+  window.addEventListener("hashchange", show);
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (a && a.hash && a.hash === location.hash && a.pathname === location.pathname) setTimeout(show, 0);
+  });
+})();
+</script>
+<script>
+// Pauses YouTube videos in a tab or callout when it closes. See README.md, "Videos pause when hidden".
+(function () {
+  function pause(el) {
+    if (!el) return;
+    el.querySelectorAll('iframe[src*="youtube.com/embed/"]').forEach(function (f) {
+      try {
+        f.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":[]}', new URL(f.src).origin);
+      } catch (e) {}
+    });
+  }
+  document.addEventListener("hide.bs.tab", function (e) {
+    pause(document.getElementById(e.target.getAttribute("aria-controls")));
+  });
+  document.addEventListener("hide.bs.collapse", function (e) {
+    pause(e.target);
+  });
+})();
+</script>
+<script>
+// Video tabsets reopen on the tab the reader last opened. See README.md, "Video tabs remembered".
+(function () {
+  var sets = [].filter.call(document.querySelectorAll(".panel-tabset"), function (ts) {
+    return ts.querySelector(":scope > .tab-content > .tab-pane > .quarto-video");
+  });
+  function tabs(ts) { return [].slice.call(ts.querySelectorAll(":scope > .nav-tabs .nav-link")); }
+  function key(i) { return "video-tab:" + location.pathname + ":" + i; }
+  var target = null;
+  try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+  sets.forEach(function (ts, i) {
+    try {
+      if (target && ts.contains(target)) return;
+      var tab = tabs(ts)[localStorage.getItem(key(i))];
+      if (tab && !tab.classList.contains("active")) tab.click();
+    } catch (e) {}
+  });
+  document.addEventListener("shown.bs.tab", function (e) {
+    try {
+      var i = sets.indexOf(e.target.closest(".panel-tabset"));
+      if (i >= 0) localStorage.setItem(key(i), tabs(sets[i]).indexOf(e.target));
+    } catch (e) {}
+  });
+})();
+</script>
+<script>
+
+// Collapsible callouts in a div with class accordion-callouts: opening one closes the others. See README.md, "Callout accordions".
+
+(function () {
+
+  document.querySelectorAll(".accordion-callouts").forEach(function (g, i) {
+
+    if (!g.id) g.id = "accordion-callouts-" + (i + 1);
+
+    g.querySelectorAll(".callout-collapse").forEach(function (c) {
+
+      if (!c.parentElement.closest(".callout-collapse")) c.setAttribute("data-bs-parent", "#" + g.id);
+
+    });
+
+  });
+
+  // While a callout above closes, keep the header that was clicked where it is on the screen
+
+  document.addEventListener("show.bs.collapse", function (e) {
+
+    var c = e.target;
+
+    if (!c.getAttribute("data-bs-parent")) return;
+
+    var b = c.closest(".callout");
+
+    var h = b && b.querySelector(".callout-header");
+
+    if (!h) return;
+
+    var y = h.getBoundingClientRect().top, t = performance.now();
+
+    (function keep() {
+
+      var d = h.getBoundingClientRect().top - y;
+
+      if (d) window.scrollBy({ top: d, behavior: "instant" });
+
+      if (performance.now() - t < 500) requestAnimationFrame(keep);
+
+    })();
+
+  });
+
+})();
+
+</script>
+
+<script>
+// Prefetching of the apps' files (apps-src/README.md, "Prefetching").
+(function () {
+  function go(u, pr) {
+    fetch(u).then(function (r) { return r.json(); }).then(function (f) {
+      var i = 0;
+      function next() {
+        if (i >= f.length) return;
+        fetch(new URL(f[i++], u), { priority: pr }).then(function (r) {
+          var d = r.body.getReader();
+          return (function pump() { return d.read().then(function (c) { if (!c.done) return pump(); }); })();
+        }).catch(function () {}).then(next);
+      }
+      next(); next(); next();
+    }).catch(function () {});
+  }
+  try {
+    if (/\/apps\/[^\/]+\/(index\.html)?$/.test(location.pathname)) {
+      if (navigator.userAgentData) go(new URL("../prefetch.json", location.href), "auto");
+      return;
+    }
+    var a = Array.prototype.find.call(document.querySelectorAll("a[href]"), function (x) {
+      return x.origin === location.origin && /\/apps\/[^\/]+\/$/.test(x.pathname);
+    });
+    if (!a || !matchMedia("(pointer: fine)").matches || (navigator.connection && navigator.connection.saveData)) return;
+    var u = new URL("../prefetch.json", a.href);
+    var t = function () { setTimeout(function () { go(u, "low"); }, 30000); };
+    if (document.readyState === "complete") t(); else addEventListener("load", t);
+  } catch (e) {}
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+            // default icon
+            link.classList.add("external");
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="./interaction.html" class="pagination-link" aria-label="Interaction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

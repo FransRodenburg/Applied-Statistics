@@ -115,7 +115,7 @@ testDispersion(RQR)
 
 -   This shows where the $p$-value of the dispersion test comes from: Using a large number of simulations, this plot shows what possible values for the dispersion (variance) are to be expected if your model were the ground truth. The red line then shows where our one sample falls. Apparently, our sample falls in the top 8% of what you would expect if the model were correct. The test is two-sided, so $p$ is twice that.
 
--   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{40.04}{25} \approx 1.60$. This suggests slight overdispersion, but from the previous diagnostics we can conclude it is not problematic.
+-   Finally, from the model output below, we can compute the dispersion parameter as: $\frac{40.04}{25} \approx 1.60$. This suggests slight overdispersion, although the dispersion test did not detect it.
 
 ### How would you proceed if you concluded overdispersion?
 
@@ -125,7 +125,7 @@ In this case, we could use a probability distribution with a separate dispersion
 GLM2 <- glm.nb(seagulls ~ distance, data = DF)
 ```
 
-If you repeat the diagnostics on this new model, you can see there is still (non-significant) non-linearity, but the slight overdispersion is now addressed. However, since the original model did not have significant overdispersion, there is no need to use this more complex model in this case.
+If you repeat the diagnostics on this new model, you can see there is still (non-significant) non-linearity, but the slight overdispersion is now addressed. Since this tutorial is about Poisson regression, we continue with the Poisson model. In your own analyses, however, a non-significant dispersion test is no reason to keep a Poisson model: With few observations, the test often misses overdispersion, and biological counts are very often overdispersed. A negative binomial model from the start is usually the safer choice (see [Model Selection](https://fransrodenburg.github.io/Applied-Statistics/model-selection.html#after-diagnostics)).
 
 If you plot this new model, you can see what the extra dispersion parameter accomplishes: The fit is almost identical to the simpler model, but the confidence interval is now wider, because we take the excess variance into account.
 
@@ -143,7 +143,7 @@ plot_model(GLM2, type = "pred", terms = "distance") +
 
 ## Interpreting the model output
 
-This works the same for the Poisson and negative binomial models. I will show it here for the Poisson model, because there was no significant overdispersion.
+This works the same for the Poisson and negative binomial models. I will show it here for the Poisson model.
 
 ```{r}
 summary(GLM)
@@ -167,4 +167,4 @@ summary(GLM)
 
 -   This relationship explains $1 - \frac{40.04}{148.74} \approx 73.1\%$ of the deviance in seagull counts, so the relationship is quite strong.
 
--   The Akaike information criterion (AIC) has no meaning on its own, but it can be compared to other models (lower is better). For example, you could compare it to the negative binomial model.
+-   The Akaike information criterion (AIC) has no meaning on its own, but it can be compared between models of the same data (lower is better). Note that choosing a model by its AIC affects the $p$-values (see [Model Selection](https://fransrodenburg.github.io/Applied-Statistics/model-selection.html#sec-data-driven)).

@@ -128,7 +128,7 @@ These estimates are on the logit scale. To obtain probabilities, we have to back
 
 -   Note that the effects only add up on the logit scale. In terms of probabilities, the difference between male and female rats is not constant: It is $4.3$ percentage points at $0$ ppm ($5.9\%$ against $1.7\%$), but $28.3$ percentage points at $20$ ppm ($48.4\%$ against $20.2\%$).
 
--   The dispersion ratio is somewhat greater than one: $\frac{16.498}{9} \approx 1.83$, but the dispersion test in the diagnostics was not significant.
+-   The dispersion ratio is somewhat greater than one: $\frac{16.498}{9} \approx 1.83$. This suggests slight overdispersion, although the dispersion test in the diagnostics did not detect it.
 
 -   This model explains $1 - \frac{16.498}{117.149} \approx 85.9\%$ of the deviance, so a large proportion of the spread in the outcome is accounted for.
 

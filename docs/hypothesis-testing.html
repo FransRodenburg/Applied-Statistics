@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title> Hypothesis Testing – Applied Statistics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -54,18 +60,19 @@ div.csl-indent {
 <link href="./binomial-distribution.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-c8117e58454e59b45209598d1295adbd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-29a84dff168effbb1abebb2fcaba6d23.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4dc4277a44bc219a41cf65adc1526661.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6b408a80b8d340de1cec34f996494c82.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ba5cde3aa59b40a0d0403de1480df751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b1455952e548b27ff007d34d4ae8c265.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ba5cde3aa59b40a0d0403de1480df751.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -98,7 +105,7 @@ div.csl-indent {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -111,7 +118,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -129,7 +136,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating slimcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -152,6 +159,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -181,13 +189,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -282,6 +296,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -291,6 +306,7 @@ window.Quarto = {
         return;
       const alternate = e.matches
       toggleColorMode(alternate);
+      refreshSafariScrollbar();
       localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
       toggleGiscusIfUsed(alternate, darkModeDefault);
     });
@@ -304,13 +320,13 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./hypothesis-testing.html"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./hypothesis-testing.html"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -321,12 +337,12 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Statistics</a> 
         <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
     </div>
       </div>
@@ -346,12 +362,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./probability-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-1-label"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-1f78b4&quot;><i class=&quot;fas fa-dice&quot;></i></span> Probability Distributions">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./normal-distribution.html" class="sidebar-item-text sidebar-link">
@@ -381,12 +397,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./simple-linear-regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-2-label"><span class="text-33a02c"><i class="fas fa-chart-line"></i></span> Simple Linear Regression</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-33a02c&quot;><i class=&quot;fas fa-chart-line&quot;></i></span> Simple Linear Regression">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./LM.html" class="sidebar-item-text sidebar-link">
@@ -404,12 +420,12 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./multiple-linear-regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-3-label"><span class="text-33a02c"><i class="fas fa-layer-group"></i></span> Multiple Linear Regression</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: <span class=&quot;text-33a02c&quot;><i class=&quot;fas fa-layer-group&quot;></i></span> Multiple Linear Regression">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./categorical-variables.html" class="sidebar-item-text sidebar-link">
@@ -428,6 +444,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Interaction</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./model-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Selection</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
@@ -442,7 +464,7 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -463,10 +485,10 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content" tabindex="-1">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./hypothesis-testing.html"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability-distributions.html"><span class="text-1f78b4"><i class="fas fa-dice"></i></span> Probability Distributions</a></li><li class="breadcrumb-item"><a href="./hypothesis-testing.html"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="hypothesis-testing" class="quarto-section-identifier"><span class="text-steelblue"><i class="fas fa-dice-four"></i></span> Hypothesis Testing</span></h1>
 </div>
@@ -519,24 +541,24 @@ Figure&nbsp;1: Change in blood pressure of 30 patients in a trial. Each point is
 <li>Calculate the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value.</span></li>
 <li>Reject <span class="math inline">\(H_0\)</span> if <span class="text-nowrap"><span class="math inline">\(p \leq \alpha\)</span>.</span> <span class="text-grey">Otherwise, do not reject <span class="text-nowrap"><span class="math inline">\(H_0\)</span>.</span></span></li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example: the blood pressure trial
+<span class="screen-reader-only">Caution</span>Example: Blood pressure trial
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><span class="text-nowrap"><span class="math inline">\(H_0\!: \mu = 0\)</span>.</span> The medicine does not change blood pressure on average.</li>
-<li>Set <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>.</span> <small><span class="text-grey">In many fields, including biology, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</span></small></li>
+<li><span class="text-nowrap"><span class="math inline">\(H_0\!: \mu = 0\)</span>.</span> The compound does not change blood pressure on average.</li>
+<li><span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>.</span> We accept a 5% chance of a <a href="#error-rates">false positive</a>. <small><span class="text-grey">Typically, <span class="math inline">\(\alpha = 0.05\)</span> is used unless specified otherwise. This choice is baked into science, but it is also arbitrary: There is nothing special about a 5% chance.</span></small></li>
 <li>In <span class="math inline">\(n = 30\)</span> patients, we found a mean of <span class="math inline">\(\bar{y} = -4.8\)</span> mmHg and standard deviation of <span class="math inline">\(s = 9.7\)</span> mmHg.</li>
-<li>We can use the <span class="text-nowrap"><a href="#test-statistic"><span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span></a>,</span> which is here the mean divided by its standard error: <span class="text-nowrap"><span class="math inline">\(t = \frac{\bar{y}}{\mathrm{SE}_{\bar{y}}} = -2.7\)</span>.</span></li>
-<li>If <span class="math inline">\(H_0\)</span> were true, a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> at least this far from zero can be calculated to occur with probability <span class="text-nowrap"><span class="math inline">\(p = 0.011\)</span>.</span></li>
+<li>We can use the <span class="text-nowrap"><a href="#test-statistic"><span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span></a>,</span> which is here the mean divided by its <a href="#SE">standard error</a>: <span class="text-nowrap"><span class="math inline">\(t = \frac{\bar{y}}{\mathrm{SE}_{\bar{y}}} = -2.7\)</span>.</span></li>
+<li>If <span class="math inline">\(H_0\)</span> were true, a <span class="text-nowrap"><span class="math inline">\(t\)</span>-value</span> <a href="#p-value">at least this far</a> from zero occurs with probability <span class="text-nowrap"><span class="math inline">\(p = 0.011\)</span>.</span></li>
 <li>Since <span class="text-nowrap"><span class="math inline">\(p \leq 0.05\)</span>,</span> we reject <span class="text-nowrap"><span class="math inline">\(H_0\)</span>:</span> The average decrease of 4.8 mmHg is significantly non-zero.</li>
 </ol>
 </div>
@@ -592,12 +614,12 @@ Figure&nbsp;2: Distribution of the <span class="text-nowrap"><span class="math i
 </div>
 <p>For our clinical trial, <span class="math inline">\(p = 0.011\)</span> (the shaded area in <a href="#fig-tdist" class="quarto-xref">Figure&nbsp;<span>2</span></a>). At <span class="text-nowrap"><span class="math inline">\(\alpha = 0.05\)</span>,</span> we would reject <span class="math inline">\(H_0\)</span> and conclude there is a significant decrease. Had <span class="math inline">\(p\)</span> been larger than <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> we would not have rejected <span class="text-nowrap"><span class="math inline">\(H_0\)</span>,</span> and concluded the decrease was not significant.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why <em>both</em> directions?
+<span class="screen-reader-only">Note</span>Why <em>both</em> directions?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -613,19 +635,19 @@ Why <em>both</em> directions?
 <p><small><em>Which values are plausible?</em></small></p>
 <p>A <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> only tells us whether one particular value <span class="text-nowrap">(<span class="math inline">\(\mu_0 = 0\)</span>)</span> can be rejected. A confidence interval shows a <em>range</em> of plausible values for the true mean <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> It is good practice to report not only the <span class="text-nowrap"><span class="math inline">\(p\)</span>-value,</span> but also the effect size and a 95% confidence interval.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why <em>95%</em> confidence intervals?
+<span class="screen-reader-only">Note</span>Why <em>95%</em> confidence intervals?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>If you set a significance level of <span class="text-nowrap"><span class="math inline">\(\alpha\)</span>,</span> that corresponds to constructing a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence interval. Since <span class="math inline">\(\alpha = 0.05\)</span> is commonly used, so are <em>95%</em> confidence intervals.</p>
-<p>Note that this 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>Note that this 95% describes the method, not a single interval: If the trial were repeated many times, 95% of the intervals would contain the true mean <span class="text-nowrap"><span class="math inline">\(\mu\)</span>.</span> “Range of plausible values” is a rough interpretation. The precise definition is surprisingly unintuitive, and beyond the scope of this chapter. For an explanation, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals</a></small>.</p>
 </div>
 </div>
 </div>
@@ -688,18 +710,18 @@ Figure&nbsp;3: Four hypothetical studies. Points are estimates, lines are 95% co
 </ul>
 <p>In addition, a lot of misuse stems from misunderstanding <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> and confidence intervals. Hence, the list below contains some of the most common misconceptions.</p>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Common misconceptions about <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span>
+<span class="screen-reader-only">Important</span>Common misconceptions about <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Misinterpretations of <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> are widespread.<span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span> Below are some of the most frequent, based on published research and surveys of researchers.<span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span></p>
+<p>Misinterpretations of <span class="text-nowrap"><span class="math inline">\(p\)</span>-values</span> are widespread <span class="citation" data-cites="altman1995 ioannidis2005 colquhoun2014 greenland2016 wasserstein2016"><a href="references.html#ref-altman1995" role="doc-biblioref">[1]</a>–<a href="references.html#ref-wasserstein2016" role="doc-biblioref">[5]</a></span>. Below are some of the most frequent, based on published research and surveys of researchers <span class="citation" data-cites="haller2002 badenes-ribera2015 nieuwenhuis2011 amrhein2019"><a href="references.html#ref-haller2002" role="doc-biblioref">[6]</a>–<a href="references.html#ref-amrhein2019" role="doc-biblioref">[9]</a></span>.</p>
 <dl>
 <dt>“If <span class="text-nowrap"><span class="math inline">\(p &gt; 0.05\)</span>,</span> there is no effect.”</dt>
 <dd>
@@ -711,7 +733,7 @@ Common misconceptions about <span class="text-nowrap"><span class="math inline">
 </dd>
 <dt>“If <span class="text-nowrap"><span class="math inline">\(p &lt; 0.05\)</span>,</span> there is at most a 5% chance of a false positive.”</dt>
 <dd>
-<p><span class="math inline">\(\alpha = 0.05\)</span> is the chance of a significant result if <span class="math inline">\(H_0\)</span> is true. The chance that a significant result is a false positive also depends on how often the tested effects are different from <span class="text-nowrap"><span class="math inline">\(H_0\)</span>,</span> and on power.<span class="citation" data-cites="colquhoun2014"><a href="references.html#ref-colquhoun2014" role="doc-biblioref">[3]</a></span></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span> is the chance of a significant result if <span class="math inline">\(H_0\)</span> is true. The chance that a significant result is a false positive also depends on how often the tested effects are different from <span class="text-nowrap"><span class="math inline">\(H_0\)</span>,</span> and on power <span class="citation" data-cites="colquhoun2014"><a href="references.html#ref-colquhoun2014" role="doc-biblioref">[3]</a></span>.</p>
 </dd>
 <dt>“The <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> is the probability that the result is due to chance alone.”</dt>
 <dd>
@@ -719,11 +741,11 @@ Common misconceptions about <span class="text-nowrap"><span class="math inline">
 </dd>
 <dt>“<span class="math inline">\(1 - p\)</span> is the probability that a replication will be significant.”</dt>
 <dd>
-<p>The chance that a replication is significant is its <em>power</em>, which depends on the unknown true effect. Suppose the true effect equals the observed one and the original study had <span class="text-nowrap"><span class="math inline">\(p = 0.05\)</span>.</span> Then a replication of the same size is significant only about half the time.<span class="citation" data-cites="goodman1992"><a href="references.html#ref-goodman1992" role="doc-biblioref">[10]</a></span></p>
+<p>The chance that a replication is significant is its <em>power</em>, which depends on the unknown true effect. Suppose the true effect equals the observed one and the original study had <span class="text-nowrap"><span class="math inline">\(p = 0.05\)</span>.</span> Then a replication of the same size is significant only about half the time <span class="citation" data-cites="goodman1992"><a href="references.html#ref-goodman1992" role="doc-biblioref">[10]</a></span>.</p>
 </dd>
 <dt>“One study is significant and another is not, so their results contradict each other.”</dt>
 <dd>
-<p>The difference between significant and not significant is not itself necessarily significant.<span class="citation" data-cites="gelman2006 nieuwenhuis2011"><a href="references.html#ref-nieuwenhuis2011" role="doc-biblioref">[8]</a>, <a href="references.html#ref-gelman2006" role="doc-biblioref">[11]</a></span> To compare two studies, estimate the difference between their effects and its confidence interval. Discordant results are expected even when both studies estimate the same effect. If two independent studies each have power <span class="text-nowrap"><span class="math inline">\(1 - \beta\)</span>,</span> the chance that exactly one is significant is <span class="text-nowrap"><span class="math inline">\(2\beta(1-\beta)\)</span>.</span> At 50% power, they disagree half the time.</p>
+<p>The difference between significant and not significant is not itself necessarily significant <span class="citation" data-cites="gelman2006 nieuwenhuis2011"><a href="references.html#ref-nieuwenhuis2011" role="doc-biblioref">[8]</a>, <a href="references.html#ref-gelman2006" role="doc-biblioref">[11]</a></span>. To compare two studies, estimate the difference between their effects and its confidence interval. Discordant results are expected even when both studies estimate the same effect. If two independent studies each have power <span class="text-nowrap"><span class="math inline">\(1 - \beta\)</span>,</span> the chance that exactly one is significant is <span class="text-nowrap"><span class="math inline">\(2\beta(1-\beta)\)</span>.</span> At 50% power, they disagree half the time.</p>
 </dd>
 <dt>“A smaller <span class="text-nowrap"><span class="math inline">\(p\)</span>-value</span> means a larger or more important effect.”</dt>
 <dd>
@@ -731,19 +753,19 @@ Common misconceptions about <span class="text-nowrap"><span class="math inline">
 </dd>
 <dt>“Out of many tests, the significant ones are the important ones.”</dt>
 <dd>
-<p>Significance does not indicate importance, as above. Moreover, even if <span class="math inline">\(H_0\)</span> is true, each test has a chance of <span class="math inline">\(\alpha\)</span> of being significant. With <span class="math inline">\(k\)</span> independent tests of true null hypotheses, the chance of at least one false positive is <span class="text-nowrap"><span class="math inline">\(1 - (1 - \alpha)^k\)</span>.</span> For example, among 10 comparisons, that chance is already over 40%. Without multiple testing correction, false positives are therefore likely. And estimates selected because they are significant are biased upward, especially when power is low.<span class="citation" data-cites="gelman2014"><a href="references.html#ref-gelman2014" role="doc-biblioref">[12]</a></span></p>
+Significance does not indicate importance, as above. Moreover, even if <span class="math inline">\(H_0\)</span> is true, each test has a chance of <span class="math inline">\(\alpha\)</span> of being significant. With <span class="math inline">\(k\)</span> independent tests of true null hypotheses, the chance of at least one false positive is <span class="text-nowrap"><span class="math inline">\(1 - (1 - \alpha)^k\)</span>.</span> For example, among 10 comparisons, that chance is already over 40%. Without multiple testing correction, false positives are therefore likely. And estimates selected because they are significant are biased upward, especially when power is low <span class="citation" data-cites="gelman2014"><a href="references.html#ref-gelman2014" role="doc-biblioref">[12]</a></span>.
 </dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Common misconceptions about confidence intervals
+<span class="screen-reader-only">Important</span>Common misconceptions about confidence intervals
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -771,7 +793,7 @@ Common misconceptions about confidence intervals
 <p>The interval only reflects sampling variation, and only if the model assumptions hold. It says nothing about bias, for example from a flawed study design.</p>
 </dd>
 </dl>
-<p>For the precise meaning of a confidence interval, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small>.</p>
+<p>For the precise meaning of a confidence interval, please refer to the <small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> video on confidence intervals</a></small>.</p>
 </div>
 </div>
 </div>
@@ -779,7 +801,7 @@ Common misconceptions about confidence intervals
 <section id="quiz" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="quiz">Quiz</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Question 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Answer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>A trial of 30 patients finds a mean change of <span class="math inline">\(-3.2\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-8.1\)</span> to <span class="math inline">\(1.7\)</span> mmHg and <span class="text-nowrap"><span class="math inline">\(p = 0.19\)</span>.</span> Suppose a drop of less than 5 mmHg is not worth taking a medicine, so that <span class="math inline">\(\delta = 5\)</span> mmHg. What do you conclude?</p>
@@ -799,12 +821,12 @@ Common misconceptions about confidence intervals
 <strong>D.</strong> Not significant, not relevant<br>
 <strong>E.</strong> The compound does nothing</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+<span class="screen-reader-only">Note</span>Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -833,12 +855,12 @@ Hint
 <strong>D.</strong> Not significant, not relevant<br>
 <strong>E.</strong> The compound does nothing</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Learn why
+<span class="screen-reader-only">Tip</span>Learn why
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -856,7 +878,7 @@ Learn why
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Answer</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Question 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Answer</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>A trial finds a mean change of <span class="math inline">\(-5.3\)</span> mmHg, with a 95% confidence interval from <span class="math inline">\(-9.2\)</span> to <span class="math inline">\(-1.4\)</span> mmHg. Which statement is correct?</p>
@@ -865,12 +887,12 @@ Learn why
 <strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
 <strong>D.</strong> In 95% of repeated trials, the interval would contain the true mean change.</p>
 <div class="hint callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+<span class="screen-reader-only">Note</span>Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -888,12 +910,12 @@ Hint
 <strong>C.</strong> The sample cannot come from a population with a true mean change of <span class="math inline">\(-9.5\)</span> mmHg.<br>
 <strong>D. In 95% of repeated trials, the interval would contain the true mean change.</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Learn why
+<span class="screen-reader-only">Tip</span>Learn why
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -905,7 +927,7 @@ Learn why
 <strong>D.</strong> This is the textbook definition.</p>
 <p>For a more in depth explanation, please refer to the video:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jrUrjv_yM0M?enablejsapi=1" title="Video on confidence intervals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab <i class="fa-solid fa-external-link" aria-label="external-link"></i></a></small></p>
+<p><small><a href="https://youtu.be/jrUrjv_yM0M" target="_blank" rel="noreferrer noopener"><span class="text-red"><i class="fa-brands fa-youtube" aria-label="youtube"></i></span> Open video in a new tab</a></small></p>
 </div>
 </div>
 </div>
@@ -924,16 +946,16 @@ Learn why
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">D. G. Altman and J. M. Bland, <span>“Statistics notes: Absence of evidence is not evidence of absence,”</span> <em>BMJ</em>, vol. 311, no. 7003, p. 485, Aug. 1995, doi: <a href="https://doi.org/10.1136/bmj.311.7003.485">10.1136/bmj.311.7003.485</a>.</div>
 </div>
 <div id="ref-ioannidis2005" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J. P. A. Ioannidis, <span>“Why Most Published Research Findings Are False,”</span> <em>PLoS Medicine</em>, vol. 2, no. 8, p. e124, Aug. 2005, doi: <a href="https://doi.org/10.1371/journal.pmed.0020124">10.1371/journal.pmed.0020124</a>.</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J. P. A. Ioannidis, <span>“Why most published research findings are false,”</span> <em>PLoS Medicine</em>, vol. 2, no. 8, p. e124, Aug. 2005, doi: <a href="https://doi.org/10.1371/journal.pmed.0020124">10.1371/journal.pmed.0020124</a>.</div>
 </div>
 <div id="ref-colquhoun2014" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[3] </div><div class="csl-right-inline">D. Colquhoun, <span>“An investigation of the false discovery rate and the misinterpretation of <span><em>p</em></span> -values,”</span> <em>Royal Society Open Science</em>, vol. 1, no. 3, p. 140216, Nov. 2014, doi: <a href="https://doi.org/10.1098/rsos.140216">10.1098/rsos.140216</a>.</div>
 </div>
 <div id="ref-greenland2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S. Greenland <em>et al.</em>, <span>“Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations,”</span> <em>European Journal of Epidemiology</em>, vol. 31, no. 4, pp. 337–350, Apr. 2016, doi: <a href="https://doi.org/10.1007/s10654-016-0149-3">10.1007/s10654-016-0149-3</a>.</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S. Greenland <em>et al.</em>, <span>“Statistical tests, p values, confidence intervals, and power: A guide to misinterpretations,”</span> <em>European Journal of Epidemiology</em>, vol. 31, no. 4, pp. 337–350, Apr. 2016, doi: <a href="https://doi.org/10.1007/s10654-016-0149-3">10.1007/s10654-016-0149-3</a>.</div>
 </div>
 <div id="ref-wasserstein2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R. L. Wasserstein and N. A. Lazar, <span>“The ASA Statement on <span><em>p</em></span> -Values: Context, Process, and Purpose,”</span> <em>The American Statistician</em>, vol. 70, no. 2, pp. 129–133, Apr. 2016, doi: <a href="https://doi.org/10.1080/00031305.2016.1154108">10.1080/00031305.2016.1154108</a>.</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">R. L. Wasserstein and N. A. Lazar, <span>“The ASA statement on <span><em>p</em></span> -values: Context, process, and purpose,”</span> <em>The American Statistician</em>, vol. 70, no. 2, pp. 129–133, Apr. 2016, doi: <a href="https://doi.org/10.1080/00031305.2016.1154108">10.1080/00031305.2016.1154108</a>.</div>
 </div>
 <div id="ref-haller2002" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[6] </div><div class="csl-right-inline">H. Haller and S. Krauss, <span>“Misinterpretations of significance: A problem students share with their teachers?”</span> <em>Methods of Psychological Research</em>, vol. 7, no. 1, pp. 1–20, 2002.</div>
@@ -942,7 +964,7 @@ Learn why
 <div class="csl-left-margin">[7] </div><div class="csl-right-inline">L. Badenes-Ribera, D. Frías-Navarro, H. Monterde-i-Bort, and M. Pascual-Soler, <span>“Interpretation of the p value: A national survey study in academic psychologists from spain,”</span> <em>Psicothema</em>, vol. 27, no. 3, pp. 290–295, Aug. 2015, doi: <a href="https://doi.org/10.7334/psicothema2014.283">10.7334/psicothema2014.283</a>.</div>
 </div>
 <div id="ref-nieuwenhuis2011" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. Nieuwenhuis, B. U. Forstmann, and E.-J. Wagenmakers, <span>“Erroneous analyses of interactions in neuroscience: a problem of significance,”</span> <em>Nature Neuroscience</em>, vol. 14, no. 9, pp. 1105–1107, Aug. 2011, doi: <a href="https://doi.org/10.1038/nn.2886">10.1038/nn.2886</a>.</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. Nieuwenhuis, B. U. Forstmann, and E.-J. Wagenmakers, <span>“Erroneous analyses of interactions in neuroscience: A problem of significance,”</span> <em>Nature Neuroscience</em>, vol. 14, no. 9, pp. 1105–1107, Aug. 2011, doi: <a href="https://doi.org/10.1038/nn.2886">10.1038/nn.2886</a>.</div>
 </div>
 <div id="ref-amrhein2019" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[9] </div><div class="csl-right-inline">V. Amrhein, S. Greenland, and B. McShane, <span>“Scientists rise up against statistical significance,”</span> <em>Nature</em>, vol. 567, no. 7748, pp. 305–307, Mar. 2019, doi: <a href="https://doi.org/10.1038/d41586-019-00857-9">10.1038/d41586-019-00857-9</a>.</div>
@@ -951,10 +973,10 @@ Learn why
 <div class="csl-left-margin">[10] </div><div class="csl-right-inline">S. N. Goodman, <span>“A comment on replication,<span><em>P</em></span><span>-</span>values and evidence,”</span> <em>Statistics in Medicine</em>, vol. 11, no. 7, pp. 875–879, Jan. 1992, doi: <a href="https://doi.org/10.1002/sim.4780110705">10.1002/sim.4780110705</a>.</div>
 </div>
 <div id="ref-gelman2006" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Gelman and H. Stern, <span>“The Difference Between <span>“</span>Significant<span>”</span> and <span>“</span>Not Significant<span>”</span> is not Itself Statistically Significant,”</span> <em>The American Statistician</em>, vol. 60, no. 4, pp. 328–331, Nov. 2006, doi: <a href="https://doi.org/10.1198/000313006x152649">10.1198/000313006x152649</a>.</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Gelman and H. Stern, <span>“The difference between <span>“</span>significant<span>”</span> and <span>“</span>not significant<span>”</span> is not itself statistically significant,”</span> <em>The American Statistician</em>, vol. 60, no. 4, pp. 328–331, Nov. 2006, doi: <a href="https://doi.org/10.1198/000313006x152649">10.1198/000313006x152649</a>.</div>
 </div>
 <div id="ref-gelman2014" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A. Gelman and J. Carlin, <span>“Beyond Power Calculations,”</span> <em>Perspectives on Psychological Science</em>, vol. 9, no. 6, pp. 641–651, Nov. 2014, doi: <a href="https://doi.org/10.1177/1745691614551642">10.1177/1745691614551642</a>.</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">A. Gelman and J. Carlin, <span>“Beyond power calculations,”</span> <em>Perspectives on Psychological Science</em>, vol. 9, no. 6, pp. 641–651, Nov. 2014, doi: <a href="https://doi.org/10.1177/1745691614551642">10.1177/1745691614551642</a>.</div>
 </div>
 </div>
 </section>
@@ -1092,8 +1114,8 @@ Learn why
 </script>
 
 <script>
-// Links to a tab, or to anything inside a tab that is not open: opens the tab, then scrolls
-// to the target. See README.md, "Links to tabs".
+// Links to a tab or a collapsed callout, or to anything inside one that is not open: opens it, then
+// scrolls to the target. See README.md, "Links to tabs".
 (function () {
   function show() {
     try {
@@ -1101,13 +1123,25 @@ Learn why
       if (!el) return;
       var panes = [], p = el.closest(".tab-pane");
       while (p) { panes.unshift(p); p = p.parentElement.closest(".tab-pane"); }
-      if (!panes.length) return;
+      var shut = [], c = el.classList.contains("callout") ? el.querySelector(":scope > .callout-collapse") : el.closest(".callout-collapse");
+      while (c) { if (!c.classList.contains("show")) shut.unshift(c); c = c.parentElement.closest(".callout-collapse"); }
+      if (!panes.length && !shut.length) return;
       panes.forEach(function (p) {
         var tab = document.getElementById(p.id + "-tab");
         if (tab && !p.classList.contains("active")) tab.click();
       });
       var to = el.classList.contains("tab-anchor") ? el.closest(".panel-tabset") || el : el;
-      setTimeout(function () { to.scrollIntoView(); }, 0);
+      setTimeout(function () {
+        if (!shut.length) { to.scrollIntoView(); return; }
+        // Scroll before opening, so that callout-accordion.html keeps the opened callout in place
+        var inside = !(shut.length === 1 && el.classList.contains("callout"));
+        (inside ? shut[0].closest(".callout") : el).scrollIntoView({ behavior: "instant" });
+        shut.forEach(function (s) {
+          var h = s.closest(".callout").querySelector(":scope > .callout-header");
+          if (h) h.click();
+        });
+        if (inside) setTimeout(function () { el.scrollIntoView({ behavior: "instant" }); }, 600);
+      }, 0);
     } catch (e) {}
   }
   window.addEventListener("load", show);
@@ -1163,6 +1197,56 @@ Learn why
 })();
 </script>
 <script>
+
+// Collapsible callouts in a div with class accordion-callouts: opening one closes the others. See README.md, "Callout accordions".
+
+(function () {
+
+  document.querySelectorAll(".accordion-callouts").forEach(function (g, i) {
+
+    if (!g.id) g.id = "accordion-callouts-" + (i + 1);
+
+    g.querySelectorAll(".callout-collapse").forEach(function (c) {
+
+      if (!c.parentElement.closest(".callout-collapse")) c.setAttribute("data-bs-parent", "#" + g.id);
+
+    });
+
+  });
+
+  // While a callout above closes, keep the header that was clicked where it is on the screen
+
+  document.addEventListener("show.bs.collapse", function (e) {
+
+    var c = e.target;
+
+    if (!c.getAttribute("data-bs-parent")) return;
+
+    var b = c.closest(".callout");
+
+    var h = b && b.querySelector(".callout-header");
+
+    if (!h) return;
+
+    var y = h.getBoundingClientRect().top, t = performance.now();
+
+    (function keep() {
+
+      var d = h.getBoundingClientRect().top - y;
+
+      if (d) window.scrollBy({ top: d, behavior: "instant" });
+
+      if (performance.now() - t < 500) requestAnimationFrame(keep);
+
+    })();
+
+  });
+
+})();
+
+</script>
+
+<script>
 // Prefetching of the apps' files (apps-src/README.md, "Prefetching").
 (function () {
   function go(u, pr) {
@@ -1197,15 +1281,50 @@ Learn why
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1257,13 +1376,14 @@ Learn why
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1283,7 +1403,8 @@ Learn why
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1292,8 +1413,71 @@ Learn why
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+            // default icon
+            link.classList.add("external");
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1307,6 +1491,7 @@ Learn why
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1469,44 +1654,54 @@ Learn why
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1605,7 +1800,10 @@ Learn why
     }
   });
   </script>
-<nav class="page-navigation">
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
   <div class="nav-page nav-page-previous">
       <a href="./binomial-distribution.html" class="pagination-link" aria-label="<span class=&quot;text-steelblue&quot;><i class=&quot;fas fa-dice-three&quot;></i></span> Binomial Distribution">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="text-steelblue"><i class="fas fa-dice-three"></i></span> Binomial Distribution</span>
