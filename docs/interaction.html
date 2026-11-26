@@ -631,7 +631,7 @@ Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the previous chapter, both groups shared a single slope, forcing the lines to be parallel. An interaction removes that restriction: Each group gets its own slope. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in slope</strong> for group B:</p>
+<p>In a main effects model (<a href="./additive-effects.html#additive-slope">previous chapter</a>), both groups shared a single slope, forcing the lines to be parallel. An interaction removes that restriction, allowing the slopes to differ. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in slope</strong> for group B:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-interaction-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of two rising lines of eta against x1 that are not parallel, group A below group B. A dot where the line of group A crosses x1 = 0 is labeled beta 0, and the distance up to group B at x1 = 0 is labeled beta 2. From x1 = 1 to x1 = 2, group A rises by beta 1, and group B rises by beta 1 plus an extra amount labeled beta 3.">
@@ -981,7 +981,7 @@ Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the previous chapter, the difference between treated and untreated was the same in both groups. An interaction removes that restriction: Each group gets its own difference. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in differences</strong> for group B:</p>
+<p>In a main effects model (<a href="./additive-effects.html#additive-dummy">previous chapter</a>), the difference between treated and untreated was the same in group A and B. An interaction removes that restriction, allowing the treatment effect to differ by group. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>difference in differences</strong> for group B, treated:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-interaction-dummy-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram with x1 at 0 (group A) and 1 (group B), with a line for untreated and a steeper line for treated above it. A dot for untreated group A is labeled beta 0, and the distance up to treated group A is labeled beta 2. From group A to group B, the untreated line rises by beta 1, and the treated line by beta 1 plus an extra amount labeled beta 3.">
@@ -1186,7 +1186,7 @@ Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In the previous chapter, the slope of <span class="math inline">\(x_1\)</span> was the same at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> which made the model a flat plane. An interaction removes that restriction: The plane is curved. The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>change in the slope</strong> of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one:</p>
+<p>In a main effects model (<a href="./additive-effects.html#additive-slope-slope">previous chapter</a>), the slope of <span class="math inline">\(x_1\)</span> was the same at any value of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> resulting in a flat regression plane. An interaction removes that restriction, allowing the slope of one explanatory variable to depend on the other (resulting in a curved plane). The coefficient <span class="math inline">\(\beta_3\)</span> in this case is the <strong>change in the slope</strong> of <span class="text-nowrap"><span class="math inline">\(x_1\)</span>,</span> when <span class="math inline">\(x_2\)</span> increases by one. The figure below shows what that looks like for a positive and negative <span class="text-nowrap"><span class="math inline">\(\beta_3\)</span>:</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-interaction-slope-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two diagrams of a twisted plane above x1 and x2, each from 0 to 1, titled positive interaction and negative interaction. In both, a dot at the corner where both are 0 is labeled beta 0, the rise along x1 at x2 = 0 is labeled beta 1, and the rise along x2 at x1 = 0 is labeled beta 2. At x2 = 1, the rise along x1 differs from beta 1 by an amount labeled beta 3: larger with positive interaction, smaller with negative interaction.">
@@ -1195,7 +1195,7 @@ Change in the slope of <span class="text-nowrap"><span class="math inline">\(x_1
 <img src="interaction_files/figure-html/fig-interaction-slope-slope-coef-1.png" class="img-fluid figure-img" alt="Two diagrams of a twisted plane above x1 and x2, each from 0 to 1, titled positive interaction and negative interaction. In both, a dot at the corner where both are 0 is labeled beta 0, the rise along x1 at x2 = 0 is labeled beta 1, and the rise along x2 at x1 = 0 is labeled beta 2. At x2 = 1, the rise along x1 differs from beta 1 by an amount labeled beta 3: larger with positive interaction, smaller with negative interaction." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interaction-slope-slope-coef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.7: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous. The slope of <span class="math inline">\(x_1\)</span> is <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_2 = 0\)</span> and <span class="math inline">\(\beta_1 + \beta_3\)</span> at <span class="text-nowrap"><span class="math inline">\(x_2 = 1\)</span>:</span> Higher with positive interaction (left, the shape of <a href="#fig-interaction-slope-slope" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>), lower with negative interaction (right).
+Figure&nbsp;5.7: Visual interpretation of interaction when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are both continuous.
 </figcaption>
 </figure>
 </div>
@@ -1292,7 +1292,7 @@ x1:x2          7.5033      1.064      7.055      0.000       5.372       9.635
 <li>The estimated slope of <code>x1</code> (1.43) is only the slope at <span class="text-nowrap"><span class="math inline">\(x_2 = 0\)</span>.</span></li>
 <li>The estimated slope of <code>x2</code> (1.69) is only the slope at <span class="text-nowrap"><span class="math inline">\(x_1 = 0\)</span>.</span></li>
 </ul>
-<p>The slope of <span class="math inline">\(x_1\)</span> increases by <code>x1:x2</code> (7.5) for every unit increase in <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> and vice versa: <code>x1:x2</code> is also the change in the slope of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> when <span class="math inline">\(x_1\)</span> increases by one. Apparently, this change in slope is significant <span class="text-nowrap">(<span class="math inline">\(p = 3.06 \times 10^{-9}\)</span>).</span></p>
+<p>The slope of <span class="math inline">\(x_1\)</span> increases by <code>x1:x2</code> (7.5) for every unit increase in <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> and vice versa (<code>x1:x2</code> is also the change in the slope of <span class="text-nowrap"><span class="math inline">\(x_2\)</span>,</span> when <span class="math inline">\(x_1\)</span> increases by one). Apparently, the estimated difference in slopes is significant <span class="text-nowrap">(<span class="math inline">\(p = 3.06 \times 10^{-9}\)</span>).</span></p>
 <p>For a complete analysis, refer to the <a href="#apply-interaction">tutorials</a> at the bottom of the page.</p>
 </div>
 </div>
