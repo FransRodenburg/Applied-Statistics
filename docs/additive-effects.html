@@ -621,7 +621,7 @@ Change in the linear predictor <span class="text-nowrap">(<span class="math inli
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>With a continuous variable and a dummy variable in the same model, each group gets its own line. Without interaction, both groups share a single slope, so the lines are parallel. The coefficient <span class="math inline">\(\beta_2\)</span> is the <strong>distance between the lines</strong>:</p>
+<p>With a continuous variable and a dummy variable in the same model, each group gets its own line. The coefficient <span class="math inline">\(\beta_2\)</span> is then an offset from the reference group’s intercept:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-additive-slope-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of two parallel falling lines of eta against x1, group B below group A. A dot where the line of group A crosses x1 = 0 is labeled beta 0. In both groups, the fall from x1 = 1 to x1 = 2 is labeled beta 1. The vertical distance between the lines is labeled beta 2.">
@@ -710,7 +710,7 @@ x             -3.1802      0.598     -5.320      0.000      -4.391      -1.969
 </div>
 </div>
 </div>
-<p>The estimated intercept of the <em>reference group</em> (A) is given by <code>(Intercept)</code> (148.31). For group B, we have to add <code>groupB</code> and the intercept becomes 138.44. Apparently, this difference is significant <span class="text-nowrap">(<span class="math inline">\(p = 1.64 \times 10^{-7}\)</span>).</span> The estimated slope is given by <code>x</code> (-3.18).</p>
+<p>The intercept of the reference group (A) is given by <code>(Intercept)</code> (148.31) and the slope by <code>x</code> (-3.18). Group B starts 9.87 lower, so its intercept is 138.44. Apparently, this difference is significant <span class="text-nowrap">(<span class="math inline">\(p = 1.64 \times 10^{-7}\)</span>).</span></p>
 <details>
 <summary>
 What if there are more than two groups?
@@ -1037,7 +1037,7 @@ treatment[T.yes]     0.4067      0.256      1.592      0.120      -0.111       0
 </div>
 </div>
 </div>
-<p>The estimated mean of the <em>reference groups</em> (untreated, group A) is given by <code>(Intercept)</code> (10.67). For group B, we have to add <code>groupB</code> (1.93), and for treated observations, we have to add <code>treatmentyes</code> (0.41). For treated observations in group B, we have to add both, and the mean becomes 13.01. Apparently, group B differs significantly from A <span class="text-nowrap">(<span class="math inline">\(p = 5.30 \times 10^{-9}\)</span>),</span> but the treatment effect is not significant <span class="text-nowrap">(<span class="math inline">\(p = 0.120\)</span>).</span></p>
+<p>The estimated mean of the reference group (untreated, group A) is given by <code>(Intercept)</code> (10.67). For group B, we have to add <code>groupB</code> (1.93), and for treated observations, we have to add <code>treatmentyes</code> (0.41). For treated observations in group B, we have to add both, and the mean becomes 13.01. Apparently, group B differs significantly from A <span class="text-nowrap">(<span class="math inline">\(p = 5.30 \times 10^{-9}\)</span>),</span> but the treatment effect is not significant <span class="text-nowrap">(<span class="math inline">\(p = 0.120\)</span>).</span></p>
 <p>For a complete analysis, refer to the <a href="#apply-additive">tutorials</a> at the bottom of the page.</p>
 </div>
 </div>
