@@ -613,7 +613,7 @@ Change in the linear predictor <span class="text-nowrap">(<span class="math inli
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Linear models work with numbers, but a categorical variable consists of labels (e.g., group A and group B). A <strong>dummy variable</strong> translates those labels into a <span class="math inline">\(0\)</span> or a <span class="text-nowrap"><span class="math inline">\(1\)</span>,</span> so that they can be used in the formula. You do not have to create it yourself: R and Python do this automatically for a categorical variable. The coefficient <span class="math inline">\(\beta_1\)</span> in this case is the <strong>difference between the groups</strong>:</p>
+<p>Categorical explanatory variables (e.g., group A and B) can be included in a linear model using a <strong>dummy variable</strong> (i.e., indicator variable). A dummy variable is equal to <span class="math inline">\(1\)</span> if an observation belongs to a certain category, and <span class="math inline">\(0\)</span> otherwise. The coefficient <span class="math inline">\(\beta_1\)</span> is then <strong>difference between the groups</strong>:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-dummy-2-coef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Diagram of eta against x, with x = 0 for group A and x = 1 for group B. A dot for group A is labeled beta 0, and a line rises to a higher dot for group B. The vertical difference between the two dots is labeled beta 1.">
@@ -628,7 +628,7 @@ Figure&nbsp;3.2: The intercept <span class="text-nowrap">(<span class="math inli
 </div>
 </div>
 </div>
-<p>There is not really a line anymore: Since <span class="math inline">\(x\)</span> has only two possible values, the model simply estimates one mean per group. The two groups are then defined as follows:</p>
+<p>This is still a linear model, because <span class="math inline">\(\beta_1\)</span> is the difference when increasing <span class="math inline">\(x\)</span> by one. However, since <span class="math inline">\(x\)</span> has only two possible values, the model essentially estimates one mean per group:</p>
 <table class="w-auto caption-top table">
 <caption><span class="text-nowrap">Purpose of the coefficients.</span></caption>
 <thead>
@@ -651,7 +651,7 @@ Figure&nbsp;3.2: The intercept <span class="text-nowrap">(<span class="math inli
 </tr>
 </tbody>
 </table>
-<p>The group in which the dummy variable is zero is called the <strong>reference group</strong>. By default, this is the first group in alphabetical order. With two groups, choosing the other group as the reference does not change the model: The intercept becomes the mean of group B, and the slope keeps its size, but changes sign.</p>
+<p>The group in which the dummy variable is zero is called the <strong>reference group</strong>. By default, this is the first group in alphabetical order. With only two groups, changing the reference group does not change the model: The intercept becomes the mean of group B, and the slope changes sign.</p>
 </div>
 </div>
 </div>
